@@ -1,147 +1,203 @@
-# Arquitectura ASIO - UM
+**Acerca de arc42**
 
-El presente documento parte de la arquitectura descrita en los documentos Estudio de viabilidad y especialmente el anexo anex3_AnyDisBackendSGI.docx.
-Se propone esta arquitectura como base sobre la que iterar, incorporando a la misma, necesidades que pudiesen surgir bien en la fase de implementación, bien en base a las necesidades del equipo de WESO.  
+arc42, La plantilla de documentación para arquitectura de sistemas y de
+software.
 
-## Arquitectura preliminar
+Por Dr. Gernot Starke, Dr. Peter Hruschka y otros contribuyentes.
 
-![Arquitectura preliminar](./images/arquitectura-preliminar.jpg)
+Revisión de la plantilla: 7.0 ES (basada en asciidoc), Enero 2017
 
-Se recomienda construir cada bloque funcional, de acuerdo con una arquitectura orientada a microservicios, ya que esto ofrece las siguientes ventajas:
+© Reconocemos que este documento utiliza material de la plantilla de
+arquitectura arc 42, <http://www.arc42.de>. Creada por Dr. Peter
+Hruschka y Dr. Gernot Starke.
 
-* Proporciona Flexibilidad, en la implementación, siendo la solución global agnóstica a la implementación, lo que permite desarrollar cada bloque funcional usando el lenguaje de programación, librerías o framework que más convenga para su resolución.
-* Facilita el escalado, pudiendo replicar un bloque funcional tantas veces como sea necesario para optimizar la tarea.
-* Facilita el mantenimiento, pudiendo cambiar la lógica en un bloque funcional, sin afectar al resto.
-* El desarrollo independiente de los microservicios, proporciona capacidad para desarrollarlos de forma concurrente.
+# Introducción y Metas
 
-Dentro de cada microservicio, se recomienda siempre que sea posible una el patrón de diseño clean arquitecture, de forma que:
+## Vista de Requerimientos
 
-* Aumenta la mantenibilidad
-* Aumenta la testeabilidad
-* Facilita el mantenimiento
+## Metas de Calidad
 
-Como lenguaje base para el desarrollo de microservicios (puede cambiar en algún microservicio, por razones de idoneidad del lenguaje, framework o librería a la función que se desea realizar), se recomiendan lenguajes basados en Java Virtual Machine, bien Java, bien Scala, por los siguientes motivos:
+## Partes interesadas (Stakeholders)
 
-* Existen múltiples librerías desarrolladas en Java, en el contexto de la Web Semántica (Apache Jena, Shaclex, ShEx for Java), que pueden facilitar en gran medida el desarrollo de funcionalidades
-* Lenguajes propicios para el desarrollo de microservicios.
-* Lenguajes fuertemente tipados, que favorecen la detección de fallos en fase de compilación, frente a fallos en fase de ejecución.
-* Fácil de encontrar expertise en dichos lenguajes, por lo tanto, fácil de mantener.
+| Rol/Nombre     | Contacto                  | Expectativas              |
+| -------------- | ------------------------- | ------------------------- |
+| <*Role-1*>     | <*Contact-1*>             | <*Expectation-1*>         |
+| <*Role-2*>     | <*Contact-2*>             | <*Expectation-2*>         |
 
-## Arquitectura alto nivel
+# Restricciones de la Arquitectura
 
-Con el fin de facilitar la visión de cómo está planteada la aplicación, es recomendable visualizar desde un punto de vista de alto nivel, los principales módulos que la forman, sin entrar en el detalle.
+# Alcance y Contexto del Sistema
 
-![Arquitectura alto nivel](./images/high-level.png)
+## Contexto de Negocio
 
-A alto nivel, la arquitectura se divide en varias partes:
+<**Diagrama o Tabla**>
 
-* Backend: Módulo encargado de la ingesta de datos desde un origen, procesando la información e insertándola en los diferentes almacenamientos
-* Gestión: Módulo backoffice encargado de la gestión del sistema
-* Servicio de publicación web: Servicio encargado de la consulta de datos por parte de los usuarios / máquinas
-* API Rest LDP
-* Autorización y autenticación
+<**optionally: Explanation of external domain interfaces**>
 
-También formarán parte de esta visión general:
+## Contexto Técnico
 
-* Orígenes de datos
-* Almacenamientos de datos RDF
-* Sistema de logging y monitorización
-* Bus de servicio general de la aplicación
-* Base de datos de gestión
+<**Diagrama o Tabla**>
 
-## Arquitectura Backend
+<**Opcional: Explicación de las interfases técnicas**>
 
-El módulo de backend es el encargado de la ingesta de datos desde un origen, procesando la información e insertándola en los diferentes almacenamientos.
+<**Mapeo de Entrada/Salida a canales**>
 
-![Arquitectura backend alto nivel](./images/backend.png)
+# Estrategia de solución
 
-Este módulo estará formado por varias piezas:
+# Vista de Bloques
 
-* Entrada de datos: módulo encargado de obtener los datos de una entrada de datos (fuentes externas), haciendo las adaptaciones necesarias para que conciliarlos con entides internas e ingesta en bus de servicio general
-* Sistema de gestión: servicio encargado de consumir los eventos del bus de servicio y decidir si deben ir al módulo de gestión de eventos
-* Gestión de eventos: módulo encargado de procesar los eventos generados por el módulo de entrada, permitiendo almacenar los datos en los diferntes sistemas de almacenamiento
-* Bus de servicio general (kafka): cola de mensajes utilizada para la comunicación asíncrona entre los módulos
+## Sistema General de Caja Blanca
 
-### Entrada de datos
+<***Diagrama general***>
 
-El sistema de entrada de datos, tiene como función, procesar los datos de fuentes externas (Bases de datos, Repositorios de ficheros, …), conciliarlos con entidades internas, e introducirlos al sistema.
+Motivación
 
-![Arquitectura entrada de datos](./images/input.png)
+:   <*Explicación en texto*>
 
-**Implementación:** Para su implementación se desarrollarán una serie de microservicios. Potencialmente hay servicios que estarán muy acoplados a cliente (importadores) y otros menos, por lo que será conveniente que cada componente realice las operaciones de la forma más atómica y desacoplada posible.
+Bloques de construcción contenidos
 
-**Lenguaje:** Para la implementación de los microservicios involucrados en este módulo se recomienda lenguaje de la JVM, por compatibilidad con librerías, principalmente Java o Scala.
+:   <*Desripción de los bloques de construcción contenidos (Cajas negras)*>
 
-#### Importadores
+Interfases importantes
 
-Se trata de N microservicios, uno por cada fuente de datos, que se encargarán de procesar las fuentes externas y adaptar los datos recuperados al formato establecido en la aplicación.
+:   <*Descripción de las interfases importantes*>
 
-Por ejemplo, en el caso de una fuentes de datos vía FTP, el importador correspondientes se encargaría de recuperar los ficheros vía FTP, procesar los ficheros y extraer los datos. 
+### <Caja Negra 1>
 
-**Implementación:** Existen librerías que podrían facilitar la implementación: 
+<*Propósito/Responsabilidad*>
 
-* ShExML : Librería desarrollada por WESO, que permite mapear datos.
-* RML : Lenguaje que permite definir el mapeo de forma escalable y reutilizable con distintas fuentes, orientado a generar documentos RDFs.
+<*Interfase(s)*>
 
-**Input:** Fuente de datos externa
-**Output:** Evento publicado en Service Bus interno del módulo de entrada
+<*(Opcional) Características de Calidad/Performance*>
 
-#### Procesador
+<*(Opcional) Ubicación Archivo/Directorio*>
 
-Obtiene los datos desde el importador y realiza tareas de conciliación y descubrimiento de entidades de otras fuentes de datos enlazados y genera las URIs de los recursos de acuerdo con la política establecida.
+<*(Opcional) Requerimientos Satisfechos*>
 
-**Implementación:** Se apoyará en las siguientes librerías:
-* Factoría de URIs
-* Librería de descubrimiento.
+<*(Opcional) Riesgos/Problemas/Incidentes Abiertos*>
 
-**Input:** Evento recibido desde el service bus interno del módulo de entrada
-**Output:** Evento publicado en Service Bus general
+### <Caja Negra 2>
 
-#### Service bus interno del módulo de entrada
+<*plantilla de caja negra*>
 
-Se trata de una cola Kafka para garantizar que el procesamiento de los datos de entrada de forma asíncrona, para evitar sobrecargas del procesador.
+### <Caja Negra N>
 
-### Gestión de eventos
+<*Plantilla de caja negra*>
 
-El módulo de gestión de eventos se encargará de recoger los eventos generados por el sistema de entrada y procesarlos, hasta su guardado en los diferentes sistemas de almacenamiento que se definan.
+### <Interfase 1>
 
-![Arquitectura gestión de eventos](./images/event-management.png)
+...
 
-**Implementación:** Para su implementación se desarrollarán una serie de microservicios. Se debería disponer de unos servicios lo más atómico posible, sobre todo en el caso de los microservicios dedicados a interacturar con los sistemas de almacenamiento, los cuales van a estar muy ligados a las APIs provistas por estos.
+### <Interfase m>
 
-**Lenguaje:** Para la implementación de los microservicios involucrados en este módulo se recomienda lenguaje de la JVM, por compatibilidad con librerías, principalmente Java o Scala.
+## Nivel 2
 
-#### Sisstema de gestión
+### Caja Blanca <*bloque de construcción 1*>
 
-El sistema de gestión se encargará de decidir qué eventos enviar a los procesadores de datos y bajo qué condiciones. Se encargará de consumir los eventos del bus de servicio general del sistema e ingestar en el bus de servicio de gestión aquellos eventos que se deban procesar.
+<*plantilla de caja blanca*>
 
-**Input:** Evento recibido desde el service bus general del sistema
-**Output:** Evento publicado en Service Bus de gestión
+### Caja Blanca <*bloque de construcción 2*>
 
-#### 
+<*plantilla de caja blanca*>
 
-### APIs / Web
+...
 
-![Arquitectura APIs / Web](./images/apis-web.png)
+### Caja Blanca <*bloque de construcción m*>
 
-## Arquitectura aplicación de gestión
+<*plantilla de caja blanca*>
 
-![Arquitectura aplicación de gestión](./images/management-app.png)
+## Nivel 3
 
-## Autenticación y autorización
+### Caja Blanca <\_bloque de construcción x.1\_>
 
-### SIR
+<*plantilla de caja blanca*>
 
-## Procesamiento asíncrono
+### Caja Blanca <\_bloque de construcción x.2\_>
 
-## Plataforma de despliegue
+<*plantilla de caja blanca*>
 
-### Microservicios
+### Caja Blanca <\_bloque de construcción y.1\_>
 
-### Entorno docker
+<*plantilla de caja blanca*>
 
-### Kubernetes
+# Vista de Ejecución
 
-### Service Mesh
+## <Escenario de ejecución 1>
 
-#### Istio
+-   <*Inserte un diagrama de ejecución o la descripción del escenario*>
+
+-   <*Inserte la descripción de aspectos notables de las interacciones entre los bloques de construcción mostrados en este diagrama.*>
+
+## <Escenario de ejecución 2>
+
+## ...
+
+## <Escenario de ejecución n>
+
+# Vista de Despliegue
+
+## Nivel de infraestructura 1
+
+<***Diagrama General***>
+
+**Motivación**
+
+<*Explicación en forma textual*>
+
+**Características de Calidad/Rendimiento**
+
+<*Explicación en forma textual*>
+
+**Mapeo de los Bloques de Construcción a Infraestructura**
+
+<*Descripción del mapeo*>
+
+## Nivel de Infraestructura 2
+
+### <*Elemento de Infraestructura 1*>
+
+<*diagrama + explicación*>
+
+### <*Elemento de Infraestructura 2*>
+
+<*diagrama + explicación*>
+
+...
+
+### <*Elemento de Infraestructura n*>
+
+<*diagrama + explicación*>
+
+# Conceptos Transversales (Cross-cutting)
+
+## <*Concepto 1*>
+
+<*explicación*>
+
+## <*Concepto 2*>
+
+<*explicación*>
+
+...
+
+## <*Concepto n*>
+
+<*explicación*>
+
+# Decisiones de Diseño
+
+# Requerimientos de Calidad
+
+## Árbol de Calidad
+
+## Escenarios de calidad
+
+# Riesgos y deuda técnica
+
+# Glosario
+
+
+| Término                           | Definición                        |
+| --------------------------------- | --------------------------------- |
+| <Término-1>                       | <definicion-1>                    |
+| <Término-2>                       | <definicion-2>                    |
