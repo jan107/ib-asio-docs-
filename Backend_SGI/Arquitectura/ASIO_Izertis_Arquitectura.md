@@ -296,7 +296,7 @@ La creación del modelo de dominio del proyecto se considera un entregable de la
 
 En la siguiente figura se muestra una representación gráfica de las clases anteriores:
 
-![Representación simple del modelo de dominio](./images/represetacion-simple-modelo-dominio.png)
+![Representación simple del modelo de dominio](./images/represetacion-simple-modelo-dominio.jpg)
 
 ## Multilingüismo
 
