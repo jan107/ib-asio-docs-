@@ -885,6 +885,10 @@ En este apartado se identifican algunos riesgos detectados en el desarrollo del 
 
     Como se comenta en la memoria del estudio de viabilidad, como plan de contingencia ante la aparición de circunstancia sobrevenidas, se pondrá en marcha desde el inicio del proyecto de un Comité de Seguimiento, integrado por el investigador principal del grupo WESO y 2 miembros del equipo de investigación, que día a día estarán informados del desarrollo del proyecto, facilitando la resolución de cualquier necesidad de los miembros del equipo y/o IZERTIS. El desarrollo del proyecto se llevará a cabo siguiendo metodología SCRUM para garantizar la flexibilidad del mismo. Además, la realización de reuniones cada quince días hace que se detecten bloqueos con la diligencia debida.
 
+## Integración SAML y JWT
+
+- Riesgo: La traducción entre tokens de SAML y JWT puede traer complicaciones ya que es posible que se pierda cierta información en el proceso
+- Plan: aunque es cierto que el riesgo existe, existen documentación disponible que plantea este escenario y resolviendolo de una forma adecuada.
 
 # Glosario
 
