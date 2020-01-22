@@ -293,11 +293,256 @@ El gestor de comunicación será el encargado de manejar las peticiones que se r
 
 ## Arquitectura aplicación de gestión
 
+La aplicación de gestión se utilizará como backoffice de la solución, es decir para la gestión de la propia aplicación.
+
 ![Arquitectura aplicación de gestión](./images/management-app.png)
 
-## <*Autenticación y autorización*>
+Este módulo estará formado por las siguientes piezas:
 
-### <*SIR*>
+- Frontend: Frontal encargado de la interacción con usuario para permitir la entrada y visualización de información
+- Backend: API Rest encargada de ofrecer la lógica de negocio de la aplicación de gestión
+
+### Frontend
+
+El sistema Frontend se encargará de interatuar con los usuarios que utilicen la aplicación de gestión. 
+
+- **Lenguaje:** Para la implementación se utilizará una tecnología SPA, siendo elegida en este caso Angular
+- **Input:** Información obtenida de un usuario
+- **Output:** Invocacion al API del backend
+
+### Backend
+
+El sistema backend será el encargado de recibir la peticiones del frontal y procesarlas, ya sea obteniendo información del sistema o bien grabando nuevos datos.
+
+Este sistema se apoyará en una base de datos de tipo NoSQL, como lo es MongoDB. Este tipo de bases de datos son apropiadas para sistemas en los que no se requiera una integridad fuerte enetre los datos, permitiendo de esta forma un rendimiento muy superior a una base de datos relacional.
+
+- **Lenguaje:** Para la implementación se utilizará Java por compatibilidad con el resto del sistema
+- **Input:** Información obtenida a través el API
+- **Output:** Ejecución de consultas en la base de datos de gestión
+
+## <*Autenticación*>
+
+La aplicacion dispondrá de un sistema de autenticación que permita identificar a los usuarios que van a trabajar con la misma. Esl sistema de autenticación dará acceso a los usuarios mediante sus credenciales. Para este cometido se utilizará se propone la utilización de un Single Sign On, que permita abstraer a cada uno de los servicios de este cometido, centralizando el proceso de autenticación en un único lugar.
+
+Dado que Backend SGI es previsto que sea utilizado por usuarios de diferentes organizaciones, lo más adecuado es que se utilice un sistema de autenticación federado que permita utilizar la plataforma de autenticación de la organización a la que pertenezca cada uno de ellos. 
+
+![Funcionamiento de la autenticación federada](./images/sir1.png)
+
+En un sistema federado existen los siguientes roles:
+
+- **Proveedor de identidad:** encargado de realizar la autenticación del usuario y emitir las credenciales del mismo, pudiendo incluir información adicional sobre los atributos del usuario
+- **Proveedor de servicio:** responsale de validar las credenciales. Es posible que el usuario se haya autenticado pero no sea válido para el servicio en cuestión (por roles por ejemplo), en este caso se denegaría la entrada.
+
+Para este cometido se recomienda federar la aplicación en el sistema SIR.
+
+### SIR
+
+El Servicio de Identidad de RedIRIS (SIR) ofrece un servicio de autenticación federado para los servicios que proveen las entidades asociadas, tanto a nivel nacional como internacional. Tiene las siguientes características:
+
+- La autenticación se realiza en la plataforma local de cada institución, ofreciendo la forma de autenticación a la que está acostumbrado cada usuario
+- Ofrece una mayor seguridad, ya que las credenciales no salen del entorno local de la propia institución
+- Cada institución aplica los mecanismos de control que estime convenientes
+
+SIR2 sigue un modelo de federación `hub&spoke`. Esto significa que en el centro de la federación hay un hub central que pone en contacto a los proveedores de identidad y proveedores de servicio. Entre el hub y los IdPs, en la federación SIR2 se utiliza el perfil SAML2int.
+
+Como protocolo de funcionamiento, SIR2 proporciona varios, ente los que se encuentran:
+
+- PAPI v1
+- SAML 1.1
+- SAML 2 (recomendado)
+- eduGAIN
+- OpenID
+
+#### SAML
+
+SAML es el acrónimo de Security Assertion Markup Language, el cual es un estándar abierto de intercambio de datos de autorización y autenticación entre un proveedor de identidad y un proveedor de servicio. 
+
+El formato que utiliza es basado en el lenguaje de marcado XML.
+
+El caso de uso más comun es para el intercambio de información en un SSO. 
+
+![Flujo de autenticación SAML](./images/saml.png)
+
+**1. Realización de la request del recurso al Service Provider (SP)**
+
+Se realiza la petición al service provider:
+
+    https://sp.example.com/myresource
+
+El Service Provideer realizar la verificación de seguridad, si existe un contexto de seguridad válido se retorna el recurso solicitado.
+
+**2. Redirección al servicio SSO (proveedor de identidad)**
+
+El proveedor de servicio redirecciona al usuario al servicio SSO
+
+    https://idp.example.org/SAML2/SSO/Redirect?SAMLRequest=request
+
+El valor del parámetro `SAMLRequest` está codificado en Base64 y contiene el valor del elemento `<samlp:AuthnRequest>`.
+
+**3. Realizar petición al servicio SSO**
+
+El usuario realiza una reques a la URL obtenida del paso anterior. El servicio SSO procesa el parámetro `AuthRequest` y realiza la verifiación de seguridad. En caso que el usuario no disponga de una autenticación, lo identifica. 
+
+**4. Respuesta vía formulario XHTML**
+
+El servicio SSO valida la petición y responde vía un formulario XHTML:
+
+```html
+<form method="post" action="https://sp.example.com/SAML2/SSO/POST" ...>
+    <input type="hidden" name="SAMLResponse" value="response" />
+    ...
+    <input type="submit" value="Submit" />
+</form>
+```
+
+El valor del parámetro `SAMLResponse`es la codificación en Base64 del elemento `<samlp:Response>`.
+
+**5. Request al servicio de validación de aserciones del Service Provider**
+
+El usuario invoca vía POST al servicio de validación de aserciones del service provider.
+
+**6. Redirección al recurso del SP**
+
+El servicio de validación de aserciones procesa la respuesta, crea el contexto de seguridad y redirecciona al recurso solicitado en el paso 1.
+
+**7. Solicitar el recurso del SP de nuevo**
+
+Se realiza nuevamente la petición del recurso del service provider:
+
+    https://sp.example.com/myresource
+
+**8. Respuesta con el recurso solicitado**
+
+Dado que existe un contexto de seguridad que permite acceder al recurso, finalmente se retorna al usuario.
+
+## Autorización
+
+Que el usuario esté identificado en el sistema no es suficiente para que el sistema de seguridad. Para ello es preciso que cada usuario pueda acceder a los recursos que se le permitan por su rol. A este es a lo que se entiende como autorización.
+
+El sistema de autorización tiene que conseguir una serie de objetivos:
+
+- Identificar el rol del usuario
+- Realizar la autorización entre los difrentes módulos del sistema
+
+### Identificación del rol del usuario
+
+Independientemente de si se utiliza como método de autenticación un sistema federado como SIR o bien el SSO propio de la Universidad de Murcia directamente, es necesario que el sistema aporte la información necesaria para poder realizar la autorización correctamente.
+
+Ante esto se plantean 2 posibles escenarios:
+
+- El sistema no ofrece los roles del usuario
+- El sistema ofrece los roles del usuario
+
+#### El sistema de autenticación no ofrece información de autorización
+
+En este caso, la primera vez que acceda el usuario a la aplicación tendrá que disponer del nivel más básico de acceso. Esto es debido a que no es posible realizar una sincronización con la base de datos de usuarios (LDAP, AD, etc.) al ser solamente accesible desde el propio SSO.
+
+En este caso, la primera vez que entre el usuario, este se registrará en el sistema y ya en este momento será posible asignar roles dentro de la aplicación.
+
+#### El sistema ofrece los roles del usuario
+
+En este caso, el sistema ofrece los roles, o bien información que permita recomponer la autorización. En este caso, la primera vez que un usuario acceda al sistema, ya se conoce su rol con lo que entrará con los permisos precisos para el mismo de forma automática.
+
+Este es el mecanismo más recomendado al ser el más ágil.
+
+#### Funcionamiento en SIR
+
+En el caso de SIR, a priori es posible recuperar toda aquella información que el IdP esté en condiciones de enviar. En el caso de la Universidad de Murcia, se deberá inclur en el perfil la información de autorizaicón
+
+Vas a poder recuperar de SIR lo que cada IdP esté en condiciones de enviar a SIR. En el caso de la UMU podemos incluir en el perfil la información que os pasé en el perfil de ejemplo.
+
+![Perfil CAS de un usuario en la Universidad de Murcia](./images/perfil-cas-um.png)
+
+### Identificación del usuario entre los diferentes módulos del sistema
+
+La solución Backend SGI está planteada mediante una arquitectura de microservicios. En este tipo de arquitecturas se plantea un reto en lo que a la autorización se refiere, ya que no es suficiente con validar los permisos del usuario en el módulo de entrada, si no que es preciso que cada uno de los microservicios tenga visibilidad de los roles del usuario para poder dar el acceso correspondiente a funcionalidades y datos.
+
+![Autorización: aplicación monolítica vs microservicios](./images/monolith-vs-microservices.png)
+
+En un arquitectura monolítica, al ser una aplicación única no existe este problema, pero en la arquitectura de microservicios es preciso trasladar entre diferentes microservicios el token de acceso para que lo puedan validar. Lo que puede provocar un enorme cuello de botella en la red al tener que para cada una de las invocaciones al sistema, cada uno de los microservicios involucrados en resolver la petición tiene que al servicio de autorización para verificar los accesos.
+
+Como se indicó anteriormente, como servicio de autenticación / autorización se utilizará SIR, el cual funciona bajo el protocolo SAML2. El principal problema de este protocolo no está pensado para trabajar entre microservicios, si no entre un user-agent y un proveedor de servicio, por lo que resulta demasiado pesado al tratarse de un intercambio de información mediante XML.
+
+Como alternativa para la autorización, la recomendacion es la utilización de OAuth2 junto con JWT, el cual se ha convertido en el estándar de facto en el mundo de microservicios.
+
+#### OAuth2
+
+OAuth 2.0 es el protocolo estándar para la autorización. Los elementos lo componen son las siguientes:
+
+- Propietario de recursos: Quien autoriza el acceso a los recursos, puede ser una persona
+- Cliente: aplicación (o web) que accede a los recursos protegidos
+- Proveedor
+    - Servidor de autorización: encargado de validar el usuario y credenciales, generando tokens de acceso
+    - Servidor de recursos: encargado de recibir las peticiones de acceso a los recursos protegidos, autorizando acceso solo si el token es válido
+
+![Arquitectura OAuth2](./images/oauth-architecture.png)
+
+Las ventajas que proporciona OAuth son:
+
+- Las credenciales de los usuarios no se ven comprometidas ya que el acceso a su información se hace a través de tokens que deberán ser validados cuando se consumen las APIs. 
+- Indicado para el consumo de APIs, tanto por aplicaciones Front SPA como aplicaciones móviles
+- Posibilidad de definición de scopes diferenciados para cada una de las aplicaciones, los cuales permiten delimitar el acceso a cada aplicación
+
+##### Scopes
+
+Los scopes de OAuth definen los permisos que tienen los clientes, es decir, permiten qué operaciones pueden realizar con los tokens generados para el cliente en cuestión. Por ejemplo, se puede definir “read”, “write”, etc., en función del scope cada cliente estará habilitado a realizar unas acciones u otras.
+Por ejemplo, en el caso que se quiera utilizar Facebook desde una aplicación, se generará un cliente OAuth en el que se definen los permisos (scopes) para el mismo, como por ejemplo lectura, escribir publicaciones u obtener contactos.
+
+El concepto “Scope” no se debe confundir con roles de usuario, ya que los scopes se definen a nivel de cliente, teniendo en cuenta que un cliente puede ser una aplicación, no sustituye el hecho de que puedan existir diferentes roles para cada usuario de la aplicación.
+
+##### Tokens
+
+OAuth genera 2 tipos de tokens:
+
+- Access token: token que será enviado junto a las llamadas a las APIs para la validación de acceso.
+- Refresh token: token de refresco que se encargará de renovar el token de acceso cuando este caduque
+
+Cuando se utiliza cualquiera de estos tokens, se deberán validar previamente. Para ello se almacenan en un repositorio (BBDD, Redis, etc.) que permite la consulta de los mismos en las sucesivas llamadas. Uno de los posibles problemas que presenta, es la aparición de cuellos de botella en esta validación, ya que por cada llamada al API se deberá validar el token mediante consultas a BBDD. Si además estamos en una arquitectura de microservicios, cada microservicio que se vaya encadenando para obtener el resultado de la llamada al API, deberá validar el token. Como posible solución se podrían utilizar tokens JWT, los cuales no es necesario validar contra la BBDD.
+
+En cuanto al propio formato de los tokens, es importante seleccionar el tipo que se va a utilizar. Por defecto, se utiliza el token de tipo `Reference`, el cual implica que este deba ser verificado contra el servidor de recursos por cada una de los microservicios, lo que ya se indicó anteriormente que conlleva un lag en la petición.
+
+![Funcionamiento reference token](./images/oauth-reference-token.png)
+
+En el mundo de microservicios, debido a los problemas que presenta el tipo por defecto, lo más utilizado es JSON Web Tokens, más conocido como JWT. Mediante este sistema la verificación de los tokens se realizan localmente mediante una clave pública.
+
+![Funcionamiento JWT token](./images/oauth-jwt.png)
+ 
+ #### JWT
+
+ JSON Web Tokens, más conocidos como JWT, es el método estándar RGC 7519 de representación de tokens de seguridad para el intercambio de información. Es un estándar basado en JSON para crear tokens de acceso. Los tokens están firmados mediante una clave privada, teniendo todas las partes la clave pública que permite verificar la validez del token. 
+
+Las ventajas que proporciona este sistema son:
+
+- Posibilidad de creación de aplicaciones Stateless, que no tengan la necesidad de almacenar el estado de la sesión del usuario. El token contiene información de autenticación, expiración y otros datos que se definan
+- Portable: el mismo token puede ser utilizado en múltiples backends
+- No requiere cookies
+- Buen rendimiento: no requiere validación contra ningún sistema de almacenamiento, simplemente con corroborar las firmas del token es suficiente para entender que el token es válido. 
+- Muy adecuado para arquitectura de microservicios: se va pasando el token de microservicio en microservicio, sin necesidad de validaciones pesadas
+- Desacoplamiento: el token puede ser generado en cualquier otro lugar, la autenticación puede ser realizada en el servidor de recursos o en un lugar totalmente ajeno.
+
+##### Estructura
+
+Un token suele estar formados por tres partes:
+
+- Header: identifica el algoritmo que es utilizado para la firma, por ejemplo, HS256
+- Payload: contiene la información de los “claims” del token, en el que se pueden incluir también marcas temporales para indicar el momento en el que el token fue generado
+- Signature: encargada de validar el token, generada codificando la cabecera y el contenido utilizando Base64url Encoding
+
+##### Claims
+
+En el cuerpo del token se pueden definir claims o privilegios que pueden servir para definir datos del usuarios que sirvan para realizar la autenticación / autorización. Existen claims públicos que deben seguir el estándar RFC7519 (https://www.iana.org/assignments/jwt/jwt.xhtml), y claims privados que se pueden definir de forma custom.
+
+Mediante una combinación de claims se pueden utilizar para definir los privilegios de acceso que tiene el token en una aplicación en concreto.
+
+#### Integración SAML y OAuth2 + JWT
+
+Como se indicó anteriormente, para la autenticación / autorización se utilizará el sistema SIR el cual utiliza el protocolo SAML. Internamente dentro de el ecosistema de microservicios es mejor opción utilizar OAuth2 junto con JWT. Es por ello que se necesita hacer la integración de ambos sistemas.
+
+Para poder conseguir esta integración es necesario disponer de una pieza que haga de "bridge" haciendo la traducción entre ambos sistemas. 
+
+![Bridge de autorización](./images/authorization-bridge.png)
+
+En este caso existirá un servidor de autenticacion que realice este rol. De puertas a fuera se trabajará con SAML, haciendo la integración son SIR, mientras que de puertas a dentro se dispondrá de un token JWT proporcionado por el servidor de autenticación.
 
 # Vista de Ejecución
 
@@ -538,7 +783,7 @@ En este sentido los templates se basan en lo que Angular denomina “directivas�
 
 #### Testing
 
-Como parte de AngularJS se encuentra desarrollado un módulo que permite generar mocks de inyecciones de dependencias y servicios REST de una forma ágil.
+Como parte de Angular se encuentra desarrollado un módulo que permite generar mocks de inyecciones de dependencias y servicios REST de una forma ágil.
 
 Se suele usar en conjunción con Jasmine y Karma para la automatización de tests en entornos de integración continua y la publicación de resultados.
 
