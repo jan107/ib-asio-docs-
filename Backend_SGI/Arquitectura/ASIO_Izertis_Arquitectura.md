@@ -451,7 +451,7 @@ En el caso de SIR, a priori es posible recuperar toda aquella información que e
 
 Vas a poder recuperar de SIR lo que cada IdP esté en condiciones de enviar a SIR. En el caso de la UMU podemos incluir en el perfil la información que os pasé en el perfil de ejemplo.
 
-![Perfil CAS de un usuario en la Universidad de Murcia](./images/perfil-cas-um.png)
+![Perfil CAS de un usuario en la Universidad de Murcia](./images/perfil-cas-um.PNG)
 
 ### Identificación del usuario entre los diferentes módulos del sistema
 
