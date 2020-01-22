@@ -320,7 +320,7 @@ Este sistema se apoyará en una base de datos de tipo NoSQL, como lo es MongoDB.
 - **Input:** Información obtenida a través el API
 - **Output:** Ejecución de consultas en la base de datos de gestión
 
-## <*Autenticación*>
+## Autenticación
 
 La aplicacion dispondrá de un sistema de autenticación que permita identificar a los usuarios que van a trabajar con la misma. Esl sistema de autenticación dará acceso a los usuarios mediante sus credenciales. Para este cometido se utilizará se propone la utilización de un Single Sign On, que permita abstraer a cada uno de los servicios de este cometido, centralizando el proceso de autenticación en un único lugar.
 
