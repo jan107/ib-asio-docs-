@@ -544,63 +544,40 @@ Para poder conseguir esta integración es necesario disponer de una pieza que ha
 
 En este caso existirá un servidor de autenticacion que realice este rol. De puertas a fuera se trabajará con SAML, haciendo la integración son SIR, mientras que de puertas a dentro se dispondrá de un token JWT proporcionado por el servidor de autenticación.
 
-# Vista de Ejecución
-
-## <Escenario de ejecución 1>
-
--   <*Inserte un diagrama de ejecución o la descripción del escenario*>
-
--   <*Inserte la descripción de aspectos notables de las interacciones entre los bloques de construcción mostrados en este diagrama.*>
-
-## <Escenario de ejecución 2>
-
-## ...
-
-## <Escenario de ejecución n>
-
 # Vista de Despliegue
 
-### <*Microservicios*>
+El despliegue de la aplicación se realizará en un entorno de contenedores orquestado mediante Kubernetes.
 
-### <*Entorno docker*>
+**Diagrama General**
 
-### <*Kubernetes*>
-
-### <*Service Mesh*>
-
-#### <*Istio*>
-
-## Nivel de infraestructura 1
-
-<***Diagrama General***>
+![Vista de despliegue](./images/deployment-view.png)
 
 **Motivación**
 
-<*Explicación en forma textual*>
+El despliegue se realizará en Kubernetes con 2 nodos para garantizar la alta disponiblidad del sistema. Por delante tendrá un nginx que hará de API Gateway para dar acceso a la aplicación.
 
-**Características de Calidad/Rendimiento**
+## Arquitectura de Pods, Deployments, Services e Ingress
 
-<*Explicación en forma textual*>
+Se indican a continuación la arquitectura de despliegue dentro de Kubernetes, incluyendo los siguientes elementos:
 
-**Mapeo de los Bloques de Construcción a Infraestructura**
+- Pods, deployments, cronjobs y statefulset
+- Services
+- Ingress
 
-<*Descripción del mapeo*>
+Asociado a cada uno de los pods se incluye por cada uno la imagen base que se debe utilitzar para la contrucción de la imagen Docker de despliegue. Por norma general se utilitzará la siguiente:
 
-## Nivel de Infraestructura 2
+- Pods Java: openjdk:11, la cual es la imagen base para openjdk 11
+- Pods Elasticsearch: elasticsearch:6.7, imagen base para la versión 6.7 de Elasticsearch
+- Pods Node: node:8, imagen base para la versión 8 de node
+- Pods MongoDB: mongodb:4, imagen para la versión 4 de mongodb
 
-### <*Elemento de Infraestructura 1*>
+![Arquitectura de Pods, Deployments, Services e Ingress](./images/pods-deployments.png)
 
-<*diagrama + explicación*>
+En cuanto a la decisión sobre la utilización de deployments o statefulset, la justificación es la siguiente:
 
-### <*Elemento de Infraestructura 2*>
-
-<*diagrama + explicación*>
-
-...
-
-### <*Elemento de Infraestructura n*>
-
-<*diagrama + explicación*>
+- Deployments: por norma general se utilitzará para el despliegue de los microservicios de la aplciación, al ser la forma más estándar de configuar una aplicación con múltiples réplicas en Kubernetes
+- Statefulset: se utilitzará para todos aquellos elementos que requieran de ordenamiento y unicidad de los Pods. Este es el caso de los Servicios de almacenamiento de datos o motores de búsqueda
+- Cronjob: se utilizará para el despliegue de aquellas tareas que se tengan que ejecutar periódicamente en base a una programación
 
 # Conceptos Transversales (Cross-cutting)
 
@@ -727,11 +704,9 @@ A continuación, se enumeran algunos de los Triple-stores considerados:
 - GraphDB , inicialmente denominado OWLIM, es un sistema desarrollado por la compañía búlgara OntoText. 
 - StarDog  es una base de datos comercial que comenzó a desarrollarse a partir del año 2012. 
 - Blazegraph  es una base de datos RDF desarrollada con el objetivo de crear una solución de alto rendimiento y escalable. Blazegraph es de código abierto y gratuita, y está siendo utilizada como Triple-Store para Wikidata. Los principales desarrolladores de Blazegraph han empezado a trabajar para Amazon Web Services, lo que ha supuesto una discontinuidad en el desarrollo. No obstante, la fundación Wikimedia está localizando recursos para continuar su mantenimiento, dado que es un componente importante de Wikidata. 
-- Wikibase  es el nombre que recibe el software con el que se ha desarrollado Wikidata. La fundación Wikimedia ha decidido separar el software de los datos para permitir que se puedan crear otras instancias de Wikibase con un modelo similar al de Wikidata, que puedan apoyarse en las herramientas que se han desarrollado. Actualmente, ya existen varios proyectos de datos enlazados que han sido creados como instancias de Wikibase . De ellos, puede destacarse el proyecto LinguaLibre  o el portal de Rhizome. Los componentes de Wikibase pueden instalarse individualmente o mediante imágenes Docker. Una ventaja de utilizar Wikibase es que se dispone de un conjunto de herramientas de código abierto y gratuitas, que ya están siendo probadas en entornos en producción con un gran rendimiento [10]. 
+- Wikibase  es el nombre que recibe el software con el que se ha desarrollado Wikidata. La fundación Wikimedia ha decidido separar el software de los datos para permitir que se puedan crear otras instancias de Wikibase con un modelo similar al de Wikidata, que puedan apoyarse en las herramientas que se han desarrollado. Actualmente, ya existen varios proyectos de datos enlazados que han sido creados como instancias de Wikibase . De ellos, puede destacarse el proyecto LinguaLibre  o el portal de Rhizome. Los componentes de Wikibase pueden instalarse individualmente o mediante imágenes Docker. Una ventaja de utilizar Wikibase es que se dispone de un conjunto de herramientas de código abierto y gratuitas, que ya están siendo probadas en entornos en producción con un gran rendimiento. 
 - Data.world  es una empresa que permite albergar catálogos de datos empresariales. Internamente utilizan HDT para representar RDF de forma eficiente. Los costes dependen del número de miembros que los vayan a utilizar, rondando los 25 $ por miembro y mes.
 - Neptune (Amazon Web Services)  es una solución de la compañía Amazon para el almacenamiento de RDF en la nube. Amazon Neptune da soporte SPARQL con una tasa de 0,1$ por GB al mes y 0,2$ por cada millón de peticiones. En un ejemplo base, Amazon sostiene que un coste medio habitual podría ser de unos 300 €/mes.
-
-<*Indicar elección final*>
 
 ## Seguimiento de principios Solid
 
@@ -750,6 +725,16 @@ Además, muchas de las librerías de web semántica como Apache Jena ó RDF4J es
 A pesar de ello, tampoco se descarta la creación de ejemplos o prototipos en otros entornos como NodeJs que pueden servir como prueba de concepto de interoperabilidad, o incluso como desarrollos rápidos de ciertas funcionalidades que sean demandadas por el cliente.
 
 <*Definir stack tecnológico*>
+
+### <*Spring*>
+
+### <*Docker*>
+
+### <*Kubernetes*>
+
+### <*Service Mesh*>
+
+#### <*Istio*>
 
 ### Frontales
 
