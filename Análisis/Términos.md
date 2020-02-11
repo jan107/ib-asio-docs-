@@ -2,36 +2,58 @@
 
 
 
-* **CRUE**. Conferencia de Rectores de las Universidades EspaÃ±olas
+* **Arquitectura semántica de datos**. la arquitectura que se propone para el SGI
+* **CRUE**. Conferencia de Rectores de las Universidades Españolas
+* **CRUE-TIC**. Comisión Sectorial de Tecnologías de la Información y las Comunicaciones de la Conferencia de Rectores de las Universidades Españolas.
+* **CVN**. El Currículum Vítae Normalizado, CVN, es una Norma estándar que define un mismo formato de presentación de los datos curriculares de los investigadores y que posibilita la interoperabilidad con las diferentes bases de datos de las instituciones. Sirve para que los investigadores puedan presentar su currículo en un formato digital único y común que les permite actualizar de forma automática su información curricular, sin tener que volver a introducirla de nuevo. CVN facilita la presentación del currículum vítae de una forma unificada en las convocatorias de ayudas públicas del Plan Estatal y autonómicas. https://cvn.fecyt.es/presentacion/que-es-cvn
+* **Dataset**. Conjunto de datos con una cierta identidad. 
+* **Datasets de referencia Hércules**. Datasets creados por el adjudicatario para la Arquitectura Semántica de Datos.
+* **Dereferenciar una URI**. Acceder al contenido identificado por una URI
+* **DDD (Domain Driven Design)**. Técnica de desarrollo de software centrada en el dominio
+* **Estándar D.O. CRUE TIC**: Estándar Denominación de Origen CRUE TIC 
+* **ETL** (Extraction, Transform and Load)
 * **FAIR** (Findable, Accesible, Interoperable, Reusable) 
+* **GI**. Gestión de la investigación
+* **Hércules**: Proyecto en el que se enmarca esta propuesta para homogeneizar la gestión de datos, información y conocimiento del SUE.
+* **EOSC**. European Open Science Cloud
+* **LDP**. Linked data platform
 * **LOD**. Linked Open Data
-* **OWL** (Web Ontology Language). OWL es un lenguaje de representaciÃ³n de conocimiento que aÃ±ade
-mÃ¡s expresividad a RDFS, ya que se basa en LÃ³gica Descriptiva. OWL es un lenguaje para crear
-ontologÃ­as: una ontologÃ­a es una descripciÃ³n computacionalmente explÃ­cita de un dominio de
-conocimiento, a la que se puede aplicar razonamiento automÃ¡tico. OWL es un estÃ¡ndar28 del
-W3C. Todas las entidades en una ontologÃ­a OWL (Clases, Individuos, Propiedades) estÃ¡n identificadas mediante URIs.
+* **Negociación de contenido.** En el protocolo http, la utilización de las cabeceras del mensaje para sugerir al servidor el tipo de contenido preferido. El servidor puede ofrecer diferentes representaciones de un recurso en función de dichas peticiones.
+* **OWL** (Web Ontology Language). OWL es un lenguaje de representación de conocimiento que añade
+más expresividad a RDFS, ya que se basa en Lógica Descriptiva. OWL es un lenguaje para crear
+ontologías: una ontología es una descripción computacionalmente explícita de un dominio de
+conocimiento, a la que se puede aplicar razonamiento automático. OWL es un estándar28 del
+W3C. Todas las entidades en una ontología OWL (Clases, Individuos, Propiedades) están identificadas mediante URIs.
 * **RDF** (Resource Description Framework). RDF es un lenguaje para representar datos en Grafos.
 Para ello, RDF ofrece un modelo de datos denominado Tripleta, compuesto por un sujeto, un
-predicado y un objeto (â€œFacultad de InformÃ¡ticaâ€; â€œes parte deâ€; â€œUniversidad de Murciaâ€). El
-predicado (â€œes parte deâ€) y el objeto (â€œUniversidad de Murciaâ€) describen una propiedad del
-sujeto(â€œFacultad de InformÃ¡ticaâ€). Uniendo varias tripletas, se obtiene un Grafo. En un Grafo
-RDF, todas las entidades (sujetos, predicados, u objetos) estÃ¡n identificadas mediante URIs.
+predicado y un objeto (Facultad de Informática es parte de Universidad de Murcia). El
+predicado (es parte de) y el objeto (Universidad de Murcia) describen una propiedad del
+sujeto(Facultad de Informática). Uniendo varias tripletas, se obtiene un Grafo. En un Grafo
+RDF, todas las entidades (sujetos, predicados, u objetos) están identificadas mediante URIs.
 Las bases de datos especializadas en almacenar RDF se denominan Triple Stores. RDF es un
-estÃ¡ndar23 del WWW Consortium24 (W3C) cuyo objetivo es ofrecer un lenguaje simple para
-representar datos de manera estÃ¡ndar, como en su dÃ­a lo hizo HTML para los documentos
-Web. RDF serÃ­a, por asÃ­ decirlo, â€œel HTML de los datosâ€. Es importante subrayar que RDF es
+estándar23 del WWW Consortium24 (W3C) cuyo objetivo es ofrecer un lenguaje simple para
+representar datos de manera estándar, como en su día lo hizo HTML para los documentos
+Web. RDF sería, por así decirlo, el HTML de los datos. Es importante subrayar que RDF es
 un modelo de datos abstracto que puede ser serializado en diferentes sintaxis (RDF/XML,
 JSON-LD, Turtle, etc.).
 * **RDFS (RDF Schema)**. RDFS ofrece un mayor nivel de expresividad que RDF, ya que permite
 describir propiedades generales de las entidades RDF. Por ejemplo, se pueden definir clases de
-entidades (â€œUniversidadâ€, â€œPersonaâ€) con propiedades compartidas. RDFS es un estÃ¡ndar27 del W3C. Todas las entidades en RDFS estÃ¡n identificadas mediante URIs.
-* **ROH**. Red de OntologÃ­as HÃ©rcules. Crearlo es el objetivo del proyecto
-* **SGI**. Sistema de GestiÃ³n de InvestigaciÃ³n
+entidades (Universidad, Persona) con propiedades compartidas. RDFS es un estándar27 del W3C. Todas las entidades en RDFS están identificadas mediante URIs.
+* **ROH**. Red de Ontologías Hércules. Conjunto de ontologías que se realizarán durante el proyecto, es el objetivo del proyecto
+* **SGI**. Sistema de Gestión de Investigación
 * **SHACL** (SHApes Constraint Language). SHACL es un lenguaje para validar Grafos RDF contra una
-serie de condiciones, o â€œShapesâ€. SHACL es un estÃ¡ndar25 del W3C.
+serie de condiciones, o Shapes. SHACL es un estándar25 del W3C.
+* **ShEx**: Shape Expressions, lenguaje para descripción y validación de datos RDF basado en Shapes
+* **Skateholder**: persona interesada en el proyecto
+* **SKOS** (Simple Knowledge Organization System). Lenguaje que permite representar tesauros y vocabularios controlados en RDF
+* **SOLID** (Social Linked Data). Proyecto propuesto por Tim Berners-Lee para re-descentralizar la Web
 * **SPARQL** (SPARQL Protocol and RDF Query Language). SPARQL es un lenguaje de consulta para
-extraer datos de Grafos RDF. SPARQL tambiÃ©n es un protocolo Web estÃ¡ndar, de modo que
+extraer datos de Grafos RDF. SPARQL también es un protocolo Web estándar, de modo que
 cualquier Triple Store que implemente SPARQL mediante un SPARQL endpoint ofrece los
-mismos servicios. SPARQL es un estÃ¡ndar26 del W3C.
-* **SUE**. Sistema Universitario EspaÃ±ol
+mismos servicios. SPARQL es un estándar26 del W3C.
+* **SUE**. Sistema Universitario Español
+* **Turtle:** Formato para representar RDF
 *  **UM**. Universidad de Murcia
+*  **URI \*dereferenciable\***: Cuando es posible acceder al contenido identificado por la URI. En el contexto de datos enlazados el contenido ofrecido puede ser RDF si así se solicita mediante negociación.
+*  **VIVO**: Ontología que representa investigadores en el contexto de su experiencia: intereses, logros, trabajos realizados, instituciones asociadas, etc. 
+
