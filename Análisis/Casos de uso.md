@@ -27,7 +27,7 @@ Para entender los casos de uso debemos saber que en la aplicación ASIO disponem
 
 Los usuarios públicos se registran y acceden a través del sistema SIR.
 
-![Autentificación](C:\Users\pteran\Documents\reposgit\asio-docs\Análisis\images\autentificación.JPG)
+![Autentificación](.\images\autentificación.JPG)
 
 
 
@@ -35,7 +35,7 @@ Los usuarios públicos se registran y acceden a través del sistema SIR.
 
 Los usuarios con rol Gestor ASIO podrán gestionar roles, gestionar los datos de usuarios y su rol y modificar la frecuencia de carga de datos de forma automática.
 
-![Administración](C:\Users\pteran\Documents\reposgit\asio-docs\Análisis\images\administración de usuarios.JPG)
+![Administración](.\images\administración de usuarios.JPG)
 
 
 
@@ -49,7 +49,7 @@ Los usuarios con rol administrador de universidad, podrán:
 
 El propio sistema lanzará un proceso con una frecuencia que podrá ser editada por el usuario administrador, que cargará los datos ficheros almacenados en el FTP.
 
-![Administración de contenidos](C:\Users\pteran\Documents\reposgit\asio-docs\Análisis\images\administracion de contenidos.JPG)
+![Administración de contenidos](.\images\administracion de contenidos.JPG)
 
 
 
@@ -57,7 +57,7 @@ El propio sistema lanzará un proceso con una frecuencia que podrá ser editada 
 
 Todos los usuarios podrán acceder a la pantalla de consultas y hacer consultas en formato SPARQL, también verán las consultas predeterminadas de su rol. En los resultados de la consulta sólo se mostrarán los datos visibles para su rol (configurado por el usuario administrador de universidad), pero si la consulta es una agregación, si se tendrán en cuenta estos datos.
 
-![Visualización de contenidos](C:\Users\pteran\Documents\reposgit\asio-docs\Análisis\images\visualización de contenidos.JPG)
+![Visualización de contenidos](.\images\visualización de contenidos.JPG)
 
 
 
