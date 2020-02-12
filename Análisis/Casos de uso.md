@@ -27,7 +27,7 @@ Para entender los casos de uso debemos saber que en la aplicación ASIO disponem
 
 Los usuarios públicos se registran y acceden a través del sistema SIR.
 
-![Autentificación](.\images\autentificación.JPG)
+![Autentificación](./images/autentificación.JPG)
 
 
 
