@@ -107,6 +107,20 @@
 |        | En la pantalla de consultas SPARQL, un usuario podrá ver el resultado de las consultas de agregación de los campos que no son visibles para él, por ejemplo, una suma, pero no podrá ver estos datos en detalle. |           |
 |        | Se dispondrá de un servicio donde las máquinas puedan hacer consultas mediante GET/POST, con negociación de contenido: En el caso de que una máquina haga un GET con cabeceras Accept de HTML, esa consulta aparecerá ejecutada en el formulario web y con resultado. Por ejemplo: https://query.wikidata.org/#SELECT%20%2a%0AWHERE%20%7B%0A%20%3Fs%20%3Fp%20%3Fo%0A%7D%0ALIMIT%ste |           |
 |        | El servicio para que las máquinas realicen consultas describirá el endpoint de la manera más rica posible, utilizando vocabularios como VoID y SPARQL Service Description, para que el endpoint sea lo más “descubrible” posible (Aranda 2013). |           |
+|        | La aplicación web tendrá la opción de ver estadísticas generales sobre los datos. |           |
+|        | La aplicación web tendrá la opción de realizar dumps de datos para descargar. |           |
+|        | La aplicación web tendrá la opción de mostrar para cada Named Graph, una renderización de sus metadatos: DCAT, VoID,PROV, y cualquier otro metadato destacable. |           |
+|        | La aplicación web tendrá la opción de ver ejemplos de consultas SPARQL sobre los datos almacenados y cómo ejecutarlas. |           |
+|        | La aplicación web tendrá un URI Lookup Service (desarrollado en otro proyecto) para buscar URIs de entidades, a través del contenido de las URIs y a través del contenido de propiedades como rdfs:label o rdfs:comment (Las propiedades a usar serán configurables). |           |
+|        | Existirá un URI Lookup Service con interfaz para máquinas para buscar URIs de entidades, a través del contenido de las URIs y a través del contenido de propiedades como rdfs:label o rdfs:comment (Las propiedades a usar serán configurables). |           |
+|        | La aplicación web tendrá enlaces a repositorios GitHub (Plataforma Backend SGI, módulos, Test suites, Datasets, especificaciones). |           |
+|        | La aplicación web tendrá enlaces a validadores y a resultados de validación: validación de datos y validación de principios FAIR (Infraestructura Ontológica). |           |
+|        | La aplicación web tendrá una lista de los backends SGI en activo |           |
+|        | Se podrán consultar los datos de contacto en la aplicación web. |           |
+|        | La aplicación web mostrará la información del contrato de URIs. |           |
+|        | La aplicación web mostrará información sobre el proyecto Hércules y sus objetivos. |           |
+|        | Los anteriores 10 requisitos se intentarán generar de la forma más automática posible. |           |
+|        |                                                              |           |
 
 
 
