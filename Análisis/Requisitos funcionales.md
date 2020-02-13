@@ -15,19 +15,6 @@
 |        |                                                              |           |
 |        |                                                              |           |
 |        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
 
 
 
@@ -47,15 +34,6 @@
 |        | Los usuarios con rol gestor ASIO podrán borrar roles mediante una pantalla. |           |
 |        | Los usuarios con rol gestor ASIO podrán modificar el rol de un usuario haciendo una búsqueda previa de ese usuario en la aplicación web. |           |
 |        | Los usuarios con rol Gestor ASIO podrán configurar en la aplicación web la frecuencia con la que la aplicación lanzará los procesos automáticos para cargar y actualizar los datos. |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
 |        |                                                              |           |
 |        |                                                              |           |
 |        |                                                              |           |
@@ -104,13 +82,13 @@
 |        | LA pantalla de consultas SPARQL mostrará los datos en distintos formatos como timeline, mapa, y gráficos estadísticos. |           |
 |        | La pantalla de consultas SPARQL constará de un asistente de consultas SPARQL. |           |
 |        | Una vez realizada la consulta en la pantalla de consultas SPARQL, se mostrarán los datos visibles para el usuario en función de rol o de si son públicos. |           |
+|        | El resultado de las consultas predefinidas se mostrará en un formato adecuado para estas. |           |
+|        | El resultado de las consultas se podrá descargar en ficheros de distintos formatos (por ejemplo CSV y Json). |           |
 |        | En la pantalla de consultas SPARQL, un usuario podrá ver el resultado de las consultas de agregación de los campos que no son visibles para él, por ejemplo, una suma, pero no podrá ver estos datos en detalle. |           |
 |        | Se dispondrá de un servicio donde las máquinas puedan hacer consultas mediante GET/POST, con negociación de contenido: En el caso de que una máquina haga un GET con cabeceras Accept de HTML, esa consulta aparecerá ejecutada en el formulario web y con resultado. Por ejemplo: https://query.wikidata.org/#SELECT%20%2a%0AWHERE%20%7B%0A%20%3Fs%20%3Fp%20%3Fo%0A%7D%0ALIMIT%ste |           |
 |        | El servicio para que las máquinas realicen consultas describirá el endpoint de la manera más rica posible, utilizando vocabularios como VoID y SPARQL Service Description, para que el endpoint sea lo más “descubrible” posible (Aranda 2013). |           |
 |        | Páginas web de documentación: La aplicación web tendrá la opción de ver estadísticas generales sobre los datos. |           |
-|        | Páginas web de documentación: La aplicación web tendrá la opción de realizar dumps de datos para descargar. |           |
 |        | Páginas web de documentación: La aplicación web tendrá la opción de mostrar para cada Named Graph, una renderización de sus metadatos: DCAT, VoID,PROV, y cualquier otro metadato destacable. |           |
-|        | Páginas web de documentación: La aplicación web tendrá la opción de ver ejemplos de consultas SPARQL sobre los datos almacenados y cómo ejecutarlas. |           |
 |        | Páginas web de documentación: La aplicación web tendrá enlaces a repositorios GitHub (Plataforma Backend SGI, módulos, Test suites, Datasets, especificaciones). |           |
 |        | Páginas web de documentación :La aplicación web tendrá enlaces a validadores y a resultados de validación: validación de datos y validación de principios FAIR (Infraestructura Ontológica). |           |
 |        | Páginas web de documentación: La aplicación web tendrá una lista de los backends SGI en activo |           |
