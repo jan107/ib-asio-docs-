@@ -19,6 +19,7 @@
 |        | Escalabilidad de los datos: el sistema debe garantizar que los datos a manejar pueden alcanzar volúmenes importantes y deben ser soportados por la arquitectura prevista. Se debe plantear arquitecturas escalables. |           |
 |        | Facilidad para integración de nuevas fuentes de datos: el software debe estar preparado para incorporar nuevas fuentes de datos no contempladas en este punto. Debe ser sencilla la incorporación de nuevos módulos que permitan la comunicación con otros sistemas |           |
 |        | El interfaz de usuario del sistema gestor de datos será lo más usable y ligero posible, y estará orientado a que los expertos del dominio GI puedan realizar la gestión y publicación de datos. |           |
+|        |                                                              |           |
 
 
 
@@ -30,7 +31,7 @@
 | ------ | ------------------------------------------------------------ | --------- |
 |        | Se usará el logo y la tipografía de Hercules para crear un diseño a partir de estos datos. |           |
 |        | El interfaz del software debe encajar con el aspecto y grado de accesibilidad y usabilidad del resto de herramientas software desplegadas en el framework de la Universidad de Murcia. |           |
-|        |                                                              |           |
+|        | Las páginas web de documentación se intentarán generar de la forma más automática posible. |           |
 |        |                                                              |           |
 
 ## Backend
@@ -67,16 +68,32 @@
 
 
 
+## Validación de publicación de datos
+
+
+
+| Código | Requisito                                                    | Prioridad |
+| ------ | ------------------------------------------------------------ | --------- |
+|        | Se crearán un Test Suite que consistirá en una serie de peticiones HTTP a ejecutar contra el sistema con una casuística lo más diversa y exhaustiva posible. |           |
+|        | Se crearán y realizarán pruebas de carga (Peticiones simúltaneas, consultas complejas, etc.) |           |
+|        | En los test se intentarán comprobar los requisitos del sistema. |           |
+|        | Los test se realizarán con los datos de Datasets de referencia Hércules. |           |
+|        | El Test suite ha de ser fácil de modificar y configurar, para que los técnicos de la UM puedan ejecutarlo, añadir tests nuevos o modificar tests existentes con datos y configuraciones nuevas |           |
+|        | El Test Suite constará de documentación para facilitar su extensión y modificación. |           |
+|        | Se pueden usar como referencia para algunos test *Linked Data Platform Test Suite*:<br />- https://github.com/w3c/ldp-testsuite<br />- https://github.com/opendata-euskadi/LinkedDataTestSuite |           |
+
+
+
 ## Generador de URIS
 
 
 
-| Código | Requisito | Prioridad |
-| ------ | --------- | --------- |
-|        |           |           |
-|        |           |           |
-|        |           |           |
-|        |           |           |
-|        |           |           |
-|        |           |           |
-|        |           |           |
+| Código | Requisito                                                    | Prioridad |
+| ------ | ------------------------------------------------------------ | --------- |
+|        | Existirá un URI Lookup Service (desarrollado en otro proyecto) con interfaz para máquinas (Rest services) para buscar URIs de entidades, a través del contenido de las URIs y a través del contenido de propiedades como rdfs:label o rdfs:comment (Las propiedades a usar serán configurables). |           |
+|        |                                                              |           |
+|        |                                                              |           |
+|        |                                                              |           |
+|        |                                                              |           |
+|        |                                                              |           |
+|        |                                                              |           |

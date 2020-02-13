@@ -55,9 +55,14 @@ El propio sistema lanzará un proceso con una frecuencia que podrá ser editada 
 
 ### Visualización de contenidos
 
-Todos los usuarios podrán acceder a la pantalla de consultas y hacer consultas en formato SPARQL, también verán las consultas predeterminadas de su rol. En los resultados de la consulta sólo se mostrarán los datos visibles para su rol (configurado por el usuario administrador de universidad), pero si la consulta es una agregación, si se tendrán en cuenta estos datos.
+Todos los usuarios podrán acceder a la pantalla de consultas y hacer consultas en formato SPARQL, también verán las consultas predeterminadas de su rol y podrán modificarlas. En los resultados de la consulta sólo se mostrarán los datos visibles para su rol (configurado por el usuario administrador de universidad), pero si la consulta es una agregación, si se tendrán en cuenta estos datos.
 
-![Visualización de contenidos](./images/visualización de contenidos.JPG)
+![visualización de contenidos](./images/visualización de contenidos.JPG)
 
 
 
+## Página web de documentación
+
+La aplicación web permitirá ver las diferentes documentaciones disponibles 
+
+![pagina web de documentación](./images/pagina web de documentación.JPG)
