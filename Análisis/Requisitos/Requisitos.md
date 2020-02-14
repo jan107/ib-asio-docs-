@@ -16,6 +16,8 @@
 
 [Requisitos funcionales](./Requisitos funcionales.md)
 
+[Diseño de pantallas](./Diseño de pantallas.md)
+
 [Términos de ASIO](./Términos.md)
 
 
