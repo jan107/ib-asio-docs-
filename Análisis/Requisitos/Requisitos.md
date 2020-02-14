@@ -2,9 +2,25 @@
 
 
 
+[Introducción](#introduccion)
+
+​	[Alcance](#alcance)
+
+[	Objetivos](#objetivos)
+
+[Skateholders](#skateholders)
+
+[Casos de uso](./Casos de uso.md)
+
+[Requisitos no funcionales](./Requisitos no funcionales.md)
+
+[Requisitos funcionales](./Requisitos funcionales.md)
+
+[Términos de ASIO](./Términos.md)
 
 
-## Introducción
+
+## Introducción {#introduccion}
 
 El presente documento corresponde al Análisis de Requisitos para la Red de Ontologías Hércules (ROH) de acuerdo al pliego de condiciones del proyecto: Servicio de I+D consistente en el desarrollo de soluciones innovadoras para la Universidad de Murcia en relación al reto de Arquitectura semántica e Infraestructura ontológica.  
 
@@ -14,7 +30,7 @@ El documento seguirá la estructura de documentación Arc421 para arquitecturas 
 
 
 
-### Alcance
+### Alcance {#alcance}
 
 Tal y como se indica en el pliego de condiciones, la Red de Ontologías Hércules captura el dominio de Gestión de la Investigación por lo que las ontologías definirán fundamentalmente los aspectos relevantes en este ámbito. En el apartado "Resumen" del pliego de condiciones se enumeran los principales aspectos que deberán ser modelados:
 
@@ -44,7 +60,7 @@ En la figura *Ilustración 1 - Principales elementos del dominio GI* se represen
 
 Ilustración 1 - Principales elementos del dominio GI
 
-### Objetivos
+### Objetivos {#objetivos}
 
 A continuación, se indican los principales **objetivos de calidad** que se consideran respecto a la red de ontologías. Este apartado contiene los atributos más importantes que se han considerado. El resto de atributos se desglosarán en el árbol de calidad de la sección 8.:
 
@@ -56,10 +72,16 @@ A continuación, se indican los principales **objetivos de calidad** que se cons
 
 
 
-[Casos de uso](./Casos de uso.md)
+## Skateholders {#skateholders}
 
-[Requisitos no funcionales](./Requisitos no funcionales.md)
 
-[Requisitos funcionales](./Requisitos funcionales.md)
 
-[Términos de ASIO](./Términos.md)
+| Rol                                           | Expectativas                                                 |
+| --------------------------------------------- | ------------------------------------------------------------ |
+| Gestor  investigación – Universidad de Murcia | Disponer  de una mejor documentación del sistema universitario |
+| Investigador  – Universidad de Murcia         | Conocer  flujos de trabajo de investigación ya establecidos. Poder identificar  conceptos comunes o relacionados en el ámbito de la investigación |
+| Experto de  dominio                           | Disponer  de una herramienta fácil para representar su conocimiento en el dominio que  evite la pérdida semántica |
+| Desarrolladores                               | Disponer  de un conjunto de ontologías que puedan adaptarse fácilmente al código de la  aplicación de gestión de la investigación |
+| Investigador  – otra Universidad              | Conocer y  poder comparar las idiosincrasias del sistema de gestión de investigación de  la Universidad de Murcia para poder compararlo con el suyo y poder mapear  ambos sistemas en caso de que disponga de otra infraestructura ontológica. |
+
+
