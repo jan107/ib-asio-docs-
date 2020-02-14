@@ -4,11 +4,13 @@
 
 [Introducción](#introduccion)
 
+   [Propósito del proyecto](#proposito)
+
    [Alcance](#alcance)
 
    [Objetivos](#objetivos)
 
-[Skateholders](#skateholders)
+   [Skateholders](#skateholders)
 
 [Casos de uso](./Casos de uso.md)
 
@@ -17,8 +19,6 @@
    [Requisitos no funcionales](./Requisitos no funcionales.md)
 
    [Requisitos funcionales](./Requisitos funcionales.md)
-
-[Diseño de pantallas](./Diseño de pantallas.md)
 
 [Términos de ASIO](./Términos.md)
 
@@ -30,7 +30,17 @@ El presente documento corresponde al Análisis de Requisitos para la Red de Onto
 
 En dicho pliego se indica: "El adjudicatario hará un análisis sobre el dominio GI, extrayendo los requisitos para crear la ROH. Estos requisitos se reflejarán en el documento Análisis de Requisitos. Este análisis será lo más exhaustivo posible, intentando capturar el dominio con la granularidad adecuada, ya que sentará la base de los demás desarrollos." 
 
-El documento seguirá la estructura de documentación Arc421 para arquitecturas del software, dado que permite cubrir las principales necesidades de este tipo de proyectos. Dado que en este caso, se trata de los requisitos de la infraestructura ontológica, se ha suprimido el apartado "Vista de ejecución" que suele ser habitual cuando se desarrolla software que va a ejecutarse. De la misma forma, el apartado "Vista de despliegue" se ha renombrado como "Vista de implementación y despliegue" para tratar los aspectos de desarrollo de la infraestructura ontológica. 
+
+
+### Propósito del proyecto {#proposito}
+
+El propósito del proyecto es definir una Red de Ontologías Hércules para la Gestión de la Investigación en el caso particular de la Universidad de Murcia que también pueda ser extrapolable a otras universidades españolas e internacionales. 
+
+La iniciativa Hércules es parte de la Comisión Sectorial de Tecnologías de la Información y las
+Comunicaciones de la Conferencia de Rectores de las Universidades Españolas (CRUE-TIC). Su objetivo
+es crear un Sistema de Gestión de Investigación (SGI) basado en datos abiertos semánticos que ofrezca
+una visión global de los datos de investigación del Sistema Universitario Español (SUE), para mejorar la
+gestión, el análisis y las posibles sinergias entre universidades y el gran público.
 
 
 
@@ -58,21 +68,76 @@ Tal y como se indica en el pliego de condiciones, la Red de Ontologías Hércule
 
 \-   Metadatos sobre la Gestión de Investigación
 
+
+
 En la figura *Ilustración 1 - Principales elementos del dominio GI* se representa un diagrama de los principales elementos identificados en el dominio. Se representa al investigador como elemento central del dominio, a partir del cual se relacionan el resto de elementos. De esta forma, son los investigadores los que perteneces grupos de investigación, genera resultados científicos, participan en proyectos de investigación, producen resultados científicos, etc. 
+
+
 
 ![Ilustración 1 - Principales elementos del dominio GI](./images/Ilustración 1 - Principales elementos del dominio GI.jpg)                               
 
 Ilustración 1 - Principales elementos del dominio GI
 
+
+
+Es importante tener en cuenta que el ámbito del proyecto **abarca únicamente la realización de un**
+**piloto en la Universidad de Murcia (UM)**, para constatar que el prototipo desarrollado funciona y cumple
+los objetivos propuestos. Quedará fuera del ámbito del mismo, la implantación y migración tanto en la
+UM como en el del resto de universidades interesadas.
+
+
+
 ### Objetivos {#objetivos}
 
-A continuación, se indican los principales **objetivos de calidad** que se consideran respecto a la red de ontologías. Este apartado contiene los atributos más importantes que se han considerado. El resto de atributos se desglosarán en el árbol de calidad de la sección 8.:
+Actualmente existen en España 79 Universidades distribuidas por todo el territorio nacional, y cada
+una de ellas cuenta con un sistema de gestión propio. Esto significa que cada Universidad tiene definidos
+unos procedimientos de gestión particulares, con unos modelos y esquemas de datos definidos según sus
+criterios. Como resultado de esta situación la explotación combinada de datos por parte de terceros
+presenta los problemas tradicionales de interoperabilidad de fuentes de información heterogénea, no
+basada en especificaciones semánticas y formales de los esquemas de datos y conocimiento. A modo de
+ejemplo:
 
-\-   Interoperabilidad
+- Análisis sesgado de las necesidades de información.
 
-\-   Reusabilidad
+- Ausencia de ciertos datos de especial interés.
 
-\-   Multilingüismo
+- Aplicación de clasificaciones incompatibles de los datos.
+
+- Representación de entidades a distinto nivel de granularidad.
+
+- Dificultad para discernir si los datos procedentes de distintas fuentes tienen el mismo
+  significado.
+
+  
+
+Además de la docencia, las universidades participan activamente en los programas de investigación. La
+gestión de dicha participación es llevada a cabo por estos sistemas de gestión propios que son dispares y
+no están normalizados, y que dan soporte, entre otros, a los procesos de:
+
+- Preparación y seguimiento de proyectos.
+- Gestión de resultados de proyectos de I+D+i.
+- Gestión económica y administrativa integrada. Contabilidad analítica.
+
+
+
+Esta situación general y, en concreto, en lo que respecta a los sistemas de gestión de la investigación, provoca grandes ineficiencias en la gestión de la información y el conocimiento del sistema de investigación de las universidades españolas. Ello conlleva costes adicionales derivados de la realización de tareas de explotación con conjuntos parciales de los datos en cada universidad, que luego es necesario homogeneizar.
+
+Esto provoca la aparición del proyecto Hércules, que dará solución a la necesidad de un nuevo sistema de gestión de investigación universitaria, que disponga de capacidades semánticas y que sea homogéneo para todas las universidades (o para un gran número de ellas) para poder conseguir los siguientes beneficios:
+
+- Realizar explotación conjunta de información.
+- Unificar los criterios para la obtención de información, ofreciendo mayores garantías de una
+  adecuada interpretación de la información y, con ello, la exactitud de los indicadores obtenidos.
+- Poder establecer sinergias y colaboraciones entre universidades y grupos de investigación.
+- Incrementar la transparencia.
+- Facilitar la transferencia tecnológica y la colaboración universidad-empresa.
+- Facilitar el conocimiento de la producción científica, para el resto de investigadores y para la
+  sociedad en general.
+- Facilitar la integración del Currículum Vitae Normalizado (CVN). Mayor facilidad para la
+  movilidad del Personal Docente Investigador (PDI) entre las universidades españolas.
+- Proporcionar con mayor facilidad al usuario, al contribuyente y a la sociedad datos estadísticos
+  que puedan ser relevantes desde el punto de la transparencia en el ejercicio del servicio público.
+- Y, en definitiva, permitir la explotación conjunta de información de investigación de todas las
+  universidades, permitiendo con ello una total transparencia en la gestión universitaria.
 
 
 
@@ -87,5 +152,7 @@ A continuación, se indican los principales **objetivos de calidad** que se cons
 | Experto de  dominio                           | Disponer  de una herramienta fácil para representar su conocimiento en el dominio que  evite la pérdida semántica |
 | Desarrolladores                               | Disponer  de un conjunto de ontologías que puedan adaptarse fácilmente al código de la  aplicación de gestión de la investigación |
 | Investigador  – otra Universidad              | Conocer y  poder comparar las idiosincrasias del sistema de gestión de investigación de  la Universidad de Murcia para poder compararlo con el suyo y poder mapear  ambos sistemas en caso de que disponga de otra infraestructura ontológica. |
+| Órganos de gobierno                           | Órganos de gobierno como ministerios, para los que Hércules puede aportar información útil. |
+| Otros organismos interesados                  | Organismos, como fundaciones o empresas públicas, interesadas en la información que pueda aportar el proyecto o su utilidad. |
 
 
