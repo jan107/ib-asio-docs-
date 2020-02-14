@@ -4,17 +4,19 @@
 
 [Introducción](#introduccion)
 
-​	[Alcance](#alcance)
+   [Alcance](#alcance)
 
-[	Objetivos](#objetivos)
+   [Objetivos](#objetivos)
 
 [Skateholders](#skateholders)
 
 [Casos de uso](./Casos de uso.md)
 
-[Requisitos no funcionales](./Requisitos no funcionales.md)
+[Requisitos](./Requisitos no funcionales.md)
 
-[Requisitos funcionales](./Requisitos funcionales.md)
+   [Requisitos no funcionales](./Requisitos no funcionales.md)
+
+   [Requisitos funcionales](./Requisitos funcionales.md)
 
 [Diseño de pantallas](./Diseño de pantallas.md)
 
