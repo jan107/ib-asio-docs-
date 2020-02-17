@@ -38,11 +38,7 @@
 
 * **Negociación de contenido.** En el protocolo http, la utilización de las cabeceras del mensaje para sugerir al servidor el tipo de contenido preferido. El servidor puede ofrecer diferentes representaciones de un recurso en función de dichas peticiones.
 
-* **OWL** (Web Ontology Language). OWL es un lenguaje de representación de conocimiento que añade
-  más expresividad a RDFS, ya que se basa en Lógica Descriptiva. OWL es un lenguaje para crear
-  ontologías: una ontología es una descripción computacionalmente explícita de un dominio de
-  conocimiento, a la que se puede aplicar razonamiento automático. OWL es un estándar28 del
-  W3C. Todas las entidades en una ontología OWL (Clases, Individuos, Propiedades) están identificadas mediante URIs.
+* **OWL** (Web Ontology Language).  Es el acrónimo del inglés **Web Ontology Language**, un [lenguaje de marcado](https://es.wikipedia.org/wiki/Lenguaje_de_marcado) para publicar y compartir datos usando [ontologías](https://es.wikipedia.org/wiki/Ontología_(Informática)) en la WWW. OWL tiene como objetivo facilitar un modelo de marcado construido sobre [RDF](https://es.wikipedia.org/wiki/Marco_de_descripción_de_recursos) y codificado en [XML](https://es.wikipedia.org/wiki/XML). OWL es un lenguaje de representación de conocimiento que añade más expresividad a RDFS, ya que se basa en Lógica Descriptiva. OWL es un lenguaje para crear ontologías: una ontología es una descripción computacionalmente explícita de un dominio de conocimiento, a la que se puede aplicar razonamiento automático. OWL es un estándar28 del W3C. Todas las entidades en una ontología OWL (Clases, Individuos, Propiedades) están identificadas mediante URIs.
 
 * **PROV. ** Proporciona metadatos sobre la proveniencia,  quién los generó, de qué manera fueron generados, a cuáles fueron las fuentes de origen, etc de los datasets. El modelo de proveniencia definido por PROV considera tres elementos básicos: entidades, actividades y agentes. Esos tres elementos están interconectados por un conjunto de relaciones. Por ejemplo, "una entidad (una página Web, un archivo, etc.) fue generada por una actividad asociada a un determinado agente".
 
@@ -65,7 +61,7 @@
 
 * **ROH**. Red de Ontologías Hércules. Conjunto de ontologías que se realizarán durante el proyecto, es el objetivo del proyecto
 
-* **SGI**. Sistema de Gestión de Investigación
+* **SGI**. Sistema de Gestión de Investigación. El objetivo del proyecto es crear un Sistema de Gestión de Investigación (SGI) basado en datos abiertos semánticos que ofrezca una visión global de los datos de investigación del Sistema Universitario Español(SUE).
 
 * **SHACL** (SHApes Constraint Language). SHACL es un lenguaje para validar Grafos RDF contra una
   serie de condiciones, o Shapes. SHACL es un estándar25 del W3C.

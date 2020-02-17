@@ -42,10 +42,26 @@
 
 | Código | Requisito                                                    | Prioridad |
 | ------ | ------------------------------------------------------------ | --------- |
+|        | Los datos de entrada al *backend SGI* podrán ser tomados de varias fuentes que pueden estar en formatos diferentes a RDF por lo que el sistema contará con una librería de importación de datos que convertirá datos de fuentes heterogéneas en RDF. |           |
+|        | Se creará un modelo de dominio del Sistema siguiendo el enfoque *Domain Driven Design* modelando las entidades y definiendo un vocabulario común que pueda ser comprendido tanto por los desarrolladores como los expertos del dominio. |           |
 |        | Se dispondrá de un Triple-store para almacenar y consultar la información de forma semántica |           |
 |        | El acceso a los datos del triple-store  estará restringido y solamente se podrá realizar a través del componente  gestor de datos, el cual contiene una gestión de usuarios y control de acceso |           |
+|        | Se creará un Gestor de Datos que coordinará la actividad de todos los módulos para poder realizar las funciones principales del Backend SGI. |           |
+|        | El gestor de datos será el encargado de subir los datos:<br />       a) Datos no-RDF y ejecutar la conversión a RDF.<br/>      b) Datos en RDF ya procesados: datos externos o equivalencias semánticas descubiertas. |           |
+|        | El gestor de datos deberá validar los datos convertidos a RDF por él mismo. |           |
+|        | El gestor de datos deberá ejecutar el descubrimiento de enlaces sobre los datos que suba en RDF ya procesados. |           |
+|        | El gestor de datos deberá publicar los datos.                |           |
+|        | El gestor de datos deberá recoger:<br />   - Metadatos estructurales sobre el proceso de creación del dataset (Entre otros: Origen, Responsable de creación, y pasos seguidos).<br/>   - Metadatos definidos en la Especificación ontologías Hércules de la Infraestructura Ontológica.<br/>   - Metadatos no definidos en la Especificación ontologías Hércules de la Infraestructura Ontológica, por ejemplo metadatos de intereś sólo para la Universidad o metadatos sobre dominios muy concretos.<br/>   - Licencia sobre los datos, usando el Vocabulario Creative Commons |           |
+|        | El gestor de datos es el encargado de comunicarse con la Triple Store. |           |
+|        | El gestor de datos debe incluir un sistema de permisos con diferentes niveles de acceso a los datos. |           |
 |        | Logging: el software ofrecerá  herramientas para detectar anomalías en el funcionamiento del sistema |           |
 |        |                                                              |           |
+|        |                                                              |           |
+|        |                                                              |           |
+|        |                                                              |           |
+|        |                                                              |           |
+
+
 
 ## Ontologías
 
@@ -77,7 +93,7 @@
 | Código | Requisito                                                    | Prioridad |
 | ------ | ------------------------------------------------------------ | --------- |
 |        | Se crearán un Test Suite que consistirá en una serie de peticiones HTTP a ejecutar contra el sistema con una casuística lo más diversa y exhaustiva posible. |           |
-|        | Se crearán y realizarán pruebas de carga (Peticiones simúltaneas, consultas complejas, etc.) |           |
+|        | Se crearán y realizarán pruebas de carga(benchmarks)  Como peticiones simúltaneas, consultas complejas, etc. |           |
 |        | En los test se intentarán comprobar los requisitos del sistema. |           |
 |        | Los test se realizarán con los datos de Datasets de referencia Hércules. |           |
 |        | El Test suite ha de ser fácil de modificar y configurar, para que los técnicos de la UM puedan ejecutarlo, añadir tests nuevos o modificar tests existentes con datos y configuraciones nuevas |           |
