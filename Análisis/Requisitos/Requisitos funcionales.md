@@ -61,9 +61,17 @@
 |        | El sistema dispondrá de un sistema automático, cuya frecuencia podrá ser configurada por los usuarios con rol Gestor ASIO, que actualizará o creará las ontologías con los ficheros del FTP. |           |
 |        | El sistema dispondrá de un sistema automático, cuya frecuencia podrá ser configurada por los usuarios con rol Gestor ASIO, que actualizará o creará los datos de las ontologías con los ficheros del FTP. |           |
 |        | Se realizarán actualizaciones increméntales de datos consultando a los distintos SGIs de las universidades que se harán de forma automática. |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
+|        | Los datos de entrada al *backend SGI* podrán ser tomados de varias fuentes que pueden estar en formatos diferentes a RDF por lo que el sistema contará con una **librería de importación** de datos que convertirá datos de fuentes heterogéneas en RDF. |           |
+|        | Se creará un Gestor de Datos que coordinará la actividad de todos los módulos para poder realizar las funciones principales del Backend SGI. |           |
+|        | El **gestor de datos** será el encargado de subir los datos:<br />       a) Datos no-RDF.<br/>      b) Datos en RDF ya procesados: datos externos o equivalencias semánticas descubiertas. |           |
+|        | El gestor de datos ejecutará la conversión a RDF cuando lo datos subidos no estén en ese formato. |           |
+|        | El gestor de datos deberá ejecutar el descubrimiento de enlaces sobre los datos que suba en RDF ya procesados. |           |
+|        | El gestor de datos deberá publicar los datos.                |           |
+|        | El gestor de datos deberá recoger los metadatos estructurales sobre el proceso de creación del dataset (Entre otros: Origen, Responsable de creación, y pasos seguidos). |           |
+|        | El gestor de datos deberá recoger los metadatos definidos en la Especificación ontologías Hércules de la Infraestructura Ontológica. |           |
+|        | El gestor de datos deberá recoger los metadatos no definidos en la Especificación ontologías Hércules de la Infraestructura Ontológica, por ejemplo metadatos de intereś sólo para la Universidad o metadatos sobre dominios muy concretos. |           |
+|        | El gestor de datos deberá recogerla licencia sobre los datos, usando el Vocabulario Creative Commons. |           |
+|        | **Generador de URIs:** Existirá un URI Lookup Service (desarrollado en otro proyecto) con interfaz para máquinas (Rest services) para buscar URIs de entidades, a través del contenido de las URIs y a través del contenido de propiedades como rdfs:label o rdfs:comment (Las propiedades a usar serán configurables). |           |
 
 
 
@@ -85,6 +93,7 @@
 |        | El resultado de las consultas predefinidas se mostrará en un formato adecuado para estas. |           |
 |        | El resultado de las consultas se podrá descargar en ficheros de distintos formatos (por ejemplo CSV y Json). |           |
 |        | A través del resultado de las consultas se podrá acceder a la versión HTML de los elementos mostrados en ella. |           |
+|        | La aplicación web será capaz de mostrar los metadatos de los datasets a los que se accederá navegando a través de las consultas. |           |
 |        | Si se accede a un elemento, a través de una consulta o de su URL asociada, se mostrarán su información de forma similar a cómo se muestran los datos en wikidata: https://www.wikidata.org/wiki/Q378619 |           |
 |        | En la pantalla de consultas SPARQL, un usuario podrá ver el resultado de las consultas de agregación de los campos que no son visibles para él, por ejemplo, una suma, pero no podrá ver estos datos en detalle. |           |
 |        | Se dispondrá de un servicio donde las máquinas puedan hacer consultas mediante GET/POST, con negociación de contenido: En el caso de que una máquina haga un GET con cabeceras Accept de HTML, esa consulta aparecerá ejecutada en el formulario web y con resultado. Por ejemplo: https://query.wikidata.org/#SELECT%20%2a%0AWHERE%20%7B%0A%20%3Fs%20%3Fp%20%3Fo%0A%7D%0ALIMIT%ste |           |
