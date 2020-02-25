@@ -2,102 +2,103 @@
 
 
 
-## Generales
-
-
-
-| Código | Requisito                                                    | Prioridad |
-| ------ | ------------------------------------------------------------ | --------- |
-|        | El software debe garantizar el acceso al sistema de las personas autorizadas en cada parte. |           |
-|        | El protocolo a usar será abierto.                            |           |
-|        | El protocolo permitirá autenticación y autorización.         |           |
-|        | El software estará preparado para su recuperación ante fallos de conexión. |           |
-|        | El software estará codificado de manera limpia y clara para garantizar su comprensibilidad. |           |
-|        | Se dotará al producto de la documentación necesaria para facilitar el mantenimiento y actualización. |           |
-|        | El software debe ser compatible con el framework y stack tecnológico de la Universidad de Murcia. |           |
-|        | Estabilidad: el desarrollo debe mantenerse estable ante un incremento en el número de usuarios simultáneos |           |
-|        | Escalabilidad de los datos: el sistema debe garantizar que los datos a manejar pueden alcanzar volúmenes importantes y deben ser soportados por la arquitectura prevista. Se debe plantear arquitecturas escalables. |           |
-|        | Facilidad para integración de nuevas fuentes de datos: el software debe estar preparado para incorporar nuevas fuentes de datos no contempladas en este punto. Debe ser sencilla la incorporación de nuevos módulos que permitan la comunicación con otros sistemas |           |
-|        | El interfaz de usuario del sistema gestor de datos será lo más usable y ligero posible, y estará orientado a que los expertos del dominio GI puedan realizar la gestión y publicación de datos. |           |
-|        |                                                              |           |
-
-
-
-## Front
-
-
+##  Requisitos de Apariencia y estilo
 
 | Código | Requisito                                                    | Prioridad |
 | ------ | ------------------------------------------------------------ | --------- |
 |        | Se usará el logo y la tipografía de Hercules para crear un diseño a partir de estos datos. |           |
 |        | El interfaz del software debe encajar con el aspecto y grado de accesibilidad y usabilidad del resto de herramientas software desplegadas en el framework de la Universidad de Murcia. |           |
-|        | Las páginas web de documentación se intentarán generar de la forma más automática posible. |           |
+|        |                                                              |           |
 |        |                                                              |           |
 
 
 
-## Backend
-
-
+## Requisitos Capacidad de Uso y Humanidad
 
 | Código | Requisito                                                    | Prioridad |
 | ------ | ------------------------------------------------------------ | --------- |
-|        | Se creará un modelo de dominio del Sistema siguiendo el enfoque *Domain Driven Design* para modelar las entidades . |           |
-|        | Se definirá un vocabulario común que pueda ser comprendido tanto por los desarrolladores como los expertos del dominio. |           |
+|        | El interfaz de usuario del sistema gestor de datos será lo más usable y ligero posible. |           |
+|        | El interfaz de usuario estará orientado a que los expertos del dominio GI puedan realizar la gestión y publicación de datos. |           |
+|        |                                                              |           |
+|        |                                                              |           |
+
+
+
+## Requisitos de Desempeño
+
+## 
+
+| Código | Requisito                                                    | Prioridad |
+| ------ | ------------------------------------------------------------ | --------- |
+|        | Estabilidad: el desarrollo debe mantenerse estable ante un incremento en el número de usuarios simultáneos |           |
+|        | Escalabilidad de los datos: el sistema debe garantizar que los datos a manejar pueden alcanzar volúmenes importantes y deben ser soportados por la arquitectura prevista. |           |
+|        |                                                              |           |
+|        |                                                              |           |
+
+
+
+
+
+## Requisitos Operacionales y Ambientales
+
+## 
+
+| Código | Requisito                                                    | Prioridad |
+| ------ | ------------------------------------------------------------ | --------- |
+|        | El protocolo a usar será abierto.                            |           |
+|        | El software debe ser compatible con el framework y stack tecnológico de la Universidad de Murcia. |           |
+|        | Se creará un modelo de dominio del Sistema siguiendo el enfoque *Domain Driven Design* para modelar las entidades. |           |
 |        | Se dispondrá de un Triple-store para almacenar y consultar la información de forma semántica. |           |
-|        | El acceso a los datos del triple-store  estará restringido y solamente se podrá realizar a través del componente  gestor de datos, el cual contiene una gestión de usuarios y control de acceso |           |
-|        | El gestor de datos deberá validar los datos convertidos a RDF por él mismo. |           |
 |        | El gestor de datos es el encargado de comunicarse con la Triple Store. |           |
-|        | El gestor de datos debe incluir un sistema de permisos con diferentes niveles de acceso a los datos. |           |
-|        | Logging: el software ofrecerá  herramientas para detectar anomalías en el funcionamiento del sistema |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
 |        |                                                              |           |
 
 
 
-## Ontologías
 
 
+## Requisitos de Preservación y Soporte
+
+## 
 
 | Código | Requisito                                                    | Prioridad |
 | ------ | ------------------------------------------------------------ | --------- |
-|        | Los datos dispondrán de un identificador único y persistente |           |
-|        | Los datos deben ser descritos con metadatos descriptivos     |           |
-|        | Los metadatos incluyen clara y explícitamente el identificador de los datos que describen. |           |
-|        | Los metadatos serán accesibles incluso cuando los datos ya no se encuentren disponibles |           |
-|        | Los metadatos serán accesibles incluso cuando los datos ya no se encuentren disponibles |           |
-|        | Los (Meta) datos usan un lenguaje formal, accesible, compartido y ampliamente aplicable para la representación del conocimiento. |           |
-|        | Los (Meta) datos usan vocabularios que siguen los principios FAIR |           |
-|        | Los (Meta) datos incluyen referencias calificadas a otros (Meta) datos. |           |
-|        | Los (meta) datos se publican con una licencia de uso de datos clara y accesible. |           |
-|        | Los (Meta) datos están asociados con información detallada sobre procedencia. |           |
-|        | Los (Meta) datos cumplen con los estándares de la comunidad relevantes para el dominio. |           |
-|        | Las URIs de la ontología deberán respetar el Esquema de URIs Hércules definido en Arquitectura Semántica de Datos del SUE. |           |
-|        |                                                              |           |
-|        |                                                              |           |
-
-
-
-## Validación de publicación de datos
-
-
-
-| Código | Requisito                                                    | Prioridad |
-| ------ | ------------------------------------------------------------ | --------- |
+|        | El software estará preparado para su recuperación ante fallos de conexión. |           |
+|        | El software estará codificado de manera limpia y clara para garantizar su comprensibilidad. |           |
+|        | Se dotará al producto de la documentación necesaria para facilitar el mantenimiento y actualización. |           |
+|        | El software debe estar preparado para incorporar nuevas fuentes de datos no contempladas en este punto. |           |
+|        | La incorporación de nuevos módulos que permitan la comunicación con otros sistemas debe ser sencilla |           |
+|        | Las páginas web de documentación se intentarán generar de la forma más automática posible. |           |
 |        | Se crearán un Test Suite que consistirá en una serie de peticiones HTTP a ejecutar contra el sistema con una casuística lo más diversa y exhaustiva posible. |           |
-|        | Se crearán y realizarán pruebas de carga(benchmarks)  Como peticiones simúltaneas, consultas complejas, etc. |           |
-|        | En los test se intentarán comprobar los requisitos del sistema. |           |
+|        | Se crearán y realizarán pruebas de carga(benchmarks)  como peticiones simúltaneas, consultas complejas, etc. |           |
+|        | Se intentarán comprobar los requisitos del sistema en los test. |           |
 |        | Los test se realizarán con los datos de Datasets de referencia Hércules. |           |
 |        | El Test suite ha de ser fácil de modificar y configurar, para que los técnicos de la UM puedan ejecutarlo, añadir tests nuevos o modificar tests existentes con datos y configuraciones nuevas |           |
 |        | El Test Suite constará de documentación para facilitar su extensión y modificación. |           |
 |        | Se pueden usar como referencia para algunos test *Linked Data Platform Test Suite*:<br />- https://github.com/w3c/ldp-testsuite<br />- https://github.com/opendata-euskadi/LinkedDataTestSuite |           |
+|        |                                                              |           |
+|        |                                                              |           |
+|        |                                                              |           |
 
 
 
-## Generador de URIS
+
+
+## Requisitos de Seguridad
+
+## 
+
+| Código | Requisito                                                    | Prioridad |
+| ------ | ------------------------------------------------------------ | --------- |
+|        | El software debe garantizar el acceso al sistema de las personas autorizadas en cada parte. |           |
+|        | El protocolo permitirá autenticación y autorización.         |           |
+|        | El acceso a los datos del triple-store  estará restringido. y solamente se podrá realizar a través del componente  gestor de datos, el cual contiene una gestión de usuarios y control de acceso |           |
+|        | El acceso a los datos del triple-store   solamente se podrá realizar a través del componente  gestor de datos, el cual contiene una gestión de usuarios y control de acceso |           |
+|        | El gestor de datos debe incluir un sistema de permisos con diferentes niveles de acceso a los datos. |           |
+|        | Logging: el software ofrecerá  herramientas para detectar anomalías en el funcionamiento del sistema |           |
+
+
+
+## Requisitos Culturales y Políticos
 
 
 
@@ -107,6 +108,20 @@
 |        |           |           |
 |        |           |           |
 |        |           |           |
+
+
+
+## Requisitos Legales
+
+## 
+
+| Código | Requisito | Prioridad |
+| ------ | --------- | --------- |
 |        |           |           |
 |        |           |           |
 |        |           |           |
+|        |           |           |
+
+
+
+

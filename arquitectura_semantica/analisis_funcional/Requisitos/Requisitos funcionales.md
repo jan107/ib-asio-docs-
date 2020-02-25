@@ -46,6 +46,7 @@
 
 | Código | Requisito                                                    | Prioridad |
 | ------ | ------------------------------------------------------------ | --------- |
+|        | Se definirá un vocabulario común que pueda ser comprendido tanto por los desarrolladores como los expertos del dominio. |           |
 |        | Los usuarios con rol administrador de una universidad podrán crear nuevas ontologías usando ficheros como CSV, XML, Json a través de la web con ficheros con un límite de tamaño. |           |
 |        | Los usuarios con rol administrador de una universidad podrán crear nuevas ontologías usando ficheros como CSV, XML, Json a través de un Servicio Rest. |           |
 |        | Los usuarios con rol administrador de una universidad podrán modificar  ontologías usando ficheros como CSV, XML, Json a través de la web. |           |
@@ -71,7 +72,13 @@
 |        | El gestor de datos deberá recoger los metadatos definidos en la Especificación ontologías Hércules de la Infraestructura Ontológica. |           |
 |        | El gestor de datos deberá recoger los metadatos no definidos en la Especificación ontologías Hércules de la Infraestructura Ontológica, por ejemplo metadatos de intereś sólo para la Universidad o metadatos sobre dominios muy concretos. |           |
 |        | El gestor de datos deberá recogerla licencia sobre los datos, usando el Vocabulario Creative Commons. |           |
+|        | El gestor de datos deberá validar los datos convertidos a RDF por él mismo. |           |
 |        | **Generador de URIs:** Existirá un URI Lookup Service (desarrollado en otro proyecto) con interfaz para máquinas (Rest services) para buscar URIs de entidades, a través del contenido de las URIs y a través del contenido de propiedades como rdfs:label o rdfs:comment (Las propiedades a usar serán configurables). |           |
+|        | Al crear un elemento, se buscará su URI y si no existe, se generará una nueva con el generador de URIs. |           |
+|        | **Integración cotínua de las ontologías:** las ontologías serán almacenadas en modo texto en el sistema de control de versiones con el fin de que los creadores de ontologías puedan hacer uso de las prácticas habituales en ingeniería del software para gestión de software mediante control de versiones. |           |
+|        | Estas ontologías, una vez guardadas en el control de versiones, se pasarán a integración contínua para integrarlas en el triple store. |           |
+|        |                                                              |           |
+|        |                                                              |           |
 
 
 
@@ -107,5 +114,27 @@
 |        | Páginas web de documentación: La aplicación web mostrará la información del contrato de URIs. |           |
 |        | Páginas web de documentación: La aplicación web mostrará información sobre el proyecto Hércules y sus objetivos. |           |
 |        |                                                              |           |
+|        |                                                              |           |
+
+
+
+# Requisitos de datos{#datos}
+
+
+
+| Código | Requisito                                                    | Prioridad |
+| ------ | ------------------------------------------------------------ | --------- |
+|        | Los datos dispondrán de un identificador único y persistente |           |
+|        | Los datos deben ser descritos con metadatos descriptivos     |           |
+|        | Los metadatos incluyen clara y explícitamente el identificador de los datos que describen. |           |
+|        | Los metadatos serán accesibles incluso cuando los datos ya no se encuentren disponibles |           |
+|        | Los metadatos serán accesibles incluso cuando los datos ya no se encuentren disponibles |           |
+|        | Los (Meta) datos usan un lenguaje formal, accesible, compartido y ampliamente aplicable para la representación del conocimiento. |           |
+|        | Los (Meta) datos usan vocabularios que siguen los principios FAIR |           |
+|        | Los (Meta) datos incluyen referencias calificadas a otros (Meta) datos. |           |
+|        | Los (meta) datos se publican con una licencia de uso de datos clara y accesible. |           |
+|        | Los (Meta) datos están asociados con información detallada sobre procedencia. |           |
+|        | Los (Meta) datos cumplen con los estándares de la comunidad relevantes para el dominio. |           |
+|        | Las URIs de la ontología deberán respetar el Esquema de URIs Hércules definido en Arquitectura Semántica de Datos del SUE. |           |
 |        |                                                              |           |
 
