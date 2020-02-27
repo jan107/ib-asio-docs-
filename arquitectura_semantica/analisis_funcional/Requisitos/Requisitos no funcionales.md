@@ -91,6 +91,7 @@
 | ------ | ------------------------------------------------------------ | --------- |
 |        | El software debe garantizar el acceso al sistema de las personas autorizadas en cada parte. |           |
 |        | El protocolo permitirá autenticación y autorización.         |           |
+|        | Las páginas web de documentación, serán públicas.            |           |
 |        | El acceso a los datos del triple-store  estará restringido. y solamente se podrá realizar a través del componente  gestor de datos, el cual contiene una gestión de usuarios y control de acceso |           |
 |        | El acceso a los datos del triple-store   solamente se podrá realizar a través del componente  gestor de datos, el cual contiene una gestión de usuarios y control de acceso |           |
 |        | El gestor de datos debe incluir un sistema de permisos con diferentes niveles de acceso a los datos. |           |
