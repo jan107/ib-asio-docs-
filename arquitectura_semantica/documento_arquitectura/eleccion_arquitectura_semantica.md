@@ -360,9 +360,43 @@ Una vez visto tanto Jena como RDF4J, es hora de realizar una comparativa entre a
 | Soporte a la generación de RDF en más formatos | :x: | :heavy_check_mark: |
 | Posibilidad de integración con diferentes triple stores | :heavy_check_mark: | :heavy_check_mark: |
 | Conexión mediante endpoint SPARQL | :heavy_check_mark: | :heavy_check_mark: |
-| Conectores ya desarrollados para los principales triple stores | :x: | :heavy_check_mark: |
+| Conectores ya desarrollados para los principales triple stores \* | :x: | :heavy_check_mark: |
 | API Linked Data | :x: | :x: |
 | Endpoint SPARQL | :x: | :x: |
+
+\* Referente a los conectores con diferentes triple stores, se detallará en la sección [Conectores con tiple stores](#conectores-con-triple-stores)
+
+#### Conectores con tiple stores
+
+En la tabla comparativa se hace referencia a que RDF4J dispone de conectores ya desarrollados con triple stores. Realmente RDF4J dispone de unas APIs que implementan por defecto varios triplestores, como son los siguientes:
+
+* Core databases 
+  * Memory Store
+  * Native Store
+  * Elasticsearch Store
+* Ontotext GraphDB
+* Halyard
+* Stardog
+* Amazon Neptune
+* Systap Blazegraph
+* MarkLogic RDF4J API
+* Strabon
+* Openlink Virtuoso RDF4J Provider
+
+Mediante la utilización del API de SAIL, es posible conectarse a los stores mediante los conectores que proveen de forma nativa estos fabricantes. En otros casos es posible utilizar un conector SPARQL siempre que se disponga deuna implementación compatible con la especificación [SPARQL 1.1](https://www.w3.org/TR/sparql11-protocol/), para lo cual RDF4J también ofrece compatibilidad con [SPARQL 1.1 Graph Store HTTP Protocol](https://www.w3.org/TR/sparql11-http-rdf-update/).
+
+Más información:
+
+* https://rdf4j.org/documentation/sail/
+* https://rdf4j.org/documentation/rest-api/
+* https://rdf4j.org/documentation/programming/repository/
+* http://graphdb.ontotext.com/documentation/free/architecture-components.html#architecture-components-rdf4j
+
+En el caso de Jena, la opción siempre sería ir mediante un endpoint SPARQL, lo cual no hace que no sea posible la conexión, incluso algunos de los fabricantes ofrecen compatibilidad, pero la forma de trabajar puede hacer un poco más limitada esta conectividad. Este es el caso por ejemplo de GraphDB en el que se  indica que es compatible con Jena 2.7, mediante la utlización de un adaptador, en este caso lo que está haciendo es generar una implementación de `Dataset` envolviendo un repositorio SAIL de RDF4J.
+
+* http://graphdb.ontotext.com/documentation/free/using-graphdb-with-jena.html
+
+#### Conclusión
 
 Viendo los resultados anteriores, aunque ambos podrían utilizarse para el mismo cometido, parece que RDF4J aporta más valor al soportar más formatos RDF y al tener mayor compatibilidad con diferentes triplestores.
 
