@@ -593,74 +593,7 @@ Para la creación del modelo las principales fuentes utilizadas fueron las ontol
 
 Para la definición del esquema de URIs se seguirá la propuesta desarrollada para el portal de datos de la biblioteca nacional del congreso de Chile en el año 2011 y que actualmente sigue en producción. De hecho, dicho esquema de URIs se ha mantenido en funcionamiento desde los inicios del sistema y actualmente sirve de enlace entre los diferentes componentes del sistema. Consideramos importante que se realice un diseño del esquema de URIs jerárquico y homogéneo, tratando de que se pueda mantenerse lo más estable posible en el futuro.
 
-### Diseño de URIs
-
-El diseño de un buen esquema de URIs es fundamental para la estabilidad de los sistemas basados en datos enlazados. Phil Archer realiza un estudio sobre buenas prácticas para la creación de URIs y plantea la siguiente recomendación:
-
-    http://{dominio}/{tipo}/{concepto}/{referencia}
-
-Donde:
-
-- ```{dominio}``` es una combinación del host y del sector relevante. El sector puede ser un subdominio o el primer componente del path
-- ```{tipo}``` debería ser un valor entre un conjunto pequeño de valore que declaren el tipo de recurso que se está identificando. Ejemplos típicos pueden ser:
-    - ```id``` ó ```item``` para valores del mundo real
-    - ```doc``` para documentos
-    - ```def``` para definiciones de conceptos
-    - ```set``` para conjuntos de datos
-- ```{concepto}``` podría ser una colección, el tipo de objeto del mundo real identificado, el nombre del esquema de conceptos, etc.
-- ```{referencia}``` es un ítem, concepto o término específico
-
-En dicho documento se dan 10 consejos que se consideran oportunos:
-
-- Evitar declarar el nombre del proyecto u organización que genera la URI si no aporta nada al significado de la misma
-- Evitar números de versión para identificar conceptos. En caso de identificar entidades que estén sujetas a diferentes versiones, se puede utilizar una URI genérica sin número de versión que identifica la entidad, y desde ella, redirigir a una URI que incluya la última versión. 
-- Reusar identificadores existentes. Para los recursos que tienen un identificador único, se puede reusar dicho identificador en el campo {referencia} de la URI
-- Evitar el uso de auto-incrementos automáticos al generar URIs únicas
-- Evitar el uso de query-strings (ejemplo, ?parametro=valor) que se pueden utilizar para buscar valores en una base de datos y a menudo dependen de una implementación concreta.
-- Evitar extensiones de ficheros, especialmente las que indican una tecnología concreta como puede ser .jsp). 
-- Diseñar las URIs para múltiples formatos. Mediante negociación de contenido, la misma URI genérica puede redirigir a URIs específicas en formatos concretos.
-- Enlazar representaciones múltiples. En HTML puede utilizarse un elemento <link> con el atributo rel ó alternate apuntando a otra representación. En RDF, puede utilizarse dct:hasFormat
-- Utilizar redirecciones 303 para las URIs que identifican conceptos del mundo real.
-- Utilizar servicios dedicados para generar URIs persistentes. Algunos servicios pueden ser: purl.org, w3id.org, identifiers.org, etc.
-
-El diseño del esquema de URIs también seguirá también mejores prácticas propuestas para la Linked Data Platform :
-
-- Las URIs que definan propiedades deben ser dereferenciables. Al acceder al contenido de las URIs de propiedades, al menos se debería obtener un vocabulario RDFS describiendo dicha propiedad.
-- Se recomienda que la representación RDF de los recursos contenga al menos una declaración rdf:type
-- Representar relaciones de pertenencia a un contenedor mediante URIs jerárquicas. Por ejemplo, si existe un contenedor para representar una institución que alberga varios grupos de investigación se utilizarán URIs como [http://example.org/institucion/](http://example.org/institucion/) para representar  la institución y: [http://example.org/institucion/grupo1](http://example.org/institucion/grupo1) para representar a un grupo de dicha institución.
-- Utilizar una barra de separación al final de las URIs que representan contenedores. Por ejemplo, es preferible [http://example.org/contenedor/](http://example.org/contenedor/) a [http://example.org/contenedor](http://example.org/contenedor), especialmente al utilizar URIs relativas. 
-- Utilizar fragmentos como identificadores de recursos. Un fragmento en una URI se introduce mediante el símbolo # y se denominan URIs hash . Cuando un cliente solicita una URI con un fragmento, el protocolo http descarta el fragmento y hace la solicitud a la servidor utilizando el resto de la URI. El resultado es que la URI original no puede utilizarse para identificar un documento Web concreto y puede utilizarse para identificar recursos que no correspondan a documentos, como personas o conceptos abstractos. Por ejemplo, la URI: [http://example.org/contenedor#id23](http://example.org/contenedor#id23) podría utilizarse para identificar el recurso #id23 que podría identificar recursos como personas, objetos, etc.
-
-### Negociación de contenido
-
-La negociación de contenido es una característica del protocolo HTTP que, mediante la inclusión de una serie de cabeceras, permite a un agente que realiza una petición a un servidor declarar qué tipo de contenido prefiere. De esta forma, la respuesta a una petición de información en una URI puede variar dependiendo de dichas cabeceras, permitiendo a un servidor devolver información HTML para seres humanos (tras un navegador) ó RDF para agentes automáticos.
-
-Además, el mecanismo de redirección de HTTP también permite utilizar URIs genéricas que pueden identificar conceptos (recursos de no-información) y dependiendo de las cabeceras de la petición redirigir a recursos de información (páginas HTML, ficheros RDF, etc.). 
-Las recomendaciones para publicación de datos en la Web...
-
-### Referencias, cualificadores y rangos
-
-Uno de los aspectos más interesantes del proyecto Wikidata es la utilización homogénea de un sistema de reificación que permite cualificar las declaraciones. En dicho modelo, todo enunciado puede tener asociadas una serie de declaraciones que permiten cualificar lo que se está afirmando. A modo de ejemplo, la declaración de que Murcia (wd:Q12225) tiene una población (propiedad P1082) de 447182 habitantes puede realizarse de forma directa como:
-
-```
-wd:Q12225 wdt:P1082 447182 . 
-```
-
-La declaración anterior se puede tomar como declaración por defecto, sin embargo, si se desea mantener una base de conocimiento fiable que evolucione con el tiempo es necesario añadir cualificadores a dicha afirmación. Por ejemplo, se puede indicar que la fuente o referencia a partir de la cual se ha obtenido el valor es el Registro Municipal de España (wd:Q17597568) y que el valor se refiere al año 2018. Esa información se representa como:
-
-```
-wd:Q12225 p:P1082 [ 
- wikibase:rank       wikibase:PreferredRank ;
- ps:P1082            "447182"^^xsd:decimal ;
- prov:wasDerivedFrom wd:Q17597568 ;
- pq:P585             "2018-01-01"^^xsd:date
-] .
-```
-
-Aunque el modelo de reificación de Wikidata no es el único, el hecho de que esté predefinido en el sistema de forma homogénea, permite realizar consultas enriquecidas y mantener un grafo de conocimiento que evoluciona a lo largo del tiempo. 
-En la presente propuesta se propone utilizar un modelo similar para la representación del conocimiento semántico. La ventaja de dicho sistema es la adaptabilidad a la propia evolución de los datos, al permitir disponer de datos históricos de investigación.
-
-Se propone utilizar un modelo similar para la representación del conocimiento semántico. La ventaja de dicho sistema es la adaptabilidad a la propia evolución de los datos, al permitir disponer de datos históricos de investigación.
+Para más información, consultar el entregable de [esquema de URIs](../../entregables_hito_1/08-Esquema_de_URIs_Hércules/ASIO_Izertis_ArquitecturaDeURIs.md).
 
 ## Patrones arquitectónicos
 
