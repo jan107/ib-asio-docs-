@@ -121,7 +121,7 @@ E un enlace tipo memento debe de incluirse el tipo "datetime", que coincidirá c
 
 EL link puede incluir el atributo "licence", que asocia el MEmento con la licencia. Este debe de ser una URI
 
-###### Negociación de Datetime (ejemplo)
+##### Negociación de Datetime (ejemplo)
 
 ```bash
 
@@ -163,7 +163,7 @@ EL link puede incluir el atributo "licence", que asocia el MEmento con la licenc
 
 Es posible que el formato del cuerpo de la respuesta haya cambiado con el tiempo, por eso es importante informar al cliente de el media type relativo al recurso e incluso aplicar el media type al algoritmo de selección del memento mas próximo, de forma que se aproxime lo mas posible en el tiempo, y coincida en el tipo MIME.
 
-###### TimeMaps (ejemplo)
+##### TimeMaps (ejemplo)
 
 
 
@@ -196,9 +196,11 @@ Es posible que el formato del cuerpo de la respuesta haya cambiado con el tiempo
 6: UA <-- HTTP 200 ------------------------------------------ URI-T
 ```
 
-###### Negociación de Datetime: Interacciones HTTP. Patrones de implementación
+##### Negociación de Datetime: Interacciones HTTP. Patrones de implementación
 
-**Patrón 1:** El Recurso Original actúa como su propio TimeGate, lo que significa de la URI-R y URI-G coincidirá. El código de respuesta pude seguir el patrón 200 o 302 (dependiendo del patrón de negociación y la presencia o ausencia de URI-M´s distintos a el URI-R del recurso original). 
+###### **Patrón 1:** 
+
+El Recurso Original actúa como su propio TimeGate, lo que significa de la URI-R y URI-G coincidirá. El código de respuesta pude seguir el patrón 200 o 302 (dependiendo del patrón de negociación y la presencia o ausencia de URI-M´s distintos a el URI-R del recurso original). 
 
 Se resumen varios casos en la tabla bajo estas líneas mapeando respuestas con los sub-patrones descritos después
 
@@ -408,298 +410,450 @@ Se resumen varios casos en la tabla bajo estas líneas mapeando respuestas con l
 
   
 
+###### Patrón 2:
+
+ Un recurso remoto, actúa como un TimeGate para un Recurso Original. En esta implementación el recurso original no comparte URI con el TimeGate. Se suele usar cuando los servidores guardan versiones en sistemas diferentes, de la ubicación de los recursos originales.
+
+Se resumen varios casos en la tabla bajo estas líneas mapeando respuestas con los sub-patrones descritos después
+
+| Patrón     | Recurso Original | TimeGate | Memento | Código de Retorno |
+| ---------- | ---------------- | -------- | ------- | ----------------- |
+| Patrón 2.1 | URI-R            | URI-G    | URI-M   | 302               |
+| Patrón 2.2 | URI-R            | URI-G    | URI-M   | 200               |
+| Patrón 2.3 | URI-R            | URI-G    | URI-R   | 200               |
+
+Se usan las siguientes cabeceras en las respuestas URI-R
+
+* Cabecera **Vary** no debe estar presente
+* La respuesta no contiene  la cabecera **"Memento-datetime"**
+* La respuesta debe contener  la cabecera **"Link"** , pero no debe incluir un enlace a el tipo de relación "original". Si se determino un TimeGate para el Recurso Original, entonces deberá incluirse un link, con el tipo de relación "timegate" del TimeGate asociado. Si se determino un TimeMap para el Recurso Original, entonces deberá incluirse un link, con el tipo de relación "timegate" del URI-T asociado. Pueden existir múltiples Links tipo "timegate" o "timemap" si existen.
+
+Para todos los patrones descritos, el cliente realizara la siguiente petición, para obtener el URI-G:
+
+```
+HTTP/1.1 200 OK
+ Date: Thu, 21 Jan 2010 00:02:12 GMT
+ Server: Apache
+ Link: <http://arxiv.example.net/timegate/http://a.example.org/>
+ ; rel="timegate"
+ Content-Length: 255
+ Connection: close
+ Content-Type: text/html; charset=iso-8859-1
+```
+
+Una vez que el cliente obtiene al URI-G, puede comenzar la negociación con el TimeGate.
+
+```
+HEAD /timegate/http://a.example.org/ HTTP/1.1
+ Host: arxiv.example.net
+ Accept-Datetime: Tue, 20 Mar 2001 20:35:00 GMT
+ Connection: close
+```
+
+**Patrón 2.1:** URI-R<>URI-G; 302-Style Negotiation; Distinct URI-M
+
+En este caso se retorna un código 302, y una cabecera Location hacia el URI-M
+
+Se debe usar de la siguiente manera:
+
+- La cabecera "Vary" es necesaria y debe incluir el valor "accept-datetime"
+- La respuesta **no debe** incluir la cabecera "Memento-Datetime"
+- Se debe proporcionar el encabezado "Link", y debe incluir al menos un Relation Type = "original", hacia el URI-R
 
 
-* **Patrón 2:** Un recurso remoto, actúa como un TimeGate para un Recurso Original. En esta implementación el recurso original no comparte URI con el TimeGate. Se suele usar cuando los servidores guardan versiones en sistemas diferentes, de la ubicación de los recursos originales.
 
-  Se resumen varios casos en la tabla bajo estas líneas mapeando respuestas con los sub-patrones descritos después
+Ejemplo de respuesta del Servidor 
 
-  | Patrón     | Recurso Original | TimeGate | Memento | Código de Retorno |
-  | ---------- | ---------------- | -------- | ------- | ----------------- |
-  | Patrón 2.1 | URI-R            | URI-G    | URI-M   | 302               |
-  | Patrón 2.2 | URI-R            | URI-G    | URI-M   | 200               |
-  | Patrón 2.3 | URI-R            | URI-G    | URI-R   | 200               |
+```bash
+HTTP/1.1 302 Found
+ Date: Thu, 21 Jan 2010 00:02:14 GMT
+ Server: Apache
+ Vary: accept-datetime # Requerido
+ Location:# Localización del Memento
+ http://arxiv.example.net/web/20010321203610/http://a.example.org/
+ Link: <http://a.example.org/>; rel="original", # Link del Original Resource, con un timestamp recomendado para "from" y "until"
+ <http://arxiv.example.net/timemap/http://a.example.org/>
+ ; rel="timemap"; type="application/link-format"
+ ; from="Tue, 15 Sep 2000 11:28:26 GMT"
+ ; until="Wed, 20 Jan 2010 09:34:33 GMT"
+ Content-Length: 0
+ Content-Type: text
 
-  Se usan las siguientes cabeceras en las respuestas URI-R
+```
 
-  * Cabecera **Vary** no debe estar presente
-  * La respuesta no contiene  la cabecera **"Memento-datetime"**
-  * La respuesta debe contener  la cabecera **"Link"** , pero no debe incluir un enlace a el tipo de relación "original". Si se determino un TimeGate para el Recurso Original, entonces deberá incluirse un link, con el tipo de relación "timegate" del TimeGate asociado. Si se determino un TimeMap para el Recurso Original, entonces deberá incluirse un link, con el tipo de relación "timegate" del URI-T asociado. Pueden existir múltiples Links tipo "timegate" o "timemap" si existen.
+Petición del cliente para obtener el seleccionado Memento
 
-  Para todos los patrones descritos, el cliente realizara la siguiente petición, para obtener el URI-G:
+```
+GET /web/20010321203610/http://a.example.org/ HTTP/1.1
+ Host: arxiv.example.net/
+ Accept-Datetime: Tue, 20 Mar 2001 20:35:00 GMT
+ Connection: close
 
-  ```
-  HTTP/1.1 200 OK
+```
+
+Respuesta del servidor con el memento seleccionado, solo se muestran las cabeceras, pero se obtendría también el body del recurso, con las siguientes caracteristica
+
+- No esta presente la cabecera "Vary"
+- Esta presente la cabecera "Memento-Datetime"
+- Aparece la cabecera Link, que contiene al menos un link al recurso original
+
+```bash
+HTTP/1.1 200 OK
+ Date: Thu, 21 Jan 2010 00:02:15 GMT
+ Server: Apache-Coyote/1.1
+ Memento-Datetime: Wed, 21 Mar 2001 20:36:10 GMT
+ Link: <http://a.example.org/>; rel="original",
+ <http://arxiv.example.net/timemap/http://a.example.org/>
+ ; rel="timemap"; type="application/link-format",
+ <http://arxiv.example.net/timegate/http://a.example.org/>
+ ; rel="timegate"
+ Content-Length: 25532
+ Content-Type: text/html;charset=utf-8
+ Connection: close
+
+```
+
+
+
+**Patrón 2.2:** URI-R<>URI-G; 200-Style Negotiation; Distinct URI-M
+
+En este caso se retorna un código 200, y una cabecera Location hacia cada URI-M
+
+Se debe usar de la siguiente manera:
+
+- La cabecera "Vary" es necesaria y debe incluir el valor "accept-datetime"
+- La respuesta **debe** incluir la cabecera "Memento-Datetime"
+- Se debe proporcionar el encabezado "Link", y debe incluir al menos un Relation Type = "original", hacia el URI-R
+
+
+
+Ejemplo de respuesta del Servidor 
+
+```bash
+HTTP/1.1 200 OK
+ Date: Thu, 21 Jan 2010 00:09:40 GMT
+ Server: Apache-Coyote/1.1
+ Vary: accept-datetime
+ Content-Location: # Localizacion del memento
+ http://arxiv.example.net/web/20010321203610/http://a.example.org/
+ Memento-Datetime: Wed, 21 Mar 2001 20:36:10 GMT
+ Link: <http://a.example.org/>; rel="original", # Link al recurso original
+ <http://arxiv.example.net/timemap/http://a.example.org/>
+ ; rel="timemap"; type="application/link-format", # Link al timemap
+ <http://arxiv.example.net/timegate/http://a.example.org/>
+ ; rel="timegate" # Link al timegate
+ Content-Length: 25532
+ Content-Type: text/html;charset=utf-8
+ Connection: close
+
+
+```
+
+Petición del cliente para obtener el seleccionado Memento
+
+```
+GET /web/20010321203610/http://a.example.org/ HTTP/1.1
+ Host: arxiv.example.net/
+ Accept-Datetime: Tue, 20 Mar 2001 20:35:00 GMT
+ Connection: close
+
+```
+
+La respuesta del servidor con el memento seleccionado es idéntica al caso anterior.
+
+**Patrón 2.3:** URI-R<>URI-G; 200-Style Negotiation; No Distinct URI-M
+
+En este caso se retorna un código 200, pero al ser identica la URI-M no necesita cabeceras "Content-Location" ni "Location"
+
+Se debe usar de la siguiente manera:
+
+- La cabecera "Vary" es necesaria y debe incluir el valor "accept-datetime"
+- La respuesta **debe** incluir la cabecera "Memento-Datetime"
+- Se debe proporcionar el encabezado "Link", y debe incluir al menos un Relation Type = "original", hacia el URI-R
+
+
+
+Ejemplo de respuesta del Servidor 
+
+```bash
+HTTP/1.1 200 OK
+ Date: Thu, 21 Jan 2010 00:09:40 GMT
+ Server: Apache-Coyote/1.1
+ Vary: accept-datetime
+ Memento-Datetime: Wed, 21 Mar 2001 20:36:10 GMT
+ Link: <http://a.example.org/>; rel="original",
+ <http://arxiv.example.net/timemap/http://a.example.org/>
+ ; rel="timemap"; type="application/link-format",
+ <http://arxiv.example.net/timegate/http://a.example.org/>
+ ; rel="timegate"
+ Content-Length: 25532
+ Content-Type: text/html;charset=utf-8
+ Connection: close
+
+```
+
+Petición del cliente para obtener el seleccionado Memento
+
+```
+GET /web/20010321203610/http://a.example.org/ HTTP/1.1
+ Host: arxiv.example.net/
+ Accept-Datetime: Tue, 20 Mar 2001 20:35:00 GMT
+ Connection: close
+
+```
+
+La respuesta del servidor con el memento seleccionado es idéntica al caso anterior.
+
+###### Patrón 3:
+
+Un Recurso Original, actúa como un recurso fijo. Este patrón no supone negociación de datetime con TimeGate. Puede usarse con recursos que no cambian de estado, o que no cambian mas allá de cierto punto de su existencia. Esto significa que URI-R y URI-M coinciden desde el principio, o desde algún punto de su existencia.
+
+Se resumen varios casos en la tabla bajo estas líneas mapeando respuestas con los sub-patrones descritos después
+
+| Patrón   | Recurso Original | TimeGate | Memento | Código de Retorno |
+| -------- | ---------------- | -------- | ------- | ----------------- |
+| Patrón 3 | URI-R            | -        | URI-R   | -                 |
+
+Se usan las siguientes cabeceras en las respuestas URI-R
+
+* Cabecera **Vary** **no** debe estar presente
+* La respuesta no contiene  la cabecera **"Memento-datetime"**
+* La respuesta debe contener  la cabecera **"Link"** , debe incluir un enlace a el tipo de relación "original". 
+
+Para todos los patrones descritos, el cliente realizara la siguiente petición, para obtener el URI-G:
+
+```
+HTTP/1.1 200 OK
+ Date: Thu, 21 Jan 2010 00:09:40 GMT
+ Server: Apache-Coyote/1.1
+ Memento-Datetime: Fri, 20 Mar 2009 11:00:00 GMT
+ Link: <http://a.example.org/>; rel="original"
+ Content-Length: 875
+ Content-Type: text/html;charset=utf-8
+ Connection: close
+```
+
+
+
+###### Patrón 4:
+
+Mementos sin TimeGate. Esto ocurre cuando el servidor almacena mementos, pero no expone TimeGate para ellos. Esto puede ocurrir cuando los mementos son resultado de un snapshot de los datos de un servidor. Como resultado, solo hay un memento por cada recurso del servidor, haciendo el TimeGate innecesario.
+
+Se resumen varios casos en la tabla bajo estas líneas mapeando respuestas con los sub-patrones descritos después
+
+| Patrón   | Recurso Original | TimeGate | Memento | Código de Retorno |
+| -------- | ---------------- | -------- | ------- | ----------------- |
+| Patrón 4 | URI-R            | -        | URI-M   | -                 |
+
+Se usan las siguientes cabeceras en las respuestas URI-R
+
+* Cabecera **Vary** **no** debe estar presente
+* La respuesta no contiene  la cabecera **"Memento-datetime"**
+* La respuesta debe contener  la cabecera **"Link"** , debe incluir un enlace a el tipo de relación "original". 
+
+Para todos los patrones descritos, el cliente realizara la siguiente petición, para obtener el URI-G:
+
+```bash
+HTTP/1.1 200 OK
+ Date: Thu, 21 Jan 2010 00:09:40 GMT
+ Server: Apache-Coyote/1.1
+ Memento-Datetime: Wed, 21 Mar 2001 20:36:10 GMT
+ Link: <http://a.example.org/>; rel="original",
+ <http://arxiv.example.net/web/20010321203610/http://a.example.org/>
+ ; rel="first last memento" # La convinacion de first last memento, indican que solo hay un memento para el recurso
+ ; datetime="Wed, 21 Mar 2001 20:36:10 GMT"
+ Content-Length: 25532
+ Content-Type: text/html;charset=utf-8
+ Connection: close
+
+```
+
+
+
+###### Casos especiales:
+
+* **El recurso original no tiene Link "timegate" por alguna de las siguientes causas:** 
+
+  * El recurso original no soporta el Framework memento
+  *  El recurso original ya no existe, por lo tanto el servidor desconoce sus estados anteriores
+  * El servidor donde se aloja el recurso no es accesible
+
+  En todos los casos el cliente deberá de determinar un TimeGate apropiado para el recurso
+
+* **El servidor existe, pero el Recurso Original no:** 
+
+  Existen casos en los que el servidor sabe que el recurso existía, pero  no pude obtener la representación actual. En ese caso , el servidor pude si dispone de ello, retornar un Link con la representación anterior a la que si tenga acceso.
+
+  ```bash
+  HTTP/1.1 404 Not Found # Codigo 400, no encontrado
    Date: Thu, 21 Jan 2010 00:02:12 GMT
    Server: Apache
-   Link: <http://arxiv.example.net/timegate/http://a.example.org/>
+   Link:# Link a la versión anterior a la que si tiene acceso
+   <http://arxiv.example.net/timegate/http://a.example.org/pic>
    ; rel="timegate"
    Content-Length: 255
-   Connection: close
-   Content-Type: text/html; charset=iso-8859-1
-  ```
-
-  Una vez que el cliente obtiene al URI-G, puede comenzar la negociación con el TimeGate.
-
-  ```
-  HEAD /timegate/http://a.example.org/ HTTP/1.1
-   Host: arxiv.example.net
-   Accept-Datetime: Tue, 20 Mar 2001 20:35:00 GMT
-   Connection: close
-  ```
-
-  **Patrón 2.1:** URI-R<>URI-G; 302-Style Negotiation; Distinct URI-M
-
-  En este caso se retorna un código 302, y una cabecera Location hacia el URI-M
-
-  Se debe usar de la siguiente manera:
-
-  - La cabecera "Vary" es necesaria y debe incluir el valor "accept-datetime"
-  - La respuesta **no debe** incluir la cabecera "Memento-Datetime"
-  - Se debe proporcionar el encabezado "Link", y debe incluir al menos un Relation Type = "original", hacia el URI-R
-
-  
-
-  Ejemplo de respuesta del Servidor 
-
-  ```bash
-  HTTP/1.1 302 Found
-   Date: Thu, 21 Jan 2010 00:02:14 GMT
-   Server: Apache
-   Vary: accept-datetime # Requerido
-   Location:# Localización del Memento
-   http://arxiv.example.net/web/20010321203610/http://a.example.org/
-   Link: <http://a.example.org/>; rel="original", # Link del Original Resource, con un timestamp recomendado para "from" y "until"
-   <http://arxiv.example.net/timemap/http://a.example.org/>
-   ; rel="timemap"; type="application/link-format"
-   ; from="Tue, 15 Sep 2000 11:28:26 GMT"
-   ; until="Wed, 20 Jan 2010 09:34:33 GMT"
-   Content-Length: 0
-   Content-Type: text
-  
-  ```
-
-  Petición del cliente para obtener el seleccionado Memento
-
-  ```
-  GET /web/20010321203610/http://a.example.org/ HTTP/1.1
-   Host: arxiv.example.net/
-   Accept-Datetime: Tue, 20 Mar 2001 20:35:00 GMT
+   Content-Type:  text/html; charset=iso-8909-1
    Connection: close
   
   ```
 
-  Respuesta del servidor con el memento seleccionado, solo se muestran las cabeceras, pero se obtendría también el body del recurso, con las siguientes caracteristica
+* **Problemas con Accept-Datetime:** 
 
-  - No esta presente la cabecera "Vary"
-  - Esta presente la cabecera "Memento-Datetime"
-  - Aparece la cabecera Link, que contiene al menos un link al recurso original
+  Existen alguno de los siguientes problemas:
 
-  ```bash
-  HTTP/1.1 200 OK
-   Date: Thu, 21 Jan 2010 00:02:15 GMT
-   Server: Apache-Coyote/1.1
-   Memento-Datetime: Wed, 21 Mar 2001 20:36:10 GMT
-   Link: <http://a.example.org/>; rel="original",
-   <http://arxiv.example.net/timemap/http://a.example.org/>
-   ; rel="timemap"; type="application/link-format",
-   <http://arxiv.example.net/timegate/http://a.example.org/>
-   ; rel="timegate"
-   Content-Length: 25532
-   Content-Type: text/html;charset=utf-8
-   Connection: close
-  
-  ```
+  - Si se pide una Fecha en la cabecera Accept-Datetime, menor que el recurso mas antiguo o mayor que el mas reciente. En ese caso se debe retornar el primer o ultimo documento según proceda.
+  - El formato de fecha no es correcto segun lo expuesto, en ese caso, se retornara un código 400, Bad Request
+  - Si no se incluye la cabecera Accept-Datetime, se debe de retornar el documento mas reciente
 
-  
+- **Memento con un código de Respuesta 3xx :** 
 
-  **Patrón 2.2:** URI-R<>URI-G; 200-Style Negotiation; Distinct URI-M
+  En algunos casos la respuesta puede ofrecer una redirección del Memento para obtener el recurso. Corresponde al cliente, realizarla o no
 
-  En este caso se retorna un código 200, y una cabecera Location hacia cada URI-M
+- **Recursos excluidos de la negociación de contenidos:** 
 
-  Se debe usar de la siguiente manera:
-
-  - La cabecera "Vary" es necesaria y debe incluir el valor "accept-datetime"
-  - La respuesta **debe** incluir la cabecera "Memento-Datetime"
-  - Se debe proporcionar el encabezado "Link", y debe incluir al menos un Relation Type = "original", hacia el URI-R
-
-  
-
-  Ejemplo de respuesta del Servidor 
-
-  ```bash
-  HTTP/1.1 200 OK
-   Date: Thu, 21 Jan 2010 00:09:40 GMT
-   Server: Apache-Coyote/1.1
-   Vary: accept-datetime
-   Content-Location: # Localizacion del memento
-   http://arxiv.example.net/web/20010321203610/http://a.example.org/
-   Memento-Datetime: Wed, 21 Mar 2001 20:36:10 GMT
-   Link: <http://a.example.org/>; rel="original", # Link al recurso original
-   <http://arxiv.example.net/timemap/http://a.example.org/>
-   ; rel="timemap"; type="application/link-format", # Link al timemap
-   <http://arxiv.example.net/timegate/http://a.example.org/>
-   ; rel="timegate" # Link al timegate
-   Content-Length: 25532
-   Content-Type: text/html;charset=utf-8
-   Connection: close
-  
-  
-  ```
-
-  Petición del cliente para obtener el seleccionado Memento
-
-  ```
-  GET /web/20010321203610/http://a.example.org/ HTTP/1.1
-   Host: arxiv.example.net/
-   Accept-Datetime: Tue, 20 Mar 2001 20:35:00 GMT
-   Connection: close
-  
-  ```
-
-  La respuesta del servidor con el memento seleccionado es idéntica al caso anterior.
-
-  **Patrón 2.3:** URI-R<>URI-G; 200-Style Negotiation; No Distinct URI-M
-
-  En este caso se retorna un código 200, pero al ser identica la URI-M no necesita cabeceras "Content-Location" ni "Location"
-
-  Se debe usar de la siguiente manera:
-
-  - La cabecera "Vary" es necesaria y debe incluir el valor "accept-datetime"
-  - La respuesta **debe** incluir la cabecera "Memento-Datetime"
-  - Se debe proporcionar el encabezado "Link", y debe incluir al menos un Relation Type = "original", hacia el URI-R
-
-  
-
-  Ejemplo de respuesta del Servidor 
-
-  ```bash
-  HTTP/1.1 200 OK
-   Date: Thu, 21 Jan 2010 00:09:40 GMT
-   Server: Apache-Coyote/1.1
-   Vary: accept-datetime
-   Memento-Datetime: Wed, 21 Mar 2001 20:36:10 GMT
-   Link: <http://a.example.org/>; rel="original",
-   <http://arxiv.example.net/timemap/http://a.example.org/>
-   ; rel="timemap"; type="application/link-format",
-   <http://arxiv.example.net/timegate/http://a.example.org/>
-   ; rel="timegate"
-   Content-Length: 25532
-   Content-Type: text/html;charset=utf-8
-   Connection: close
-  
-  ```
-
-  Petición del cliente para obtener el seleccionado Memento
-
-  ```
-  GET /web/20010321203610/http://a.example.org/ HTTP/1.1
-   Host: arxiv.example.net/
-   Accept-Datetime: Tue, 20 Mar 2001 20:35:00 GMT
-   Connection: close
-  
-  ```
-
-  La respuesta del servidor con el memento seleccionado es idéntica al caso anterior.
-
-  
-
-* **Patrón 3:** Un Recurso Original, actúa como un recurso fijo. Este patrón no supone negociación de datetime con TimeGate. Puede usarse con recursos que no cambian de estado, o que no cambian mas allá de cierto punto de su existencia. Esto significa que URI-R y URI-M coinciden desde el principio, o desde algún punto de su existencia.
-
-  Se resumen varios casos en la tabla bajo estas líneas mapeando respuestas con los sub-patrones descritos después
-
-  | Patrón   | Recurso Original | TimeGate | Memento | Código de Retorno |
-  | -------- | ---------------- | -------- | ------- | ----------------- |
-  | Patrón 3 | URI-R            | -        | URI-R   | -                 |
-
-  Se usan las siguientes cabeceras en las respuestas URI-R
-
-  * Cabecera **Vary** **no** debe estar presente
-  * La respuesta no contiene  la cabecera **"Memento-datetime"**
-  * La respuesta debe contener  la cabecera **"Link"** , debe incluir un enlace a el tipo de relación "original". 
-
-  Para todos los patrones descritos, el cliente realizara la siguiente petición, para obtener el URI-G:
+  Algunos recursos deben de ser excluidos de la negociación de Datetime, por ejemplo ficheros Javascript de una pagina Web. En estos casos se usara la cabecera Link  con la URI de destino http://mementoweb.org/terms/donotnegotiate.
 
   ```
   HTTP/1.1 200 OK
    Date: Thu, 21 Jan 2010 00:09:40 GMT
    Server: Apache-Coyote/1.1
-   Memento-Datetime: Fri, 20 Mar 2009 11:00:00 GMT
-   Link: <http://a.example.org/>; rel="original"
-   Content-Length: 875
-   Content-Type: text/html;charset=utf-8
-   Connection: close
-  ```
-
-  
-
-* **Patrón 4:** Mementos sin TimeGate. Esto ocurre cuando el servidor almacena mementos, pero no expone TimeGate para ellos. Esto puede ocurrir cuando los mementos son resultado de un snapshot de los datos de un servidor. Como resultado, solo hay un memento por cada recurso del servidor, haciendo el TimeGate imnecesario.
-
-  Se resumen varios casos en la tabla bajo estas líneas mapeando respuestas con los sub-patrones descritos después
-
-  | Patrón   | Recurso Original | TimeGate | Memento | Código de Retorno |
-  | -------- | ---------------- | -------- | ------- | ----------------- |
-  | Patrón 4 | URI-R            | -        | URI-M   | -                 |
-
-  Se usan las siguientes cabeceras en las respuestas URI-R
-
-  * Cabecera **Vary** **no** debe estar presente
-  * La respuesta no contiene  la cabecera **"Memento-datetime"**
-  * La respuesta debe contener  la cabecera **"Link"** , debe incluir un enlace a el tipo de relación "original". 
-
-  Para todos los patrones descritos, el cliente realizara la siguiente petición, para obtener el URI-G:
-
-  ```bash
-  HTTP/1.1 200 OK
-   Date: Thu, 21 Jan 2010 00:09:40 GMT
-   Server: Apache-Coyote/1.1
-   Memento-Datetime: Wed, 21 Mar 2001 20:36:10 GMT
-   Link: <http://a.example.org/>; rel="original",
-   <http://arxiv.example.net/web/20010321203610/http://a.example.org/>
-   ; rel="first last memento" # La convinacion de first last memento, indican que solo hay un memento para el recurso
-   ; datetime="Wed, 21 Mar 2001 20:36:10 GMT"
-   Content-Length: 25532
-   Content-Type: text/html;charset=utf-8
+   Link: <http://mementoweb.org/terms/donotnegotiate>; rel="type"
+   Content-Length: 238
+   Content-Type: application/javascript; charset=UTF-8
    Connection: close
   
   ```
 
-  
+##### TimeMaps: Contenido y serialización
 
-  * **Casos especiales:** 
+Los TimeMaps representan una lista de todos los Mementos, disponibles para un recurso. El Body retornado debe de ser:
 
-    * **El recurso original no tiene Link "timegate" por alguna de las siguientes causas:** 
+- Puede retornar una lista de URI-R de un recurso original del que trata el TimeMap
+- Puede retornar una lista del Memento (URI-M) y su DateTime, del que el servidor tiene constancia, preferiblemente en un documento o en varios por medio de Links con Relation type = "timemap"
+- Debe retornar una lista de URI-G de todos los TimeGates de un recurso original que conoce el servidor
+- Debe, para autocontenidos, listar todos los URI-T del mismo TimeMap
+- Debe escribir sin ambigüedad los recursos originales, TimeGates, Mementos o TimeMaps
 
-      * El recurso original no soporta el Framework memento
-      *  El recurso original ya no existe, por lo tanto el servidor desconoce sus estados anteriores
-      * El servidor donde se aloja el recurso no es accesible
+El Body puede serializarse de distintas formas, pero el formato link-value debe de soportarse. En esta serialización, el body debe serializase de la misma forma que una cabecera Link, y además cumplir con las restricciones impuestas en esta sección. El media type de la entidad debe de ser application/link-format. Debe de seguir la siguiente normativa:
 
-      En todos los casos el cliente deberá de determinar un TimeGate apropiado para el recurso
+- El IRI de contexto, debe de ser un parámetro de anclaje, cuando se especifica.
+- El IRI de contexto, con el tipo de relacion "self", es la propia URI-T, del TimeMap, es decir la URI del recurso desde el cual se solicito el TimeMap
 
-    * **El servidor existe, pero el Recurso Original no:** 
+- El IRI de contexto de todos los demás enlaces es el URI-R del recurso original, que se proporciona como el IRI de destino del enlace con un tipo de relación "original".
 
-      Existen casos en los que el servidor sabe que el recurso existía, pero  no pude obtener la representación actual. En ese caso , el servidor pude si dispone de ello, retornar un Link con la representación anterior a la que si tenga acceso.
+Ejemplo: Para recuperar un TimeMap, el cliente solicita una serialización link-value
 
-      ```bash
-      HTTP/1.1 404 Not Found # Codigo 400, no encontrado
-       Date: Thu, 21 Jan 2010 00:02:12 GMT
-       Server: Apache
-       Link:# Link a la versión anterior a la que si tiene acceso
-       <http://arxiv.example.net/timegate/http://a.example.org/pic>
-       ; rel="timegate"
-       Content-Length: 255
-       Content-Type:  text/html; charset=iso-8909-1
-       Connection: close
-      
-      ```
+Petición de un TimeMap
 
-    * **Problemas con Accept-Datetime:** 
+```
+GET /timemap/http://a.example.org/ HTTP/1.1
+ Host: arxiv.example.net
+ Accept: application/link-format;q=1.0
+ Connection: close
+```
 
-      Existen alguno de los siguientes problemas:
+Respuesta (si existe el TimeMap del recurso)
 
-      - Si se pide un 
+```html
+<!--HEADERS-->
+HTTP/1.1 200 OK
+ Date: Thu, 21 Jan 2010 00:06:50 GMT
+ Server: Apache
+ Content-Length: 4883
+ Content-Type: application/link-format
+ Connection: close
 
-  
+<!--SERIALIZED BODY-->
+ <http://a.example.org>;rel="original", <!--RECURSO ORIGINAL-->
+ <http://arxiv.example.net/timemap/http://a.example.org>
+ ; rel="self";type="application/link-format"
+ ; from="Tue, 20 Jun 2000 18:02:59 GMT" <!--RANGO FROM UNTIL-->
+ ; until="Wed, 09 Apr 2008 20:30:51 GMT",
+ <http://arxiv.example.net/timegate/http://a.example.org> <!--TimeGate-->
+ ; rel="timegate",
+ <!--Lista de Mementos-->    
+ <http://arxiv.example.net/web/20000620180259/http://a.example.org> 
+ ; rel="first memento";datetime="Tue, 20 Jun 2000 18:02:59 GMT"
+ ; license="http://creativecommons.org/publicdomain/zero/1.0/",
+ <http://arxiv.example.net/web/20091027204954/http://a.example.org>
+ ; rel="last memento";datetime="Tue, 27 Oct 2009 20:49:54 GMT"
+ ; license="http://creativecommons.org/publicdomain/zero/1.0/",
+ <http://arxiv.example.net/web/20000621011731/http://a.example.org>
+ ; rel="memento";datetime="Wed, 21 Jun 2000 01:17:31 GMT"
+ ; license="http://creativecommons.org/publicdomain/zero/1.0/",
+ <http://arxiv.example.net/web/20000621044156/http://a.example.org>
+ ; rel="memento";datetime="Wed, 21 Jun 2000 04:41:56 GMT"
+ ; license="http://creativecommons.org/publicdomain/zero/1.0/",
+ ...
+
+```
+
+**Casos Especiales**
+
+- **Indexando y paginando TimeMaps**
+
+  Existen casos en que un TimeMap apunta a uno o mas TimeMaps:
+
+  - **Index TimeMap:** Un TimeMap puede apuntar a otros TimeMaps en vez de a mementos. Suele suceder cuando los mementos son repartidos en varios archivos que comparten un front-end.
+
+    ```html
+    <http://a.example.org>;rel="original",
+     <http://arxiv.example.net/timegate/http://a.example.org>
+     ; rel="timegate",
+     <http://arxiv.example.net/timemap/http://a.example.org>
+     ; rel="self";type="application/link-format",
+     <!--Time Maps-->
+     <http://arxiv1.example.net/timemap/http://a.example.org>
+     ; rel="timemap";type="application/link-format"
+     ; from="Wed, 21 Jun 2000 04:41:56 GMT"
+     ; until="Wed, 09 Apr 2008 20:30:51 GMT",
+     <http://arxiv2.example.net/timemap/http://a.example.org>
+     ; rel="timemap";type="application/link-format"
+     ; from="Thu, 10 Apr 2008 20:30:51 GMT"
+     ; until="Tue, 27 Oct 2009 20:49:54 GMT",
+     <http://arxiv3.example.net/timemap/http://a.example.org>
+     ; rel="timemap";type="application/link-format"
+     ; from="Thu, 29 Oct 2009 20:30:51 GMT"
+    
+    ```
+
+    
+
+  -  PagingTimeMap:** Un numero elevado de mementos, puede requerir introducir multiples TimeMaps que puedan ser paginados.
+
+    ```html
+    <http://a.example.org>;rel="original",
+     <http://arxiv.example.net/timegate/http://a.example.org>
+     ; rel="timegate",
+     <http://arxiv.example.net/timemap/1/http://a.example.org>
+     ; rel="self";type="application/link-format"
+     ; from="Tue, 20 Jun 2000 18:02:59 GMT"
+     ; until="Wed, 09 Apr 2008 20:30:51 GMT",
+     <!--Time Maps-->
+     <http://arxiv.example.net/timemap/2/http://a.example.org>
+     ; rel="timemap";type="application/link-format"
+     ; from="Thu, 10 Apr 2008 20:30:51 GMT"
+     ; until="Tue, 27 Oct 2009 20:49:54 GMT",
+     <http://arxiv.example.net/timemap/3/http://a.example.org>
+     ; rel="timemap";type="application/link-format"
+     ; from="Thu, 29 Oct 2009 20:30:51 GMT"
+     ; until="Fri, 31 Aug 2012 12:22:34 GMT"
+     <http://arxiv.example.net/web/20000620180259/http://a.example.org>
+     ; rel="memento";datetime="Tue, 20 Jun 2000 18:02:59 GMT",
+     <http://arxiv.example.net/web/20000621011731/http://a.example.org>
+     ; rel="memento";datetime="Wed, 21 Jun 2000 01:17:31 GMT",
+     <http://arxiv.example.net/web/20000621044156/http://a.example.org>
+     ; rel="memento";datetime="Wed, 21 Jun 2000 04:41:56 GMT",
+     ...
+    ```
+
+- **Mementos para TimeMaps**
+
+  Un TimeMap puede actuar como un recurso original para el que existen TimeGates y Mementos, por lo tanto le corresponde al mismo TimeMap, incluir "timegate" para lincar con el TimeGate a través del la propia versión del TimeMap que esta disponible. En estos casos URI-T=URI-R=URI-G 
+
+#### Consideraciones de seguridad
+
+Avisar de "timegate" en la cabecera Link, cuando se produce un código 401 o 403 es Opcional, y por lo tanto depende de la implementación del servidor. Hay casos en los que se protege la versión actual, y se permite acceder a versiones anteriores del documento por medio de la cabecera Link.
 
 
 
