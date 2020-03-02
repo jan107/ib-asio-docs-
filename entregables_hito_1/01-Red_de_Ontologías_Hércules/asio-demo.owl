@@ -1,0 +1,336 @@
+@prefix : <http://www.weso.es/ontologies/2020/1/asio#> .
+@prefix ro: <http://purl.org/wf4ever/ro#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix deo: <http://purl.org/spar/deo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pso: <http://purl.org/spar/pso/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix asio: <http://www.asio.es/asioontologies/asio#> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix doco: <http://purl.org/spar/doco/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vivo: <http://vivoweb.org/ontology/core#> .
+@prefix cerif: <http://purl.org/cerif/> .
+@prefix fabio: <http://purl.org/spar/fabio/> .
+@prefix frapo: <http://purl.org/cerif/frapo#> .
+@prefix modules: <http://www.asio.es/asioontologies/asio/modules#> .
+@prefix semcerif: <http://eurocris.org/ontology/semcerif#> .
+@prefix timezone: <http://www.w3.org/2006/timezone#> .
+@prefix organization: <http://www.w3.org/ns/org#> .
+@base <http://www.asio.es/asioontologies/asio> .
+
+<http://www.asio.es/asioontologies/asio> rdf:type owl:Ontology .
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.asio.es/asioontologies/asio#projectEndDate
+asio:projectEndDate rdf:type owl:DatatypeProperty ;
+                    rdfs:domain foaf:Project ;
+                    rdfs:comment "The end date of the project."@en .
+
+
+###  http://www.asio.es/asioontologies/asio#projectKeyword
+asio:projectKeyword rdf:type owl:DatatypeProperty ;
+                    rdfs:domain foaf:Project ;
+                    rdfs:comment "A key word of the project."@en .
+
+
+###  http://www.asio.es/asioontologies/asio#projectObjective
+asio:projectObjective rdf:type owl:DatatypeProperty ;
+                      rdfs:domain foaf:Project ;
+                      rdfs:comment "A defined objective of the project."@en .
+
+
+###  http://www.asio.es/asioontologies/asio#projectStartDate
+asio:projectStartDate rdf:type owl:DatatypeProperty ;
+                      rdfs:domain foaf:Project ;
+                      rdfs:comment "The start date of the project."@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/cerif/frapo/FinancialEntity
+<http://purl.org/cerif/frapo/FinancialEntity> rdf:type owl:Class ;
+                                              rdfs:label "Entidad financiera"@es ,
+                                                         "Entitat financera"@ca ,
+                                                         "Entité financière"@fr ,
+                                                         "Financial entity"@en ,
+                                                         "Instituição financeira"@pt .
+
+
+###  http://purl.org/wf4ever/ro#ResearchObject
+ro:ResearchObject rdf:type owl:Class ;
+                  rdfs:comment "Objecte de recerca"@ca ,
+                               "Objet de recherche"@fr ,
+                               "Objeto de investigación"@es ,
+                               "Objeto de investigação"@pt ;
+                  rdfs:label "Research object"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#AcademicPublication
+asio:AcademicPublication rdf:type owl:Class ;
+                         rdfs:subClassOf asio:Publication ;
+                         rdfs:label "Publicació acadèmica"@ca ,
+                                    "Publicación académica"@es ,
+                                    "Publication académique"@fr ,
+                                    "Publicação acadêmica"@pt .
+
+
+###  http://www.asio.es/asioontologies/asio#AdministrativeEntity
+asio:AdministrativeEntity rdf:type owl:Class ;
+                          rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                          rdfs:comment "This vertical module in ASIO models all the relevant administrative bodies (\"Administración Autonómica\") of Spain's Autonomous Communities (conserjerías, departamentos, secretarías) that might have a role in the ontological architecture of a given project. It is modeled hierarchically though the relevant administrative levels thereof."@en ;
+                          rdfs:label "Administrative entities"@en ,
+                                     "Entidades administrativas"@es ,
+                                     "Entidades administrativas"@pt ,
+                                     "Entitats administratives"@ca ,
+                                     "Entités administratives"@fr .
+
+
+###  http://www.asio.es/asioontologies/asio#AdministrativePersonnel
+asio:AdministrativePersonnel rdf:type owl:Class ;
+                             rdfs:subClassOf asio:HumanResource ;
+                             rdfs:label "Administrative personnel"@en ,
+                                        "Personal administratiu"@ca ,
+                                        "Personal administrativo"@es ,
+                                        "Personnel administratif"@fr ,
+                                        "Pessoal administrativo"@pt .
+
+
+###  http://www.asio.es/asioontologies/asio#Budget
+asio:Budget rdf:type owl:Class ;
+            rdfs:subClassOf <http://purl.org/cerif/frapo/FinancialEntity> ;
+            rdfs:label "Budget"@en ,
+                       "Budget"@fr ,
+                       "Orçamento"@pt ,
+                       "Pressupost"@ca ,
+                       "Presupuesto"@es .
+
+
+###  http://www.asio.es/asioontologies/asio#CV
+asio:CV rdf:type owl:Class ;
+        rdfs:comment "CV"@ca ,
+                     "CV"@es ,
+                     "CV"@fr ,
+                     "CV"@pt ;
+        rdfs:label "CV"@fr .
+
+
+###  http://www.asio.es/asioontologies/asio#Company
+asio:Company rdf:type owl:Class ;
+             rdfs:subClassOf foaf:Organization ;
+             owl:disjointWith asio:University ;
+             rdfs:comment "A corporation or business organization which makes goods (in a broad sense) in an organized manner and sells them to the public for profit."@en ,
+                          "Uma organização com personalidade jurídica, a qual dispõe dos médios necessários para a produção e obtenção de bens ou serviços destinados ao intercâmbio."@pt ,
+                          "Una organització amb personalitat jurídica, la qual disposa dels mitjans necessaris per a la producció i es dedica a combinar-los per obtenir béns o serveis destinats a l'intercanvi."@ca ,
+                          "Una organización con personalidad jurídica que dispone de los medios necesarios para la producción y se dedica a combinarlos para obtener bienes o servicios destinados al intercambio."@es ;
+             rdfs:label "Company"@en ,
+                        "Empresa"@ca ,
+                        "Empresa"@es ,
+                        "Empresa"@pt ,
+                        "Entreprise"@fr .
+
+
+###  http://www.asio.es/asioontologies/asio#Contract
+asio:Contract rdf:type owl:Class ;
+              rdfs:subClassOf <http://purl.org/cerif/frapo/FinancialEntity> ;
+              rdfs:label "Contracte"@ca ,
+                         "Contrat"@fr ,
+                         "Contrato"@es ,
+                         "Contrato"@pt .
+
+
+###  http://www.asio.es/asioontologies/asio#EmploymentContract
+asio:EmploymentContract rdf:type owl:Class ;
+                        rdfs:subClassOf asio:Contract ;
+                        rdfs:label "Contracte de treball"@ca ,
+                                   "Contrat de travail"@fr ,
+                                   "Contrato de trabajo"@es ,
+                                   "Contrato de trabalho"@pt ,
+                                   "Employment contract"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#Funding
+asio:Funding rdf:type owl:Class ;
+             rdfs:subClassOf <http://purl.org/cerif/frapo/FinancialEntity> .
+
+
+###  http://www.asio.es/asioontologies/asio#HumanResource
+asio:HumanResource rdf:type owl:Class ;
+                   rdfs:subClassOf foaf:Person ;
+                   rdfs:label "Human resource"@en ,
+                              "Recurs humà"@ca ,
+                              "Recurso humano"@es ,
+                              "Recurso humano"@pt ,
+                              "Ressource humaine"@fr .
+
+
+###  http://www.asio.es/asioontologies/asio#Patent
+asio:Patent rdf:type owl:Class ;
+            rdfs:label "Patent"@ca ,
+                       "Patent"@en ,
+                       "Patent"@fr ,
+                       "Patente"@es ,
+                       "Patente"@pt .
+
+
+###  http://www.asio.es/asioontologies/asio#ProjectBudget
+asio:ProjectBudget rdf:type owl:Class ;
+                   rdfs:subClassOf asio:Budget ;
+                   rdfs:label "Budget de projet"@fr ,
+                              "Orçamento de projeto"@pt ,
+                              "Pressupost de projecte"@ca ,
+                              "Presupuesto de proyecto"@es ,
+                              "Project budget"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#Publication
+asio:Publication rdf:type owl:Class ;
+                 rdfs:comment "A scientific or academic publication."@en ;
+                 rdfs:label "Publicació"@ca ,
+                            "Publicación"@es ,
+                            "Publication"@en ,
+                            "Publication"@fr ,
+                            "Publicação"@pt .
+
+
+###  http://www.asio.es/asioontologies/asio#ResearchGroup
+asio:ResearchGroup rdf:type owl:Class ;
+                   rdfs:subClassOf foaf:Group ;
+                   rdfs:label "Group de recherche"@fr ,
+                              "Grup de recerca"@ca ,
+                              "Grupo de investigación"@es ,
+                              "Grupo de investigação"@pt ,
+                              "Research group"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#ResearchInstitute
+asio:ResearchInstitute rdf:type owl:Class ;
+                       rdfs:subClassOf foaf:Organization ;
+                       rdfs:label "Centre de recerca"@ca ,
+                                  "Centro de investigación"@es ,
+                                  "Centro de investigação"@pt ,
+                                  "Research institute"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#ResearchPersonnel
+asio:ResearchPersonnel rdf:type owl:Class ;
+                       rdfs:subClassOf asio:HumanResource .
+
+
+###  http://www.asio.es/asioontologies/asio#ScientificPublication
+asio:ScientificPublication rdf:type owl:Class ;
+                           rdfs:subClassOf asio:Publication ;
+                           rdfs:label "Publicació científica"@ca ,
+                                      "Publicación científica"@es ,
+                                      "Publication scientifique"@fr ,
+                                      "Publicação científica"@pt ,
+                                      "Scientific publication"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#ServiceContract
+asio:ServiceContract rdf:type owl:Class ;
+                     rdfs:subClassOf asio:Contract ;
+                     rdfs:label "Contracte de servei"@ca ,
+                                "Contrat de service"@fr ,
+                                "Contrato de servicio"@es ,
+                                "Contrato de serviço"@pt ,
+                                "Service contract"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#SpainUniversityStaffing
+asio:SpainUniversityStaffing rdf:type owl:Class ;
+                             rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                             rdfs:comment "This ASIO vertical module defines Spain's University staffing model encompassing all its specificities."@en .
+
+
+###  http://www.asio.es/asioontologies/asio#TechnicalPersonnel
+asio:TechnicalPersonnel rdf:type owl:Class ;
+                        rdfs:subClassOf asio:HumanResource ;
+                        rdfs:label "Personal tècnic"@ca ,
+                                   "Personal técnico"@es ,
+                                   "Personnel technique"@fr ,
+                                   "Pessoal técnico"@pt .
+
+
+###  http://www.asio.es/asioontologies/asio#University
+asio:University rdf:type owl:Class ;
+                rdfs:subClassOf foaf:Organization ;
+                rdfs:comment "A centre at which higher education and research is conducted."@en ;
+                rdfs:label "Universidade"@pt ,
+                           "Universitat"@ca ,
+                           "University"@en ,
+                           "Université"@fr .
+
+
+###  http://www.asio.es/asioontologies/asio#Research&TeachingPersonnel
+<http://www.asio.es/asioontologies/asio#Research&TeachingPersonnel> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf asio:HumanResource .
+
+
+###  http://www.asio.es/asioontologies/asio/modules#GeopoliticalEntities
+modules:GeopoliticalEntities rdf:type owl:Class ;
+                             rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                             rdfs:comment """This vertical module in ASIO models all the geopolitical/administrative levels (from municipalities, to provinces, regions, countries and European-level entities) that might have a role in the ontological architecture of the project. It is modeled hierarchically though relevant administrative levels potentially funding projects.
+In the Asio project the proof of concept is carried out with the whole administrative levels of Spain, Portugal, Andorra and France, in addition to the relevant European administrative entities."""@en ;
+                             rdfs:label "Entidades geopolíticas"@es ,
+                                        "Entidades geopolíticas"@pt ,
+                                        "Entitats geopolítiques"@ca ,
+                                        "Entités géopolitiques"@fr ,
+                                        "Geopolitical entities"@en .
+
+
+###  http://www.asio.es/asioontologies/asio/modules#ScientificDomain
+modules:ScientificDomain rdf:type owl:Class ;
+                         rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                         rdfs:comment "This ASIO vertical module organizes hierarchically the scientific domains related to research projects as established by Spain's Agencia Estatal de Investigación, depending from the Ministerio de Economía y Competitividad."@en ;
+                         rdfs:label "Domains scientifiques"@fr ,
+                                    "Dominis científics"@ca ,
+                                    "Scientific domains"@en ,
+                                    "Áreas científicas"@es ,
+                                    "Áreas científicas"@pt .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+<http://www.w3.org/2004/02/skos/core#Concept> rdf:type owl:Class .
+
+
+###  http://www.w3.org/2004/02/skos/core#ConceptScheme
+<http://www.w3.org/2004/02/skos/core#ConceptScheme> rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+foaf:Agent rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Group
+foaf:Group rdf:type owl:Class ;
+           rdfs:subClassOf foaf:Agent .
+
+
+###  http://xmlns.com/foaf/0.1/Organization
+foaf:Organization rdf:type owl:Class ;
+                  rdfs:subClassOf foaf:Agent .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdf:type owl:Class ;
+            rdfs:subClassOf foaf:Agent .
+
+
+###  http://xmlns.com/foaf/0.1/Project
+foaf:Project rdf:type owl:Class ;
+             rdfs:comment "In ASIO, a temporary research endeavor undertaken to achieve defined objectives."@en .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
