@@ -34,7 +34,7 @@ Véamos un ejemplo concreto extraído de uno de los módulos verticales que desc
 LET ?regionResource = resource(concat("ES_DIVISION_LEVEL_1_",replace(?regionCode,"-","_")),asioModules)
 ```
 
-En este ejemplo, perteneciente a uno de los programas de transformación de datos tabulares a RDF, podemos *traducir* que el recurso de una Comunidad Autónoma cualquiera del Estado se crea a partir del [código ISO](https://www.iso.org/obp/ui/#iso:code:3166:ES) de tales entidades.
+En este ejemplo, perteneciente a uno de los programas de transformación de datos tabulares a RDF, podemos *traducir* que el recurso de una comunidad autónoma cualquiera del Estado se crea a partir del [código ISO](https://www.iso.org/obp/ui/#iso:code:3166:ES) de tales entidades.
 
 Así por ejemplo, en el caso de la Región de Murcia, el recurso se crearía a partir del código composicional **ES-MC**, cuya primera parte, **ES**, indica el país (España) y la segunda, **MC**, la subdivisión administrativa de primer nivel, en el caso español la *comunidad autónoma*: Región de Murcia.
 
@@ -48,25 +48,32 @@ skos:prefLabel "Région de Murcie"@fr ;
 skos:prefLabel "Regió de Múrcia"@ca ;
 skos:prefLabel "Región de Murcia"@gl ;
 skos:prefLabel "Murtziako Eskualdea"@eu ;
+
 skos:prefLabel "Мурсийский Регион"@ru ;
+
 skos:prefLabel "Rexón de Murcia"@ast ;
-skos:prefLabel "Регион Мурсија"@sr-Latn ;
-skos:prefLabel "Region Mursija"@sr-Cyrl ;
+
+skos:prefLabel "Регион Мурсија"@sr-Cyrl ;
+skos:prefLabel "Region Mursija"@sr-Latn ;
+
 skos:prefLabel "re'xjon̪ de 'muɾθja"@es-ES-fonipa ;
-skos:prefLabel "re'xjon̪ de 'muɾθja"@es-ES-fonipa ;
+
+skos:prefLabel "ˈriːʤən ɒv ˈmʊərsiə"@en-GB-fonipa ;
+skos:prefLabel "ˈriʤən ʌv ˈmɜːrʃ(i)ə"@en-US-fonipa ;
 ```
 
-que son capas multilingües aplicadas sobre la URI *conceptual* *aséptica* y opaca.
+que son capas multilingües aplicadas sobre la URI opaca, *conceptualmente* *aséptica*.
 
 Por otro lado, en este listado se puede observar una complejidad incremental en cuanto a los códigos de lengua, de *locale* y de sistema de escritura:
 
-- los siete primeros ejemplos incluyen códigos de lengua de dos letras (`es`, `pt`, `en`, `fr`, `ca`, `gl`, `eu`)
-- el octavo con código de dos letras (`ru`) y alfabeto cirílico por defecto (por lo que no es necesario especificar el sistema de escritura)
-- el noveno ya con un código de tres letras (`ast`)
-- el décimo y el décimo primero con códigos de lengua de dos letras (`sr`) y especificación del sistema de escritura empleado (`Latn` y `Cyrl`), ya que en la lengua serbia conviven los alfabetos latino y cirílico de manera natural.
+- los siete primeros ejemplos incluyen códigos de lengua de dos letras (`es`, `pt`, `en`, `fr`, `ca`, `gl`, `eu`).
+- el octavo con código de dos letras (`ru`) y alfabeto cirílico por defecto (por lo que no es necesario especificar el sistema de escritura).
+- el noveno ya con un código de tres letras (`ast`), hecho no trivial, dada la limitación a códigos de lenguas de dos dígitos implantada en algunos sistemas.
+- el décimo y el décimo primero cuentan con códigos de lengua de dos letras (`sr`) y especificación del sistema de escritura empleado (`Latn` y `Cyrl`), ya que en la lengua serbia conviven los alfabetos latino y cirílico de manera bastante natural (al contrario que en ruso, por ejemplo).
 - el décimo segundo incluyendo código de dos letras de lengua, seguido de código de dos letras de *locale* y seguido de un código de sistema de escritura bastante *sui generis* (`es-ES-fonipa`), en este caso correspondiente a la transcripción fonética, de acuerdo a la variedad del español hablado en españa, según el alfabeto fonético internacional o [IPA](https://www.internationalphoneticassociation.org/content/full-ipa-chart).
+- el décimo tercero y el décimo cuarto incluyen el mismo caso de transcripción fonética anterior pero para la lengua inglesa especificando dos *locales* diferentes: inglés británico (`en-GB-fonipa`) e inglés norteamericano (`en-US-fonipa`).
 
-El modelo de multilingüismo propuesto deberá poder lidiar con eficiencia con todos esos aspectos multilingües, multi*locale* y multi*script*.
+El modelo de multilingüismo propuesto deberá poder lidiar de manera eficiente con todos esos aspectos multilingües, multi*locale*, multi*script* y multi*transliteración*.
 
 Pero además, esta característica de opacidad de las URIs se alinea con el modelo de datos de Wikibase en el cual las entidades, sean clases o propiedades, reciben un código numérico:
 
@@ -115,9 +122,7 @@ A la hora de seleccionar vocabularios para reutilizar, elegir vocabularios multi
 ====================
 
 Denominamos "multiescriptalismo", adaptando el neologismo en inglés "multiscriptalism" de Coulmas (1996), a la faceta múltiple de las lenguas que tiene que ver no con la lengua propiamente dicha, sino con
-el sistema o sistemas de escritura que una lengua puede utilizar, es decir, para referirnos a la diversidad de sistemas de escritura (alfabetos, silabarios, sistemas logográficos, etc.) que se pueden
-encontrar en las lenguas naturales y en otros tipos de lenguajes, como
-por ejemplo las notaciones fonéticas.
+el sistema o sistemas de escritura que una lengua puede utilizar, es decir, para referirnos a la diversidad de sistemas de escritura (alfabetos, silabarios, sistemas logográficos, etc.) que se pueden encontrar en las lenguas naturales y en otros tipos de lenguajes, como por ejemplo las notaciones fonéticas.
 
 Aunque las ontologías de ASIO en principio solamente contemplan el español y el inglés como lenguas *de trabajo*, una estructura ontológica rigurosa y bien diseñada siempre debería considerar e incluir un modelo
 de *internacionalización* (i18n) preparatorio para todas las localizaciones (l10n) que fueran necesarias.
@@ -145,7 +150,7 @@ Imaginemos que la Universidad de Murcia contrata a 4 investigadores europeos com
 
 Todos ellos tienen una carrera académica previa en sus países de origen, donde han participado en proyectos nacionales y han publicado en sus lenguas de origen. Pero obviamente muchas veces, esa trayectoria previa aparece codificada no solamente en su lengua de origen, también en el alfabeto que usa esa lengua.
 
-De acuerdo con la filosofía multilingüe que opera en la Unión Europea y resultaría integrador e interesante disponer de esas referencias en la lengua y alfabeto originales y, también, cuando éste .
+De acuerdo con la filosofía multilingüe que opera en la Unión Europea, resultaría integrador e interesante disponer de esas referencias en la lengua y alfabeto originales y, también, mantener un mapeo directo de las referencias ya no solo multilingüe propiamente dicho, sino también multiscript.
 
 Veamos algún ejemplo de como las URIs deberían
 
@@ -192,7 +197,6 @@ Para el caso ruso,
 ```
 rdfs:label "Иван Уваров"@ru
 rdfs:label "Ivan Uvarov"@ru-Latn
-rdfs:label "Иван Уваров"@ru-Latn
 skos:prefLabel "Иван Уваров"@ru
 skos:prefLabel "Ivan Uvarov"@ru-Latn
 skos:altLabel "Aleksandar Karadjordjević"@ru-Latn
@@ -207,11 +211,60 @@ Obviamente el contexto del proyecto es Murcia, en España y en Europa occidental
 Publicaciones
 -------------
 
-Como comentábamos en la sección anterior, con el ejemplo ficticio de nuestras nuevas incorporaciones extranjeras al personal docente, éstas traen consigo un CV investigador en sus países de origen en el cual se incluye publicaciones científicas en sus lenguas y, por ende, en el alfabeto o sistema de escritura habitual de esas lenguas de origen.
+Como comentábamos en la sección anterior, con el ejemplo ficticio de nuestras nuevas incorporaciones extranjeras al personal docente, éstas traen consigo un CV investigador en sus países de origen en el cual se incluyen publicaciones científicas en sus lenguas nativas y, por ende, en el alfabeto o sistema de escritura habitual de esas lenguas de origen.
 
-Ejemplo artículo/libro en otro alfabeto + romanización FIXME-(Sokolov's *inner speech and thought*).
+El caso de la obra del autor ruso A. N. Sokolov, *Inner speech and thought*, publicada en su versión en inglés por la editorial Plenum Press/Springer, nos puede servir como ejemplificación. En los *metadatos* de la publicación americana, nos encontramos esta latinización: 
 
-Las mismas soluciones de romanización que veíamos para los nombres de personas podrían ser aplicados para los títulos de esas publicaciones.
+​										Sokolov, A. N. *Vnutrenniaia rech’ i myshlenie*. Moscow, 1968.
+
+que nos dejaría en la inopia incluso utilizando todas las habilidades y trucos explotables en cualquier buscador de internet (mainpage, duckduckgo, google) a la hora de recuperar el título original en alfabeto cirílico.
+
+Un tratamiento cuidadoso y *consciente* del multiescriptalismo como el que mostramos a continuación:
+
+```
+#author:
+rdfs:label "Александр Николаевич Соколов"@ru
+rdfs:label "Aleksandr Nikolaevich Sokolov"@ru-Latn
+
+skos:prefLabel "Александр Николаевич Соколов"@ru
+skos:altLabel "Александр Н. Соколов"@ru
+skos:altLabel "А. Н. Соколов"@ru
+skos:altLabel "А. Соколов"@ru
+
+skos:prefLabel "Aleksandr Nikolaevich Sokolov"@ru-Latn
+skos:altLabel "Aleksandr N. Sokolov"@ru-Latn
+skos:altLabel "A. N. Sokolov"@ru-Latn
+skos:altLabel "A. Sokolov"@ru-Latn
+
+#publication:
+rdfs:label "Внутренняя речь и мышление"@ru
+rdfs:label "Vnutrenniaia rech' i myshlenie"@ru-Latn
+
+skos:prefLabel "Внутренняя речь и мышление"@ru
+skos:prefLabel "Vnutrenniaia rech' i myshlenie"@ru-Latn
+```
+
+enriquecería nuestros datasets facilitando una recuperación eficiente y perfeccionada de información sobre investigadores y publicaciones científicas y, en el caso ejemplificador que nos compete, recogería a la perfección la *variación referencial* de la obra, tal como se puede reparar en una búsqueda del autor/obra en cualquier buscador.
+
+Veámoslo ejemplificado de manera práctica por medio de esta ilustración ad hoc que hemos preparado nosotros mismos para la ocasión reuniendo distintas portadas de la obra citada de Sokolov y la ficha de la obra de la Library of the Congress que se incluye en la traducción al inglés:
+
+
+
+![Diferentes portadas de la obra de Sokolov](./images/sokolov-full.png)
+
+La portada de la parte superior izquierda, correspondiente a la primera edición en inglés de la obra de Sokolov, de la editorial Plenum, incluye como nombre de autor únicamente la primera inicial y el apellido (A. Sokolov), mientras que la portada de la parte superior central de la imagen incluye ya ambas iniciales y el apellido (A. N. Sokolov). Ambas incluyen el título completo de la obra traducido al inglés (*Inner speech and thought*). 
+
+La imagen de la parte superior derecha, original en ruso, incluye las dos iniciales y el apellido del autor, obviamente en alfabeto cirílico (А. Н. Соколов), y el título original de la obra en el mismo alfabeto (*Внутренняя речь и мышление*).
+
+Finalmente, en la parte inferior de la imagen vemos la ficha bibliográfica de la Library of the Congress incluyendo la transliteración al alfabeto latino de la obra de Sokolov (*Vnutrenniaia rech' i myshlenie*) tal como se incluye en la primera edición de la traducción de la obra por parte de la editorial Plenum.
+
+Como se puede observar, el deficiente tratamiento del multiescriptalismo perjudicaría cualquier recuperación de información: la ficha es completamente *escriptocéntrica* y solo incluye información del autor en alfabeto latino, al menos completa y sin iniciales (Sokolov, Aleksandr Nikolaevich) y la latinización del título original ruso de la obra (*Vnutrenniaia rech' i myshlenie*), con algunos diacríticos que no recogemos en nuestra transcripción y que podrían ser conflictivos en la recuperación.
+
+
+
+
+
+
 
 
 
@@ -220,13 +273,23 @@ Los módulos verticales de la ontología ASIO como campo de pruebas
 
 En los módulos verticales de la ontología ASIO se incluyen modelizaciones de dominios específicos que quedan fuera del _core_ de la ontología propiamente dicho pero que son complementarios a él y lo enriquecen.
 
-En esta fase inicial de desarrollo de contemplan por el momento dos módulos verticales en concreto:
+En esta fase inicial de desarrollo de contemplan por el momento tres módulos verticales que exigen tratamiento multiligüe en mayor o menor medida. En concreto y por orden de más a menos en cuanto al multilingüismo éstos son:
 
-- Áreas científicas
 - Entidades geopolíticas
+- Áreas científicas
 - Entidades administrativas
 
 Estos módulos verticales suponen el caldo de cultivo ideal para hacer pruebas de concepto y evaluar limitaciones y alcance del modelo multilingüe del modelo ontológico ya que incluyen frecuentemente entidades susceptibles de ser tratadas en base a diversas lenguas naturales.
+
+
+
+## Entidades geopolíticas
+
+El otro módulo vertical ya avanzado en diseño aunque aún no totalmente implementado es el correspondiente al modelo geopolítico. En una primera fase, el módulo se limitará a España y sus niveles administrativos (nación, comunidad autónoma, provincia y municipio) y con futuras implementaciones que incluirán en principio países limítrofes (Andorra, Francia, Portugal) y tal vez alguno más cuyas etiquetas lingüísticas incluyan otros sistemas de escritura dentro de la Unión Europea, como Grecia o Bulgaria, estos últimos con el fin de testear el citado *multiescriptalismo*.
+
+También se eligió SKOS para la modelización de este módulo dado el modelo jerárquico obvio de las entidades geopolíticas.
+
+FIXME
 
 ## Áreas científicas
 
@@ -240,13 +303,7 @@ De este modo, estas 'Áreas científicas' han sido *mejoradas* respecto a la ver
 
 Además de las posibilidades de explotación ontológica que proporciona SKOS, que no deja de ser una ontología a su vez, con respecto al *core* de ASIO, las etiquetas multilingües suponen una materia prima interesante para llevar a cabo muchas pruebas *lingüísticas*.
 
-## Entidades geopolíticas
 
-El otro módulo vertical ya avanzado en diseño aunque aún no totalmente implementado es el correspondiente al modelo geopolítico. En una primera fase, el módulo se limitará a España y sus niveles administrativos (nación, comunidad autónoma, provincia y municipio) y con futuras implementaciones que incluirán en principio países limítrofes (Andorra, Francia, Portugal) y tal vez alguno más cuyas etiquetas lingüísticas incluyan otros sistemas de escritura dentro de la Unión Europea, como Grecia o Bulgaria, estos últimos con el fin de testear el citado *multiescriptalismo*.
-
-También se eligió SKOS para la modelización de este módulo dado el modelo jerárquico obvio de las entidades geopolíticas.
-
-FIXME
 
 ## Entidades administrativas
 
@@ -296,7 +353,9 @@ Referencias Web
 
 # Referencias bibliográficas
 
-Coulmas, F. (1996). *The Blackwell Encyclopedia of Writing Systems*. Oxford, U.K.: Blackwell Publishers. 
+Coulmas, F. (1996). *The Blackwell Encyclopedia of Writing Systems*. Oxford, U.K.: Blackwell Publishers.
+
+Sokolov, Aleksandr Nikolaevich (1972). *Inner Speech and Thought*. Plenum, New York [traducción al inglés de: Соколов, Александр Николаевич. *Внутренняя речь и мышление*]
 
 United Nations Group of Experts on Geographical Names, Working Group on Romanization Systems (2003). *Report on the Current Status of United Nations Romanization Systems for Geographical Names: Greek*. United Nations, New York.
 
