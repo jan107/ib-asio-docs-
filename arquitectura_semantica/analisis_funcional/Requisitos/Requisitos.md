@@ -2,9 +2,9 @@
 
 
 
-[Introducción](#introduccion)
+[Introducción](#introducción)
 
-[Propósito del proyecto](#proposito)
+[Propósito del proyecto](#propósito-del-proyecto)
 
 [Alcance](#alcance)
 
@@ -22,7 +22,7 @@
 
 
 
-## Introducción {#introduccion}
+## Introducción
 
 El presente documento corresponde al Análisis de Requisitos para la Red de Ontologías Hércules (ROH) de acuerdo al pliego de condiciones del proyecto: Servicio de I+D consistente en el desarrollo de soluciones innovadoras para la Universidad de Murcia en relación al reto de Arquitectura semántica e Infraestructura ontológica.  
 
@@ -30,7 +30,7 @@ En dicho pliego se indica: "El adjudicatario hará un análisis sobre el dominio
 
 
 
-### Propósito del proyecto {#proposito}
+### Propósito del proyecto
 
 El propósito del proyecto es definir una Red de Ontologías Hércules para la Gestión de la Investigación en el caso particular de la Universidad de Murcia que también pueda ser extrapolable a otras universidades españolas e internacionales. 
 
@@ -42,7 +42,7 @@ gestión, el análisis y las posibles sinergias entre universidades y el gran p�
 
 
 
-### Alcance {#alcance}
+### Alcance
 
 Tal y como se indica en el pliego de condiciones, la Red de Ontologías Hércules captura el dominio de Gestión de la Investigación por lo que las ontologías definirán fundamentalmente los aspectos relevantes en este ámbito. En el apartado "Resumen" del pliego de condiciones se enumeran los principales aspectos que deberán ser modelados:
 
@@ -85,7 +85,7 @@ UM como en el del resto de universidades interesadas.
 
 
 
-### Objetivos {#objetivos}
+### Objetivos
 
 Actualmente existen en España 79 Universidades distribuidas por todo el territorio nacional, y cada
 una de ellas cuenta con un sistema de gestión propio. Esto significa que cada Universidad tiene definidos
@@ -139,7 +139,7 @@ Esto provoca la aparición del proyecto Hércules, que dará solución a la nece
 
 
 
-## Skateholders {#skateholders}
+## Skateholders
 
 
 
