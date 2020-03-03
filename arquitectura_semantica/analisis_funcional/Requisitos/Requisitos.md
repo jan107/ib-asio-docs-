@@ -12,11 +12,11 @@
 
 [Skateholders](#skateholders)
 
-[Casos de uso](./Casos de uso.md)
+[Casos de uso](./Casos&nbsp;de&nbsp;uso.md)
 
 [Requisitos no funcionales](./Requisitos&nbsp;no&nbsp;funcionales.md)
 
-[Requisitos funcionales](./Requisitos funcionales.md)
+[Requisitos funcionales](./Requisitos&nbsp;funcionales.md)
 
 [Términos de ASIO](./Términos.md)
 
