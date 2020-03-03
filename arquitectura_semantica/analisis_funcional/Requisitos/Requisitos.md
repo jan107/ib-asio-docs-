@@ -14,9 +14,9 @@
 
 [Casos de uso](./Casos%20de%20uso.md)
 
-[Requisitos no funcionales](./Requisitos&nbsp;no&nbsp;funcionales.md)
+[Requisitos no funcionales](./Requisitos%20no%20funcionales.md)
 
-[Requisitos funcionales](./Requisitos&nbsp;funcionales.md)
+[Requisitos funcionales](./Requisitos%20funcionales.md)
 
 [Términos de ASIO](./Términos.md)
 
