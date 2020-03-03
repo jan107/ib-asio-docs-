@@ -49,6 +49,10 @@
 @prefix sio: <http://semanticscience.org/resource/>
 @prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore>
 @prefix bbccore: <http://www.bbc.co.uk/ontologies/coreconcepts/>
+@prefix opus: <http://lsdis.cs.uga.edu/projects/semdis/opus#>
+@prefix bibtex: <http://purl.org/net/nknouf/ns/bibtex#>
+@prefix lib: <http://purl.org/library/>
+@prefix swrc: <http://swrc.ontoware.org/ontology#>
 # add new/missing list of prefixes here
 @base <http://www.asio.es/asioontologies/asio/alignment/dcat> .
 
@@ -121,6 +125,35 @@ asio:Publication
                       semcerif:Publication ;
                       cogs:Publication ;
                       sio:SIO_000087 ;
+.
+asio:Thesis
+  owl:equivalentClass bibo:Thesis ;
+                      opus:Thesis ;
+                      sio:SIO_000165 ;
+                      swpo:Thesis ;
+                      fabio:Thesis ;
+                      lib:Thesis ;
+.
+asio:MastersThesis
+  owl:equivalentClass swpo:MasterThesis ;
+                      sio:SIO_000167 ;
+                      swpo:MasterThesis ;
+                      opus:Masters_Thesis ;
+                      fabio:MastersThesis ;
+                      swrc:MasterThesis ;
+                      bibtex:Mastersthesis ;
+.
+asio:PhDThesis
+  owl:equivalentClass swpo:PhDThesis ;
+                      fabio:DoctoralThesis ;
+                      sio:SIO_000168 ;
+                      opus:Doctoral_Dissertation ;
+                      bibtex:Phdthesis ;
+                      swrc:PhDThesis ;
+.
+asio:BachelorsThesis
+  owl:equivalentClass fabio:BachelorsThesis ;
+                      sio:SIO_000166 ;
 .
 asio:Patent
   owl:equivalentClass frapo:Patent ;

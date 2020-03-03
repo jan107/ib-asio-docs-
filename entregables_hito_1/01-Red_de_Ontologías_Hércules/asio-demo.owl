@@ -1,4 +1,4 @@
-@prefix : <http://www.weso.es/ontologies/2020/1/asio#> .
+@prefix : <http://www.asio.es/asioontologies/asio#> .
 @prefix ro: <http://purl.org/wf4ever/ro#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix deo: <http://purl.org/spar/deo/> .
@@ -107,6 +107,11 @@ asio:AdministrativePersonnel rdf:type owl:Class ;
                                         "Pessoal administrativo"@pt .
 
 
+###  http://www.asio.es/asioontologies/asio#BachelorsThesis
+asio:BachelorsThesis rdf:type owl:Class ;
+                     rdfs:subClassOf asio:Thesis .
+
+
 ###  http://www.asio.es/asioontologies/asio#Budget
 asio:Budget rdf:type owl:Class ;
             rdfs:subClassOf <http://purl.org/cerif/frapo/FinancialEntity> ;
@@ -175,6 +180,11 @@ asio:HumanResource rdf:type owl:Class ;
                               "Ressource humaine"@fr .
 
 
+###  http://www.asio.es/asioontologies/asio#MastersThesis
+asio:MastersThesis rdf:type owl:Class ;
+                   rdfs:subClassOf asio:Thesis .
+
+
 ###  http://www.asio.es/asioontologies/asio#Patent
 asio:Patent rdf:type owl:Class ;
             rdfs:label "Patent"@ca ,
@@ -182,6 +192,15 @@ asio:Patent rdf:type owl:Class ;
                        "Patent"@fr ,
                        "Patente"@es ,
                        "Patente"@pt .
+
+
+###  http://www.asio.es/asioontologies/asio#PhDThesis
+asio:PhDThesis rdf:type owl:Class ;
+               rdfs:subClassOf asio:Thesis ;
+               rdfs:label "Tese de doutoramento"@pt ,
+                          "Tesi doctoral"@ca ,
+                          "Tesis doctoral"@es ,
+                          "Thèse doctorale"@fr .
 
 
 ###  http://www.asio.es/asioontologies/asio#ProjectBudget
@@ -225,7 +244,11 @@ asio:ResearchInstitute rdf:type owl:Class ;
 
 ###  http://www.asio.es/asioontologies/asio#ResearchPersonnel
 asio:ResearchPersonnel rdf:type owl:Class ;
-                       rdfs:subClassOf asio:HumanResource .
+                       rdfs:subClassOf asio:HumanResource ;
+                       rdfs:label "Personal investigador"@ca ,
+                                  "Personal investigador"@es ,
+                                  "Personnel rechercheur"@fr ,
+                                  "Pessoal investigador"@pt .
 
 
 ###  http://www.asio.es/asioontologies/asio#ScientificPublication
@@ -263,6 +286,11 @@ asio:TechnicalPersonnel rdf:type owl:Class ;
                                    "Pessoal técnico"@pt .
 
 
+###  http://www.asio.es/asioontologies/asio#Thesis
+asio:Thesis rdf:type owl:Class ;
+            rdfs:subClassOf asio:AcademicPublication .
+
+
 ###  http://www.asio.es/asioontologies/asio#University
 asio:University rdf:type owl:Class ;
                 rdfs:subClassOf foaf:Organization ;
@@ -275,7 +303,11 @@ asio:University rdf:type owl:Class ;
 
 ###  http://www.asio.es/asioontologies/asio#Research&TeachingPersonnel
 <http://www.asio.es/asioontologies/asio#Research&TeachingPersonnel> rdf:type owl:Class ;
-                                                                    rdfs:subClassOf asio:HumanResource .
+                                                                    rdfs:subClassOf asio:HumanResource ;
+                                                                    rdfs:label "Personal docent i investigador"@ca ,
+                                                                               "Personnel enseignant et chercheur"@fr ,
+                                                                               "Pessoal docente e investigador"@pt ,
+                                                                               "personal docente e investigador"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio/modules#GeopoliticalEntities

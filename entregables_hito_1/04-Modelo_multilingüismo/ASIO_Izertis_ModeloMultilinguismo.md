@@ -211,13 +211,15 @@ Obviamente el contexto del proyecto es Murcia, en España y en Europa occidental
 Publicaciones
 -------------
 
-Como comentábamos en la sección anterior, con el ejemplo ficticio de nuestras nuevas incorporaciones extranjeras al personal docente, éstas traen consigo un CV investigador en sus países de origen en el cual se incluyen publicaciones científicas en sus lenguas nativas y, por ende, en el alfabeto o sistema de escritura habitual de esas lenguas de origen.
+Como comentábamos en la sección anterior, con el ejemplo ficticio de nuestras nuevas incorporaciones extranjeras al personal docente, éstas traen consigo indefectiblemente un CV investigador en sus países de origen en el cual constan publicaciones científicas en sus lenguas nativas y, por ende, en el alfabeto o sistema de escritura habitual de esas lenguas de origen.
 
-El caso de la obra del autor ruso A. N. Sokolov, *Inner speech and thought*, publicada en su versión en inglés por la editorial Plenum Press/Rosetta y más tarde reeditada por Springer, nos puede servir como ejemplificación. En los *metadatos* de la publicación americana, nos encontramos esta latinización: 
+El caso de la obra del autor ruso A. N. Sokolov, *Inner speech and thought*, publicada en su versión en inglés por la editorial Plenum Press/Rosetta y más tarde reeditada por Springer, nos puede servir como ejemplificación.
+
+En los *metadatos* de la publicación americana, nos encontramos esta latinización: 
 
 ​										Sokolov, A. N. *Vnutrenniaia rech’ i myshlenie*. Moscow, 1968.
 
-que nos dejaría en la inopia incluso utilizando todas las habilidades y trucos explotables en cualquier buscador de internet (mainpage, duckduckgo, google) a la hora de recuperar el título original en alfabeto cirílico.
+que nos dejaría en la inopia incluso utilizando todas las habilidades y trucos explotables en cualquier buscador de internet (startpage, duckduckgo, google) a la hora de recuperar el título original en alfabeto cirílico.
 
 Un tratamiento cuidadoso y *consciente* del multiescriptalismo como el que mostramos a continuación:
 
@@ -258,26 +260,20 @@ La imagen de la parte superior derecha, original en ruso, incluye las dos inicia
 
 Finalmente, en la parte inferior de la imagen vemos la ficha bibliográfica de la Library of the Congress, que propone una transliteración al alfabeto latino de la obra de Sokolov (*Vnutrenniaia rech' i myshlenie*) tal como aparece en la primera edición de la traducción de la obra por parte de la editorial Plenum/Rosetta.
 
-Como se puede observar, un tratamiento incompleto del multiescriptalismo perjudicaría cualquier recuperación de información: la ficha es completamente *escripto-latino-céntrica* y solo incluye información del autor en alfabeto latino (transliteración), al menos completa y sin iniciales (Sokolov, Aleksandr Nikolaevich) y la latinización del título original ruso de la obra (*Vnutrennȋaȋa rech' i myshlenie*).
+Como se puede observar, un tratamiento incompleto del multiescriptalismo perjudicaría cualquier recuperación de información: la ficha es completamente *escripto-latino-céntrica* y solo incluye información del autor en alfabeto latino (transliteración), al menos completa y sin iniciales (Sokolov, Aleksandr Nikolaevich), y la latinización del título original ruso de la obra (*Vnutrennȋaȋa rech' i myshlenie*).
 
-El uso de algunos diacríticos algo extravagantes (¿y tal vez añadidos en una segunda pasada de impresión?), que recogemos aproximadamente en nuestra transcripción como ⟨ȋ⟩ y que podrían ser problemáticos en la recuperación, no deja de ponernos sobre la pista de una dificultad clásica en la transliteración del grafema ruso ⟨я⟩, que se suele transliterar habitualmente en lenguas occidentales por medio de los dígrafos ⟨ya⟩ o ⟨ja⟩ para recoger tanto el valor semiconsonántico del primer elemento /y/ o /j/ como el valor plenamente vocálico del segundo elemento /a/. Otras soluciones utilizadas en el pasado eran 
+El uso de algunos diacríticos algo extravagantes (¿y tal vez añadidos en una segunda pasada de imprent), que recogemos de manera aproximada en nuestra transcripción como ⟨ȋ⟩ y que podrían ser problemáticos en la recuperación, no deja de ponernos sobre la pista de una dificultad clásica en la transliteración del grafema ruso ⟨я⟩, que se suele transliterar habitualmente en lenguas occidentales por medio de los dígrafos ⟨ya⟩ o ⟨ja⟩ para recoger tanto el valor semiconsonántico del primer elemento "y" o "j" como el valor plenamente vocálico del segundo elemento "a". 
 
-Así, lo más normal actualmente sería encontrar una transliteración como "Vnutrennjaja" o "Vnutrennyaya", evitando soluciones poco fieles (como sería la *hiatizante* "Vnutrenniaia") o el uso de diacríticos no consolidados en la norma actual de transliteración del ruso al inglés.
+Así, lo más normal actualmente sería encontrar una transliteración como "Vnutrennjaja" o "Vnutrennyaya", evitando soluciones poco fieles, como sería la *hiatizante* "Vnutrenniaia", o el uso de diacríticos no consolidados en la norma actual de transliteración del ruso al inglés, como el caso de la ficha de la Library of Congress, que evidentemente es bastante antigua y data de 1972.
 
-
-
-In [linguistics](https://en.wikipedia.org/wiki/Linguistics), a **grapheme** is the smallest unit of a [writing system](https://en.wikipedia.org/wiki/Writing_system) of any given language.[[1\]](https://en.wikipedia.org/wiki/Grapheme#cite_note-1)
-
-Graphemes include [alphabetic letters](https://en.wikipedia.org/wiki/Letter_(alphabet)), [typographic ligatures](https://en.wikipedia.org/wiki/Typographic_ligature), [Chinese characters](https://en.wikipedia.org/wiki/Chinese_characters), [numerical digits](https://en.wikipedia.org/wiki/Numerical_digit), [punctuation](https://en.wikipedia.org/wiki/Punctuation) marks, and other individual symbols.
-
-
-
-
+En definitiva, con este ejemplo hemos querido demostrar la relevancia del multiescriptalismo, como complemento del multilingüismo, en aquellos casos en que a la diversidad lingüística se le suma la diversidad de sistemas de escritura.
 
 
 
 Los módulos verticales de la ontología ASIO como campo de pruebas
 ========================================================
+
+Recuérdese que el modelado ontológico de ASIO es, inspirándonos remotamente en la propuesta de Fodor (1983) para la mente humana, modular y, aparte del módulo central o core, se lleva acabo una implementación por módulos verticales que, sin dejar de estar conectados a la ontología *core*, modelan verticalmente áreas ontológicas específicas de interés de una manera semiautónoma.
 
 En los módulos verticales de la ontología ASIO se incluyen modelizaciones de dominios específicos que quedan fuera del _core_ de la ontología propiamente dicho pero que son complementarios a él y lo enriquecen.
 
@@ -287,21 +283,23 @@ En esta fase inicial de desarrollo de contemplan por el momento tres módulos ve
 - Áreas científicas
 - Entidades administrativas
 
-Estos módulos verticales suponen el caldo de cultivo ideal para hacer pruebas de concepto y evaluar limitaciones y alcance del modelo multilingüe del modelo ontológico ya que incluyen frecuentemente entidades susceptibles de ser tratadas en base a diversas lenguas naturales.
+Estos módulos verticales suponen el patio de recreo ideal, así como el caldo de cultivo idóneo, para hacer pruebas de concepto y evaluar limitaciones y alcance del modelo multilingüe del modelo ontológico, ya que incluyen frecuentemente entidades susceptibles de ser tratadas en base a diversas lenguas naturales.
 
 
 
-## Entidades geopolíticas
+## entidades geopolíticas
 
-El otro módulo vertical ya avanzado en diseño aunque aún no totalmente implementado es el correspondiente al modelo geopolítico. En una primera fase, el módulo se limitará a España y sus niveles administrativos (nación, comunidad autónoma, provincia y municipio) y con futuras implementaciones que incluirán en principio países limítrofes (Andorra, Francia, Portugal) y tal vez alguno más cuyas etiquetas lingüísticas incluyan otros sistemas de escritura dentro de la Unión Europea, como Grecia o Bulgaria, estos últimos con el fin de testear el citado *multiescriptalismo*.
+El otro módulo vertical ya avanzado en diseño aunque aún no totalmente implementado es el correspondiente al modelo geopolítico.
+
+En una primera fase, el módulo se limitará a España y sus niveles administrativos (nación, comunidad autónoma, provincia y municipio), con futuras implementaciones que incluirán en principio países limítrofes (Andorra, Francia, Portugal) y, tal vez, alguno más cuyas etiquetas lingüísticas incluyan otros sistemas de escritura dentro de la Unión Europea, como Grecia o Bulgaria, estos últimos con el fin de testear el citado *multiescriptalismo*.
 
 También se eligió SKOS para la modelización de este módulo dado el modelo jerárquico obvio de las entidades geopolíticas.
 
 FIXME
 
-## Áreas científicas
+## áreas científicas
 
-La [Agencia Estatal de Investigación](http://www.ciencia.gob.es/portal/site/MICINN/menuitem.8d78849a34f1cd28d0c9d910026041a0/?vgnextoid=664cfb7e04195510VgnVCM1000001d04140aRCRD), dependiente del [Ministerio de Ciencia, Innovación y Universidades](http://www.mineco.gob.es/), es un autora de un documento que establece una jerarquía de [**áreas científicas**](http://www.ciencia.gob.es/stfls/MICINN/Ayudas/PE_2013_2016/PE_Promocion_e_Incorporacion_Talento_y_su_Empleabilidad/FICHEROS/SE_Incorporacion/Ayudas_contratos_RYC_2016/Clasificacion_areas_cientificas_2016_AEI.pdf) de referencia en proyectos de investigación y que nos fue propuesto como referencia en el documento de preguntas de competencia suministrado por la Universidad de Murcia.
+La [Agencia Estatal de Investigación](http://www.ciencia.gob.es/portal/site/MICINN/menuitem.8d78849a34f1cd28d0c9d910026041a0/?vgnextoid=664cfb7e04195510VgnVCM1000001d04140aRCRD), dependiente del [Ministerio de Ciencia, Innovación y Universidades](http://www.mineco.gob.es/), es autora de un documento que establece una lista jerárquica de [**áreas científicas**](http://www.ciencia.gob.es/stfls/MICINN/Ayudas/PE_2013_2016/PE_Promocion_e_Incorporacion_Talento_y_su_Empleabilidad/FICHEROS/SE_Incorporacion/Ayudas_contratos_RYC_2016/Clasificacion_areas_cientificas_2016_AEI.pdf) de referencia en proyectos de investigación y que nos fue propuesto como referencia en el documento de preguntas de competencia suministrado por la Universidad de Murcia.
 
 Ese documento, que ofrece una estructura jerárquica clara de dominios y subdominios está siendo actualmente modelado como vocabulario controlado de acuerdo al estándar del W3C [SKOS-Core](https://www.w3.org/TR/swbp-skos-core-spec/), que no solo es la solución más idónea para la estructura por niveles de tipo tesauro, en base a las clases `skos:Concept` (para aglutinar conceptos) y `skos:ConceptScheme` (para ordenar esos conceptos en esquemas de conceptos), sino que también proporciona medios para recoger modelos densamente multilingües, como demuestra el hecho de que suele ser la solución empleada en los tesauros multilingües de la Unión Europea, como [GEMET]([ttps://www.eionet.europa.eu/gemet/en/about/](https://www.eionet.europa.eu/gemet/en/about/)) o [EuroVoc](https://data.europa.eu/euodp/en/data/dataset/eurovoc).
 
@@ -315,7 +313,7 @@ Además de las posibilidades de explotación ontológica que proporciona SKOS, q
 
 
 
-## Entidades administrativas
+## entidades administrativas
 
 El módulo vertical de las entidades administrativas FIXME y se relaciona directamente con la adscripción de los proyectos dentro de los niveles local, regional, nacional e internacional.
 
@@ -364,6 +362,8 @@ Referencias Web
 # Referencias bibliográficas
 
 Coulmas, F. (1996). *The Blackwell Encyclopedia of Writing Systems*. Oxford, U.K.: Blackwell Publishers.
+
+Fodor, J. A. (1983). *The modularity of mind*. Bradford/MIT Press, Cambride, Mass. 
 
 Sokolov, Aleksandr Nikolaevich (1972). *Inner Speech and Thought*. Plenum, New York [traducción al inglés de: Соколов, Александр Николаевич. *Внутренняя речь и мышление*]
 
