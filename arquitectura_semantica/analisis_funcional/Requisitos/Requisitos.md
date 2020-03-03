@@ -4,17 +4,17 @@
 
 [Introducción](#introduccion)
 
-   [Propósito del proyecto](#proposito)
+[Propósito del proyecto](#proposito)
 
-   [Alcance](#alcance)
+[Alcance](#alcance)
 
-   [Objetivos](#objetivos)
+[Objetivos](#objetivos)
 
-   [Skateholders](#skateholders)
+[Skateholders](#skateholders)
 
 [Casos de uso](./Casos de uso.md)
 
-[Requisitos no funcionales](./Requisitos no funcionales.md)
+[Requisitos no funcionales](./Requisitos&nbsp;no&nbsp;funcionales.md)
 
 [Requisitos funcionales](./Requisitos funcionales.md)
 
