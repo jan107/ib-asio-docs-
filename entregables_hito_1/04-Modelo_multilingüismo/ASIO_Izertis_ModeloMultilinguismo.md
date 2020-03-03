@@ -246,23 +246,19 @@ skos:prefLabel "Vnutrenniaia rech' i myshlenie"@ru-Latn
 
 enriquecería nuestros datasets facilitando una recuperación eficiente y perfeccionada de información sobre investigadores y publicaciones científicas y, en el caso ejemplificador que nos compete, recogería a la perfección la *variación referencial* de la obra, tal como se puede reparar en una búsqueda del autor/obra en cualquier buscador.
 
-Veámoslo ejemplificado de manera práctica por medio de esta ilustración ad hoc que hemos preparado nosotros mismos para la ocasión reuniendo distintas portadas de la obra citada de Sokolov y la ficha de la obra de la Library of the Congress que se incluye en la traducción al inglés:
+Veámoslo ejemplificado de manera práctica por medio de esta ilustración *ad hoc* que hemos preparado nosotros mismos para la ocasión reuniendo distintas portadas de la obra citada de Sokolov y la ficha de la obra de la Library of the Congress que se incluye en la traducción al inglés de la primera edición:
 
 
 
 ![Diferentes portadas de la obra de Sokolov](./images/sokolov-full.png)
 
-La portada de la parte superior izquierda, correspondiente a la primera edición en inglés de la obra de Sokolov, de la editorial Plenum, incluye como nombre de autor únicamente la primera inicial y el apellido (A. Sokolov), mientras que la portada de la parte superior central de la imagen incluye ya ambas iniciales y el apellido (A. N. Sokolov). Ambas incluyen el título completo de la obra traducido al inglés (*Inner speech and thought*). 
+La portada de la parte superior izquierda, correspondiente a la primera edición en inglés de la obra de Sokolov, de la editorial Plenum, incluye como nombre de autor las dos iniciales y el apellido (A. N. Sokolov), mientras que la portada de la parte superior central de la imagen incluye únicamente la primera inicial y el apellido (A. N. Sokolov). Ambas incluyen, como es obvio, el título completo de la obra traducido al inglés (*Inner speech and thought*). 
 
 La imagen de la parte superior derecha, original en ruso, incluye las dos iniciales y el apellido del autor, obviamente en alfabeto cirílico (А. Н. Соколов), y el título original de la obra en el mismo alfabeto (*Внутренняя речь и мышление*).
 
 Finalmente, en la parte inferior de la imagen vemos la ficha bibliográfica de la Library of the Congress incluyendo la transliteración al alfabeto latino de la obra de Sokolov (*Vnutrenniaia rech' i myshlenie*) tal como se incluye en la primera edición de la traducción de la obra por parte de la editorial Plenum.
 
-Como se puede observar, el deficiente tratamiento del multiescriptalismo perjudicaría cualquier recuperación de información: la ficha es completamente *escriptocéntrica* y solo incluye información del autor en alfabeto latino, al menos completa y sin iniciales (Sokolov, Aleksandr Nikolaevich) y la latinización del título original ruso de la obra (*Vnutrenniaia rech' i myshlenie*), con algunos diacríticos que no recogemos en nuestra transcripción y que podrían ser conflictivos en la recuperación.
-
-
-
-
+Como se puede observar, un tratamiento incompleto del multiescriptalismo perjudicaría cualquier recuperación de información: la ficha es completamente *escriptocéntrica* y solo incluye información del autor en alfabeto latino (transliteración), al menos completa y sin iniciales (Sokolov, Aleksandr Nikolaevich) y la latinización del título original ruso de la obra (*Vnutrennȋaȋa rech' i myshlenie*), con algunos diacríticos algo extravagantes (¿y tal vez añadidos a mano?) que recogemos aproximadamente en nuestra transcripción y que podrían ser problemáticos en la recuperación.
 
 
 
