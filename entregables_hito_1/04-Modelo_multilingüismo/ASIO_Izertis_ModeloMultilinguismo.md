@@ -213,7 +213,7 @@ Publicaciones
 
 Como comentábamos en la sección anterior, con el ejemplo ficticio de nuestras nuevas incorporaciones extranjeras al personal docente, éstas traen consigo un CV investigador en sus países de origen en el cual se incluyen publicaciones científicas en sus lenguas nativas y, por ende, en el alfabeto o sistema de escritura habitual de esas lenguas de origen.
 
-El caso de la obra del autor ruso A. N. Sokolov, *Inner speech and thought*, publicada en su versión en inglés por la editorial Plenum Press/Springer, nos puede servir como ejemplificación. En los *metadatos* de la publicación americana, nos encontramos esta latinización: 
+El caso de la obra del autor ruso A. N. Sokolov, *Inner speech and thought*, publicada en su versión en inglés por la editorial Plenum Press/Rosetta y más tarde reeditada por Springer, nos puede servir como ejemplificación. En los *metadatos* de la publicación americana, nos encontramos esta latinización: 
 
 ​										Sokolov, A. N. *Vnutrenniaia rech’ i myshlenie*. Moscow, 1968.
 
@@ -252,13 +252,25 @@ Veámoslo ejemplificado de manera práctica por medio de esta ilustración *ad h
 
 ![Diferentes portadas de la obra de Sokolov](./images/sokolov-full.png)
 
-La portada de la parte superior izquierda, correspondiente a la primera edición en inglés de la obra de Sokolov, de la editorial Plenum, incluye como nombre de autor las dos iniciales y el apellido (A. N. Sokolov), mientras que la portada de la parte superior central de la imagen incluye únicamente la primera inicial y el apellido (A. N. Sokolov). Ambas incluyen, como es obvio, el título completo de la obra traducido al inglés (*Inner speech and thought*). 
+La portada de la parte superior izquierda, correspondiente a la primera edición en inglés de la obra de Sokolov, de la editorial Plenum/Rosetta, incluye como nombre de autor las dos iniciales y el apellido (A. N. Sokolov), mientras que la portada de la parte superior central de la imagen recoge únicamente la primera inicial y el apellido (A. N. Sokolov). Ambas inscriben, como es obvio, el título completo de la obra traducido al inglés (*Inner speech and thought*). 
 
 La imagen de la parte superior derecha, original en ruso, incluye las dos iniciales y el apellido del autor, obviamente en alfabeto cirílico (А. Н. Соколов), y el título original de la obra en el mismo alfabeto (*Внутренняя речь и мышление*).
 
-Finalmente, en la parte inferior de la imagen vemos la ficha bibliográfica de la Library of the Congress incluyendo la transliteración al alfabeto latino de la obra de Sokolov (*Vnutrenniaia rech' i myshlenie*) tal como se incluye en la primera edición de la traducción de la obra por parte de la editorial Plenum.
+Finalmente, en la parte inferior de la imagen vemos la ficha bibliográfica de la Library of the Congress, que propone una transliteración al alfabeto latino de la obra de Sokolov (*Vnutrenniaia rech' i myshlenie*) tal como aparece en la primera edición de la traducción de la obra por parte de la editorial Plenum/Rosetta.
 
-Como se puede observar, un tratamiento incompleto del multiescriptalismo perjudicaría cualquier recuperación de información: la ficha es completamente *escriptocéntrica* y solo incluye información del autor en alfabeto latino (transliteración), al menos completa y sin iniciales (Sokolov, Aleksandr Nikolaevich) y la latinización del título original ruso de la obra (*Vnutrennȋaȋa rech' i myshlenie*), con algunos diacríticos algo extravagantes (¿y tal vez añadidos a mano?) que recogemos aproximadamente en nuestra transcripción y que podrían ser problemáticos en la recuperación.
+Como se puede observar, un tratamiento incompleto del multiescriptalismo perjudicaría cualquier recuperación de información: la ficha es completamente *escripto-latino-céntrica* y solo incluye información del autor en alfabeto latino (transliteración), al menos completa y sin iniciales (Sokolov, Aleksandr Nikolaevich) y la latinización del título original ruso de la obra (*Vnutrennȋaȋa rech' i myshlenie*).
+
+El uso de algunos diacríticos algo extravagantes (¿y tal vez añadidos en una segunda pasada de impresión?), que recogemos aproximadamente en nuestra transcripción como ⟨ȋ⟩ y que podrían ser problemáticos en la recuperación, no deja de ponernos sobre la pista de una dificultad clásica en la transliteración del grafema ruso ⟨я⟩, que se suele transliterar habitualmente en lenguas occidentales por medio de los dígrafos ⟨ya⟩ o ⟨ja⟩ para recoger tanto el valor semiconsonántico del primer elemento /y/ o /j/ como el valor plenamente vocálico del segundo elemento /a/. Otras soluciones utilizadas en el pasado eran 
+
+Así, lo más normal actualmente sería encontrar una transliteración como "Vnutrennjaja" o "Vnutrennyaya", evitando soluciones poco fieles (como sería la *hiatizante* "Vnutrenniaia") o el uso de diacríticos no consolidados en la norma actual de transliteración del ruso al inglés.
+
+
+
+In [linguistics](https://en.wikipedia.org/wiki/Linguistics), a **grapheme** is the smallest unit of a [writing system](https://en.wikipedia.org/wiki/Writing_system) of any given language.[[1\]](https://en.wikipedia.org/wiki/Grapheme#cite_note-1)
+
+Graphemes include [alphabetic letters](https://en.wikipedia.org/wiki/Letter_(alphabet)), [typographic ligatures](https://en.wikipedia.org/wiki/Typographic_ligature), [Chinese characters](https://en.wikipedia.org/wiki/Chinese_characters), [numerical digits](https://en.wikipedia.org/wiki/Numerical_digit), [punctuation](https://en.wikipedia.org/wiki/Punctuation) marks, and other individual symbols.
+
+
 
 
 
@@ -289,7 +301,9 @@ FIXME
 
 ## Áreas científicas
 
-Así, dominios como las [**Áreas científicas**](http://www.ciencia.gob.es/stfls/MICINN/Ayudas/PE_2013_2016/PE_Promocion_e_Incorporacion_Talento_y_su_Empleabilidad/FICHEROS/SE_Incorporacion/Ayudas_contratos_RYC_2016/Clasificacion_areas_cientificas_2016_AEI.pdf) que propone la Agencia Estatal del investigación de los ministerios de ciencia e innovación  y el de universidades, propuesto en el documento de preguntas de competencia suministrado por la Universidad de Murcia. Ese documento, que ofrece una estructura jerárquica clara de dominios y subdominios está siendo modelizado como vocabulario controlado de acuerdo al estándar del W3C [SKOS-Core](https://www.w3.org/TR/swbp-skos-core-spec/), que no solo es la solución más idónea para la estructura por niveles de tipo tesauro, en base a las clases `skos:Concept` (para aglutinar conceptos) y `skos:ConceptScheme` (para ordenar esos conceptos en esquemas de conceptos), sino que también proporciona medios para recoger modelos densamente multilingües, como lo demuestra el hecho de que suele ser la solución empleada en los tesauros multilingües de la Unión Europea, como [GEMET]([ttps://www.eionet.europa.eu/gemet/en/about/](https://www.eionet.europa.eu/gemet/en/about/)) o [EuroVoc](https://data.europa.eu/euodp/en/data/dataset/eurovoc).
+La [Agencia Estatal de Investigación](http://www.ciencia.gob.es/portal/site/MICINN/menuitem.8d78849a34f1cd28d0c9d910026041a0/?vgnextoid=664cfb7e04195510VgnVCM1000001d04140aRCRD), dependiente del [Ministerio de Ciencia, Innovación y Universidades](http://www.mineco.gob.es/), es un autora de un documento que establece una jerarquía de [**áreas científicas**](http://www.ciencia.gob.es/stfls/MICINN/Ayudas/PE_2013_2016/PE_Promocion_e_Incorporacion_Talento_y_su_Empleabilidad/FICHEROS/SE_Incorporacion/Ayudas_contratos_RYC_2016/Clasificacion_areas_cientificas_2016_AEI.pdf) de referencia en proyectos de investigación y que nos fue propuesto como referencia en el documento de preguntas de competencia suministrado por la Universidad de Murcia.
+
+Ese documento, que ofrece una estructura jerárquica clara de dominios y subdominios está siendo actualmente modelado como vocabulario controlado de acuerdo al estándar del W3C [SKOS-Core](https://www.w3.org/TR/swbp-skos-core-spec/), que no solo es la solución más idónea para la estructura por niveles de tipo tesauro, en base a las clases `skos:Concept` (para aglutinar conceptos) y `skos:ConceptScheme` (para ordenar esos conceptos en esquemas de conceptos), sino que también proporciona medios para recoger modelos densamente multilingües, como demuestra el hecho de que suele ser la solución empleada en los tesauros multilingües de la Unión Europea, como [GEMET]([ttps://www.eionet.europa.eu/gemet/en/about/](https://www.eionet.europa.eu/gemet/en/about/)) o [EuroVoc](https://data.europa.eu/euodp/en/data/dataset/eurovoc).
 
 De este modo, estas 'Áreas científicas' han sido *mejoradas* respecto a la versión ofrecida por el ministerio en diversos aspectos:
 
