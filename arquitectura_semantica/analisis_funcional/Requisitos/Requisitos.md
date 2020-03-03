@@ -12,7 +12,7 @@
 
 [Skateholders](#skateholders)
 
-[Casos de uso](./Casos&nbsp;de&nbsp;uso.md)
+[Casos de uso](./Casos%20de%20uso.md)
 
 [Requisitos no funcionales](./Requisitos&nbsp;no&nbsp;funcionales.md)
 
