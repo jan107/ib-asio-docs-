@@ -76,7 +76,7 @@ En la figura *Ilustración 1 - Principales elementos del dominio GI* se represen
 
 
 
-![Ilustración 1 - Principales elementos del dominio GI](./images/Ilustración 1 - Principales elementos del dominio GI.jpg)                               
+![Ilustración 1 - Principales elementos del dominio GI](./images/Ilustración1-Principales-elementos-del-dominio-GI.jpg)                               
 
 Ilustración 1 - Principales elementos del dominio GI
 
