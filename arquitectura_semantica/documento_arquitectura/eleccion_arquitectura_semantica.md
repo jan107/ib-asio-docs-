@@ -12,7 +12,7 @@ Hay que tener en cuenta que uno de los requisitos que se persigue es que la arqu
 A groso modo, las alternativas que existirían son las siguientes:
 
 - Implementación ad-hoc utilizando diferentes piezas que den lugar a una arquitectura completa y extensible. Para ello se puede hacer uso de diferentes frameworks
-- Utilización de un Linked Data Platform, el cual por si mismo por si mismo aporta todas las piezas ya montadas y listas para su utilización
+- Utilización de un Linked Data Platform, el cual por si mismo aporta todas las piezas ya montadas y listas para su utilización
 
 ## Implementación ad-hoc
 
@@ -396,9 +396,13 @@ En el caso de Jena, la opción siempre sería ir mediante un endpoint SPARQL, lo
 
 * http://graphdb.ontotext.com/documentation/free/using-graphdb-with-jena.html
 
+#### Cumplimiento LDP
+
+En el caso de una solución ad-hoc, será preciso implementar las APIs que cumplan con los requisitos de LDP. En este sentido, conllevaría una enorme dificultar realizar esta implementación debida a la complejidad de este tipos de APIs.
+
 #### Conclusión
 
-Viendo los resultados anteriores, aunque ambos podrían utilizarse para el mismo cometido, parece que RDF4J aporta más valor al soportar más formatos RDF y al tener mayor compatibilidad con diferentes triplestores.
+Viendo los resultados anteriores, aunque ambos podrían utilizarse para el mismo cometido, parece que RDF4J aporta más valor al soportar más formatos RDF y al tener mayor compatibilidad con diferentes triplestores. No obstante, en cuanto a la compatibilidad con los diferentes triplestores, al poder utilizar un envoltorio de SAIL con Apache Jena, sería posible añadir compatibilidad con todos aquellos triplestores compatibles con RDF4J.
 
 ## Linked data platform (LDP)
 
@@ -412,19 +416,7 @@ Es un servidor LDP Modular que soporta el escalado horizontal y redundancia.
 
 Soporta bases de datos relacionales y triples stores.
 
-##### Uso
-
-Puede instalarse en maquinas Linux , dockenizarse o extenderse con Maven
-
-```xml
-<dependency>
-    <groupId>org.trellisldp</groupId>
-    <artifactId>trellis-api</artifactId>
-    <version>0.8.3</version>
-</dependency>
-```
-
- ##### Objetivo
+##### Objetivo
 
 Ofrecer API Rest según especificaciones de de LDP para interactuar con los datos (métodos de creación, modificación, borrado).
 
@@ -449,7 +441,50 @@ Después de la autentificación se asigna un WebID. El modulo de WebAC regula la
     acl:agent <https://example.org/users/1>, <https://example.org/users/2> .
 ```
 
-##### Integraciones
+##### Uso
+
+Puede instalarse en maquinas Linux / Windows o mediante Docker. En este último, Trellis poseé imágenes Docker tanto para la versión triplestore como para la versión base de datos. Por ejemplo, para la instalación de un entorno Docker se podría utilizar mediante compose o swarm el siguiente yaml:
+
+```yml
+version: "3"
+services:
+  trellis:
+    image: trellisldp/trellis-ext-db:latest
+    environment:
+      TRELLIS_DB_USERNAME: changeme
+      TRELLIS_DB_PASSWORD: changeme
+      TRELLIS_DB_URL: jdbc:postgresql://db/db-name
+    ports:
+      - 80:8080
+    depends_on:
+      - db
+    volumes:
+      - /local/trellis/data:/opt/trellis/data
+      - /local/trellis/log:/opt/trellis/log
+      # Please see note below about the ./etc directory
+      # - /local/trellis/etc:/opt/trellis/etc
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: db-name
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_USER: changeme
+      PGDATA: /var/lib/postgresql/data/pgdata/mydata
+    volumes:
+      - /local/postgresql/data/folder:/var/lib/postgresql/data/pgdata/mydata
+```
+
+Levantando en este caso tanto trellis con la capa de persistencia en base de datos como una base de datos relacional tipo Postgres.
+
+#### Cumplimiento LDP
+
+Según el W3C, TrellisLDP dispone de un cumplimiento completo de [LDP 1.0](https://www.w3.org/TR/ldp/) desde 2018.
+
+Más información:
+
+- [https://www.w3.org/wiki/LDP_Implementations#TrellisLDP_.28Server.29](https://www.w3.org/wiki/LDP_Implementations#TrellisLDP_.28Server.29)
+
+#### Integraciones
 
 Se integra con una base de datos relacional o un triple store. También publica notificaciones al añadir, modificar o eliminar un recurso conforme a [Activity Stream 2.0 specification](https://www.w3.org/TR/activitystreams-core/)
 
@@ -475,9 +510,58 @@ No hay soporte para la recursión, por lo tanto los PUT y DELETE recursivos no s
 
 Del mismo modo al borrar un raiz (foo), no borramos la jerarquía, por lo que debemos borrarlo explícitamente.
 
- ##### Asincronía
+##### Asincronía
 
 Todas las operaciones se realizan de forma asíncrona, lo que implica que pueden no ser visibles por los clientes inmediatamente
+
+##### Extensión de funcionalidades
+
+Trellis viene empaquetado listo para su utilización con los componentes estándar o extenderse con Maven, proporcionando para ello una librería que contiene todas las interfaces necesarias para crear extensiones.
+
+```xml
+<dependency>
+    <groupId>org.trellisldp</groupId>
+    <artifactId>trellis-api</artifactId>
+    <version>0.10.0</version>
+</dependency>
+```
+
+Trellis también provee de todas sus libererías subidas a repositorios Maven con lo cual sería muy sencillo utlizarlas para componer un empaquetado "custom". Esto facilitaría también el intercambio de ciertas piezas como puede ser la capa de persistencia para permitir así cumplir con el requisito de que la plataforma sea capaz de soportar el intercambio de triplestore, lo cual se explicará en la sección siguiente.
+
+##### Intercambio de las capas de persistencia
+
+Como se ha comentado en secciones anteriores, Trellis por defecto soporta la persistencia en triplestore y en base de datos relacional, siendo posibles en este último tanto Postgres como MySQL. Para este cometido Trellis provee de dos distribucions empaquetadas por defecto, tanto para instalación manual como en formato Docker.
+
+En el caso de la implementación triplestore, es capaz de soportar mediante configuración los siguientes Triplestores:
+
+- En memoria
+- TDB
+- Otros externos mediante endpoint SPARQL (se ha probado con éxito la integración con Blazegraph)
+
+###### Generación de nuevos adaptadores
+
+Trellis está diseñado para que sea posible generar un nuevo adaptador de la capa de persisencia. Para ello dispone de 2 interfaces que es preciso implementar:
+
+- `org.trellisldp.api.ResourceService`
+- `org.trellisldp.api.AuditService`
+
+Los métodos que es necesario implementar son los siguiente:
+
+```java
+CompletableFuture<Resource> get(IRI identifier);
+
+CompletableFuture<Void> create(IRI identifier, IRI interactionModel, Dataset dataset, IRI container, Binary binary);
+
+CompletableFuture<Void> replace(IRI identifier, IRI interactionModel, Dataset dataset, IRI container, Binary binary);
+
+CompletableFuture<Void> delete(IRI identifier, IRI container);
+```
+
+En este sentido, Trellis en su capa de persistencia utiliza Apache Jena, lo cual facilita la conexión con otros Triplestores, pudiendo aplicar aquí lo visto en la sección referente las [conclusiones sobre conectores](#conectores-con-tiple-stores) en la comparativa entre RDF4J y Jena.
+
+Para generar la aplicación con esta nueva capa de persistencia, sería necesario generar un nuevo artefacto incluyendo esta librería en lugar de alguna de las que proveé por defecto Trellis.
+
+Esto mismo aplicaría también para el caso de querer modificar otra parte de la aplicación que sea preciso adaptara los requisitos del proyecto Hércules.
 
 #### Prueba de Concepto
 
@@ -789,8 +873,6 @@ Link: <http://www.w3.org/ns/ldp/BasicContainer>; rel="type"
             <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  ldp:RDFSource .
     ```
 
-
-
 ##### Comentarios sobre la prueba de concepto
 
 ###### Ventajas
@@ -798,29 +880,47 @@ Link: <http://www.w3.org/ns/ldp/BasicContainer>; rel="type"
 Trellis conceptualmente, tiene un enfoque muy atractivo por los siguientes motivos:
 
 - Por un lado, facilita la integración de múltiples bases de datos ya sean relacionales ya sean triples stores
-- Por otro lado facilita una capa de autentificación con JWT y de autorización con el módulo WebAC
+- Por otro lado facilita una capa de autenticación / autorización mediante el uso de OAuth y tokens JWT, pudiendo definir permisos mediante el módulo WebAC
 - Además es fácilmente integrable con sistemas distribuidos o microservicios debido a su integración  con kafka, publicando en los topics establecidos el resultado de cualquier interacción con su API.
 - Su API sigue el standard  expuesto por la [LDP](https://www.w3.org/TR/ldp-primer/)
 - Recuperable cualquier versión de un contenedor o recurso por medio del uso de memento
 
 ###### Desventajas
 
-Se trata de una herramienta con muchas posibilidades pero poco madura:
+Se trata de una herramienta con muchas posibilidades pero también dispone de algún pero:
 
-- Apenas existe documentación al respecto, y la que hay no esta actualizada. Sobre la última versión de Trellis (0.10.0), las operaciones sobre el API descritas en la documentación no funcionan (funcionan en su mayor parte las descritas por la [LDP](https://www.w3.org/TR/ldp-primer/)) .
-- La propia versión del proyecto (0.10.0), habla de su estado de inmadurez.
+- Apenas existe documentación al respecto, y la que hay no esta actualizada.
+- La propia versión del proyecto (0.10.0), habla de su estado de inmadurez relativa.
 - No se encuentran ejemplos de uso, por lo que se infiere que la permeabilidad en proyectos reales es muy baja.
 - Dada la escasez de documentación, el número de horas destinadas a inferir su correcto uso serán elevadas, y la probabilidad de cometer errores alta.
 - Es precisa la generación previa de RDF a partir de los POJOs, teniendo que utilizar para ello algún framework
 
 #### Conclusión
 
-Debido a su estado de inmadurez, y que probablemente obtener un conocimiento apropiado sobre el uso de la herramienta (dada la escasa documentación), requiera un alto coste en horas de trabajo, con una gran incertidumbre sobre el resultado final  y que aparentemente las ventajas que aporta, podrían resolverse con otras herramientas o desarrollos a medida, se recomienda por el momento no usar esta herramienta. Probablemente Apache Jena pueda ser una mejor alternativa dado que su estado de madurez es superior, y su arquitectura modular, probablemente permita usar aquellos módulos que sirvan a nuestros propósitos y desechar el resto. 
+Trellis por si mismo no es capaz de cumplir con todos los requisitos del proyecto, por lo que utilizar las distribuciones existentes provistas por el fabricante no sería una opción suficiente. 
+
+Sería necesario invertir tiempo en adaptar el producto, a las necesidades del proyecto Hércules, lo cual sería posible gracias a su arquitectura modular, usando aquellos módulos que sirvan a nuestros propósitos y sustituyendo el resto por implementaciones propias.
 
 Otra conclusión que se puede obtener en la presente prueba de concepto, es que el triple store Blazegraph, parece cumplir con ciertas garantías con algunos de los requisitos demandados por el cliente, tal como el endpoint SPARQL, aunque probablemente  sea necesario introducir un proxy, para manejar los temas relativos a la seguridad.
 
-  ## Conclusión
+Una de las grandes ventajas que aportaría Trellis sería el hecho de que sería capaz de proveer un API conforme a la especificación LDP 1.0, lo cual en caso de tener que implementarlo manualmente conllevaría un gran esfuerzo.
 
-Tras analizar tanto una solución ad-hoc y una solución tipo LDP, se observa que esta última a pesar de ofrecer varias ventajas en un primer lugar ya que aportaría bastante componentes ya de fábrica, como por ejemplo cumplimiento de estándares LDP, no se trata de una alternativa lo suficientemente flexible de acuerdo a los requisitos de la aplicación, ya que uno de ellos exige que la aplicación sea transparente a un eventual cambio de triple store y con este tipo de plataformas es muy complicado conseguirlo.
+## Testing de cumplimiento LDP
 
-Se recomienda la utilización de una solución ad-hoc apoyada en un framework RDF, supliendo aquellos que no provea con desarrollo custom, como es el caso de las APIs Linked Data y endpoint SPARQL.
+Independientemente del enfoque que se utilice finalmente, es preciso verificar que la solución adoptada cumple con el [estándar LDP del W3C](https://www.w3.org/TR/ldp/). En el caso de Trellis, según el W3C se indica que está [conforme con LDP 1.0 desde 2018](https://www.w3.org/wiki/LDP_Implementations#TrellisLDP_.28Server.29), con lo que se podría garantizar este cumplimiento.
+
+Para testear el cumplimiento de la especificación, W3C dispone de una herramienta denominada [ldp-testsuite](https://w3c.github.io/ldp-testsuite/), la cual es capaz de generar un reporte indicando el nivel conseguido, así como aquellos puntos que no se cumplen.
+
+## Conclusión
+
+Tras analizar tanto una solución ad-hoc y una solución tipo LDP, se observa que ambas por si mismo no son una solución completa. 
+
+El implementar un API conforme a los criterios de LDP conllevaría un gran esfuerzo para conseguir un cumplimiento mínimo de los requisitos establecidos por la especificación, por lo que en este caso se aconseja la utilización de Trellis para este cometido ya que está certificado por el W3C en el cumplimiento de la especificación.
+
+No obstante lo anterior, Trellis por si solo tiene ciertas carencias que será necesario suplir mediante implementaciones ad-hoc:
+
+- Implementación de la capa de persistencia que permita intercambiar diferentes triplestores
+- Generación de RDF a partir de los POJOs
+- Otras adaptaciones que sea preciso llevar a cabo
+
+Para los 2 primeros puntos, se aconseja la utilización de un framework tipo RDF4J o Apache Jena que permita conseguirlos con mayor facilidad.
