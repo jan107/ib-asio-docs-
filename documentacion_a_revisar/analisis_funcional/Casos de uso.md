@@ -27,7 +27,7 @@ Para entender los casos de uso debemos saber que en la aplicación ASIO disponem
 
 Los usuarios públicos se registran y acceden a través del sistema SIR.
 
-![Autentificación](./images/casos de uso/autentificación.JPG)
+![Autentificación](./images/casos-de-uso/autentificacion.JPG)
 
 
 
@@ -35,7 +35,7 @@ Los usuarios públicos se registran y acceden a través del sistema SIR.
 
 Los usuarios con rol Gestor ASIO podrán gestionar roles, gestionar los datos de usuarios y su rol y modificar la frecuencia de carga de datos de forma automática.
 
-![Administración](./images/casos de uso/administración de usuarios.JPG)
+![Administración](./images/casos-de-uso/administracion-de-usuarios.JPG)
 
 
 
@@ -49,7 +49,7 @@ Los usuarios con rol administrador de universidad, podrán:
 
 El propio sistema lanzará un proceso con una frecuencia que podrá ser editada por el usuario administrador, que cargará los datos ficheros almacenados en el FTP.
 
-![Administración de contenidos](./images/casos de uso/administracion de contenidos.JPG)
+![Administración de contenidos](./images/casos-de-uso/administracion-de-contenidos.JPG)
 
 
 
@@ -57,7 +57,7 @@ El propio sistema lanzará un proceso con una frecuencia que podrá ser editada 
 
 Todos los usuarios podrán acceder a la pantalla de consultas y hacer consultas en formato SPARQL, también verán las consultas predeterminadas de su rol y podrán modificarlas. En los resultados de la consulta sólo se mostrarán los datos visibles para su rol (configurado por el usuario administrador de universidad), pero si la consulta es una agregación, si se tendrán en cuenta estos datos.
 
-![visualización de contenidos](./images/casos de uso/visualización de contenidos.JPG)
+![visualización de contenidos](./images/casos-de-uso/visualizacion-de-contenidos.JPG)
 
 
 
@@ -65,4 +65,4 @@ Todos los usuarios podrán acceder a la pantalla de consultas y hacer consultas 
 
 La aplicación web permitirá ver las diferentes documentaciones disponibles 
 
-![pagina web de documentación](./images/casos de uso/pagina web de documentación.JPG)
+![pagina web de documentación](./images/casos-de-uso/pagina-web-de-documentacion.JPG)
