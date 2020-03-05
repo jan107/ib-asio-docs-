@@ -24,19 +24,21 @@
 
 
 
-| Código | Requisito                                                    | Prioridad |
-| ------ | ------------------------------------------------------------ | --------- |
-|        | La aplicación constará de una serie de roles predefinidos:<br />- *Gestor ASIO*: Es el administrador del sistema. Podrá administrar roles y modificar la frecuencia de los procesos automáticos de carga de datos. <br />- *Administrador de universidad*: Podrá crear y modificar ontologías relativas a su universidad y les asignará roles, cargar datos relativos a esa universidad y modificar los roles de los datos<br />- *Investigador de universidad*: Podrá ver los datos asignados a su rol, y los datos de usuario para consultas.<br />- *Usuario para consultas de universidad*: Podrá ver datos asignados a este rol.<br />- *Administrador de Ministerio (ministerio, FECYT agencia de ciencia):* Podrá añadir/borrar consultas SparQL personalizadas para los usuarios de Ministerio.<br />- *Usuario de Ministerio (ministerio, FECYT agencia de ciencia):* Podrá ver los datos asignados a su rol y ejecutar consultas SparQL personalizadas.<br />- *Gobierno regional*: Podrá ver los datos asignados a su rol.<br />- *Agencia Española de investigación*: Podrá ver los datos asignados a su rol. |           |
-|        | Cuando el usuario se registra a través de SIR, si este sistema devuelve su rol y hay una equivalencia con los roles existentes en la aplicación, se le asignará su rol automáticamente. |           |
-|        | Cuando el usuario se registra a través de SIR, si este sistema devuelve su rol y no hay una equivalencia con los roles existentes en la aplicación, se creará su usuario pero sólo podrá acceder al contenido público del portal. |           |
-|        | Los usuarios con rol gestor ASIO podrán crear roles mediante una pantalla. |           |
-|        | Los usuarios con rol gestor ASIO podrán modificar roles mediante una pantalla. |           |
-|        | Los usuarios con rol gestor ASIO podrán borrar roles mediante una pantalla. |           |
-|        | Los usuarios con rol gestor ASIO podrán modificar el rol de un usuario haciendo una búsqueda previa de ese usuario en la aplicación web. |           |
-|        | Los usuarios con rol Gestor ASIO podrán configurar en la aplicación web la frecuencia con la que la aplicación lanzará los procesos automáticos para cargar y actualizar los datos. |           |
-|        |                                                              |           |
-|        |                                                              |           |
-|        |                                                              |           |
+- - | Código | Requisito                                                    | Prioridad |
+    | ------ | ------------------------------------------------------------ | --------- |
+    |        | La aplicación constará de una serie de roles predefinidos:<br />- *Gestor ASIO*: Es el administrador del sistema. Podrá administrar roles y modificar la frecuencia de los procesos automáticos de carga de datos. <br />- *Administrador de universidad*: Podrá crear y modificar ontologías relativas a su universidad y les asignará roles, cargar datos relativos a esa universidad y modificar los roles de los datos<br />- *Investigador de universidad*: Podrá ver los datos asignados a su rol, y los datos de usuario para consultas.<br />- *Usuario para consultas de universidad*: Podrá ver datos asignados a este rol.<br />- *Administrador de Ministerio (ministerio, FECYT agencia de ciencia):* Podrá añadir/borrar consultas SparQL personalizadas para los usuarios de Ministerio.<br />- *Usuario de Ministerio (ministerio, FECYT agencia de ciencia):* Podrá ver los datos asignados a su rol y ejecutar consultas SparQL personalizadas.<br />- *Gobierno regional*: Podrá ver los datos asignados a su rol.<br />- *Agencia Española de investigación*: Podrá ver los datos asignados a su rol. |           |
+    |        | Cuando el usuario se registra a través de SIR, si este sistema devuelve su rol y hay una equivalencia con los roles existentes en la aplicación, se le asignará su rol automáticamente. |           |
+    |        | Cuando el usuario se registra a través de SIR, si este sistema devuelve su rol y no hay una equivalencia con los roles existentes en la aplicación, se creará su usuario pero sólo podrá acceder al contenido público del portal. |           |
+    |        | Los usuarios con rol gestor ASIO podrán crear roles mediante una pantalla. |           |
+    |        | Los usuarios con rol gestor ASIO podrán modificar roles mediante una pantalla. |           |
+    |        | Los usuarios con rol gestor ASIO podrán borrar roles mediante una pantalla. |           |
+    |        | Los usuarios con rol gestor ASIO podrán modificar el rol de un usuario haciendo una búsqueda previa de ese usuario en la aplicación web. |           |
+    |        | Los usuarios con rol Gestor ASIO podrán configurar en la aplicación web la frecuencia con la que la aplicación lanzará los procesos automáticos para cargar y actualizar los datos. |           |
+    |        | Los usuarios con rol Gestor Asio podrán modificar los roles asignados a una funcionalidad. |           |
+    |        | Una funcionalidad siempre tendrá un rol asignado, nunca podrá existir una funcionalidad sin rol asignado. |           |
+    |        | Los usuarios con rol Gestor Asio gestionarán los roles asignados a funcionalidades a través de una pantalla diseñada para ello. |           |
+    |        | Los roles asignados a funcionalidades por defecto en la aplicación y sus funcionalidades son:<br />  - Gestor ASIO: Gestionar la administración de roles y de la aplicación, asignar roles a funcionalidades y configurar frecuencia de procesos automáticos.<br />- Administrador de Ministerios: Crear, modificar y borrar las consultas SPARQL predefinidas para los usuarios de ministerios.<br />- Administrador de universidad: Cargar, modificar y borrar datos relativos a investigaciones a su universidad y asignar roles a los campos de las ontologías de su universidad. |           |
+
 
 
 
@@ -55,6 +57,10 @@
 |        | Al crear o modificar ontologías, los campos por defecto tendrán visualización publica, es decir, cualquier usuario, tanto registrados como no registrados, podrán ver los datos de esa ontología. |           |
 |        | Los usuarios con rol administrador de una universidad podrán modificar los roles permitidos para visualizar los campos de una ontología a través de una sección en la aplicación web. |           |
 |        | Los datos se cargarán de forma inicial con un proceso que los importará de la Universidad de Murcia, SGI Hércules, CVN y dos formatos adicionales que serán proporcionados por la universidad de Murcia para su implementación durante el hito 2. |           |
+|        | Se realizará una carga inicial de datos de los **CVNs.**     |           |
+|        | A partir de esa carga inicial sólo se enviarán actualizaciones. |           |
+|        | La aplicación debe de estar preparada para que cada profesor puede disponer de varios currículums. |           |
+|        | Se guardarán CVNs de la Universidad de Murcia, pero el diseño de la aplicación se realizará en base a que se puedan guardar CVNs de todas las universidades. |           |
 |        | Los usuarios con rol administrador de una universidad podrán actualizar los datos de las ontologías usando ficheros como CSV, XML, Json a través de la web con ficheros con un límite de tamaño. |           |
 |        | Los usuarios con rol administrador de una universidad podrán actualizar los datos de las ontologías usando ficheros como CSV, XML, Json a través de un Servicio Rest. |           |
 |        | El sistema dispondrá de un sitio FTP para poder almacenar ficheros de actualización y creación de ontologías. |           |
@@ -77,7 +83,7 @@
 |        | Al crear un elemento, se buscará su URI y si no existe, se generará una nueva con el generador de URIs. |           |
 |        | **Integración cotínua de las ontologías:** las ontologías serán almacenadas en modo texto en el sistema de control de versiones con el fin de que los creadores de ontologías puedan hacer uso de las prácticas habituales en ingeniería del software para gestión de software mediante control de versiones. |           |
 |        | Estas ontologías, una vez guardadas en el control de versiones, se pasarán a integración contínua para integrarlas en el triple store. |           |
-|        |                                                              |           |
+|        | Las cargas iniciales se realizarán a partir de procesos automáticos. |           |
 |        |                                                              |           |
 
 
@@ -103,6 +109,8 @@
 |        | La aplicación web será capaz de mostrar los metadatos de los datasets a los que se accederá navegando a través de las consultas. |           |
 |        | Si se accede a un elemento, a través de una consulta o de su URL asociada, se mostrarán su información de forma similar a cómo se muestran los datos en wikidata: https://www.wikidata.org/wiki/Q378619 |           |
 |        | En la pantalla de consultas SPARQL, un usuario podrá ver el resultado de las consultas de agregación de los campos que no son visibles para él, por ejemplo, una suma, pero no podrá ver estos datos en detalle. |           |
+|        | Un usuario sólo podrá ver o descargar los datos para los cuales tenga permisos. |           |
+|        | Se podrán descargar los datasets de todas las ontologías de la aplicación a través de la página web. |           |
 |        | Se dispondrá de un servicio donde las máquinas puedan hacer consultas mediante GET/POST, con negociación de contenido: En el caso de que una máquina haga un GET con cabeceras Accept de HTML, esa consulta aparecerá ejecutada en el formulario web y con resultado. Por ejemplo: https://query.wikidata.org/#SELECT%20%2a%0AWHERE%20%7B%0A%20%3Fs%20%3Fp%20%3Fo%0A%7D%0ALIMIT%ste |           |
 |        | El servicio para que las máquinas realicen consultas describirá el endpoint de la manera más rica posible, utilizando vocabularios como VoID y SPARQL Service Description, para que el endpoint sea lo más “descubrible” posible (Aranda 2013). |           |
 |        | Páginas web de documentación: La aplicación web tendrá la opción de ver estadísticas generales sobre los datos. |           |
@@ -113,7 +121,7 @@
 |        | Páginas web de documentación: Se podrán consultar los datos de contacto en la aplicación web. |           |
 |        | Páginas web de documentación: La aplicación web mostrará la información del contrato de URIs. |           |
 |        | Páginas web de documentación: La aplicación web mostrará información sobre el proyecto Hércules y sus objetivos. |           |
-|        |                                                              |           |
+|        | Cualquier usuario podrá acceder a la información mostrada en las páginas web de documentación. |           |
 |        |                                                              |           |
 
 
