@@ -39,7 +39,7 @@ El sistema Frontend de la aplicación se encargará de interactuar con los usuar
 
 
 
-![diagrama estructura del proyecto - front](./images/diagrama estructura del proyecto - front.jpg)
+![diagrama estructura del proyecto - front](./images/diagrama-estructura-del-proyecto-front.jpg)
 
 
 
@@ -61,7 +61,7 @@ Gestión de usuarios y roles
 
 Cualquier usuario podrá editar su propio perfil.
 
-![](./images/mocks/usuario edita su perfil.png)
+![](./images/mocks/usuario-edita-su-perfil.png)
 
 
 
@@ -69,7 +69,7 @@ Cualquier usuario podrá editar su propio perfil.
 
 El usuario Gestor Asio podrá añadir, borrar y editar roles en la aplicación.
 
-![Administrador gestiona roles](./images/mocks/administrar roles.png)
+![Administrador gestiona roles](./images/mocks/administrar-roles.png)
 
 
 
@@ -79,13 +79,13 @@ Un usuario administrador podrá editar el perfil y roles de un usuario.
 
 En primer lugar, debe buscar el usuario.
 
-![Administrador buscar usuarios](./images/mocks/buscar usuario.png)
+![Administrador buscar usuarios](./images/mocks/buscar-usuario.png)
 
 
 
 A partir de esta pantalla de búsqueda podrá editarlo.
 
-![Administrador edita usuario](./images/mocks/administrador edita perfil.png)
+![Administrador edita usuario](./images/mocks/administrador-edita-perfil.png)
 
 
 
@@ -94,7 +94,7 @@ A partir de esta pantalla de búsqueda podrá editarlo.
 Los usuarios con rol Gestor ASIO podrán modificar la frecuencia de carga
 de datos automática de la aplicación:
 
-![Administrador gestiona la aplicación](./images/mocks/administrador gestiona app.png)
+![Administrador gestiona la aplicación](./images/mocks/administrador-gestiona-app.png)
 
 
 
@@ -105,15 +105,15 @@ Administración ontologías y datos de las ontologías
 
 Los usuarios con rol administrador de la universidad, podrán cargar ontologías y sus datos a través de la aplicación web. Para esto dispondrán de una pantalla en la podrán seleccionar un fichero con formato CSV, XML o Json, que podrá ser de un tamaño máximo. *Los campos de las ontologías importadas tendrán visualización pública por defecto.*
 
-![Administrador universidad carga datos](./images/mocks/cargar datos.png)
+![Administrador universidad carga datos](./images/mocks/cargar-datos.png)
 
 ### Modificar ontologías y sus roles
 
 Los usuarios con rol administrador de la universidad, podrán modificar ontologías y sus roles para su universidad a través de la aplicación web, para eso podrán buscar las ontologías a través de un buscador simple, y a continuación modificarlas en una pantalla después de seleccionar la ontología deseada.
 
-![Buscar ontologías](./images/mocks/modificar ontologías.png)
+![Buscar ontologías](./images/mocks/modificar-ontologías.png)
 
-![Modificar ontologías](./images/mocks/modificar ontologias 2.png)
+![Modificar ontologías](./images/mocks/modificar-ontologias-2.png)
 
 
 
@@ -130,12 +130,12 @@ Para consultar datos, los usuarios podrán acceder a una pantalla donde se permi
 
 En esta pantalla habrá la opción de seleccionar una consulta de datos predeterminada y de modificarla.
 
-![Pantalla de consultas](./images/mocks/consulta predeterminada.png)
+![Pantalla de consultas](./images/mocks/consulta-predeterminada.png)
 
 
 
 Al pulsar sobre el dato que interese cuando se muestran los datos obtenidos de la consulta, se mostrará otra pantalla con el detalle, similar a las pantallas de Wikidata. Desde esta otra pantalla podremos acceder al detalle de cada uno de los datos que se muestran si es necesario.
 
-![Detalle consulta](./images/mocks/detalle consulta.png)
+![Detalle consulta](./images/mocks/detalle-consulta.png)
 
 
