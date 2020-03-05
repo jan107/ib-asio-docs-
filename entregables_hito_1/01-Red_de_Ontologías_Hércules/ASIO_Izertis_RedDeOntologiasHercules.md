@@ -28,11 +28,11 @@ FIXME
 
 Fodor's the modularity of mind ->
 
-**FIXME** The second can be described as a "vertical" view because it claims that our mental faculties are domain specific, genetically determined, associated with distinct neurological structures, and so on.[[21\]](https://en.wikipedia.org/wiki/Jerry_Fodor#cite_note-FF-21) 
+**FIXME** The second can be described as a "vertical" view because it claims that our mental faculties are domain specific, genetically determined, associated with distinct neurological structures, and so on. 
 
 [...]
 
-Two properties of modularity in particular, *informational encapsulation* and *domain specificity*, make it possible to tie together questions of functional architecture with those of mental content. The ability to elaborate information independently from the background beliefs of individuals that these two properties allow Fodor to give an [atomistic](https://en.wikipedia.org/wiki/Atomism) and causal account of the notion of mental content. The main idea, in other words, is that the properties of the contents of mental states can depend, rather than exclusively on the internal relations of the system of which they are a part, also on their causal relations with the external world.[[22\]](https://en.wikipedia.org/wiki/Jerry_Fodor#cite_note-Fodor2-22)  **FIXME**
+Two properties of modularity in particular, *informational encapsulation* and *domain specificity*, make it possible to tie together questions of functional architecture with those of knowledge content. The ability to elaborate information independently from the background knowledge that these two properties allow us to give an atomistic and causal account of the notion of knowledge content. The main idea, in other words, is that the properties of the contents of mental states can depend, rather than exclusively on the internal relations of the system of which they are a part, also on their causal relations with the external world. **FIXME**
 
 # Core ontology
 
@@ -119,7 +119,7 @@ Hence, besides being able to seamlessly *assimilate* these **Scientific domains*
 
 
 
-
+TO BE TRANSLATED:
 
 
 
