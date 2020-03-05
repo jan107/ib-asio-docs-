@@ -75,7 +75,8 @@ ro:ResearchObject rdf:type owl:Class ;
                                "Objet de recherche"@fr ,
                                "Objeto de investigación"@es ,
                                "Objeto de investigação"@pt ;
-                  rdfs:label "Research object"@en .
+                  rdfs:label "A research object aggregates a number of resources. A resource can be a workflow, web service, document, data item, data set, workflow run, software or a research object."@en ,
+                             "Research object"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#AcademicPublication
@@ -90,7 +91,7 @@ asio:AcademicPublication rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#AdministrativeEntity
 asio:AdministrativeEntity rdf:type owl:Class ;
                           rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
-                          rdfs:comment "This vertical module in ASIO models all the relevant administrative bodies (\"Administración Autonómica\") of Spain's Autonomous Communities (conserjerías, departamentos, secretarías) that might have a role in the ontological architecture of a given project. It is modeled hierarchically though the relevant administrative levels thereof."@en ;
+                          rdfs:comment "This vertical module in ASIO models all the relevant administrative bodies (\"Administración Autonómica\") of Spain's Autonomous Communities (conserjerías, departamentos, secretarías) that might have a role (funding, participating) within the development of a given project. It is modeled hierarchically through the relevant administrative levels thereof."@en ;
                           rdfs:label "Administrative entities"@en ,
                                      "Entidades administrativas"@es ,
                                      "Entidades administrativas"@pt ,
@@ -101,6 +102,7 @@ asio:AdministrativeEntity rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#AdministrativePersonnel
 asio:AdministrativePersonnel rdf:type owl:Class ;
                              rdfs:subClassOf asio:HumanResource ;
+                             rdfs:comment "Personnel devoted to administrative tasks."@en ;
                              rdfs:label "Administrative personnel"@en ,
                                         "Personal administratiu"@ca ,
                                         "Personal administrativo"@es ,
@@ -115,7 +117,14 @@ asio:Article rdf:type owl:Class ;
 
 ###  http://www.asio.es/asioontologies/asio#BachelorsThesis
 asio:BachelorsThesis rdf:type owl:Class ;
-                     rdfs:subClassOf asio:Thesis .
+                     rdfs:subClassOf asio:Thesis ;
+                     owl:disjointWith asio:MastersThesis ,
+                                      asio:PhDThesis ;
+                     rdfs:comment "A thesis reporting a research project undertaken as part of an undergraduate course of education to receive a bachelor's degree."@en ;
+                     rdfs:label "Bachelor's thesis"@en ,
+                                "Mémoire de fin de licence"@fr ,
+                                "Trabajo de fin de grado"@es ,
+                                "Treball de fi de grau"@ca .
 
 
 ###  http://www.asio.es/asioontologies/asio#Book
@@ -126,6 +135,7 @@ asio:Book rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#Budget
 asio:Budget rdf:type owl:Class ;
             rdfs:subClassOf <http://purl.org/cerif/frapo/FinancialEntity> ;
+            rdfs:comment "A financial plan for a defined period that may also include planned sales volumes and revenues, resource quantities, costs and expenses, assets, liabilities and cash flows."@en ;
             rdfs:label "Budget"@en ,
                        "Budget"@fr ,
                        "Orçamento"@pt ,
@@ -135,11 +145,18 @@ asio:Budget rdf:type owl:Class ;
 
 ###  http://www.asio.es/asioontologies/asio#CV
 asio:CV rdf:type owl:Class ;
-        rdfs:comment "CV"@ca ,
-                     "CV"@es ,
-                     "CV"@fr ,
-                     "CV"@pt ;
+        rdfs:comment "A document used and created by a person to present their background, skills and accomplishments."@en ;
         rdfs:label "CV"@en ,
+                   "CV"@es ,
+                   "CV"@pt ,
+                   "Curriculum vitae"@ca ,
+                   "Curriculum vitae"@es ,
+                   "Curriculum vitae"@fr ,
+                   "Curriculum vitae"@pt ,
+                   "Curriculum vitæ"@fr ,
+                   "Currículum vitae"@ca ,
+                   "Currículum vitae"@es ,
+                   "Resume"@en ,
                    "Résumé"@en .
 
 
@@ -185,6 +202,7 @@ asio:EmploymentContract rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#EuropeanProject
 asio:EuropeanProject rdf:type owl:Class ;
                      rdfs:subClassOf foaf:Project ;
+                     rdfs:comment "A project developed and funded at the European level."@en ;
                      rdfs:label "European project"@en ,
                                 "Projecte europeu"@ca ,
                                 "Projet européen"@fr ,
@@ -200,6 +218,7 @@ asio:Funding rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#HumanResource
 asio:HumanResource rdf:type owl:Class ;
                    rdfs:subClassOf foaf:Person ;
+                   rdfs:comment "A person who make up the workforce of an organization, industry, business sector or economy."@en ;
                    rdfs:label "Human resource"@en ,
                               "Recurs humà"@ca ,
                               "Recurso humano"@es ,
@@ -214,12 +233,20 @@ asio:Manual rdf:type owl:Class ;
 
 ###  http://www.asio.es/asioontologies/asio#MastersThesis
 asio:MastersThesis rdf:type owl:Class ;
-                   rdfs:subClassOf asio:Thesis .
+                   rdfs:subClassOf asio:Thesis ;
+                   owl:disjointWith asio:PhDThesis ;
+                   rdfs:comment "A thesis reporting a research project undertaken as part of an undergraduate course of education to receive a master's degree."@en ;
+                   rdfs:label "Dissertação de mestrado"@pt ,
+                              "Master's thesis"@en ,
+                              "Thèse de master"@fr ,
+                              "Trabajo de fin de máster"@es ,
+                              "Treball de fi de màster"@ca .
 
 
 ###  http://www.asio.es/asioontologies/asio#NationalProject
 asio:NationalProject rdf:type owl:Class ;
                      rdfs:subClassOf foaf:Project ;
+                     rdfs:comment "A project developed and funded at the national level."@en ;
                      rdfs:label "National project"@en ,
                                 "Projecte nacional"@ca ,
                                 "Projet national"@fr ,
@@ -229,6 +256,7 @@ asio:NationalProject rdf:type owl:Class ;
 
 ###  http://www.asio.es/asioontologies/asio#Patent
 asio:Patent rdf:type owl:Class ;
+            rdfs:comment "A form of intellectual property that gives its owner the legal right to exclude others from making, using, selling and importing an invention for a limited period of years, in exchange for publishing an enabling public disclosure of the invention."@en ;
             rdfs:label "Patent"@ca ,
                        "Patent"@en ,
                        "Patent"@fr ,
@@ -244,6 +272,7 @@ asio:PeerReviewedArticle rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#PhDThesis
 asio:PhDThesis rdf:type owl:Class ;
                rdfs:subClassOf asio:Thesis ;
+               rdfs:comment "A thesis reporting a research project undertaken as part of an undergraduate course of education to receive a doctoral degree."@en ;
                rdfs:label "Tese de doutoramento"@pt ,
                           "Tesi doctoral"@ca ,
                           "Tesis doctoral"@es ,
@@ -253,6 +282,7 @@ asio:PhDThesis rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#ProjectBudget
 asio:ProjectBudget rdf:type owl:Class ;
                    rdfs:subClassOf asio:Budget ;
+                   rdfs:comment "The budget established or devoted to a project."@en ;
                    rdfs:label "Budget de projet"@fr ,
                               "Orçamento de projeto"@pt ,
                               "Pressupost de projecte"@ca ,
@@ -262,7 +292,7 @@ asio:ProjectBudget rdf:type owl:Class ;
 
 ###  http://www.asio.es/asioontologies/asio#Publication
 asio:Publication rdf:type owl:Class ;
-                 rdfs:comment "A scientific or academic publication."@en ;
+                 rdfs:comment "Content made available to the general public. In the case of ASIO, often scientific or academic contents published."@en ;
                  rdfs:label "Publicació"@ca ,
                             "Publicación"@es ,
                             "Publication"@en ,
@@ -273,6 +303,7 @@ asio:Publication rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#RegionalProject
 asio:RegionalProject rdf:type owl:Class ;
                      rdfs:subClassOf foaf:Project ;
+                     rdfs:comment "A project developed and funded at the regional level."@en ;
                      rdfs:label "Projecte regional"@ca ,
                                 "Projet régional"@fr ,
                                 "Projeto regional"@pt ,
@@ -283,6 +314,7 @@ asio:RegionalProject rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#ResearchGroup
 asio:ResearchGroup rdf:type owl:Class ;
                    rdfs:subClassOf foaf:Group ;
+                   rdfs:comment "A group of researchers often from the same centre, specialised on the same subject, working together on the issue or topic."@en ;
                    rdfs:label "Group de recherche"@fr ,
                               "Grup de recerca"@ca ,
                               "Grupo de investigación"@es ,
@@ -293,6 +325,7 @@ asio:ResearchGroup rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#ResearchInstitute
 asio:ResearchInstitute rdf:type owl:Class ;
                        rdfs:subClassOf foaf:Organization ;
+                       rdfs:comment "An establishment founded for doing research."@en ;
                        rdfs:label "Centre de recerca"@ca ,
                                   "Centro de investigación"@es ,
                                   "Centro de investigação"@pt ,
@@ -302,6 +335,7 @@ asio:ResearchInstitute rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#ResearchPersonnel
 asio:ResearchPersonnel rdf:type owl:Class ;
                        rdfs:subClassOf asio:HumanResource ;
+                       rdfs:comment "Personnel devoted to reasearching tasks."@en ;
                        rdfs:label "Personal investigador"@ca ,
                                   "Personal investigador"@es ,
                                   "Personnel rechercheur"@fr ,
@@ -320,6 +354,7 @@ asio:ScientificPublication rdf:type owl:Class ;
 
 ###  http://www.asio.es/asioontologies/asio#SealOfQuality
 asio:SealOfQuality rdf:type owl:Class ;
+                   rdfs:comment "A graphic mark indicating highest levels of quality in research, often measured in terms of relevant publications related to the researching activity."@en ;
                    rdfs:label "Label qualité"@fr ,
                               "Seal of quality"@en ,
                               "Segell de qualitat"@ca ,
@@ -343,9 +378,21 @@ asio:SpainUniversityStaffing rdf:type owl:Class ;
                              rdfs:comment "This ASIO vertical module defines Spain's University staffing model encompassing all its specificities."@en .
 
 
+###  http://www.asio.es/asioontologies/asio#Spinoff
+asio:Spinoff rdf:type owl:Class ;
+             rdfs:subClassOf asio:Company ;
+             rdfs:comment "A division of a company or an organization that becomes an independent business with assets, employees, intellectual property, technology, or existing products taken from the parent company."@en ;
+             rdfs:label "Corporate spin-off"@en ,
+                        "Empresa derivada"@ca ,
+                        "Empresa derivada"@pt ,
+                        "Société scindée"@fr ,
+                        "Spin-off"@es .
+
+
 ###  http://www.asio.es/asioontologies/asio#TechnicalPersonnel
 asio:TechnicalPersonnel rdf:type owl:Class ;
                         rdfs:subClassOf asio:HumanResource ;
+                        rdfs:comment "Personnel devoted to technical suport."@en ;
                         rdfs:label "Personal tècnic"@ca ,
                                    "Personal técnico"@es ,
                                    "Personnel technique"@fr ,
@@ -376,6 +423,7 @@ asio:University rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#Research&TeachingPersonnel
 <http://www.asio.es/asioontologies/asio#Research&TeachingPersonnel> rdf:type owl:Class ;
                                                                     rdfs:subClassOf asio:HumanResource ;
+                                                                    rdfs:comment "Personnel devoted to teaching and research tasks."@en ;
                                                                     rdfs:label "Personal docent i investigador"@ca ,
                                                                                "Personnel enseignant et chercheur"@fr ,
                                                                                "Pessoal docente e investigador"@pt ,
