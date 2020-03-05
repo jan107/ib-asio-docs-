@@ -139,7 +139,8 @@ asio:CV rdf:type owl:Class ;
                      "CV"@es ,
                      "CV"@fr ,
                      "CV"@pt ;
-        rdfs:label "CV"@fr .
+        rdfs:label "CV"@en ,
+                   "Résumé"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#Company
