@@ -12,6 +12,7 @@
 # imports: http://www.w3.org/ns/org
 # imports: http://www.w3.org/ns/prov
 # imports: http://xmlns.com/foaf/0.1/
+# imports: http://sweetontology.net/humanTechReadiness/
 
 @prefix : <http://www.asio.es/asioontologies/asio/dcat> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
@@ -53,6 +54,7 @@
 @prefix bibtex: <http://purl.org/net/nknouf/ns/bibtex#>
 @prefix lib: <http://purl.org/library/>
 @prefix swrc: <http://swrc.ontoware.org/ontology#>
+@prefix npg: <http://ns.nature.com/terms/>
 # add new/missing list of prefixes here
 @base <http://www.asio.es/asioontologies/asio/alignment/dcat> .
 
@@ -69,6 +71,7 @@ foaf:Organization
                       sio:SIO_000012 ;
                       ebucore:Organisation ;
                       bbccore:Organisation ;
+                      npg:Organization ;
 .
 asio:University
   owl:equivalentClass organization:University ;
@@ -125,6 +128,7 @@ asio:Publication
                       semcerif:Publication ;
                       cogs:Publication ;
                       sio:SIO_000087 ;
+                      npg:Publication ;
 .
 asio:Thesis
   owl:equivalentClass bibo:Thesis ;
@@ -132,7 +136,7 @@ asio:Thesis
                       sio:SIO_000165 ;
                       swpo:Thesis ;
                       fabio:Thesis ;
-                      lib:Thesis ;
+                      #lib:Thesis ; to be checked&assured before uncommenting it
 .
 asio:MastersThesis
   owl:equivalentClass swpo:MasterThesis ;
@@ -155,9 +159,32 @@ asio:BachelorsThesis
   owl:equivalentClass fabio:BachelorsThesis ;
                       sio:SIO_000166 ;
 .
+asio:TechnicalReport
+  owl:equivalentClass sio:TechnicalReport ;
+                      fabio:TechnicalReport ;
+.
+asio:Article
+  owl:equivalentClass sio:SIO_000154 ;
+                      fabio:Article ;
+                      bibo:Article ;
+                      swpo:Article ;
+                      pext:Article ;
+                      bibo:AcademicArticle ;
+                      bibtex:Article ;
+                      opus:Article ;
+                      npg:Article ;
+                      bibo:Article ;
+.
+
+#swrc:Article & sio:SIO_00102  are both specifically "peer-reviewed article"
+#fabio:JournalArticle & obo:IAO_0000013 are both specifically "journal article"
+.
+asio:PeerReviewedArticle
+  owl:equivalentClass sio:SIO_000102 ;
+                      swrc:Article ;
+.
 asio:Patent
-  owl:equivalentClass frapo:Patent ;
-                      swpo:Patent ;
+  owl:equivalentClass swpo:Patent ;
                       bibo:Patent ;
                       vivo:Patent ;
                       cerif:Patent ;

@@ -23,6 +23,7 @@
 @prefix semcerif: <http://eurocris.org/ontology/semcerif#> .
 @prefix timezone: <http://www.w3.org/2006/timezone#> .
 @prefix organization: <http://www.w3.org/ns/org#> .
+@prefix humantechreadiness: <http://sweetontology.net/humanTechReadiness#> .
 @base <http://www.asio.es/asioontologies/asio> .
 
 <http://www.asio.es/asioontologies/asio> rdf:type owl:Ontology .
@@ -107,9 +108,19 @@ asio:AdministrativePersonnel rdf:type owl:Class ;
                                         "Pessoal administrativo"@pt .
 
 
+###  http://www.asio.es/asioontologies/asio#Article
+asio:Article rdf:type owl:Class ;
+             rdfs:subClassOf asio:ScientificPublication .
+
+
 ###  http://www.asio.es/asioontologies/asio#BachelorsThesis
 asio:BachelorsThesis rdf:type owl:Class ;
                      rdfs:subClassOf asio:Thesis .
+
+
+###  http://www.asio.es/asioontologies/asio#Book
+asio:Book rdf:type owl:Class ;
+          rdfs:subClassOf asio:ScientificPublication .
 
 
 ###  http://www.asio.es/asioontologies/asio#Budget
@@ -155,6 +166,11 @@ asio:Contract rdf:type owl:Class ;
                          "Contrato"@pt .
 
 
+###  http://www.asio.es/asioontologies/asio#EditedPublication
+asio:EditedPublication rdf:type owl:Class ;
+                       rdfs:subClassOf asio:ScientificPublication .
+
+
 ###  http://www.asio.es/asioontologies/asio#EmploymentContract
 asio:EmploymentContract rdf:type owl:Class ;
                         rdfs:subClassOf asio:Contract ;
@@ -163,6 +179,16 @@ asio:EmploymentContract rdf:type owl:Class ;
                                    "Contrato de trabajo"@es ,
                                    "Contrato de trabalho"@pt ,
                                    "Employment contract"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#EuropeanProject
+asio:EuropeanProject rdf:type owl:Class ;
+                     rdfs:subClassOf foaf:Project ;
+                     rdfs:label "European project"@en ,
+                                "Projecte europeu"@ca ,
+                                "Projet européen"@fr ,
+                                "Projeto europeu"@pt ,
+                                "Proyecto europeo"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio#Funding
@@ -180,9 +206,24 @@ asio:HumanResource rdf:type owl:Class ;
                               "Ressource humaine"@fr .
 
 
+###  http://www.asio.es/asioontologies/asio#Manual
+asio:Manual rdf:type owl:Class ;
+            rdfs:subClassOf asio:ScientificPublication .
+
+
 ###  http://www.asio.es/asioontologies/asio#MastersThesis
 asio:MastersThesis rdf:type owl:Class ;
                    rdfs:subClassOf asio:Thesis .
+
+
+###  http://www.asio.es/asioontologies/asio#NationalProject
+asio:NationalProject rdf:type owl:Class ;
+                     rdfs:subClassOf foaf:Project ;
+                     rdfs:label "National project"@en ,
+                                "Projecte nacional"@ca ,
+                                "Projet national"@fr ,
+                                "Projeto nacional"@pt ,
+                                "Proyecto regional"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio#Patent
@@ -192,6 +233,11 @@ asio:Patent rdf:type owl:Class ;
                        "Patent"@fr ,
                        "Patente"@es ,
                        "Patente"@pt .
+
+
+###  http://www.asio.es/asioontologies/asio#PeerReviewedArticle
+asio:PeerReviewedArticle rdf:type owl:Class ;
+                         rdfs:subClassOf asio:Article .
 
 
 ###  http://www.asio.es/asioontologies/asio#PhDThesis
@@ -221,6 +267,16 @@ asio:Publication rdf:type owl:Class ;
                             "Publication"@en ,
                             "Publication"@fr ,
                             "Publicação"@pt .
+
+
+###  http://www.asio.es/asioontologies/asio#RegionalProject
+asio:RegionalProject rdf:type owl:Class ;
+                     rdfs:subClassOf foaf:Project ;
+                     rdfs:label "Projecte regional"@ca ,
+                                "Projet régional"@fr ,
+                                "Projeto regional"@pt ,
+                                "Proyecto regional"@es ,
+                                "Regional project"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#ResearchGroup
@@ -261,6 +317,15 @@ asio:ScientificPublication rdf:type owl:Class ;
                                       "Scientific publication"@en .
 
 
+###  http://www.asio.es/asioontologies/asio#SealOfQuality
+asio:SealOfQuality rdf:type owl:Class ;
+                   rdfs:label "Label qualité"@fr ,
+                              "Seal of quality"@en ,
+                              "Segell de qualitat"@ca ,
+                              "Sello de calidad"@es ,
+                              "Selo de qualidade"@pt .
+
+
 ###  http://www.asio.es/asioontologies/asio#ServiceContract
 asio:ServiceContract rdf:type owl:Class ;
                      rdfs:subClassOf asio:Contract ;
@@ -286,9 +351,15 @@ asio:TechnicalPersonnel rdf:type owl:Class ;
                                    "Pessoal técnico"@pt .
 
 
+###  http://www.asio.es/asioontologies/asio#TechnicalReport
+asio:TechnicalReport rdf:type owl:Class ;
+                     rdfs:subClassOf asio:ScientificPublication .
+
+
 ###  http://www.asio.es/asioontologies/asio#Thesis
 asio:Thesis rdf:type owl:Class ;
-            rdfs:subClassOf asio:AcademicPublication .
+            rdfs:subClassOf asio:AcademicPublication ;
+            rdfs:comment "Any kind of thesis (bachelor's, master's, PhD) produced to receive some sort of university degree."@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#University

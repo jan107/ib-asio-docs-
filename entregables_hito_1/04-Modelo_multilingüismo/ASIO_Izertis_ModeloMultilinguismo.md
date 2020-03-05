@@ -5,7 +5,9 @@ Introducción
 
 Este informe documenta los casos de uso y contextos que se utilizarán en el proyecto Hércules para poner a prueba modelos multilingües (y de multiescriptalismo).
 
- FIXME
+**FIXME->una vez cerrada la estructura del doc (sin más secciones potenciales) y avanzadas casi conclusivamente todas las secciones, completar la intro**
+
+
 
 # Reglas del modelo de multilingüismo
 
@@ -73,9 +75,9 @@ Por otro lado, en este listado se puede observar una complejidad incremental en 
 - el décimo segundo incluyendo código de dos letras de lengua, seguido de código de dos letras de *locale* y seguido de un código de sistema de escritura bastante *sui generis* (`es-ES-fonipa`), en este caso correspondiente a la transcripción fonética, de acuerdo a la variedad del español hablado en españa, según el alfabeto fonético internacional o [IPA](https://www.internationalphoneticassociation.org/content/full-ipa-chart).
 - el décimo tercero y el décimo cuarto incluyen el mismo caso de transcripción fonética anterior pero para la lengua inglesa especificando dos *locales* diferentes: inglés británico (`en-GB-fonipa`) e inglés norteamericano (`en-US-fonipa`).
 
-El modelo de multilingüismo propuesto deberá poder lidiar de manera eficiente con todos esos aspectos multilingües, multi*locale*, multi*script* y multi*transliteración*.
+El modelo de multilingüismo propuesto deberá poder lidiar de manera eficiente con todos esos aspectos multilingües, multi*locale*, multi*script* y multi*transliteración*, que serán puestos a prueba especialmente y de manera extensiva en los módulos verticales de la ontología ASIO, como comentaremos con detalles más adelante.
 
-Pero además, esta característica de opacidad de las URIs se alinea con el modelo de datos de Wikibase en el cual las entidades, sean clases o propiedades, reciben un código numérico:
+Por otra parte, esta característica de opacidad de las URIs se alinea con el modelo de datos de Wikibase en el cual las entidades, sean clases o propiedades, reciben un código numérico:
 
 ```
 Q3918 -> University
@@ -93,6 +95,8 @@ Si en un principio se pensó utilizar únicamente etiquetas `rdfs:label` para to
 
 Sin embargo, las etiquetas léxicas de rdfs (como `rdfs:label`) podrían no ser suficientes en todos los casos hacer una duplicación por medio de las etiquetas léxicas de SKOS (como `skos:prefLabel`) podría resultar útil, sobre todo por ponerla en relación con posibles etiquetas alternativas, explicitadas por medio de `skos:altLabel`  o, incluso, `skos:hiddenLabel` y así mantener una relación léxica de sinonimia más lógica y *modelada*.
 
+**FIXME-> desarrollo en profundidad y ejemplos de etiquetas léxicas más allá de las de rdfs**
+
 
 
 Propiedades de documentación
@@ -104,19 +108,23 @@ Recurrir a la etiqueta `rdfs:comment` para documentar y explicar las entidades e
 
 También [SKOS-Core](https://www.w3.org/TR/swbp-skos-core-spec/) ofrece otras interesantes para nuestros intereses, sobre todo aplicables a los esquemas de conceptos que se explotarán en los módulos verticales de la ontología, como `skos:definition` o `skos:notation`.
 
+**FIXME-> desarrollo en profundidad y ejemplos concretos de documentación**
+
 
 
 Otros metadatos lingüísticos
 ----------------------------
 
-Utilización de metadatos lingüísticos cuando sea necesario (patrón linguistic metadata[^4]). Aunque para muchos recursos, puede ser suficiente disponer de una representación en lenguaje natural ligera con
+Utilización de metadatos lingüísticos cuando sea necesario (patrón *linguistic metadata*[^4]). Aunque para muchos recursos, puede ser suficiente disponer de una representación en lenguaje natural ligera con
 etiquetas como `rdfs:label`, `rdfs:comment`, etc. En algunos vocabularios puede ser interesante utilizar representaciones lingüísticas más ricas como puede ser el modelo Lemon[^5], que permite representar aspectos léxicos de forma semántica.
 
-Sin embargo, Lemon puede no ser suficiente para representar todo el conocimiento léxico de forma semántica \[2\] y este tipo de representaciones es una línea de investigación activa. A modo de ejemplo, en el proyecto europeo Prét-á-LLOD[^6] se está actualmente trabajando en la creación y representación de datos enlazados multilingües.
+Sin embargo, Lemon puede no ser suficiente para representar todo el conocimiento léxico de forma semántica \[2\] y este tipo de representaciones es una línea de investigación activa. A modo de ejemplo, en el proyecto europeo Prêt-à-LLOD[^6] se está actualmente trabajando en la creación y representación de datos enlazados multilingües.
 
 A la hora de seleccionar vocabularios para reutilizar, elegir vocabularios multilingües en la medida que sea posible[^7].
 
 
+
+**FIXME-> desarrollo en profundidad (SKOS-XL; limitaciones de Lemon; iniciativas de superación) y ejemplos concretos de representación léxica**
 
 *Multiescriptalismo*
 ====================
@@ -295,7 +303,9 @@ En una primera fase, el módulo se limitará a España y sus niveles administrat
 
 También se eligió SKOS para la modelización de este módulo dado el modelo jerárquico obvio de las entidades geopolíticas.
 
-FIXME
+**FIXME-> describir con más detalle el dataset: características, multilingüismo y multiescriptalismo**
+
+
 
 ## áreas científicas
 
@@ -311,6 +321,10 @@ De este modo, estas 'Áreas científicas' han sido *mejoradas* respecto a la ver
 
 Además de las posibilidades de explotación ontológica que proporciona SKOS, que no deja de ser una ontología a su vez, con respecto al *core* de ASIO, las etiquetas multilingües suponen una materia prima interesante para llevar a cabo muchas pruebas *lingüísticas*.
 
+**FIXME-> describir con más detalle el dataset respecto al multilingüismo: lenguas cooficiales españolas, en/fr/pt**
+
+## 
+
 
 
 ## entidades administrativas
@@ -319,7 +333,7 @@ El módulo vertical de las entidades administrativas FIXME y se relaciona direct
 
 El multilingüismo es relevante en este módulo tanto a nivel nacional, siendo España un país con una realidad multilingüe importante y con lenguas cooficiales en varias comunidades autónomas, como a nivel translacional y europeo.
 
-FIXME
+**FIXME-> describir con más detalle el dataset respecto al multilingüismo: lenguas cooficiales españolas (ca, eu, gl) y no (exactamente) cooficiales (an,ast, oc)**
 
 
 
@@ -330,7 +344,7 @@ El modelo de datos que subyace a los enlaces de Wikibase se basa en "entidades" 
 
 En principio, las etiquetas o identificadores soportan potencialmente el tratamiento multilingüe, aunque queda por analizar si este soporte alcanza plenamente para la renderización de los diferentes sistemas de escritura, cómo lo lleva a cabo y si su procedimiento es realmente conforme a los requisitos de la Web Semántica y los principios de Datos Enlazados.
 
-FIXME
+**FIXME->dificultades con respecto al multiescriptalismo**
 
 
 
