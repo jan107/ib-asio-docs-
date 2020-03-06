@@ -28,7 +28,7 @@ Two properties of modularity in particular, *informational encapsulation* and *d
 
 
 
-In the second section we consider Fodor’s famous proposal for understanding the large-scale organization of the mind. We need to distinguish, he argues, between two fundamentally different types of cognition. On the one hand, there are highly specialized information-processing tasks, such as identifying the outlines of objects in the immediate environment, or working out where the gaps between words come in a stream of sound. These tasks are carried out automatically, and involve only a limited amount of information. In his influential book The Modularity of Mind (1983) Fodor argues that tasks of this first kind are carried out by dedicated cognitive systems that he called modules. These modules are domain-specific – that is, they are responsible only for tasks falling in particular domains. On the other hand, there are tasks, such as deciding where to have dinner or how to plant the front garden, that involve much more complex and wide-ranging inferences and to which an indefinite amount of background information is potentially relevant. The information processing involved in carrying out these tasks is domaingeneral (the opposite of domain-specific). On the basis of this analysis, Fodor develops a picture of the organization of the mind as involving both specialized modules and what he calls domain-general, non-modular cognition. In the final section I look at the relation between these two claims. There
+In the second section we consider Fodor’s famous proposal for understanding the large-scale organization of the mind. We need to distinguish, he argues, between two fundamentally different types of cognition. On the one hand, there are highly specialized information-processing tasks, such as identifying the outlines of objects in the immediate environment, or working out where the gaps between words come in a stream of sound. These tasks are carried out automatically, and involve only a limited amount of information. In his influential book The Modularity of Mind (1983) Fodor argues that tasks of this first kind are carried out by dedicated cognitive systems that he called modules. These modules are domain-specific – that is, they are responsible only for tasks falling in particular domains. On the other hand, there are tasks, such as deciding where to have dinner or how to plant the front garden, that involve much more complex and wide-ranging inferences and to which an indefinite amount of background information is potentially relevant. The information processing involved in carrying out these tasks is domaingeneral (the opposite of domain-specific). On the basis of this analysis, Fodor develops a picture of the organization of the mind as involving both specialized modules and what he calls domain-general, non-modular cognition. In the final section I look at the relation between these two claims. 
 
 
 
@@ -37,6 +37,8 @@ In the second section we consider Fodor’s famous proposal for understanding th
 ## 2.1. prolegomena
 
 This first version of the core ontology ([asio-demo.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontolog%C3%ADas_H%C3%A9rcules/asio-demo.owl)) is chiefly focused on addressing the competence questions provided by the University of Murcia and it includes already all the high-level classes necessary to deal with them.
+
+
 
 
 
@@ -82,9 +84,9 @@ The **technology readiness levels (TRLs)**, initially developed at NASA during t
 
 ## 2.4. multilingualism in the core ontology
 
-The entire list of classes in the core ontology is enriched multilingually via the data property `rdfs:label` and, besides the two obvious working languages (English, Spanish), three more languages are included: Catalan, French and Portuguese, as corresponding to the three other countries that we take into account in addition to Spain: Andorra, France and Portugal.
+The entire list of classes in the core ontology is enriched multilingually via the data property `rdfs:label` and, besides the two obvious working languages (English, Spanish), three more languages are included: Catalan, French and Portuguese, as corresponding to the three other countries that we take into account in addition to Spain for geographically modelling our domain: Andorra, France and Portugal.
 
-The motivation of this choice is, on the one hand, geopolitical, as Catalan, French and Portuguese are languages in contact with Spanish through land and/or maritime borders (Andorra, France, Portugal) and, on the other hand, practical, as those three languages are more or less mastered by members of the development team, something that ensures a direct multilingual treatment. Note also that Catalan is also a coofficial language in some Autonomous Communities of Spain.
+The motivation of this choice is, on the one hand, geopolitical, as Catalan, French and Portuguese are languages in contact with Spanish through land borders (Andorra, France, Portugal) and, on the other hand, practical, as those three languages are more or less mastered by members of the development team, something that ensures a *direct* multilingual treatment. Note that Catalan is also a coofficial language in some Autonomous Communities of Spain.
 
 The Iberian peninsula as a *multilingual* whole, besides English as a *lingua franca* and French as a relevant neighboring language, is taken hence as a *scale model* of the multilingual nature of the European Union, and *exploited* as an intuitive advancement from the ultralocal reality to the global context, something that the British sociologist Roland Robertson coined *glocalization* (Kumaravadivelu, 2008:45).
 
@@ -98,7 +100,7 @@ To do so, the second file ([asio-dcat-mappings.ttl](https://git.izertis.com/univ
 
 The same applies to relevant properties belonging to concurrent vocabularies, which are being mapped in this file using `owl:equivalentProperty`.
 
-More details about these alignments will be provided in more consolidated documentation to be generated soon, but right now it suffices to access the file using a source code editor and have a look at the large list of equivalences, chiefly focusing on concomitant vocabularies such as CERIF, VIVO or the SPAR family of ontologies but also going beyond these ones.
+More details about these alignments, carried out following consolidated recommendations (Vandenbussche et al.:2014), will be provided in more consolidated documentation to be generated soon, but right now it suffices to access the file using a source code editor and have a look at the large list of equivalences, chiefly focusing on concomitant vocabularies such as CERIF, VIVO or the SPAR family of ontologies but also going beyond these ones.
 
 
 
@@ -136,7 +138,7 @@ As we mentioned at the beginning of this document, the more advanced vertical mo
 - Portugal: implementing both the first (*distritos e regiões*) and the second-level (*municípios*) subdivisions.
 - Spain: covering the first (*comunidades autónomas*), the second (*provincias*) and the third-level subdivisions (*municipios*).
 
-At the moment of this writing France and its subdivisions (*régions*  and *départements*) are being transformed and is expected to be released in the next weeks, linked to the other datasets.
+At the moment of this writing France and its subdivisions (*régions* and *départements*) are being transformed and is expected to be released in the next weeks, linked to the other datasets.
 
 SKOS-Core was also chosen to model a clearly hierarchical domain and the dataset is massively enriched multilingually and ponderously linked to relevant national and international vocabularies. 
 
@@ -173,7 +175,7 @@ SKOS-Core is not just the most appropriate solution for such a document featurin
 Hence, besides being able to seamlessly *assimilate* these **Scientific domains** within the ASIO ontology through an *ad hoc*, vertical module, we have improved the Ministry's document in a number of ways:
 
 - processing and transforming it from an only-reading format (PDF), which would be categorised as simply [linked data](https://www.w3.org/DesignIssues/LinkedData.html) of low-quality or 1-star ("Available on the web (whatever format) *but with an open licence, to be Open Data*"), to a high-quality, or [5-star quality](https://www.w3.org/community/webize/2014/01/17/what-is-5-star-linked-data/), linked data format ("non-proprietary format (e.g. CSV instead of excel), open standards from W3C (RDF and SPARQL) to identify things and link your data to other people’s data to provide context").
-- exploiting the full possibilities of multiligualism provided by SKOS with the aim of internationalising and localising the dataset, understanding here *internationalising* and *localising* as the processes to design an IT resource as fully adaptable to different languages and regions without later having to reengineering or changing the code. This way, the language labels for the scientific domains, originally just in Spanish, have been adapted to a multilingual context which not only English as *lingua franca* but also three languages in contact with Spanish through land borders (Catalan, French and Portuguese) and a number of cooficial regional languages (the aforementioned Catalan but also Basque and Galician) and even some linguistic varieties with a certain recognition at regional level (Aragonese, Asturian, Occitan).
+- exploiting the full possibilities of multiligualism provided by SKOS with the aim of internationalising and localising the dataset, understanding here *internationalising* and *localising* as the processes to design an IT resource as fully adaptable to different languages and regions without later having to reengineering or changing the code. This way, the language labels for the scientific domains, originally just in Spanish, have been adapted to a multilingual context which not only covers English as *lingua franca* but also three languages in contact with Spanish through land borders (Catalan, French and Portuguese) and a number of cooficial regional languages (the aforementioned Catalan but also Basque and Galician) and even some linguistic varieties with a certain recognition at regional level (Aragonese, Asturian, Occitan).
 
 In addition to the ontological possibilities offered by SKOS, which is itself an ad hoc ontology, with respect to the ASIO core ontology, these mentioned multilingual labels provide idoneous raw materials to carry out extensively testing with respect to multilingualism, as detailed in the previous section and in a complementary deliverable (*ModeloMultilinguismo*).
 
@@ -182,6 +184,14 @@ In addition to the ontological possibilities offered by SKOS, which is itself an
 ## 4.4. Spain's university staffing
 
 Finally, all the specificities of the teaching-and-research positions in the universities of Spain are dealt with in this vertical module, which is still a working progress.
+
+Following a number of interviews with domain-expert informants, we have started to gather together an alluvium of entities:
+
+
+
+![1st-example](./images/hr-tea&res-pers.png)
+
+that will be contrasted and analysed with the assistance of other domain experts in order to streamline the initial list and subsequently mapping them as much as possible to the entities already featured in the core ontology. 
 
 
 
@@ -192,6 +202,8 @@ Fodor, J. A. (1983). *The modularity of mind*. Bradford/MIT Press, Cambride, Mas
 Kumaravadivelu, B. (2008). *Cultural Globalization and Language Education*. Yale University Press.
 
 Mihaly, Heder (2017). "From NASA to EU: the evolution of the TRL scale in Public Sector Innovation". *The Innovation Journal*. 22: 1–23.
+
+Vandenbussche, P.; Atemezing, G.; Poveda-Villalón, M.; Vatant, B. (2014). *Pierre-Yves V. et al. / LOV: a gateway to reusable semantic vocabularies on the Web*. (article, IOS Press, 2014), available at the [Semantic Web Journal](http://www.semantic-web-journal.net/system/files/swj1127.pdf); DOI: 8. 437-452. 10.3233/SW-160213. 
 
 
 
