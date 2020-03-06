@@ -42,7 +42,7 @@ This first version of the core ontology ([asio-demo.ttl](https://git.izertis.com
 
 ## 2.2. the core ontology at a glance
 
-To guide the reader in the understanding of this core ontology may be useful to take into account some of the competence questions relying under its modelling. Let's have a look at some of the most representative and/or easy-to-grasp:
+To guide the reader in the understanding of this core ontology it may be useful to take into account some of the competence questions relying under the ontology modelling. Let's have a look at some of the most representative and/or easy-to-grasp:
 
 
 
@@ -181,7 +181,7 @@ In addition to the ontological possibilities offered by SKOS, which is itself an
 
 ## 4.4. Spain's university staffing
 
-Finally, all the specificities of the teaching-and-research positions in the universities of Spain are dealt with in this vertical module, which is a working progress.
+Finally, all the specificities of the teaching-and-research positions in the universities of Spain are dealt with in this vertical module, which is still a working progress.
 
 
 

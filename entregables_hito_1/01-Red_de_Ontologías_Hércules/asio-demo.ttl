@@ -99,6 +99,13 @@ asio:isAdvisedBy rdf:type owl:ObjectProperty .
 asio:isFundedBy rdf:type owl:ObjectProperty .
 
 
+###  http://www.asio.es/asioontologies/asio#spin-off
+asio:spin-off rdf:type owl:ObjectProperty ;
+              rdfs:domain asio:Company ,
+                          asio:University ;
+              rdfs:range asio:Spinoff .
+
+
 ###  http://xmlns.com/foaf/0.1/member
 foaf:member rdf:type owl:ObjectProperty .
 
