@@ -25,7 +25,7 @@ Conjunto de reglas para operaciones HTTP sobre recursos Web basados en RDF, que 
   - Linked Data Platform Direct Container (LDP-DC): Un LDPC que define el concepto de miembro de, permitiendo tener mas flexibilidad en la forma de las tuplas de sus miembros, y permitiendo que sus miembros puedan ser recursos y no solo documentos.
   - Linked Data Platform Indirect Container (LDP-IC): Un LDPC similar a un LDP-DC que también es capaz de tener miembros cuyos URI se basan en el contenido de sus documentos contenidos en lugar de los URI asignados a esos documentos.
 - Membership: Relación de un contenedor con los documentos que contiene, que pueden ser recursos distintos a sus documentos contenidos 
-- Membership triples: Conjunto de tripletas que enumeran los miembros de una LDPC, siguiendo el siguiente patron:
+- Membership triples: Conjunto de tripletas que enumeran los miembros de una LDPC, siguiendo el siguiente patrón:
   - membership-constant-URI	membership-predicate	member-derived-URI
   - member-derived-URI	membership-predicate	membership-constant-URI
 
@@ -44,13 +44,13 @@ Conjunto de reglas para operaciones HTTP sobre recursos Web basados en RDF, que 
   - La cabecera Link en el Head, es la forma de anunciar la compatibilidad con LDP sobre un recurso. No se puede sustituir esto por la tripleta (sujeto-URI, rdf:type, ldp:Resource) en un recurso.
   - Esto es valido, tanto para recursos RDF como no RDF, ya que ambos son LDPR
 - Deben asignar URIs bases predeterminadas y la resolución de la URI relativa cuando el recurso ya exista, y la URI del recurso creado, en caso de creación.
-- SE debe publicar cualquier restricción que un cliente pueda tener al crear o actualizar un recurso, añadiendo un encabezado Link con el apropiado contexto de URI (ej. `http://www.w3.org/ns/ldp#constrainedBy`), y una URI obetivo, con el conjunto de restricciones, como respuesta a cualquier violación de restricción sobre un recurso.
+- Se debe publicar cualquier restricción que un cliente pueda tener al crear o actualizar un recurso, añadiendo un encabezado Link con el apropiado contexto de URI (ej. `http://www.w3.org/ns/ldp#constrainedBy`), y una URI objetivo, con el conjunto de restricciones, como respuesta a cualquier violación de restricción sobre un recurso.
 
 ##### Normativa en Métodos HTTP
 
 ###### HTTP GET
 
-- Se soporta el metodo GET para recursos LDPRs
+- Se soporta el método GET para recursos LDPRs
 - Debe soportar las cabeceras HTTP en las respuestas definidas por HTTP OPTIONS para el método GET
 
 ###### HTTP POST
