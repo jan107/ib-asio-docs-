@@ -29,6 +29,46 @@
 <http://www.asio.es/asioontologies/asio> rdf:type owl:Ontology .
 
 #################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.asio.es/asioontologies/asio#capital
+asio:capital rdf:type owl:ObjectProperty ;
+             rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> ;
+             rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
+             rdfs:comment "A property to indicate that a place is the official seat of government in a political entity."@en .
+
+
+###  http://www.asio.es/asioontologies/asio#codeOf
+asio:codeOf rdf:type owl:ObjectProperty ;
+            owl:inverseOf asio:hasCode ;
+            rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> ;
+            rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
+            rdfs:comment "A code is assigned to a concept."@en .
+
+
+###  http://www.asio.es/asioontologies/asio#country
+asio:country rdf:type owl:ObjectProperty ;
+             rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> ;
+             rdfs:range asio:Country ;
+             rdfs:comment "This property indicates the nationality of a resource."@en .
+
+
+###  http://www.asio.es/asioontologies/asio#geo-division
+asio:geo-division rdf:type owl:ObjectProperty ;
+                  rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> ;
+                  rdfs:range modules:GeopoliticalEntities ;
+                  rdfs:comment "A property to link a resource to a predefined geographical (or geopolitical) division."@en .
+
+
+###  http://www.asio.es/asioontologies/asio#hasCode
+asio:hasCode rdf:type owl:ObjectProperty ;
+             rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> ;
+             rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
+             rdfs:comment "A concept can be asigned a code."@en .
+
+
+#################################################################
 #    Data properties
 #################################################################
 
@@ -129,7 +169,11 @@ asio:BachelorsThesis rdf:type owl:Class ;
 
 ###  http://www.asio.es/asioontologies/asio#Book
 asio:Book rdf:type owl:Class ;
-          rdfs:subClassOf asio:ScientificPublication .
+          rdfs:subClassOf asio:ScientificPublication ;
+          rdfs:label "Libro"@es ,
+                     "Livre"@fr ,
+                     "Livro"@pt ,
+                     "Llibre"@ca .
 
 
 ###  http://www.asio.es/asioontologies/asio#Budget
@@ -184,6 +228,17 @@ asio:Contract rdf:type owl:Class ;
                          "Contrato"@pt .
 
 
+###  http://www.asio.es/asioontologies/asio#Country
+asio:Country rdf:type owl:Class ;
+             rdfs:subClassOf modules:GeopoliticalEntities ;
+             rdfs:comment "A region legally identified as a distinct entity in political geography."@en ;
+             rdfs:label "Country"@en ,
+                        "Pays"@fr ,
+                        "País"@ca ,
+                        "País"@es ,
+                        "País"@pt .
+
+
 ###  http://www.asio.es/asioontologies/asio#EditedPublication
 asio:EditedPublication rdf:type owl:Class ;
                        rdfs:subClassOf asio:ScientificPublication .
@@ -215,6 +270,11 @@ asio:Funding rdf:type owl:Class ;
              rdfs:subClassOf <http://purl.org/cerif/frapo/FinancialEntity> .
 
 
+###  http://www.asio.es/asioontologies/asio#GraduateStudent
+asio:GraduateStudent rdf:type owl:Class ;
+                     rdfs:subClassOf asio:Student .
+
+
 ###  http://www.asio.es/asioontologies/asio#HumanResource
 asio:HumanResource rdf:type owl:Class ;
                    rdfs:subClassOf foaf:Person ;
@@ -229,6 +289,11 @@ asio:HumanResource rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#Manual
 asio:Manual rdf:type owl:Class ;
             rdfs:subClassOf asio:ScientificPublication .
+
+
+###  http://www.asio.es/asioontologies/asio#MasterStudent
+asio:MasterStudent rdf:type owl:Class ;
+                   rdfs:subClassOf asio:GraduateStudent .
 
 
 ###  http://www.asio.es/asioontologies/asio#MastersThesis
@@ -267,6 +332,11 @@ asio:Patent rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#PeerReviewedArticle
 asio:PeerReviewedArticle rdf:type owl:Class ;
                          rdfs:subClassOf asio:Article .
+
+
+###  http://www.asio.es/asioontologies/asio#PhDStudent
+asio:PhDStudent rdf:type owl:Class ;
+                rdfs:subClassOf asio:GraduateStudent .
 
 
 ###  http://www.asio.es/asioontologies/asio#PhDThesis
@@ -389,6 +459,16 @@ asio:Spinoff rdf:type owl:Class ;
                         "Spin-off"@es .
 
 
+###  http://www.asio.es/asioontologies/asio#Student
+asio:Student rdf:type owl:Class ;
+             rdfs:subClassOf foaf:Person ;
+             rdfs:label "Estudante"@pt ,
+                        "Estudiant"@ca ,
+                        "Estudiante"@es ,
+                        "Student"@en ,
+                        "Étudiant"@fr .
+
+
 ###  http://www.asio.es/asioontologies/asio#TechnicalPersonnel
 asio:TechnicalPersonnel rdf:type owl:Class ;
                         rdfs:subClassOf asio:HumanResource ;
@@ -408,6 +488,11 @@ asio:TechnicalReport rdf:type owl:Class ;
 asio:Thesis rdf:type owl:Class ;
             rdfs:subClassOf asio:AcademicPublication ;
             rdfs:comment "Any kind of thesis (bachelor's, master's, PhD) produced to receive some sort of university degree."@en .
+
+
+###  http://www.asio.es/asioontologies/asio#UndergraduateStudent
+asio:UndergraduateStudent rdf:type owl:Class ;
+                          rdfs:subClassOf asio:Student .
 
 
 ###  http://www.asio.es/asioontologies/asio#University
