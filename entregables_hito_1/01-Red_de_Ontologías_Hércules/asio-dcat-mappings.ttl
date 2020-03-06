@@ -55,6 +55,8 @@
 @prefix lib: <http://purl.org/library/>
 @prefix swrc: <http://swrc.ontoware.org/ontology#>
 @prefix npg: <http://ns.nature.com/terms/>
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/Publication>
+@prefix acm: <http://acm.rkbexplorer.com/ontologies/acm#>
 # add new/missing list of prefixes here
 @base <http://www.asio.es/asioontologies/asio/alignment/dcat> .
 
@@ -113,6 +115,18 @@ asio:Company
                       pext:Company ;
                       cv:Company ;
 .
+asio:Spinoff
+  owl:equivalentClass frapo:SpinOffCompany ;
+.
+asio:SME
+  owl:equivalentClass frapo:SME ;
+                      cerif:SME ;
+                      semcerif:SME ;
+.
+asio:FundingOrganization
+  owl:equivalentClass vivo:FundingOrganization ;
+                      frapo:FundingAgency ;
+.
 asio:ResearchGroup
   owl:equivalentClass frapo:ResearchGroup ;
                       cerif:ResearchGroup ;
@@ -129,6 +143,7 @@ asio:Publication
                       cogs:Publication ;
                       sio:SIO_000087 ;
                       npg:Publication ;
+                      bf:Publication ;
 .
 asio:Thesis
   owl:equivalentClass bibo:Thesis ;
@@ -203,6 +218,7 @@ asio:CV
                       dbpedia-owl:Resume ;
                       cerif:CurriculumVitae
                       semcerif:CurriculumVitae ;
+                      acm:K.3.2.2 ;
 .
 asio:HumanResource
   owl:equivalentClass fea:HumanResource ;
@@ -224,4 +240,29 @@ asio:UndergraduateStudent
 asio:PhDStudent
   owl:equivalentClass swrc:PhDStudent ;
                       akt:PhD-Student ;
+.
+
+
+# equivalent properties here:
+
+
+asio:member
+  owl:equivalentProperty foaf:member ;
+                      frapo:University ;
+                      sio:University ;
+                      lgdo:University ;
+                      dbpedia-owl:University ;
+                      swpo:University ;
+                      vivo:University ;
+                      pext:University ;
+                      sio:SIO_000290
+.
+asio:hasCV
+  owl:equivalentProperty frapo:hasCurriculumVitae ;
+.
+asio:funds
+  owl:equivalentProperty frapo:funds ;
+.
+asio:isFundedBy
+  owl:equivalentProperty frapo:isFundedBy ;
 .

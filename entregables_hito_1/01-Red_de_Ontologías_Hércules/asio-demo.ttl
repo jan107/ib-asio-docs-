@@ -54,6 +54,11 @@ asio:country rdf:type owl:ObjectProperty ;
              rdfs:comment "This property indicates the nationality of a resource."@en .
 
 
+###  http://www.asio.es/asioontologies/asio#funds
+asio:funds rdf:type owl:ObjectProperty ;
+           owl:inverseOf asio:isFundedBy .
+
+
 ###  http://www.asio.es/asioontologies/asio#geo-division
 asio:geo-division rdf:type owl:ObjectProperty ;
                   rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> ;
@@ -61,11 +66,29 @@ asio:geo-division rdf:type owl:ObjectProperty ;
                   rdfs:comment "A property to link a resource to a predefined geographical (or geopolitical) division."@en .
 
 
+###  http://www.asio.es/asioontologies/asio#hasCV
+asio:hasCV rdf:type owl:ObjectProperty ;
+           rdfs:domain foaf:Person ;
+           rdfs:range asio:CV .
+
+
 ###  http://www.asio.es/asioontologies/asio#hasCode
 asio:hasCode rdf:type owl:ObjectProperty ;
              rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> ;
              rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
              rdfs:comment "A concept can be asigned a code."@en .
+
+
+###  http://www.asio.es/asioontologies/asio#hasSealOfQuality
+asio:hasSealOfQuality rdf:type owl:ObjectProperty .
+
+
+###  http://www.asio.es/asioontologies/asio#isFundedBy
+asio:isFundedBy rdf:type owl:ObjectProperty .
+
+
+###  http://xmlns.com/foaf/0.1/member
+foaf:member rdf:type owl:ObjectProperty .
 
 
 #################################################################
@@ -268,6 +291,11 @@ asio:EuropeanProject rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#Funding
 asio:Funding rdf:type owl:Class ;
              rdfs:subClassOf <http://purl.org/cerif/frapo/FinancialEntity> .
+
+
+###  http://www.asio.es/asioontologies/asio#FundingOrganization
+asio:FundingOrganization rdf:type owl:Class ;
+                         rdfs:subClassOf foaf:Organization .
 
 
 ###  http://www.asio.es/asioontologies/asio#GraduateStudent
