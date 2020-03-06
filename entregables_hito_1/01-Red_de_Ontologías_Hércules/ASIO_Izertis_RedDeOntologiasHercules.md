@@ -36,7 +36,7 @@ In the second section we consider Fodor’s famous proposal for understanding th
 
 ## 2.1. prolegomena
 
-This early version of the core ontology ([asio-demo.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontolog%C3%ADas_H%C3%A9rcules/asio-demo.owl)) is focused on addressing the competence questions provided by the University of Murcia and it includes already all the high-level classes necessary to deal with them.
+This first version of the core ontology ([asio-demo.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontolog%C3%ADas_H%C3%A9rcules/asio-demo.owl)) is chiefly focused on addressing the competence questions provided by the University of Murcia and it includes already all the high-level classes necessary to deal with them.
 
 
 
@@ -49,6 +49,8 @@ To guide the reader in the understanding of this core ontology may be useful to 
 example of competence question 1 here
 
 corresponding diagram here
+
+![1st-example](./images/glance1.png)
 
 
 
@@ -84,7 +86,7 @@ The entire list of classes in the core ontology is enriched multilingually via t
 
 The motivation of this choice is, on the one hand, geopolitical, as Catalan, French and Portuguese are languages in contact with Spanish through land and/or maritime borders (Andorra, France, Portugal) and, on the other hand, practical, as those three languages are more or less mastered by members of the development team, something that ensures a direct multilingual treatment. Note also that Catalan is also a coofficial language in some Autonomous Communities of Spain.
 
-The Iberian peninsula as a *multilingual* whole, as well as English as a *lingua franca* and French as a relevant neighboring language, is taken hence as a *scale model* of the multilingual nature of the European Union, and *exploited* as an intuitive advancement from the ultralocal reality to the global context, something that the British sociologist Roland Robertson coined *glocalization* (Kumaravadivelu, 2008:45).
+The Iberian peninsula as a *multilingual* whole, besides English as a *lingua franca* and French as a relevant neighboring language, is taken hence as a *scale model* of the multilingual nature of the European Union, and *exploited* as an intuitive advancement from the ultralocal reality to the global context, something that the British sociologist Roland Robertson coined *glocalization* (Kumaravadivelu, 2008:45).
 
 
 
@@ -146,7 +148,9 @@ The main goal of this vertical module, which is in a way also transversal, is to
 
 This vertical module is designed to encompass all the relevant entities belonging to Spain's *administración autonómica* related to the geopolitical subdivisions of the previous vertical module, to which they are going to be seamlessly linked.
 
-It is, at the moment of this writing, a work in progress.
+It is, at the moment of this writing, a work in progress but the implementation so far includes the first-level bodies of *administración autonómica* (*conserjerías*), as available at Spain's administration portal [[1]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/comunidadesAutonomas/comunidadesAutonomas.htm?idCCAA=14), and the second-level [[2]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/fichaUnidadOrganica.htm?idUnidOrganica=123276&origenUO=comunidadesAutonomas&volver=comunidadesAutonomas&idCCAA=14), mainly *direcciones generales* and *consorcios*.
+
+The implementation of this vertical module is carried out using SKOS-Core.
 
 
 
@@ -177,7 +181,7 @@ In addition to the ontological possibilities offered by SKOS, which is itself an
 
 ## 4.4. Spain's university staffing
 
-Finally, all the specificities of the teaching-and-research positions in the universities of Spain are dealt with in this vertical module.
+Finally, all the specificities of the teaching-and-research positions in the universities of Spain are dealt with in this vertical module, which is a working progress.
 
 
 

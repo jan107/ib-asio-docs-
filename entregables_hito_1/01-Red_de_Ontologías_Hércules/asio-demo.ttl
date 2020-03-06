@@ -32,6 +32,13 @@
 #    Object Properties
 #################################################################
 
+###  http://www.asio.es/asioontologies/asio#advises
+asio:advises rdf:type owl:ObjectProperty ;
+             owl:inverseOf asio:isAdvisedBy ;
+             rdfs:domain <http://www.asio.es/asioontologies/asio#Research&TeachingPersonnel> ;
+             rdfs:range asio:Student .
+
+
 ###  http://www.asio.es/asioontologies/asio#capital
 asio:capital rdf:type owl:ObjectProperty ;
              rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> ;
@@ -80,7 +87,12 @@ asio:hasCode rdf:type owl:ObjectProperty ;
 
 
 ###  http://www.asio.es/asioontologies/asio#hasSealOfQuality
-asio:hasSealOfQuality rdf:type owl:ObjectProperty .
+asio:hasSealOfQuality rdf:type owl:ObjectProperty ;
+                      rdfs:range asio:ResearchInstitute .
+
+
+###  http://www.asio.es/asioontologies/asio#isAdvisedBy
+asio:isAdvisedBy rdf:type owl:ObjectProperty .
 
 
 ###  http://www.asio.es/asioontologies/asio#isFundedBy
@@ -438,6 +450,17 @@ asio:ResearchPersonnel rdf:type owl:Class ;
                                   "Personal investigador"@es ,
                                   "Personnel rechercheur"@fr ,
                                   "Pessoal investigador"@pt .
+
+
+###  http://www.asio.es/asioontologies/asio#SME
+asio:SME rdf:type owl:Class ;
+         rdfs:subClassOf asio:Company ;
+         rdfs:comment "A company whose personnel numbers fall below certain limits."@en ;
+         rdfs:label "Pequena e média empresa"@pt ,
+                    "Pequeña y mediana empresa"@es ,
+                    "Petita i mitjana empresa"@ca ,
+                    "Petite ou moyenne entreprise"@fr ,
+                    "Small and medium-sized enterprise"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#ScientificPublication
