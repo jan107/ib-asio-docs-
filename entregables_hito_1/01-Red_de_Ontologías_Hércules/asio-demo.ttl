@@ -86,9 +86,17 @@ asio:hasCode rdf:type owl:ObjectProperty ;
              rdfs:comment "A concept can be asigned a code."@en .
 
 
+###  http://www.asio.es/asioontologies/asio#hasScientificDomain
+asio:hasScientificDomain rdf:type owl:ObjectProperty .
+
+
 ###  http://www.asio.es/asioontologies/asio#hasSealOfQuality
 asio:hasSealOfQuality rdf:type owl:ObjectProperty ;
                       rdfs:range asio:ResearchInstitute .
+
+
+###  http://www.asio.es/asioontologies/asio#hasTRL
+asio:hasTRL rdf:type owl:ObjectProperty .
 
 
 ###  http://www.asio.es/asioontologies/asio#isAdvisedBy
@@ -97,6 +105,23 @@ asio:isAdvisedBy rdf:type owl:ObjectProperty .
 
 ###  http://www.asio.es/asioontologies/asio#isFundedBy
 asio:isFundedBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.asio.es/asioontologies/asio#participant
+asio:participant rdf:type owl:ObjectProperty ;
+                 rdfs:range foaf:Agent .
+
+
+###  http://www.asio.es/asioontologies/asio#requiredFor
+asio:requiredFor rdf:type owl:ObjectProperty ;
+                 rdfs:domain asio:AcademicPublication ;
+                 rdfs:range asio:AcademicDegree .
+
+
+###  http://www.asio.es/asioontologies/asio#requires
+asio:requires rdf:type owl:ObjectProperty ;
+              rdfs:domain asio:AcademicDegree ;
+              rdfs:range asio:AcademicPublication .
 
 
 ###  http://www.asio.es/asioontologies/asio#spin-off
@@ -153,12 +178,30 @@ asio:projectStartDate rdf:type owl:DatatypeProperty ;
 
 ###  http://purl.org/wf4ever/ro#ResearchObject
 ro:ResearchObject rdf:type owl:Class ;
-                  rdfs:comment "Objecte de recerca"@ca ,
-                               "Objet de recherche"@fr ,
-                               "Objeto de investigación"@es ,
-                               "Objeto de investigação"@pt ;
-                  rdfs:label "A research object aggregates a number of resources. A resource can be a workflow, web service, document, data item, data set, workflow run, software or a research object."@en ,
-                             "Research object"@en .
+                  rdfs:comment "A research object aggregates a number of resources. A resource can be a workflow, web service, document, data item, data set, workflow run, software or a research object."@en ,
+                               "Research object"@en ;
+                  rdfs:label "Objecte de recerca"@ca ,
+                             "Objet de recherche"@fr ,
+                             "Objeto de investigación"@es ,
+                             "Objeto de investigação"@pt .
+
+
+###  http://www.asio.es/asioontologies/asio#AcademicDegree
+asio:AcademicDegree rdf:type owl:Class ;
+                    rdfs:comment "A qualification awarded to students upon successful completion of a course of study in higher education."@en ;
+                    rdfs:label "Academic degree"@en ,
+                               "Grade universitaire"@fr ,
+                               "Grade universitaire"@fr-be ,
+                               "Grade universitaire"@fr-ca ,
+                               "Grade universitaire"@fr-ch ,
+                               "Grade universitaire"@fr-fr ,
+                               "Grao académico"@gl ,
+                               "Grau acadèmic"@ca-ad ,
+                               "Grau acadèmic"@ca-es ,
+                               "Grau académico"@pt-pt ,
+                               "Grau acadêmico"@pt-br ,
+                               "Título académico"@es-es ,
+                               "Unibertsitate-gradu"@eu .
 
 
 ###  http://www.asio.es/asioontologies/asio#AcademicPublication
@@ -205,8 +248,19 @@ asio:BachelorsThesis rdf:type owl:Class ;
                      rdfs:comment "A thesis reporting a research project undertaken as part of an undergraduate course of education to receive a bachelor's degree."@en ;
                      rdfs:label "Bachelor's thesis"@en ,
                                 "Mémoire de fin de licence"@fr ,
-                                "Trabajo de fin de grado"@es ,
-                                "Treball de fi de grau"@ca .
+                                "Trabajo de fin de grado"@es-es ,
+                                "Treball fi de bàtxelor"@ca-ad .
+
+
+###  http://www.asio.es/asioontologies/asio#BacherlorsDegree
+asio:BacherlorsDegree rdf:type owl:Class ;
+                      rdfs:subClassOf asio:AcademicDegree ;
+                      rdfs:label "Bachelor's degree"@en ,
+                                 "Bàtxelor"@ca-ad ,
+                                 "Licenciatura (pós-Bologna)"@pt-pt ,
+                                 "Títol de bàtxelor"@ca-ad ,
+                                 "Títol de grau"@ca-es ,
+                                 "Título de grado"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio#Book
@@ -281,6 +335,20 @@ asio:Country rdf:type owl:Class ;
                         "País"@pt .
 
 
+###  http://www.asio.es/asioontologies/asio#DoctoralDegree
+asio:DoctoralDegree rdf:type owl:Class ;
+                    rdfs:subClassOf asio:AcademicDegree ;
+                    rdfs:label "Doctorado"@es ,
+                               "Doctoral degree"@en ,
+                               "Doctorat"@ca-ad ,
+                               "Doctorat"@ca-es ,
+                               "Doctorat"@fr-be ,
+                               "Doctorat"@fr-ca ,
+                               "Doctorat"@fr-ch ,
+                               "Doctorat"@fr-fr ,
+                               "Doctorate"@en .
+
+
 ###  http://www.asio.es/asioontologies/asio#EditedPublication
 asio:EditedPublication rdf:type owl:Class ;
                        rdfs:subClassOf asio:ScientificPublication .
@@ -343,15 +411,35 @@ asio:MasterStudent rdf:type owl:Class ;
                    rdfs:subClassOf asio:GraduateStudent .
 
 
+###  http://www.asio.es/asioontologies/asio#MastersDegree
+asio:MastersDegree rdf:type owl:Class ;
+                   rdfs:subClassOf asio:AcademicDegree ;
+                   rdfs:label "Maîtrise universitaire"@fr-be ,
+                              "Maîtrise universitaire"@fr-ca ,
+                              "Maîtrise universitaire"@fr-ch ,
+                              "Maîtrise universitaire"@fr-fr ,
+                              "Mestrado"@pt-br ,
+                              "Mestrado"@pt-pt ,
+                              "Màster universitari"@ca-ad ,
+                              "Màster universitari"@ca-es .
+
+
 ###  http://www.asio.es/asioontologies/asio#MastersThesis
 asio:MastersThesis rdf:type owl:Class ;
                    rdfs:subClassOf asio:Thesis ;
                    owl:disjointWith asio:PhDThesis ;
-                   rdfs:comment "A thesis reporting a research project undertaken as part of an undergraduate course of education to receive a master's degree."@en ;
-                   rdfs:label "Dissertação de mestrado"@pt ,
+                   rdfs:comment "A thesis reporting a research project undertaken as part of a second-cycle course of education to receive a master's degree."@en ;
+                   rdfs:label "Dissertação de mestrado"@pt-br ,
+                              "Dissertação de mestrado"@pt-pt ,
                               "Master's thesis"@en ,
-                              "Thèse de master"@fr ,
-                              "Trabajo de fin de máster"@es ,
+                              "Mémoire de maîtrise"@fr-ca ,
+                              "Mémoire de maîtrise"@fr-fr ,
+                              "Tese de mestrado"@pt-ao ,
+                              "Tesis de maestría"@es-ar ,
+                              "Tesis de maestría"@es-co ,
+                              "Tesis de maestría"@es-cu ,
+                              "Tesis de maestría"@es-mx ,
+                              "Trabajo de fin de máster"@es-es ,
                               "Treball de fi de màster"@ca .
 
 
@@ -390,8 +478,10 @@ asio:PhDStudent rdf:type owl:Class ;
 asio:PhDThesis rdf:type owl:Class ;
                rdfs:subClassOf asio:Thesis ;
                rdfs:comment "A thesis reporting a research project undertaken as part of an undergraduate course of education to receive a doctoral degree."@en ;
-               rdfs:label "Tese de doutoramento"@pt ,
-                          "Tesi doctoral"@ca ,
+               rdfs:label "Doctoral thesis"@en ,
+                          "Tese de doutoramento"@pt ,
+                          "Tesi doctoral"@ca-ad ,
+                          "Tesi doctoral"@ca-es ,
                           "Tesis doctoral"@es ,
                           "Thèse doctorale"@fr .
 

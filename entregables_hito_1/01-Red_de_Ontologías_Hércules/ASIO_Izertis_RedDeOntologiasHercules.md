@@ -76,9 +76,9 @@ Two external vocabularies are imported to deal with specific-knowledge domains o
 
 These two vocabularies are used by the ASIO ontology to relate the core ontology and its clases to two  entities that currently are pivotal to university research projects. 
 
-**Research objects** aggregate a number of resources that are used and/or produced in a given scientific research and in the ASIO ontology are linked to the scientific domains described in the eponymous, ad hoc vertical module described later on.
+**Research objects** aggregate a number of resources that are used and/or produced in a given scientific research and in the ASIO ontology are linked to the scientific domains described in the eponymous, ad hoc vertical module described later on. The [RO](https://wf4ever.github.io/ro/2016-01-28/) ontology is mapped to the ASIO ontology through the property `asio:hasScientificDomain`.
 
-The **technology readiness levels (TRLs)**, initially developed at NASA during the 1970s and from there included by the European Commission's EU Horizon 2020 program (Mihaly, 2017), are a method for estimating the maturity of technologies during the acquisition phase of a program. They condition therefore any European project proposal and development and are currently a critical factor for research projects. The ASIO ontology takes advantage of this mini-ontology part of the SWEET ontology family by importing it.
+The **technology readiness levels (TRLs)**, initially developed at NASA during the 1970s and from there included by the European Commission's EU Horizon 2020 program (Mihaly, 2017), are a method for estimating the maturity of technologies during the acquisition phase of a program. They condition therefore any European project proposal and development and are currently a critical factor for research projects. The ASIO ontology takes advantage of this mini-ontology part of the SWEET ontology family by importing it. The SWEET [HTR](https://esipfed.github.io/stc/sweet_lode/humanTechReadiness.html) ontology is mapped to the ASIO ontology through the property `asio:hasTRL`.
 
 
 
@@ -90,6 +90,41 @@ The motivation of this choice is, on the one hand, geopolitical, as Catalan, Fre
 
 The Iberian peninsula as a *multilingual* whole, besides English as a *lingua franca* and French as a relevant neighboring language, is taken hence as a *scale model* of the multilingual nature of the European Union, and *exploited* as an intuitive advancement from the ultralocal reality to the global context, something that the British sociologist Roland Robertson coined *glocalization* (Kumaravadivelu, 2008:45).
 
+In that sense, the labels in the Western *killer* *languages*, a concept we take from Anne Pakir (Skutnabb-Kangas, 2000), such as English, French, Portuguese and Spanish, are dealt with specificifying *locales* when necessary and/or applicable (en-GB, en-US, fr-FR, fr-CA, pt-PT, pt-BR, es-ES, es-MX, es-AR, etc).
+
+Let's have a look at one example corresponding to the class **Master's thesis**:
+
+```
+###  http://www.asio.es/asioontologies/asio#MastersThesis
+asio:MastersThesis rdf:type owl:Class ;
+                   rdfs:subClassOf asio:Thesis ;
+                   owl:disjointWith asio:PhDThesis ;
+                   rdfs:comment "A thesis reporting a research project undertaken as part of an undergraduate course of education to receive a master's degree."@en ;
+                   rdfs:label "Dissertação de mestrado"@pt-PT ,
+                              "Dissertação de mestrado"@pt-BR ,
+                              "Tese de mestrado"@pt-AO ,
+                              "Master's thesis"@en ,
+                              "Mémoire de maîtrise"@fr-FR ,
+                              "Mémoire de maîtrise"@fr-BE ,
+                              "Mémoire de maîtrise"@fr-CH ,
+                              "Mémoire de maîtrise"@fr-CA ,
+                              "Trabajo de fin de máster"@es-ES ,
+                              "Tesis de fin de máster"@es-PY ,
+                              "Tesis de maestría"@es-MX ,
+                              "Tesis de maestría"@es-AR ,
+                              "Tesis de maestría"@es-CO ,
+                              "Tesis de maestría"@es-CU ,
+                              "Tesis de magíster"@es-CL ,
+                              "Treball de fi de màster"@ca-ES ,
+                              "Treball de fi de màster"@ca-AD .
+```
+
+As we can see in the code snippet, for the case of this class, the Portuguese language does not show differences bewteen the Portugal and the Brasil locales (both use *dissertação de mestrado*) but its Angolan locale does distinguish itself (*Tese de mestrado*). In the case of the francophone locales for France, Belgium, Switzerland and Canada (Québec), they all match the *Mémoire de maîtrise* denomination. The same applies to the Anglo-Saxon world, for which we don't specify locale.
+
+In Spanish though the situation varies and we specify the Spain locale, *Trabajo de fin de máste*r, with a sad linguistic calque from English (*máster*), from the locales for Mexico, Argentina, Colombia or Cuba, more genuine linguistically speaking (*maestría*), or the case of Chile (*magíster*), more latinazing.
+
+Obviously, the granularity of detail regarding ***i18n*** and ***L10n*** applied to the core ontology in this release is still far from being concluded and at the time of this writing more candidate labels (preferent and alternative) and locales are being analysed and are expected to be included in the May release of the ontology.
+
 
 
 # 3. Alignements with other vocabularies
@@ -100,7 +135,7 @@ To do so, the second file ([asio-dcat-mappings.ttl](https://git.izertis.com/univ
 
 The same applies to relevant properties belonging to concurrent vocabularies, which are being mapped in this file using `owl:equivalentProperty`.
 
-More details about these alignments, carried out following consolidated recommendations (Vandenbussche et al.:2014), will be provided in more consolidated documentation to be generated soon, but right now it suffices to access the file using a source code editor and have a look at the large list of equivalences, chiefly focusing on concomitant vocabularies such as CERIF, VIVO or the SPAR family of ontologies but also going beyond these ones.
+More details about these alignments, carried out following consolidated recommendations (Vandenbussche et al.: 2014), will be provided in more consolidated documentation to be generated soon, but right now it suffices to access the file using a source code editor and have a look at the large list of equivalences, chiefly focusing on concomitant vocabularies such as CERIF, VIVO or the SPAR family of ontologies but also going beyond these ones.
 
 
 
@@ -158,7 +193,7 @@ The implementation of this vertical module is carried out using SKOS-Core.
 
 ## 4.3. scientific domains
 
-**Note** that this vertical module is being implemented at the moment and it is not included in this release but, as it is already designed, we include already documentation about it. The transformation of the tabular data will be carried out in the next weeks to be be *plugged in* as vertica module.
+**Note** that this vertical module is being implemented at the moment and it is not included in this release but, as it is already designed, we include already documentation about it. The transformation of the tabular data will be carried out in the next weeks so to be *plugged in* as vertical module, similarly to the geopoolitical one.
 
 ### 4.3.1 prolegomena
 
@@ -191,7 +226,7 @@ Following a number of interviews with domain-expert informants, we have started 
 
 ![1st-example](./images/hr-tea&res-pers.png)
 
-that will be contrasted and analysed with the assistance of other domain experts in order to streamline the initial list and subsequently mapping them as much as possible to the entities already featured in the core ontology. 
+that will be contrasted and analysed with the assistance of other domain experts in order to streamline the initial list and subsequently map them as much as possible to the entities already featured in the core ontology, which shows a more international nature. 
 
 
 
@@ -203,7 +238,9 @@ Kumaravadivelu, B. (2008). *Cultural Globalization and Language Education*. Yale
 
 Mihaly, Heder (2017). "From NASA to EU: the evolution of the TRL scale in Public Sector Innovation". *The Innovation Journal*. 22: 1–23.
 
-Vandenbussche, P.; Atemezing, G.; Poveda-Villalón, M.; Vatant, B. (2014). *Pierre-Yves V. et al. / LOV: a gateway to reusable semantic vocabularies on the Web*. (article, IOS Press, 2014), available at the [Semantic Web Journal](http://www.semantic-web-journal.net/system/files/swj1127.pdf); DOI: 8. 437-452. 10.3233/SW-160213. 
+Skutnabb-Kangas, T. (2000). *Linguistic Genocide in Education*. New Jersey: Lawrence Erlbaum Associates Inc.
+
+Vandenbussche, P.; Atemezing, G.; Poveda-Villalón, M.; Vatant, B. (2014). *Pierre-Yves V. et al. / LOV: a gateway to reusable semantic vocabularies on the Web*. (article, IOS Press, 2014), DOI: 8. 437-452. 10.3233/SW-160213, available at [Semantic Web Journal](http://www.semantic-web-journal.net/system/files/swj1127.pdf).
 
 
 
