@@ -192,12 +192,12 @@ asio:Article
                       bibo:Article ;
 .
 
-#swrc:Article & sio:SIO_00102  are both specifically "peer-reviewed article"
 #fabio:JournalArticle & obo:IAO_0000013 are both specifically "journal article"
 .
 asio:PeerReviewedArticle
   owl:equivalentClass sio:SIO_000102 ;
                       swrc:Article ;
+#swrc:Article & sio:SIO_00102  are both specifically "peer-reviewed article"
 .
 asio:Patent
   owl:equivalentClass swpo:Patent ;

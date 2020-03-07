@@ -414,7 +414,8 @@ asio:MasterStudent rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#MastersDegree
 asio:MastersDegree rdf:type owl:Class ;
                    rdfs:subClassOf asio:AcademicDegree ;
-                   rdfs:label "Maîtrise universitaire"@fr-be ,
+                   rdfs:label "Magister Scientiae"@es-ve ,
+                              "Maîtrise universitaire"@fr-be ,
                               "Maîtrise universitaire"@fr-ca ,
                               "Maîtrise universitaire"@fr-ch ,
                               "Maîtrise universitaire"@fr-fr ,
@@ -440,7 +441,8 @@ asio:MastersThesis rdf:type owl:Class ;
                               "Tesis de maestría"@es-cu ,
                               "Tesis de maestría"@es-mx ,
                               "Trabajo de fin de máster"@es-es ,
-                              "Treball de fi de màster"@ca .
+                              "Treball de fi de màster"@ca-ad ,
+                              "Treball de fi de màster"@ca-es .
 
 
 ###  http://www.asio.es/asioontologies/asio#NationalProject

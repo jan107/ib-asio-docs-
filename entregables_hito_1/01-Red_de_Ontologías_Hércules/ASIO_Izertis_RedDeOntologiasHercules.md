@@ -16,19 +16,13 @@ Keep in mind that both this document and the ontology files are a work in progre
 
 # 1. Introduction
 
-The ASIO ontology design is loosely inspired in the principles of informational encapsulation and domain specificity 
+In this brief section we are going to explain the large-scale organization of the ASIO ontology, which is loosely inspired by Jerry Fodor's *The modularity of mind* (1983), and for that we need to distinguish between two fundamentally different types of information processing (relying upon information architecture and datasets).
 
-Fodor's the modularity of mind ->
+On the one hand, there are highly-specialized information-processing tasks, such as identifying and retrieving data from specific environments. Informational-based tasks in these specific environments should be carried out automatically and should involve only a limited type of information. That is why information retrieval tasks having to do with this first type of information are carried out by dedicated parts of the ontology that we call ***modules***. These modules are *domain-specific* –that is, they are responsible only for tasks falling in particular domains (geopolitical, scientific, administrative, staffing, etc.).
 
-**FIXME** The second can be described as a "vertical" view because it claims that our mental faculties are domain specific, genetically determined, associated with distinct neurological structures, and so on. 
+On the other hand, there are central informational tasks that involve much more complex and wide-ranging inferences and to which an indefinite amount of background information is potentially relevant. The information processing involved in carrying out these tasks is *domain-general* (conversely to domain-specific) and it concerns our main *university domain*, because we understand *general* here as our general domain.
 
-[...]
-
-Two properties of modularity in particular, *informational encapsulation* and *domain specificity*, make it possible to tie together questions of functional architecture with those of knowledge content. The ability to elaborate information independently from the background knowledge that these two properties allow us to give an atomistic and causal account of the notion of knowledge content. The main idea, in other words, is that the properties of the contents of mental states can depend, rather than exclusively on the internal relations of the system of which they are a part, also on their causal relations with the external world. **FIXME**
-
-
-
-In the second section we consider Fodor’s famous proposal for understanding the large-scale organization of the mind. We need to distinguish, he argues, between two fundamentally different types of cognition. On the one hand, there are highly specialized information-processing tasks, such as identifying the outlines of objects in the immediate environment, or working out where the gaps between words come in a stream of sound. These tasks are carried out automatically, and involve only a limited amount of information. In his influential book The Modularity of Mind (1983) Fodor argues that tasks of this first kind are carried out by dedicated cognitive systems that he called modules. These modules are domain-specific – that is, they are responsible only for tasks falling in particular domains. On the other hand, there are tasks, such as deciding where to have dinner or how to plant the front garden, that involve much more complex and wide-ranging inferences and to which an indefinite amount of background information is potentially relevant. The information processing involved in carrying out these tasks is domaingeneral (the opposite of domain-specific). On the basis of this analysis, Fodor develops a picture of the organization of the mind as involving both specialized modules and what he calls domain-general, non-modular cognition. In the final section I look at the relation between these two claims. 
+On the basis of this distinction, we develop an architecture of the organization of the mind as involving both very specialized modules (***vertical modules***) and what we call domain-general, non-modular knowledge (***core ontology***), and two properties of modularity in particular, *informational encapsulation* and *domain specificity*, make it possible to tie together questions of functional architecture with those of knowledge content.
 
 
 
@@ -212,7 +206,15 @@ Hence, besides being able to seamlessly *assimilate* these **Scientific domains*
 - processing and transforming it from an only-reading format (PDF), which would be categorised as simply [linked data](https://www.w3.org/DesignIssues/LinkedData.html) of low-quality or 1-star ("Available on the web (whatever format) *but with an open licence, to be Open Data*"), to a high-quality, or [5-star quality](https://www.w3.org/community/webize/2014/01/17/what-is-5-star-linked-data/), linked data format ("non-proprietary format (e.g. CSV instead of excel), open standards from W3C (RDF and SPARQL) to identify things and link your data to other people’s data to provide context").
 - exploiting the full possibilities of multiligualism provided by SKOS with the aim of internationalising and localising the dataset, understanding here *internationalising* and *localising* as the processes to design an IT resource as fully adaptable to different languages and regions without later having to reengineering or changing the code. This way, the language labels for the scientific domains, originally just in Spanish, have been adapted to a multilingual context which not only covers English as *lingua franca* but also three languages in contact with Spanish through land borders (Catalan, French and Portuguese) and a number of cooficial regional languages (the aforementioned Catalan but also Basque and Galician) and even some linguistic varieties with a certain recognition at regional level (Aragonese, Asturian, Occitan).
 
-In addition to the ontological possibilities offered by SKOS, which is itself an ad hoc ontology, with respect to the ASIO core ontology, these mentioned multilingual labels provide idoneous raw materials to carry out extensively testing with respect to multilingualism, as detailed in the previous section and in a complementary deliverable (*ModeloMultilinguismo*).
+An graphical example of the preprocesse file corresponding to the first-level of the scientific domains can be seen here:
+
+
+
+![1st-example](./images/sc-do-1st.png)
+
+where still in a tabular format we can check out a first column with codes that will be used in the opaque URIs of the concepts and the encompassing multilingual labels in Aragonese, Asturian, Catalan, English, Spanish, Extremaduran, Basque, French, Galician, Occitan, Portuguese, phonetic transcription of Spanish according to the Spain locale, phonetic transcription of English according to the British locale and phonetic transcription of English according to the General American locale.
+
+In addition to the ontological possibilities offered by SKOS (which is itself an ad hoc ontology) with respect to the ASIO core ontology, these mentioned multilingual labels provide idoneous raw materials to carry out extensively testing with respect to multilingualism, as detailed in the previous section and in a complementary deliverable (*ModeloMultilinguismo*).
 
 
 
