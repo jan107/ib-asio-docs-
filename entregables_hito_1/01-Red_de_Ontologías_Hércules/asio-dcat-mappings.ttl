@@ -57,6 +57,7 @@
 @prefix npg: <http://ns.nature.com/terms/>
 @prefix bf: <http://id.loc.gov/ontologies/bibframe/Publication>
 @prefix acm: <http://acm.rkbexplorer.com/ontologies/acm#>
+@prefix bio: <http://purl.org/vocab/bio/0.1/participant>
 # add new/missing list of prefixes here
 @base <http://www.asio.es/asioontologies/asio/alignment/dcat> .
 
@@ -191,12 +192,12 @@ asio:Article
                       bibo:Article ;
 .
 
-#swrc:Article & sio:SIO_00102  are both specifically "peer-reviewed article"
 #fabio:JournalArticle & obo:IAO_0000013 are both specifically "journal article"
 .
 asio:PeerReviewedArticle
   owl:equivalentClass sio:SIO_000102 ;
                       swrc:Article ;
+#swrc:Article & sio:SIO_00102  are both specifically "peer-reviewed article"
 .
 asio:Patent
   owl:equivalentClass swpo:Patent ;
@@ -212,6 +213,9 @@ asio:Funding
   owl:equivalentClass frapo:Funding ;
                       cerif:Funding ;
                       semcerif:Funding ;
+.
+asio:AcademicDegree
+  owl:equivalentClass vivo:AcademicDegree ;
 .
 asio:CV
   owl:equivalentClass cv:CV ;
@@ -248,14 +252,7 @@ asio:PhDStudent
 
 asio:member
   owl:equivalentProperty foaf:member ;
-                      frapo:University ;
-                      sio:University ;
-                      lgdo:University ;
-                      dbpedia-owl:University ;
-                      swpo:University ;
-                      vivo:University ;
-                      pext:University ;
-                      sio:SIO_000290
+                      frapo:member ;
 .
 asio:hasCV
   owl:equivalentProperty frapo:hasCurriculumVitae ;
@@ -265,4 +262,7 @@ asio:funds
 .
 asio:isFundedBy
   owl:equivalentProperty frapo:isFundedBy ;
+.
+asio:participant
+  owl:equivalentProperty bio:participant ;
 .
