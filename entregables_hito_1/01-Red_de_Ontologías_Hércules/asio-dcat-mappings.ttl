@@ -43,7 +43,6 @@
 @prefix npg: <http://ns.nature.com/terms/>
 @prefix opus: <http://lsdis.cs.uga.edu/projects/semdis/opus#>
 @prefix org: <http://www.w3.org/ns/org#> .
-@prefix orkg: <http://orkg.org/core#>
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pc: <http://purl.org/procurement/public-contracts#>
 @prefix pdo: <http://ontologies.smile.deri.ie/pdo#> .
@@ -201,7 +200,6 @@ asio:Article
                       bibo:AcademicArticle ,
                       bibtex:Article ,
                       opus:Article ,
-                      orkg:Paper ,
                       npg:Article ,
                       bibo:Article 
 .
@@ -245,9 +243,9 @@ asio:Student
   owl:equivalentClass swpo:Student ,
                       swrc:Student ,
                       vivo:Student ,
-                      sio:SIO_000405 
-#                     teach:Student ,
-#                      akt:Student 
+                      sio:SIO_000405 ,
+                      teach:Student ,
+                      akt:Student 
 .
 asio:UndergraduateStudent
   owl:equivalentClass vivo:UndergraduateStudent 
@@ -256,23 +254,8 @@ asio:UndergraduateStudent
 #  owl:equivalentClass vivo:GraduateStudent ;
 #.
 asio:PhDStudent
-  owl:equivalentClass swrc:PhDStudent 
-#                      akt:PhD-Student 
-.
-asio:ResearchContribution
-  owl:equivalentClass orkg:ResearchContribution 
-.
-asio:ResearchField
-  owl:equivalentClass orkg:ResearchField 
-.
-asio:ResearchMaterial
-  owl:equivalentClass orkg:ResearchMaterial 
-.
-asio:ResearchMethod
-  owl:equivalentClass orkg:ResearchMethod 
-.
-asio:ResearchProblem
-  owl:equivalentClass orkg:ResearchProblem 
+  owl:equivalentClass swrc:PhDStudent ,
+                      akt:PhD-Student 
 .
 
 
@@ -294,25 +277,4 @@ asio:isFundedBy
 .
 asio:participant
   owl:equivalentProperty bio:participant 
-.
-asio:participant
-  owl:equivalentProperty bio:participant 
-.
-asio:addresses
-  owl:equivalentProperty orkg:addresses
-.
-asio:employs
-  owl:equivalentProperty orkg:employs
-.
-asio:utilizes
-  owl:equivalentProperty orkg:utilizes
-.
-asio:yields
-  owl:equivalentProperty orkg:yields
-.
-asio:hasResearchField
-  owl:equivalentProperty orkg:hasResearchField
-.
-asio:hasResearchContribution
-  owl:equivalentProperty orkg:hasResearchContribution
 .

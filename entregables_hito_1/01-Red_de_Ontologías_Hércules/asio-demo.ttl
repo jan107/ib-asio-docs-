@@ -26,11 +26,18 @@
 @prefix humantechreadiness: <http://sweetontology.net/humanTechReadiness#> .
 @base <http://www.asio.es/asioontologies/asio> .
 
-<http://www.asio.es/asioontologies/asio> rdf:type owl:Ontology .
+<http://www.asio.es/asioontologies/asio> rdf:type owl:Ontology ;
+                                          owl:versionIRI <http://www.asio.es/asioontologies/asio/0.0.1> .
 
 #################################################################
 #    Object Properties
 #################################################################
+
+###  http://www.asio.es/asioontologies/asio#addresses
+asio:addresses rdf:type owl:ObjectProperty ;
+               rdfs:domain asio:ResearchContribution ;
+               rdfs:range asio:ResearchProblem .
+
 
 ###  http://www.asio.es/asioontologies/asio#advises
 asio:advises rdf:type owl:ObjectProperty ;
@@ -90,6 +97,14 @@ asio:hasCode rdf:type owl:ObjectProperty ;
              rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> ;
              rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
              rdfs:comment "A concept can be asigned a code."@en .
+
+
+###  http://www.asio.es/asioontologies/asio#hasResearchContribution
+asio:hasResearchContribution rdf:type owl:ObjectProperty .
+
+
+###  http://www.asio.es/asioontologies/asio#hasResearchField
+asio:hasResearchField rdf:type owl:ObjectProperty .
 
 
 ###  http://www.asio.es/asioontologies/asio#hasScientificDomain
@@ -192,7 +207,8 @@ asio:projectStartDate rdf:type owl:DatatypeProperty ;
 ###  http://purl.org/cerif/frapo/FinancialEntity
 <http://purl.org/cerif/frapo/FinancialEntity> rdf:type owl:Class ;
                                               rdfs:label "Entidad financiera"@es ,
-                                                         "Entitat financera"@ca ,
+                                                         "Entitat financera"@ca-ad ,
+                                                         "Entitat financera"@ca-es ,
                                                          "Entité financière"@fr ,
                                                          "Financial entity"@en ,
                                                          "Instituição financeira"@pt .
@@ -201,7 +217,8 @@ asio:projectStartDate rdf:type owl:DatatypeProperty ;
 ###  http://purl.org/wf4ever/ro#ResearchObject
 ro:ResearchObject rdf:type owl:Class ;
                   rdfs:comment "A research object aggregates a number of resources. A resource can be a workflow, web service, document, data item, data set, workflow run, software or a research object."@en ;
-                  rdfs:label "Objecte de recerca"@ca ,
+                  rdfs:label "Objecte de recerca"@ca-ad ,
+                             "Objecte de recerca"@ca-es ,
                              "Objet de recherche"@fr ,
                              "Objeto de investigación"@es ,
                              "Objeto de investigação"@pt ,
@@ -229,7 +246,8 @@ asio:AcademicDegree rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#AcademicPublication
 asio:AcademicPublication rdf:type owl:Class ;
                          rdfs:subClassOf asio:Publication ;
-                         rdfs:label "Publicació acadèmica"@ca ,
+                         rdfs:label "Publicació acadèmica"@ca-ad ,
+                                    "Publicació acadèmica"@ca-es ,
                                     "Publicación académica"@es ,
                                     "Publication académique"@fr ,
                                     "Publicação acadêmica"@pt .
@@ -242,7 +260,8 @@ asio:AdministrativeEntity rdf:type owl:Class ;
                           rdfs:label "Administrative entities"@en ,
                                      "Entidades administrativas"@es ,
                                      "Entidades administrativas"@pt ,
-                                     "Entitats administratives"@ca ,
+                                     "Entitats administratives"@ca-ad ,
+                                     "Entitats administratives"@ca-es ,
                                      "Entités administratives"@fr .
 
 
@@ -251,7 +270,8 @@ asio:AdministrativePersonnel rdf:type owl:Class ;
                              rdfs:subClassOf asio:HumanResource ;
                              rdfs:comment "Personnel devoted to administrative tasks."@en ;
                              rdfs:label "Administrative personnel"@en ,
-                                        "Personal administratiu"@ca ,
+                                        "Personal administratiu"@ca-ad ,
+                                        "Personal administratiu"@ca-es ,
                                         "Personal administrativo"@es ,
                                         "Personnel administratif"@fr ,
                                         "Pessoal administrativo"@pt .
@@ -293,7 +313,8 @@ asio:Book rdf:type owl:Class ;
                      "Libro"@es ,
                      "Livre"@fr ,
                      "Livro"@pt ,
-                     "Llibre"@ca .
+                     "Llibre"@ca-ad ,
+                     "Llibre"@ca-es .
 
 
 ###  http://www.asio.es/asioontologies/asio#Budget
@@ -303,7 +324,8 @@ asio:Budget rdf:type owl:Class ;
             rdfs:label "Budget"@en ,
                        "Budget"@fr ,
                        "Orçamento"@pt ,
-                       "Pressupost"@ca ,
+                       "Pressupost"@ca-ad ,
+                       "Pressupost"@ca-es ,
                        "Presupuesto"@es .
 
 
@@ -333,7 +355,8 @@ asio:Company rdf:type owl:Class ;
                           "Una organització amb personalitat jurídica, la qual disposa dels mitjans necessaris per a la producció i es dedica a combinar-los per obtenir béns o serveis destinats a l'intercanvi."@ca ,
                           "Una organización con personalidad jurídica que dispone de los medios necesarios para la producción y se dedica a combinarlos para obtener bienes o servicios destinados al intercambio."@es ;
              rdfs:label "Company"@en ,
-                        "Empresa"@ca ,
+                        "Empresa"@ca-ad ,
+                        "Empresa"@ca-es ,
                         "Empresa"@es ,
                         "Empresa"@pt ,
                         "Entreprise"@fr .
@@ -343,7 +366,8 @@ asio:Company rdf:type owl:Class ;
 asio:Contract rdf:type owl:Class ;
               rdfs:subClassOf <http://purl.org/cerif/frapo/FinancialEntity> ;
               rdfs:label "Contract"@en ,
-                         "Contracte"@ca ,
+                         "Contracte"@ca-ad ,
+                         "Contracte"@ca-es ,
                          "Contrat"@fr ,
                          "Contrato"@es ,
                          "Contrato"@pt .
@@ -355,7 +379,8 @@ asio:Country rdf:type owl:Class ;
              rdfs:comment "A region legally identified as a distinct entity in political geography."@en ;
              rdfs:label "Country"@en ,
                         "Pays"@fr ,
-                        "País"@ca ,
+                        "País"@ca-ad ,
+                        "País"@ca-es ,
                         "País"@es ,
                         "País"@pt .
 
@@ -383,7 +408,8 @@ asio:EditedPublication rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#EmploymentContract
 asio:EmploymentContract rdf:type owl:Class ;
                         rdfs:subClassOf asio:Contract ;
-                        rdfs:label "Contracte de treball"@ca ,
+                        rdfs:label "Contracte de treball"@ca-ad ,
+                                   "Contracte de treball"@ca-es ,
                                    "Contrat de travail"@fr ,
                                    "Contrato de trabajo"@es ,
                                    "Contrato de trabalho"@pt ,
@@ -395,7 +421,8 @@ asio:EuropeanProject rdf:type owl:Class ;
                      rdfs:subClassOf foaf:Project ;
                      rdfs:comment "A project developed and funded at the European level."@en ;
                      rdfs:label "European project"@en ,
-                                "Projecte europeu"@ca ,
+                                "Projecte europeu"@ca-ad ,
+                                "Projecte europeu"@ca-es ,
                                 "Projet européen"@fr ,
                                 "Projeto europeu"@pt ,
                                 "Proyecto europeo"@es .
@@ -428,7 +455,8 @@ asio:HumanResource rdf:type owl:Class ;
                    rdfs:subClassOf foaf:Person ;
                    rdfs:comment "A person who make up the workforce of an organization, industry, business sector or economy."@en ;
                    rdfs:label "Human resource"@en ,
-                              "Recurs humà"@ca ,
+                              "Recurs humà"@ca-ad ,
+                              "Recurs humà"@ca-es ,
                               "Recurso humano"@es ,
                               "Recurso humano"@pt ,
                               "Ressource humaine"@fr .
@@ -486,7 +514,8 @@ asio:NationalProject rdf:type owl:Class ;
                      rdfs:subClassOf foaf:Project ;
                      rdfs:comment "A project developed and funded at the national level."@en ;
                      rdfs:label "National project"@en ,
-                                "Projecte nacional"@ca ,
+                                "Projecte nacional"@ca-ad ,
+                                "Projecte nacional"@ca-es ,
                                 "Projet national"@fr ,
                                 "Projeto nacional"@pt ,
                                 "Proyecto regional"@es .
@@ -533,7 +562,8 @@ asio:ProjectBudget rdf:type owl:Class ;
                    rdfs:comment "The budget established or devoted to a project."@en ;
                    rdfs:label "Budget de projet"@fr ,
                               "Orçamento de projeto"@pt ,
-                              "Pressupost de projecte"@ca ,
+                              "Pressupost de projecte"@ca-ad ,
+                              "Pressupost de projecte"@ca-es ,
                               "Presupuesto de proyecto"@es ,
                               "Project budget"@en .
 
@@ -541,7 +571,8 @@ asio:ProjectBudget rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#Publication
 asio:Publication rdf:type owl:Class ;
                  rdfs:comment "Content made available to the general public. In the case of ASIO, often scientific or academic contents published."@en ;
-                 rdfs:label "Publicació"@ca ,
+                 rdfs:label "Publicació"@ca-ad ,
+                            "Publicació"@ca-es ,
                             "Publicación"@es ,
                             "Publication"@en ,
                             "Publication"@fr ,
@@ -552,7 +583,7 @@ asio:Publication rdf:type owl:Class ;
 asio:RegionalProject rdf:type owl:Class ;
                      rdfs:subClassOf foaf:Project ;
                      rdfs:comment "A project developed and funded at the regional level."@en ;
-                     rdfs:label "Projecte regional"@ca ,
+                     rdfs:label "Projecte regional"@ca-ad ,
                                 "Projet régional"@fr ,
                                 "Projeto regional"@pt ,
                                 "Proyecto regional"@es ,
@@ -564,12 +595,18 @@ asio:ResearchContribution rdf:type owl:Class ;
                           rdfs:label "Research contribution"@en .
 
 
+###  http://www.asio.es/asioontologies/asio#ResearchField
+asio:ResearchField rdf:type owl:Class ;
+                   rdfs:label "Research field"@en .
+
+
 ###  http://www.asio.es/asioontologies/asio#ResearchGroup
 asio:ResearchGroup rdf:type owl:Class ;
                    rdfs:subClassOf foaf:Group ;
                    rdfs:comment "A group of researchers often from the same centre, specialised on the same subject, working together on the issue or topic."@en ;
                    rdfs:label "Group de recherche"@fr ,
-                              "Grup de recerca"@ca ,
+                              "Grup d'investigació"@ca-es ,
+                              "Grup de recerca"@ca-ad ,
                               "Grupo de investigación"@es ,
                               "Grupo de investigação"@pt ,
                               "Research group"@en .
@@ -579,7 +616,8 @@ asio:ResearchGroup rdf:type owl:Class ;
 asio:ResearchInstitute rdf:type owl:Class ;
                        rdfs:subClassOf foaf:Organization ;
                        rdfs:comment "An establishment founded for doing research."@en ;
-                       rdfs:label "Centre de recerca"@ca ,
+                       rdfs:label "Centre d'investigació"@ca-es ,
+                                  "Centre de recerca"@ca-ad ,
                                   "Centro de investigación"@es ,
                                   "Centro de investigação"@pt ,
                                   "Research institute"@en .
@@ -600,7 +638,8 @@ asio:ResearchPersonnel rdf:type owl:Class ;
                        rdfs:subClassOf asio:HumanResource ;
                        rdfs:comment "Personnel devoted to reasearching tasks."@en ,
                                     "Research personnel"@en ;
-                       rdfs:label "Personal investigador"@ca ,
+                       rdfs:label "Personal de recerca"@ca-ad ,
+                                  "Personal investigador"@ca-es ,
                                   "Personal investigador"@es ,
                                   "Personnel rechercheur"@fr ,
                                   "Pessoal investigador"@pt .
@@ -622,7 +661,8 @@ asio:SME rdf:type owl:Class ;
          rdfs:comment "A company whose personnel numbers fall below certain limits."@en ;
          rdfs:label "Pequena e média empresa"@pt ,
                     "Pequeña y mediana empresa"@es ,
-                    "Petita i mitjana empresa"@ca ,
+                    "Petita i mitjana empresa"@ca-ad ,
+                    "Petita i mitjana empresa"@ca-es ,
                     "Petite ou moyenne entreprise"@fr ,
                     "Small and medium-sized enterprise"@en .
 
@@ -630,7 +670,8 @@ asio:SME rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#ScientificPublication
 asio:ScientificPublication rdf:type owl:Class ;
                            rdfs:subClassOf asio:Publication ;
-                           rdfs:label "Publicació científica"@ca ,
+                           rdfs:label "Publicació científica"@ca-ad ,
+                                      "Publicació científica"@ca-es ,
                                       "Publicación científica"@es ,
                                       "Publication scientifique"@fr ,
                                       "Publicação científica"@pt ,
@@ -642,7 +683,8 @@ asio:SealOfQuality rdf:type owl:Class ;
                    rdfs:comment "A graphic mark indicating highest levels of quality in research, often measured in terms of relevant publications related to the researching activity."@en ;
                    rdfs:label "Label qualité"@fr ,
                               "Seal of quality"@en ,
-                              "Segell de qualitat"@ca ,
+                              "Segell de qualitat"@ca-ad ,
+                              "Segell de qualitat"@ca-es ,
                               "Sello de calidad"@es ,
                               "Selo de qualidade"@pt .
 
@@ -650,7 +692,7 @@ asio:SealOfQuality rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#ServiceContract
 asio:ServiceContract rdf:type owl:Class ;
                      rdfs:subClassOf asio:Contract ;
-                     rdfs:label "Contracte de servei"@ca ,
+                     rdfs:label "Contracte de servei"@ca-es ,
                                 "Contrat de service"@fr ,
                                 "Contrato de servicio"@es ,
                                 "Contrato de serviço"@pt ,
@@ -669,7 +711,8 @@ asio:Spinoff rdf:type owl:Class ;
              rdfs:subClassOf asio:Company ;
              rdfs:comment "A division of a company or an organization that becomes an independent business with assets, employees, intellectual property, technology, or existing products taken from the parent company."@en ;
              rdfs:label "Corporate spin-off"@en ,
-                        "Empresa derivada"@ca ,
+                        "Empresa derivada"@ca-ad ,
+                        "Empresa derivada"@ca-es ,
                         "Empresa derivada"@pt ,
                         "Société scindée"@fr ,
                         "Spin-off"@es .
@@ -679,7 +722,8 @@ asio:Spinoff rdf:type owl:Class ;
 asio:Student rdf:type owl:Class ;
              rdfs:subClassOf foaf:Person ;
              rdfs:label "Estudante"@pt ,
-                        "Estudiant"@ca ,
+                        "Estudiant"@ca-ad ,
+                        "Estudiant"@ca-es ,
                         "Estudiante"@es ,
                         "Student"@en ,
                         "Étudiant"@fr .
@@ -689,7 +733,8 @@ asio:Student rdf:type owl:Class ;
 asio:TechnicalPersonnel rdf:type owl:Class ;
                         rdfs:subClassOf asio:HumanResource ;
                         rdfs:comment "Personnel devoted to technical suport."@en ;
-                        rdfs:label "Personal tècnic"@ca ,
+                        rdfs:label "Personal tècnic"@ca-ad ,
+                                   "Personal tècnic"@ca-es ,
                                    "Personal técnico"@es ,
                                    "Personnel technique"@fr ,
                                    "Pessoal técnico"@pt ,
@@ -720,7 +765,8 @@ asio:University rdf:type owl:Class ;
                 rdfs:subClassOf foaf:Organization ;
                 rdfs:comment "A centre at which higher education and research is conducted."@en ;
                 rdfs:label "Universidade"@pt ,
-                           "Universitat"@ca ,
+                           "Universitat"@ca-ad ,
+                           "Universitat"@ca-es ,
                            "University"@en ,
                            "Université"@fr .
 
@@ -729,7 +775,8 @@ asio:University rdf:type owl:Class ;
 <http://www.asio.es/asioontologies/asio#Research&TeachingPersonnel> rdf:type owl:Class ;
                                                                     rdfs:subClassOf asio:HumanResource ;
                                                                     rdfs:comment "Personnel devoted to teaching and research tasks."@en ;
-                                                                    rdfs:label "Personal docent i investigador"@ca ,
+                                                                    rdfs:label "Personal docent i investigador"@ca-ad ,
+                                                                               "Personal docent i investigador"@ca-es ,
                                                                                "Personnel enseignant et chercheur"@fr ,
                                                                                "Pessoal docente e investigador"@pt ,
                                                                                "Teaching and research personnel"@en ,
@@ -743,7 +790,8 @@ modules:GeopoliticalEntities rdf:type owl:Class ;
 In the Asio project the proof of concept is carried out with the whole administrative levels of Spain, Portugal, Andorra and France, in addition to the relevant European administrative entities."""@en ;
                              rdfs:label "Entidades geopolíticas"@es ,
                                         "Entidades geopolíticas"@pt ,
-                                        "Entitats geopolítiques"@ca ,
+                                        "Entitats geopolítiques"@ca-ad ,
+                                        "Entitats geopolítiques"@ca-es ,
                                         "Entités géopolitiques"@fr ,
                                         "Geopolitical entities"@en .
 
@@ -753,7 +801,8 @@ modules:ScientificDomain rdf:type owl:Class ;
                          rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
                          rdfs:comment "This ASIO vertical module organizes hierarchically the scientific domains related to research projects as established by Spain's Agencia Estatal de Investigación, depending from the Ministerio de Economía y Competitividad."@en ;
                          rdfs:label "Domains scientifiques"@fr ,
-                                    "Dominis científics"@ca ,
+                                    "Dominis científics"@ca-ad ,
+                                    "Dominis científics"@ca-es ,
                                     "Scientific domains"@en ,
                                     "Áreas científicas"@es ,
                                     "Áreas científicas"@pt .
