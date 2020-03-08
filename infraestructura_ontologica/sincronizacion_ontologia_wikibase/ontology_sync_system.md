@@ -1,3 +1,5 @@
+![](.\images\logos_feder.png)
+
 # Documentación del módulo hercules-sync
 
 ## Tabla de contenido

@@ -1,3 +1,5 @@
+![](.\images\logos_feder.png)
+
 # Linked Data Platform
 
 

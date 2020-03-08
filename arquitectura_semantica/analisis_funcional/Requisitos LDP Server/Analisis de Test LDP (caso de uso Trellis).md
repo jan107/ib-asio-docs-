@@ -1,3 +1,5 @@
+![](.\images\logos_feder.png)
+
 # Errores en test
 
 ## Generales
@@ -105,10 +107,9 @@ En este caso hay que interpretar la normativa de la LDP
 > *La representación RDF de un contenedor **PUEDE** tener una tripleta del tipo*
 >
 > <center><strong>Subject URI del Contenedor &rarr; rdf:type &rarr; ldp:Container</strong></center>
->
-> *para los LDP Container.*
->
-> *Los LDP Containers pueden tener cualquier tipo adicional, exactamente igual que los LDP-RS*
+>*para los LDP Container.*
+> 
+>*Los LDP Containers pueden tener cualquier tipo adicional, exactamente igual que los LDP-RS*
 
 
 
@@ -278,8 +279,7 @@ Por lo tanto se estima que la implementación del test no es la mejor posible, y
 > Los clientes deben de poder inferir la tripleta
 >
 > <center><strong>Subject URI del Contenedor &rarr; rdf:type &rarr; ldp:RDFSource</strong></center>
->
-> pero expresarla explícitamente no esta requerido
+>pero expresarla explícitamente no esta requerido
 
 En esta especifica que la tripleta se debe de inferir, **pero esta no esta requerida**
 
@@ -436,8 +436,7 @@ Como un BasicContainer es una sub-clase de RDFSource, pues en mi opinión, cumpl
 > Los clientes deben de poder inferir la tripleta
 >
 > <center><strong>Subject URI del Contenedor &rarr; rdf:type &rarr; ldp:RDFSource</strong></center>
->
-> pero expresarla explícitamente no esta requerido
+>pero expresarla explícitamente no esta requerido
 
 En esta especifica que la tripleta se debe de inferir, **pero esta no esta requerida**
 
@@ -566,8 +565,7 @@ Como un BasicContainer es una sub-clase de RDFSource, pues en mi opinión, cumpl
 > Los clientes deben de poder inferir la tripleta
 >
 > <center><strong>Subject URI del Contenedor &rarr; rdf:type &rarr; ldp:RDFSource</strong></center>
->
-> pero expresarla explícitamente no esta requerido
+>pero expresarla explícitamente no esta requerido
 
 En esta especifica que la tripleta se debe de inferir, **pero esta no esta requerida**
 

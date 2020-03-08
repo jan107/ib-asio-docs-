@@ -1,3 +1,5 @@
+![](.\images\logos_feder.png)
+
 # Alineación con FAIR
 
 Los principios FAIR (Findable, Accessible, Interoperable, Reusable) fueron propuestos en el ámbito científico para mejorar la calidad de los datos científicos, promoviendo que dichos datos fuesen fácilmente encontrables, accesibles, interoperables y reutilizables.
