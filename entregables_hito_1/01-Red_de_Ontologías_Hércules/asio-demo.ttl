@@ -61,6 +61,12 @@ asio:country rdf:type owl:ObjectProperty ;
              rdfs:comment "This property indicates the nationality of a resource."@en .
 
 
+###  http://www.asio.es/asioontologies/asio#employs
+asio:employs rdf:type owl:ObjectProperty ;
+             rdfs:domain asio:ResearchContribution ;
+             rdfs:range asio:ResearchMethod .
+
+
 ###  http://www.asio.es/asioontologies/asio#funds
 asio:funds rdf:type owl:ObjectProperty ;
            owl:inverseOf asio:isFundedBy .
@@ -133,6 +139,18 @@ asio:researchesIn rdf:type owl:ObjectProperty ;
 ###  http://www.asio.es/asioontologies/asio#spinsOffFrom
 asio:spinsOffFrom rdf:type owl:ObjectProperty ;
                   rdfs:domain asio:Spinoff .
+
+
+###  http://www.asio.es/asioontologies/asio#utilizes
+asio:utilizes rdf:type owl:ObjectProperty ;
+              rdfs:domain asio:ResearchContribution ;
+              rdfs:range asio:ResearchMaterial .
+
+
+###  http://www.asio.es/asioontologies/asio#yields
+asio:yields rdf:type owl:ObjectProperty ;
+            rdfs:domain asio:ResearchContribution ;
+            rdfs:range asio:ResearchResult .
 
 
 ###  http://xmlns.com/foaf/0.1/member
@@ -541,6 +559,11 @@ asio:RegionalProject rdf:type owl:Class ;
                                 "Regional project"@en .
 
 
+###  http://www.asio.es/asioontologies/asio#ResearchContribution
+asio:ResearchContribution rdf:type owl:Class ;
+                          rdfs:label "Research contribution"@en .
+
+
 ###  http://www.asio.es/asioontologies/asio#ResearchGroup
 asio:ResearchGroup rdf:type owl:Class ;
                    rdfs:subClassOf foaf:Group ;
@@ -562,14 +585,35 @@ asio:ResearchInstitute rdf:type owl:Class ;
                                   "Research institute"@en .
 
 
+###  http://www.asio.es/asioontologies/asio#ResearchMaterial
+asio:ResearchMaterial rdf:type owl:Class ;
+                      rdfs:label "Research material"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#ResearchMethod
+asio:ResearchMethod rdf:type owl:Class ;
+                    rdfs:label "Research method"@en .
+
+
 ###  http://www.asio.es/asioontologies/asio#ResearchPersonnel
 asio:ResearchPersonnel rdf:type owl:Class ;
                        rdfs:subClassOf asio:HumanResource ;
-                       rdfs:comment "Personnel devoted to reasearching tasks."@en ;
+                       rdfs:comment "Personnel devoted to reasearching tasks."@en ,
+                                    "Research personnel"@en ;
                        rdfs:label "Personal investigador"@ca ,
                                   "Personal investigador"@es ,
                                   "Personnel rechercheur"@fr ,
                                   "Pessoal investigador"@pt .
+
+
+###  http://www.asio.es/asioontologies/asio#ResearchProblem
+asio:ResearchProblem rdf:type owl:Class ;
+                     rdfs:label "Research problem"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#ResearchResult
+asio:ResearchResult rdf:type owl:Class ;
+                    rdfs:label "Research result"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#SME
@@ -616,7 +660,8 @@ asio:ServiceContract rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#SpainUniversityStaffing
 asio:SpainUniversityStaffing rdf:type owl:Class ;
                              rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
-                             rdfs:comment "This ASIO vertical module defines Spain's University staffing model encompassing all its specificities."@en .
+                             rdfs:comment "This ASIO vertical module defines Spain's University staffing model encompassing all its specificities."@en ;
+                             rdfs:label "Spain's university staffing"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#Spinoff
@@ -647,7 +692,8 @@ asio:TechnicalPersonnel rdf:type owl:Class ;
                         rdfs:label "Personal tècnic"@ca ,
                                    "Personal técnico"@es ,
                                    "Personnel technique"@fr ,
-                                   "Pessoal técnico"@pt .
+                                   "Pessoal técnico"@pt ,
+                                   "Technical personnel"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#TechnicalReport
@@ -659,7 +705,8 @@ asio:TechnicalReport rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#Thesis
 asio:Thesis rdf:type owl:Class ;
             rdfs:subClassOf asio:AcademicPublication ;
-            rdfs:comment "Any kind of thesis (bachelor's, master's, PhD) produced to receive some sort of university degree."@en .
+            rdfs:comment "Any kind of thesis (bachelor's, master's, PhD) produced to receive some sort of university degree."@en ;
+            rdfs:label "Thesis"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#UndergraduateStudent
@@ -685,6 +732,7 @@ asio:University rdf:type owl:Class ;
                                                                     rdfs:label "Personal docent i investigador"@ca ,
                                                                                "Personnel enseignant et chercheur"@fr ,
                                                                                "Pessoal docente e investigador"@pt ,
+                                                                               "Teaching and research personnel"@en ,
                                                                                "personal docente e investigador"@es .
 
 
