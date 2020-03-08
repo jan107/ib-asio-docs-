@@ -10,19 +10,21 @@ The first one is the ***core*** ontology and the second one corresponds to the c
 
 In addition to these two files, a number of ***vertical modules*** are going to be released little by little. An early release is the **geopolitical module** (the third file listed above) including so far just the geopolitical entities of Andorra, Spain and Portugal (France is the other country to be taken into account in this vertical module in the next update). At the moment of this writing, three more vertical modules are almost ready to be released, as we will see in the section devoted to these modules.
 
-Keep in mind that both this document and the ontology files are a work in progress and the deadline to deliver the 80% of the specification is mid May.
+Keep in mind that both this document and the ontology files are a **work in progress** and the deadline to deliver the 80% of the specification is mid May, so there might still be some inconsistencies, imperfections, potential improvement and relevant addings.
 
 
 
 # 1. Introduction
 
-In this brief section we are going to explain the large-scale organization of the ASIO ontology, which is loosely inspired by Jerry Fodor's *The modularity of mind* (1983), and for that we need to distinguish between two fundamentally different types of information processing (relying upon information architecture and datasets).
+The ASIO ontologies are standardised data schemas (or "vocabularies") designed to address the Research Management of the particular case of the University of Murcia but by applying an encompassing model capable of addressing too other universities both at the national level and at the international level.
 
-On the one hand, there are highly-specialized information-processing tasks, such as identifying and retrieving data from specific environments. Informational-based tasks in these specific environments should be carried out automatically and should involve only a limited type of information. That is why information retrieval tasks having to do with this first type of information are carried out by dedicated parts of the ontology that we call ***modules***. These modules are *domain-specific* –that is, they are responsible only for tasks falling in particular domains (geopolitical, scientific, administrative, staffing, etc.).
+In this brief section we are going to explain the large-scale organization of the ASIO ontology, which is split into a central and peripheral components, loosely inspiring ourselves in Fodor (1983). To do so we need to distinguish between two fundamentally different types of information processing (relying upon information architecture and datasets).
 
-On the other hand, there are central informational tasks that involve much more complex and wide-ranging inferences and to which an indefinite amount of background information is potentially relevant. The information processing involved in carrying out these tasks is *domain-general* (conversely to domain-specific) and it concerns our main *university domain*, because we understand *general* here as our general domain.
+On the one hand, there are highly-specialised information-processing tasks, such as identifying and retrieving data from specific environments. Informational-based tasks in these specific environments should be carried out automatically and should involve only a limited type of information. That is why information retrieval tasks having to do with this first type of information are carried out by dedicated parts of the ontology that we call ***modules***. These modules are *domain-specific* –that is, they are responsible only for tasks falling in particular domains (geopolitical, scientific, administrative, staffing, etc.).
 
-On the basis of this distinction, we develop an architecture of the organization of the mind as involving both very specialized modules (***vertical modules***) and what we call domain-general, non-modular knowledge (***core ontology***), and two properties of modularity in particular, *informational encapsulation* and *domain specificity*, make it possible to tie together questions of functional architecture with those of knowledge content.
+On the other hand, there are central informational tasks that involve much more complex and wide-ranging inferences and to which an indefinite amount of background information is potentially relevant. The information processing involved in carrying out these tasks is *domain-general* (conversely to domain-specific) and it concerns our main *university domain* (our ***core***), because we understand *general* here as our general domain.
+
+On the basis of this distinction, we develop an architecture of the ontological organization as involving both very specialized modules (***vertical modules***) and what we call domain-general, non-modular knowledge (***core ontology***). Two properties of modularity in particular, *informational encapsulation* and *domain specificity*, make it possible to tie together questions of functional architecture with those of knowledge content.
 
 
 
@@ -30,13 +32,33 @@ On the basis of this distinction, we develop an architecture of the organization
 
 ## 2.1. prolegomena
 
+In any informational system, in this case an ontology, there must be non-modular processing –or what we call central processing, to distinguish it from modular processing, which is peripheral (our vertical modules).
+
+Central domain processing shows two distinguishing features. On the one hand it aims at features that
+
+
+
+On the other hand, to say that a part of the ontology is core is, essentially, that it is not informationally encapsulated (as the vertical modules). In principle, any part of the system is relevant to confirming any other and we do not draw boundaries within it.
+
+
+
+
+
+
+
+
+
 This first version of the core ontology ([asio-demo.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontolog%C3%ADas_H%C3%A9rcules/asio-demo.owl)) is chiefly focused on addressing the competence questions provided by the University of Murcia and it includes already all the high-level classes necessary to deal with them.
 
 
 
-
-
 ## 2.2. the core ontology at a glance
+
+The ASIO ontologies are standardised data schemas (or "vocabularies") designed to address the Research Management of the particular case of the University of Murcia but by applying an encompassing model capable of addressing too other universities both at the national level and at the international level.
+
+FIXME
+
+
 
 To guide the reader in the understanding of this core ontology it may be useful to take into account some of the competence questions relying under the ontology modelling. Let's have a look at some of the most representative and/or easy-to-grasp:
 
@@ -181,7 +203,7 @@ This vertical module is designed to encompass all the relevant entities belongin
 
 It is, at the moment of this writing, a work in progress but the implementation so far includes the first-level bodies of *administración autonómica* (*conserjerías*), as available at Spain's administration portal [[1]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/comunidadesAutonomas/comunidadesAutonomas.htm?idCCAA=14), and the second-level [[2]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/fichaUnidadOrganica.htm?idUnidOrganica=123276&origenUO=comunidadesAutonomas&volver=comunidadesAutonomas&idCCAA=14), mainly *direcciones generales* and *consorcios*.
 
-The implementation of this vertical module is carried out using SKOS-Core.
+The implementation of this vertical module is also carried out using SKOS-Core.
 
 
 
@@ -208,8 +230,6 @@ Hence, besides being able to seamlessly *assimilate* these **Scientific domains*
 
 An graphical example of the preprocesse file corresponding to the first-level of the scientific domains can be seen here:
 
-
-
 ![1st-example](./images/sc-do-1st.png)
 
 where still in a tabular format we can check out a first column with codes that will be used in the opaque URIs of the concepts and the encompassing multilingual labels in Aragonese, Asturian, Catalan, English, Spanish, Extremaduran, Basque, French, Galician, Occitan, Portuguese, phonetic transcription of Spanish according to the Spain locale, phonetic transcription of English according to the British locale and phonetic transcription of English according to the General American locale.
@@ -220,15 +240,19 @@ In addition to the ontological possibilities offered by SKOS (which is itself an
 
 ## 4.4. Spain's university staffing
 
-Finally, all the specificities of the teaching-and-research positions in the universities of Spain are dealt with in this vertical module, which is still a working progress.
+Finally, all the specificities of the teaching-and-research positions in the universities of Spain are dealt with in this vertical module, which is still a **work in progress**.
 
-Following a number of interviews with domain-expert informants, we have started to gather together an alluvium of entities:
+Following a number of informal interviews with informants directly linked to the domain, we have started to gather together an alluvium of entities:
 
 
 
 ![1st-example](./images/hr-tea&res-pers.png)
 
-that will be contrasted and analysed with the assistance of other domain experts in order to streamline the initial list and subsequently map them as much as possible to the entities already featured in the core ontology, which shows a more international nature. 
+As a **disclaimer** we must warn the reader that these entities are not at all final candidates to populate the vertical module: they are just a starting point in the modelling and just the result of an initial brainstorm carried out in one specific university. They will be contrasted with equivalent entities in the university of Murcia, other universities and, obviously, with reference documents such as the [Ley Orgánica de Universidades](https://www.boe.es/buscar/pdf/2001/BOE-A-2001-24515-consolidado.pdf
+) and the [Estatuto Básico del Empleado Público](https://www.boe.es/buscar/act.php?id=BOE-A-2015-11719
+).
+
+
 
 
 
