@@ -36,9 +36,7 @@ On the basis of this distinction, we develop an architecture of the ontological 
 
 In any informational system, in this case an ontology, there must be non-modular processing –or what we call central processing, to distinguish it from modular processing, which is peripheral (our vertical modules).
 
-Central domain processing shows two distinguishing features. On the one hand it aims at features that
-
-On the other hand, to say that a part of the ontology is core is, essentially, that it is not informationally encapsulated (as the vertical modules). In principle, any part of the system is relevant to confirming any other and we do not draw boundaries within it.
+To say that a part of the ontology is core (i.e. involves central processing actions) is, essentially, to say that it is not informationally encapsulated (as the vertical modules). In principle, any part of the system is relevant to confirming any other and we do not draw boundaries within it.
 
 
 
