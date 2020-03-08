@@ -1,4 +1,4 @@
-![](.\images\logos_feder.png)
+![](./images/logos_feder.png)
 
 # 0. About this document
 

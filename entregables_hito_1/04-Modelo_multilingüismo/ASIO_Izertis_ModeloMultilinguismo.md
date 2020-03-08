@@ -1,4 +1,4 @@
-![](.\images\logos_feder.png)
+![](./images/logos_feder.png)
 
 # Multilingüismo (y *multiescriptalismo*) en las ontologías ASIO
 

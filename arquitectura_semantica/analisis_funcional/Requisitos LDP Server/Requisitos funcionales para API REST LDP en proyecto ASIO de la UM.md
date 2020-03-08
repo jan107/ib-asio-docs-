@@ -1,4 +1,4 @@
-![](.\images\logos_feder.png)
+![](./images/logos_feder.png)
 
 # Requisitos funcionales para API REST LDP en proyecto ASIO de la UM
 
@@ -96,7 +96,6 @@ Es la relación que vincula un contenedor con sus recursos, y por lo tanto a su 
 Todas aquellas tripletas, pertenecientes al LDPC, que permiten listar los LDPR que pertenecen a dicho contenedor. Estas tripletas siguen **siempre** el patrón: 
 
 <center><strong>LDPC URI &rarr; ldp:contains &rarr; document-URI</strong></center>
-
 
 #### Minimal-container triples (Tripletas mínimas del contenedor)
 

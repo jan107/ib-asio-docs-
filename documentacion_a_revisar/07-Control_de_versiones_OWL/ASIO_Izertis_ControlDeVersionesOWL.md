@@ -1,4 +1,4 @@
-![](.\resources\logos_feder.png)
+![](./resources/logos_feder.png)
 
 # Sistema de Integración continua para desarrollo de ontologías con control de versiones.
 

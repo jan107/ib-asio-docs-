@@ -1,4 +1,4 @@
-![](.\resources\logos_feder.png)
+![](./resources/logos_feder.png)
 
 Plan de calidad de Infraestructura Ontológica (Borrador) 
 ========================================================

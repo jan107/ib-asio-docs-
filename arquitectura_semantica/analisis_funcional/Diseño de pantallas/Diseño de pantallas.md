@@ -1,6 +1,6 @@
 
 
-![](.\images\logos_feder.png)
+![](./images/logos_feder.png)
 
 # Diseño de pantallas
 
