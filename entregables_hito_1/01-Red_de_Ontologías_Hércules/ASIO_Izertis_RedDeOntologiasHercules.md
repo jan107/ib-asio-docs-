@@ -72,6 +72,10 @@ corresponding diagram here
 
 
 
+"Como usuario requiero obtener un listado de los centros/estructuras de investigación que trabajan en un área/disciplina específica."
+
+"As a user I need to obtain a list of research institutes working in a particular scientific domain"
+
 
 
 
