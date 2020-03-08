@@ -1,3 +1,5 @@
+![](./images/logos_feder.png)
+
 **Acerca de arc42**
 
 arc42, La plantilla de documentación para arquitectura de sistemas y de
@@ -506,7 +508,7 @@ En cuanto al propio formato de los tokens, es importante seleccionar el tipo que
 En el mundo de microservicios, debido a los problemas que presenta el tipo por defecto, lo más utilizado es JSON Web Tokens, más conocido como JWT. Mediante este sistema la verificación de los tokens se realizan localmente mediante una clave pública.
 
 ![Funcionamiento JWT token](./images/oauth-jwt.png)
- 
+
  #### JWT
 
  JSON Web Tokens, más conocidos como JWT, es el método estándar RGC 7519 de representación de tokens de seguridad para el intercambio de información. Es un estándar basado en JSON para crear tokens de acceso. Los tokens están firmados mediante una clave privada, teniendo todas las partes la clave pública que permite verificar la validez del token. 

@@ -1,3 +1,5 @@
+![](./images/logos_feder.png)
+
 # Requisitos funcionales para API REST LDP en proyecto ASIO de la UM
 
 ## Introducción
@@ -94,8 +96,6 @@ Es la relación que vincula un contenedor con sus recursos, y por lo tanto a su 
 Todas aquellas tripletas, pertenecientes al LDPC, que permiten listar los LDPR que pertenecen a dicho contenedor. Estas tripletas siguen **siempre** el patrón: 
 
 <center><strong>LDPC URI &rarr; ldp:contains &rarr; document-URI</strong></center>
-
-
 
 #### Minimal-container triples (Tripletas mínimas del contenedor)
 
@@ -859,7 +859,6 @@ La siguiente sección contiene requisitos para un Linked Data Platform sobre los
 Cada RDF Source, a su vez es un [LDP Resource](#Recursos LDP), por lo que el servidor **DEBE** aplicar toda la normativa vista en el apartado anterior. Los clientes deberán **PODER** inferir tripleta:
 
  <center><strong>Subject URI del LDP-RS &rarr; rdf:type &rarr; ldp:resource</strong></center>
-
 Pero no es necesario que esta tripleta este presente.
 
 ###### Requisito RF_02_01_02  [(4.3.1.2 LDP)](https://www.w3.org/TR/ldp/#ldprs): Al menos una tripleta del tipo rdf:type 
@@ -871,7 +870,6 @@ Las representaciones LDP-RS, **DEBERIAN** de tener al menos una tripleta **rdf:t
 Las representaciones LDP-RS, **DEBEN** de tener la tripleta 
 
 <center><strong>Subject URI del LDP-RS &rarr; rdf:type &rarr; ldp:RDFSource</strong></center>
-
 para todos los RDFSources
 
 ###### Requisito RF_02_01_04  [(4.3.1.4 LDP)](https://www.w3.org/TR/ldp/#ldprs): Ser posible obtener una representación RDF del LDP-RS
@@ -965,7 +963,6 @@ Los contenedores son LDP Sources, por lo tanto debe cumplirse la normativa descr
 Los clientes deben de poder inferir la tripleta
 
 <center><strong>Subject URI del Contenedor &rarr; rdf:type &rarr; ldp:RDFSource</strong></center>
-
 pero expresarla explícitamente no esta requerido
 
 ###### Requisito RF_04_01_02  [(5.2.1.2 LDP)](https://www.w3.org/TR/ldp/#ldpc-container): Tripleta rdf:type de ldp:Container
@@ -973,7 +970,6 @@ pero expresarla explícitamente no esta requerido
 La representación RDF de un contenedor **PUEDE** tener una tripleta del tipo
 
 <center><strong>Subject URI del Contenedor &rarr; rdf:type &rarr; ldp:Container</strong></center>
-
 para los LDP Container.
 
 Los LDP Containers pueden tener cualquier tipo adicional, exactamente igual que los LDP-RS
@@ -1023,7 +1019,6 @@ Los clientes no deben de esperar ninguna representación del recurso, en el cuer
 Cuando se realice con éxito, la inserción de un recurso por medio de un POST sobre un contenedor, una nueva tripleta de contención, **DEBE** de ser añadida, donde el sujeto será la URI del contenedor, el predicado **ldp:contains**, y el objeto la URI del documento recién creado, de la forma:
 
 <center><strong>Subject URI del Contenedor &rarr; ldp:contains &rarr; Object URI del documento recién creado</strong></center>
-
 Pueden añadiese otras tripletas si estas fueran necesarias.
 
  La tripleta permanecerá hasta que el recurso sea borrado.
@@ -1179,7 +1174,6 @@ Los LDP Direct Containers **DEBEN** tener exactamente una tripleta cuyo sujeto e
 Los LDP Direct Containers que usan el Patrón ldp:hasMemberRelation **DEBEN** tener exactamente una tripleta del tipo
 
 <center><strong>URI del contenedor &rarr; ldp:hasMemberRelation &rarr; Object URI del recurso dependiente del contenedor</strong></center>
-
 y esta tripleta será el predicado de membresía
 
 ###### Requisito RF_06_01_06  [(5.4.1.4.2 LDP)](https://www.w3.org/TR/ldp/#ldpc-container): Los contenedores que usan el Patrón ldp:isMemberRelation
@@ -1187,7 +1181,6 @@ y esta tripleta será el predicado de membresía
 Los LDP Direct Containers que usan el Patrón ldp:isMemberRelation **DEBEN** tener exactamente una tripleta del tipo
 
 <center><strong>Object URI del recurso dependiente del contenedor &rarr; ldp:isMemberRelation &rarr; URI del contenedor</strong></center>
-
 y esta tripleta será el predicado de membresía
 
 ###### Requisito RF_06_01_07  [(5.4.1.5 LDP)](https://www.w3.org/TR/ldp/#ldpc-container): Los contenedores deben comportarse como si usasen las tripletas (LDPC URI,`ldp:insertedContentRelation` , ldp:MemberSubject )

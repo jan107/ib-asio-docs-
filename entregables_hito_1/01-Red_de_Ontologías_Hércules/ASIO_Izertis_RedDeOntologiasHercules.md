@@ -1,3 +1,5 @@
+![](./images/logos_feder.png)
+
 # 0. About this document
 
 This document reports the current status of the ASIO ontology files and more specifically it describes *grosso modo* three of the files currently available in our repositories, namely:

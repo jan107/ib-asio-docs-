@@ -1,3 +1,5 @@
+![](./images/logos_feder.png)
+
 # Elección arquitectura semántica
 
 El presente documento pretende mostrar las alternativas que existen para crear la arquitectura semántica de cara a almacenar los datos correspondientes al proyecto ASIO. Esta arquitectura debería cubrir los siguientes aspectos:
