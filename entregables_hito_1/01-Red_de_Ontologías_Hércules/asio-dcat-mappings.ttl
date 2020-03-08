@@ -243,9 +243,9 @@ asio:Student
   owl:equivalentClass swpo:Student ,
                       swrc:Student ,
                       vivo:Student ,
-                      sio:SIO_000405 ,
-                      teach:Student ,
-                      akt:Student 
+                      sio:SIO_000405 
+#                     teach:Student ,
+#                      akt:Student 
 .
 asio:UndergraduateStudent
   owl:equivalentClass vivo:UndergraduateStudent 
@@ -254,8 +254,8 @@ asio:UndergraduateStudent
 #  owl:equivalentClass vivo:GraduateStudent ;
 #.
 asio:PhDStudent
-  owl:equivalentClass swrc:PhDStudent ,
-                      akt:PhD-Student 
+  owl:equivalentClass swrc:PhDStudent 
+#                      akt:PhD-Student 
 .
 
 
