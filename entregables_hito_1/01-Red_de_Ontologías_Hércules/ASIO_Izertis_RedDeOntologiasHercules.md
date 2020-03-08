@@ -38,45 +38,27 @@ In any informational system, in this case an ontology, there must be non-modular
 
 Central domain processing shows two distinguishing features. On the one hand it aims at features that
 
-
-
 On the other hand, to say that a part of the ontology is core is, essentially, that it is not informationally encapsulated (as the vertical modules). In principle, any part of the system is relevant to confirming any other and we do not draw boundaries within it.
-
-
-
-
-
-
-
-
-
-This first version of the core ontology ([asio-demo.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontolog%C3%ADas_H%C3%A9rcules/asio-demo.owl)) is chiefly focused on addressing the competence questions provided by the University of Murcia and it includes already all the high-level classes necessary to deal with them.
 
 
 
 ## 2.2. the core ontology at a glance
 
-In this draft doccument due to time limitation, we are going to guide the reader in the understanding of this core ontology by it may be useful to take into account some of the competence questions relying under the ontology modelling. Let's have a look at some of the most representative and/or easy-to-grasp:
+In this draft doccument due to time limitation, we are just going to show the reader the classes through a screenshot from Protégé and a diagram showing some of the classes and properties in use.
+
+These are the full list of classes (available also in the [LODE](https://essepuntato.it/lode/) generated HTML file accompaning this document), with the miniature on the left shwing just the superclasses and the two in the central and right part of the illustration the whole list of classes:
 
 
 
-example of competence question 1 here
+![1st-example](./images/core-deployed.png)
 
-corresponding diagram here
+
+
+An example loosely coming from one of competence questions shows how some of these classes, through instances are related:
+
+
 
 ![1st-example](./images/glance1.png)
-
-
-
-example of competence question 2 here
-
-corresponding diagram here
-
-
-
-"Como usuario requiero obtener un listado de los centros/estructuras de investigación que trabajan en un área/disciplina específica."
-
-"As a user I need to obtain a list of research institutes working in a particular scientific domain"
 
 
 
@@ -159,27 +141,16 @@ More details about these alignments, carried out following consolidated recommen
 
 # 4. Vertical modules
 
-As we have already aforementioned, following loosely the influence of Fodor's in addition to the core ontology and complementary to it.
-
-
-
-and the alignment of the two files, a number of *vertical modules* are going to be released little by little. Currently, there are four final candidates:
-
-
-
 As far as the **vertical modules** are concerned another three final candidates are being implemented so far, in particular:
 
+- geopolitical entities
 - administrative entities
 - scientific domains
 - Spain's university staffing
 
 However, in this first version of the document we describe with some detail just the first and the third vertical modules (*geopolitical entities* and *scientific domains*).
 
-
-
-Ideal playground for multilingualism and multiscriptalism
-
-
+The vertical modules are the ideal playground for testing multilingualism and multiscriptalism.
 
 
 
