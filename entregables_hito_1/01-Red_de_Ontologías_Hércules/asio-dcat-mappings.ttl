@@ -44,6 +44,7 @@
 @prefix opus: <http://lsdis.cs.uga.edu/projects/semdis/opus#>
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pc: <http://purl.org/procurement/public-contracts#>
 @prefix pdo: <http://ontologies.smile.deri.ie/pdo#> .
 @prefix pext: <http://www.ontotext.com/proton/protonext#> .
 @prefix poder: <http://dev.poderopedia.com/vocab/> .
@@ -129,6 +130,15 @@ asio:SME
 asio:FundingOrganization
   owl:equivalentClass vivo:FundingOrganization ,
                       frapo:FundingAgency 
+.
+asio:Contract
+  owl:equivalentClass pc:Contract ,
+                      frapo:Contract ,
+                      cerif:Contract ,
+                      semcerif:Contract
+.
+asio:FundingProgramme
+  owl:equivalentClass frapo:FundingProgramme 
 .
 asio:ResearchGroup
   owl:equivalentClass frapo:ResearchGroup ,

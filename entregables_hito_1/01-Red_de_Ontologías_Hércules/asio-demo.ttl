@@ -393,6 +393,12 @@ asio:FundingOrganization rdf:type owl:Class ;
                          rdfs:subClassOf foaf:Organization .
 
 
+###  http://www.asio.es/asioontologies/asio#FundingProgramme
+asio:FundingProgramme rdf:type owl:Class ;
+                      rdfs:comment "A programme of related funded projects, typically established by a funding organization."@en ;
+                      rdfs:label "Funding programme"@en .
+
+
 ###  http://www.asio.es/asioontologies/asio#GraduateStudent
 asio:GraduateStudent rdf:type owl:Class ;
                      rdfs:subClassOf asio:Student ;

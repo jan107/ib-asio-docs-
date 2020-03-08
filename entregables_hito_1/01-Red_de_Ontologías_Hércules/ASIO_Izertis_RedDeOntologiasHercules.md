@@ -54,13 +54,7 @@ This first version of the core ontology ([asio-demo.ttl](https://git.izertis.com
 
 ## 2.2. the core ontology at a glance
 
-The ASIO ontologies are standardised data schemas (or "vocabularies") designed to address the Research Management of the particular case of the University of Murcia but by applying an encompassing model capable of addressing too other universities both at the national level and at the international level.
-
-FIXME
-
-
-
-To guide the reader in the understanding of this core ontology it may be useful to take into account some of the competence questions relying under the ontology modelling. Let's have a look at some of the most representative and/or easy-to-grasp:
+In this draft doccument due to time limitation, we are going to guide the reader in the understanding of this core ontology by it may be useful to take into account some of the competence questions relying under the ontology modelling. Let's have a look at some of the most representative and/or easy-to-grasp:
 
 
 
