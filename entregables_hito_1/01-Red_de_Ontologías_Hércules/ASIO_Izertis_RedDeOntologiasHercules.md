@@ -60,6 +60,8 @@ An example loosely coming from one of competence questions shows how some of the
 
 
 
+**DISCLAIMER about the properties**: Properties, from both the object and data type, are still a work in progress and the assignation of domains and ranges are often neglected at this stage of the implementation. Domains and ranges are delicate matter with respect to the ontological commitments of the vocabulary and must be still studied.
+
 
 
 ## 2.3. imported vocabularies
