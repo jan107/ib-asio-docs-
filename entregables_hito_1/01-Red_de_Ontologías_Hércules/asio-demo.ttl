@@ -1,33 +1,35 @@
 @prefix : <http://www.asio.es/asioontologies/asio#> .
-@prefix ro: <http://purl.org/wf4ever/ro#> .
-@prefix dct: <http://purl.org/dc/terms/> .
-@prefix deo: <http://purl.org/spar/deo/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix pso: <http://purl.org/spar/pso/> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix asio: <http://www.asio.es/asioontologies/asio#> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix doco: <http://purl.org/spar/doco/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix time: <http://www.w3.org/2006/time#> .
-@prefix vivo: <http://vivoweb.org/ontology/core#> .
 @prefix cerif: <http://purl.org/cerif/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix deo: <http://purl.org/spar/deo/> .
+@prefix doco: <http://purl.org/spar/doco/> .
 @prefix fabio: <http://purl.org/spar/fabio/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix frapo: <http://purl.org/cerif/frapo#> .
-@prefix modules: <http://www.asio.es/asioontologies/asio/modules#> .
-@prefix semcerif: <http://eurocris.org/ontology/semcerif#> .
-@prefix timezone: <http://www.w3.org/2006/timezone#> .
-@prefix organization: <http://www.w3.org/ns/org#> .
 @prefix humantechreadiness: <http://sweetontology.net/humanTechReadiness#> .
+@prefix modules: <http://www.asio.es/asioontologies/asio/modules#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pso: <http://purl.org/spar/pso/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ro: <http://purl.org/wf4ever/ro#> .
+@prefix semcerif: <http://eurocris.org/ontology/semcerif#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix timezone: <http://www.w3.org/2006/timezone#> .
+@prefix vivo: <http://vivoweb.org/ontology/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @base <http://www.asio.es/asioontologies/asio> .
 
 <http://www.asio.es/asioontologies/asio> rdf:type owl:Ontology ;
-                                          owl:versionIRI <http://www.asio.es/asioontologies/asio/0.0.1> .
+                                         owl:versionIRI <http://www.asio.es/asioontologies/asio/0.0.1> ;
+                                         rdfs:label "ASIO core ontology" ;
+                                         dct:license <https://creativecommons.org/publicdomain/zero/1.0/> ;                                         .
 
 #################################################################
 #    Object Properties
@@ -36,21 +38,24 @@
 ###  http://www.asio.es/asioontologies/asio#addresses
 asio:addresses rdf:type owl:ObjectProperty ;
                rdfs:domain asio:ResearchContribution ;
-               rdfs:range asio:ResearchProblem .
+               rdfs:range asio:ResearchProblem ;
+               rdfs:label "addresses"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#advises
 asio:advises rdf:type owl:ObjectProperty ;
              owl:inverseOf asio:isAdvisedBy ;
              rdfs:domain <http://www.asio.es/asioontologies/asio#Research&TeachingPersonnel> ;
-             rdfs:range asio:Student .
+             rdfs:range asio:Student ;
+             rdfs:label "advises"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#capital
 asio:capital rdf:type owl:ObjectProperty ;
              rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> ;
              rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
-             rdfs:comment "A property to indicate that a place is the official seat of government in a political entity."@en .
+             rdfs:comment "A property to indicate that a place is the official seat of government in a political entity."@en ;
+             rdfs:label "capital"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#codeOf
@@ -58,6 +63,7 @@ asio:codeOf rdf:type owl:ObjectProperty ;
             owl:inverseOf asio:hasCode ;
             rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> ;
             rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
+            rdfs:label "code of"@en ;
             rdfs:comment "A code is assigned to a concept."@en .
 
 
@@ -65,111 +71,133 @@ asio:codeOf rdf:type owl:ObjectProperty ;
 asio:country rdf:type owl:ObjectProperty ;
              rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> ;
              rdfs:range asio:Country ;
+             rdfs:label "country"@en, 
+                        "país"@es ;
              rdfs:comment "This property indicates the nationality of a resource."@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#employs
 asio:employs rdf:type owl:ObjectProperty ;
              rdfs:domain asio:ResearchContribution ;
-             rdfs:range asio:ResearchMethod .
+             rdfs:range asio:ResearchMethod ;
+             rdfs:label "employs"@en, "emplea"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio#funds
 asio:funds rdf:type owl:ObjectProperty ;
-           owl:inverseOf asio:isFundedBy .
+           owl:inverseOf asio:isFundedBy ;
+           rdfs:label "funds"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#geo-division
 asio:geo-division rdf:type owl:ObjectProperty ;
                   rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> ;
                   rdfs:range modules:GeopoliticalEntities ;
-                  rdfs:comment "A property to link a resource to a predefined geographical (or geopolitical) division."@en .
+                  rdfs:comment "A property to link a resource to a predefined geographical (or geopolitical) division."@en ;
+                  rdfs:label "geo-division"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#hasCV
 asio:hasCV rdf:type owl:ObjectProperty ;
            rdfs:domain foaf:Person ;
-           rdfs:range asio:CV .
+           rdfs:range asio:CV ;
+           rdfs:label "has CV"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#hasCode
 asio:hasCode rdf:type owl:ObjectProperty ;
              rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept> ;
              rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
-             rdfs:comment "A concept can be asigned a code."@en .
+             rdfs:comment "A concept can be asigned a code."@en ;
+             rdfs:label "has Code"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#hasResearchContribution
-asio:hasResearchContribution rdf:type owl:ObjectProperty .
+asio:hasResearchContribution rdf:type owl:ObjectProperty ;
+            rdfs:label "has research contribution"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#hasResearchField
-asio:hasResearchField rdf:type owl:ObjectProperty .
+asio:hasResearchField rdf:type owl:ObjectProperty ;
+            rdfs:label "has research field"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#hasScientificDomain
-asio:hasScientificDomain rdf:type owl:ObjectProperty .
+asio:hasScientificDomain rdf:type owl:ObjectProperty ;
+           rdfs:label "has scientific domain"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#hasSealOfQuality
 asio:hasSealOfQuality rdf:type owl:ObjectProperty ;
-                      rdfs:range asio:ResearchInstitute .
+                      rdfs:range asio:ResearchInstitute ;
+                      rdfs:label "has seal of quality"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#hasTRL
-asio:hasTRL rdf:type owl:ObjectProperty .
+asio:hasTRL rdf:type owl:ObjectProperty ;
+            rdfs:label "has TRL"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#isAdvisedBy
-asio:isAdvisedBy rdf:type owl:ObjectProperty .
+asio:isAdvisedBy rdf:type owl:ObjectProperty ;
+                 rdfs:label "is advised by"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#isFundedBy
-asio:isFundedBy rdf:type owl:ObjectProperty .
+asio:isFundedBy rdf:type owl:ObjectProperty ;
+                rdfs:label "is funded by"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#participant
 asio:participant rdf:type owl:ObjectProperty ;
-                 rdfs:range foaf:Agent .
+                 rdfs:range foaf:Agent ;
+                 rdfs:label "participant"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#requiredFor
 asio:requiredFor rdf:type owl:ObjectProperty ;
                  rdfs:domain asio:AcademicPublication ;
-                 rdfs:range asio:AcademicDegree .
+                 rdfs:range asio:AcademicDegree ;
+                 rdfs:label "requiredFor"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#requires
 asio:requires rdf:type owl:ObjectProperty ;
               rdfs:domain asio:AcademicDegree ;
-              rdfs:range asio:AcademicPublication .
+              rdfs:range asio:AcademicPublication ;
+              rdfs:label "requires"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#researchesIn
 asio:researchesIn rdf:type owl:ObjectProperty ;
                   rdfs:domain foaf:Agent ;
-                  rdfs:range modules:ScientificDomain .
+                  rdfs:range modules:ScientificDomain ;
+                  rdfs:label "researches in"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#spinsOffFrom
 asio:spinsOffFrom rdf:type owl:ObjectProperty ;
-                  rdfs:domain asio:Spinoff .
+                  rdfs:domain asio:Spinoff ;
+                  rdfs:label "spins of from"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#utilizes
 asio:utilizes rdf:type owl:ObjectProperty ;
               rdfs:domain asio:ResearchContribution ;
-              rdfs:range asio:ResearchMaterial .
+              rdfs:range asio:ResearchMaterial;
+              rdfs:label "utilizes"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#yields
 asio:yields rdf:type owl:ObjectProperty ;
             rdfs:domain asio:ResearchContribution ;
-            rdfs:range asio:ResearchResult .
+            rdfs:range asio:ResearchResult ;
+            rdfs:label "yields"@en .
 
 
 ###  http://xmlns.com/foaf/0.1/member
-foaf:member rdf:type owl:ObjectProperty .
+foaf:member rdf:type owl:ObjectProperty ;
+            rdfs:label "member"@en .
 
 
 #################################################################
@@ -179,25 +207,29 @@ foaf:member rdf:type owl:ObjectProperty .
 ###  http://www.asio.es/asioontologies/asio#projectEndDate
 asio:projectEndDate rdf:type owl:DatatypeProperty ;
                     rdfs:domain foaf:Project ;
-                    rdfs:comment "The end date of the project."@en .
+                    rdfs:comment "The end date of the project."@en ;
+                    rdfs:label "project end date"@en, "fecha final proyecto"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio#projectKeyword
 asio:projectKeyword rdf:type owl:DatatypeProperty ;
                     rdfs:domain foaf:Project ;
-                    rdfs:comment "A key word of the project."@en .
+                    rdfs:comment "A key word of the project."@en ;
+                    rdfs:label "project keyword"@en, "palabra clave"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio#projectObjective
 asio:projectObjective rdf:type owl:DatatypeProperty ;
                       rdfs:domain foaf:Project ;
-                      rdfs:comment "A defined objective of the project."@en .
+                      rdfs:comment "A defined objective of the project."@en ;
+                      rdfs:label "project objective"@en, "objetivo de proyecto"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio#projectStartDate
 asio:projectStartDate rdf:type owl:DatatypeProperty ;
                       rdfs:domain foaf:Project ;
-                      rdfs:comment "The start date of the project."@en .
+                      rdfs:comment "The start date of the project."@en ;
+                      rdfs:label "project start date"@en, "fecha inicio proyecto"@es .
 
 
 #################################################################
@@ -246,7 +278,8 @@ asio:AcademicDegree rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#AcademicPublication
 asio:AcademicPublication rdf:type owl:Class ;
                          rdfs:subClassOf asio:Publication ;
-                         rdfs:label "Publicació acadèmica"@ca-ad ,
+                         rdfs:label "Academic publication"@en,
+                                    "Publicació acadèmica"@ca-ad ,
                                     "Publicació acadèmica"@ca-es ,
                                     "Publicación académica"@es ,
                                     "Publication académique"@fr ,
@@ -435,7 +468,8 @@ asio:Funding rdf:type owl:Class ;
 
 ###  http://www.asio.es/asioontologies/asio#FundingOrganization
 asio:FundingOrganization rdf:type owl:Class ;
-                         rdfs:subClassOf foaf:Organization .
+                         rdfs:subClassOf foaf:Organization;
+                         rdfs:label "Funding organization"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#FundingProgramme
@@ -477,8 +511,8 @@ asio:MasterStudent rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#MastersDegree
 asio:MastersDegree rdf:type owl:Class ;
                    rdfs:subClassOf asio:AcademicDegree ;
-                   rdfs:label "Magister Scientiae"@es-ve ,
-                              "Master's degree"@en ,
+                   rdfs:label "Master's degree"@en ,
+                              "Magister Scientiae"@es-ve ,
                               "Maîtrise universitaire"@fr-be ,
                               "Maîtrise universitaire"@fr-ca ,
                               "Maîtrise universitaire"@fr-ch ,
@@ -494,9 +528,9 @@ asio:MastersThesis rdf:type owl:Class ;
                    rdfs:subClassOf asio:Thesis ;
                    owl:disjointWith asio:PhDThesis ;
                    rdfs:comment "A thesis reporting a research project undertaken as part of a second-cycle course of education to receive a master's degree."@en ;
-                   rdfs:label "Dissertação de mestrado"@pt-br ,
+                   rdfs:label "Master's thesis"@en ,
+                              "Dissertação de mestrado"@pt-br ,
                               "Dissertação de mestrado"@pt-pt ,
-                              "Master's thesis"@en ,
                               "Mémoire de maîtrise"@fr-ca ,
                               "Mémoire de maîtrise"@fr-fr ,
                               "Tese de mestrado"@pt-ao ,
@@ -524,8 +558,8 @@ asio:NationalProject rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#Patent
 asio:Patent rdf:type owl:Class ;
             rdfs:comment "A form of intellectual property that gives its owner the legal right to exclude others from making, using, selling and importing an invention for a limited period of years, in exchange for publishing an enabling public disclosure of the invention."@en ;
-            rdfs:label "Patent"@ca ,
-                       "Patent"@en ,
+            rdfs:label "Patent"@en ,
+                       "Patent"@ca ,
                        "Patent"@fr ,
                        "Patente"@es ,
                        "Patente"@pt .
@@ -540,8 +574,10 @@ asio:PeerReviewedArticle rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#PhDStudent
 asio:PhDStudent rdf:type owl:Class ;
                 rdfs:subClassOf asio:GraduateStudent ;
-                rdfs:label "PhD candidate"@en ,
-                           "PhD student"@en .
+                rdfs:label "PhD student"@en ,
+                           "Estudiante de doctorado"@es ;
+                skos:prefLabel "PhD student"@en ;
+                skos:altLabel "PhD candidate"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#PhDThesis
@@ -571,10 +607,10 @@ asio:ProjectBudget rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#Publication
 asio:Publication rdf:type owl:Class ;
                  rdfs:comment "Content made available to the general public. In the case of ASIO, often scientific or academic contents published."@en ;
-                 rdfs:label "Publicació"@ca-ad ,
+                 rdfs:label "Publication"@en ,
+                            "Publicació"@ca-ad ,
                             "Publicació"@ca-es ,
                             "Publicación"@es ,
-                            "Publication"@en ,
                             "Publication"@fr ,
                             "Publicação"@pt .
 
@@ -636,9 +672,9 @@ asio:ResearchMethod rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#ResearchPersonnel
 asio:ResearchPersonnel rdf:type owl:Class ;
                        rdfs:subClassOf asio:HumanResource ;
-                       rdfs:comment "Personnel devoted to reasearching tasks."@en ,
-                                    "Research personnel"@en ;
-                       rdfs:label "Personal de recerca"@ca-ad ,
+                       rdfs:comment "Personnel devoted to reasearching tasks."@en ;
+                       rdfs:label "Research Personnel"@en ,
+                                  "Personal de recerca"@ca-ad ,
                                   "Personal investigador"@ca-es ,
                                   "Personal investigador"@es ,
                                   "Personnel rechercheur"@fr ,

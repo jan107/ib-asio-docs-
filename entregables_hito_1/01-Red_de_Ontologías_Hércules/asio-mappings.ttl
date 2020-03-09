@@ -21,7 +21,7 @@
 @prefix bbccore: <http://www.bbc.co.uk/ontologies/coreconcepts/>
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix bibtex: <http://purl.org/net/nknouf/ns/bibtex#>
-@prefix bio: <http://purl.org/vocab/bio/0.1/participant>
+@prefix bio: <http://purl.org/vocab/bio/0.1/>
 @prefix bf: <http://id.loc.gov/ontologies/bibframe/Publication>
 @prefix cerif: <http://purl.org/cerif/> .
 @prefix cogs: <http://vocab.deri.ie/cogs#> .
@@ -32,7 +32,7 @@
 @prefix dct: <http://purl.org/dc/dcmitype/> .
 @prefix doap: <http://usefulinc.com/ns/doap#> . 
 @prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
-@prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore>
+@prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#>
 @prefix fabio: <http://purl.org/spar/fabio/> .
 @prefix fea: <http://vocab.data.gov/def/fea#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
