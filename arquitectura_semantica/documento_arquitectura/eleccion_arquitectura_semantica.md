@@ -484,9 +484,24 @@ Más información:
 
 - [https://www.w3.org/wiki/LDP_Implementations#TrellisLDP_.28Server.29](https://www.w3.org/wiki/LDP_Implementations#TrellisLDP_.28Server.29)
 
+Por otro lado se evalúa el cumplimento de Trellis sobre la LDP, con la [Suit de Test](https://dvcs.w3.org/hg/ldpwg/raw-file/default/tests/ldp-testsuite.html) que propone la LDP, obteniendo los resultados recogidos en el [Analisis de Test LDP (caso de uso Trellis)](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/arquitectura_semantica/analisis_funcional/Requisitos LDP Server/Analisis de Test LDP (caso de uso Trellis).md)
+
+Los resultados obtenidos se pueden resumir en la siguiente tabla
+
+|                   |           | MUST | SHOULD | MAY  | Total |
+| ----------------- | --------- | ---- | ------ | ---- | ----- |
+| BasicContaier     | Correctos | 41   | 12     | 4    | 57    |
+|                   | Fallos    | 4    | 6      | 1    | 11    |
+| DirectContainer   | Correctos | 45   | 13     | 4    | 62    |
+|                   | Fallos    | 4    | 7      | 1    | 12    |
+| IndirectContainer | Correctos | 40   | 12     | 4    | 56    |
+|                   | Fallos    | 4    | 6      | 1    | 11    |
+
+Además, se determina que test fallidos, en la mayor parte de los casos, bien la normativa es interpretativa, es decir, según la interpretación que se de a la misma puede cumplir o no cumplir, o en otros casos, el incumplimiento, sucede en la parte menos trascendental de la normativa.
+
 #### Integraciones
 
-Se integra con una base de datos relacional o un triple store. También publica notificaciones al añadir, modificar o eliminar un recurso conforme a [Activity Stream 2.0 specification](https://www.w3.org/TR/activitystreams-core/)
+Se integra con una base de datos relacional o con triple stores (BlazeGraph y TDB con Apache Fuseki). También publica notificaciones al añadir, modificar o eliminar un recurso conforme a [Activity Stream 2.0 specification](https://www.w3.org/TR/activitystreams-core/)
 
 #### Guía de configuración
 
@@ -536,11 +551,11 @@ En el caso de la implementación triplestore, es capaz de soportar mediante conf
 
 - En memoria
 - TDB
-- Otros externos mediante endpoint SPARQL (se ha probado con éxito la integración con Blazegraph)
+- Otros externos mediante endpoint SPARQL (se ha probado con éxito la integración con Blazegraph y TDB externo con Apache Fuseki)
 
 ###### Generación de nuevos adaptadores
 
-Trellis está diseñado para que sea posible generar un nuevo adaptador de la capa de persisencia. Para ello dispone de 2 interfaces que es preciso implementar:
+Trellis está diseñado para que sea posible generar un nuevo adaptador de la capa de persistencia. Para ello dispone de 2 interfaces que es preciso implementar:
 
 - `org.trellisldp.api.ResourceService`
 - `org.trellisldp.api.AuditService`
@@ -559,7 +574,7 @@ CompletableFuture<Void> delete(IRI identifier, IRI container);
 
 En este sentido, Trellis en su capa de persistencia utiliza Apache Jena, lo cual facilita la conexión con otros Triplestores, pudiendo aplicar aquí lo visto en la sección referente las [conclusiones sobre conectores](#conectores-con-tiple-stores) en la comparativa entre RDF4J y Jena.
 
-Para generar la aplicación con esta nueva capa de persistencia, sería necesario generar un nuevo artefacto incluyendo esta librería en lugar de alguna de las que proveé por defecto Trellis.
+Para generar la aplicación con esta nueva capa de persistencia, sería necesario generar un nuevo artefacto incluyendo esta librería en lugar de alguna de las que provee por defecto Trellis.
 
 Esto mismo aplicaría también para el caso de querer modificar otra parte de la aplicación que sea preciso adaptara los requisitos del proyecto Hércules.
 
@@ -745,10 +760,1971 @@ Es el triple store seleccionado para la realizar la PoC. Merece especial atenci�
     ```
   
 - Despliega un [NanoSparqlServer](https://github.com/blazegraph/database/wiki/NanoSparqlServer), (http://localhost:9999/bigdata/sparql) para actuar como API Rest LDP. ¿Puede realizar una función similar a Trellis?
+
 - Alto rendimiento, soporta 50 Billones de nodos en una sola nodo
+
 - Usado en producción en clientes Fortune 500 como Autodesk, EMC y otros
 
-###### Trellis
+##### Trellis sobre Triple Store (TDB con Apache Fuseki) y conexión a Apache Kafka
+
+- Arquitectura:
+
+  - nawer/blazegraph:2.1.5
+  - trellisldp/jpms.app.triplestore.5:0.7.0
+  - zookeeper:3.5 (3 nodos)
+  - trellisldp/kafka:1.1.0
+  - trellisldp/jetty-fuseki:3.7.0
+
+- docker-compose:
+
+  ```yml
+  version: "3"
+  
+  services:
+    zoo1:
+      image: zookeeper:3.5
+      container_name: zoo1
+      restart: always
+      hostname: zoo1
+      ports:
+         - "2181:2181"
+         - "8500:8090"
+      environment:
+          ZOO_MY_ID: 1
+          ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2182 server.3=zoo3:2888:3888;2183
+  
+    zoo2:
+      image: zookeeper:3.5
+      restart: always
+      hostname: zoo2
+      ports:
+         - "2182:2181"
+      environment:
+          ZOO_MY_ID: 2
+          ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2182 server.3=zoo3:2888:3888;2183
+  
+    zoo3:
+      image: zookeeper:3.5
+      restart: always
+      hostname: zoo3
+      ports:
+         - "2183:2181"
+      environment:
+          ZOO_MY_ID: 3
+          ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2182 server.3=zoo3:2888:3888;2183
+  
+    kafka:
+      image: trellisldp/kafka:1.1.0
+      ports:
+          - "9094:9094"
+          - "1099:1099"
+      environment:
+        HOSTNAME_COMMAND: "ifconfig|grep inet|head -1|sed 's/\\:/ /'|awk '{print $$3}'"
+        KAFKA_ZOOKEEPER_CONNECT: zoo1:2181
+        KAFKA_ADVERTISED_LISTENERS: INSIDE://:9092,OUTSIDE://_{HOSTNAME_COMMAND}:9094
+        KAFKA_LISTENERS: INSIDE://:9092,OUTSIDE://:9094
+        KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+        KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+       # KAFKA_JMX_OPTS: "-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=127.0.0.1 -Dcom.sun.management.jmxremote.rmi.port=1099"
+       # JMX_PORT: 1099
+        KAFKA_MESSAGE_MAX_BYTES: 5000000
+      volumes:
+        - kafka-data-volume:/kafka
+  
+    trellis:
+      image: trellisldp/jpms.app.triplestore.5:0.7.0
+      container_name: trellis
+      restart: always
+      ports:
+        - "8080:8080"
+        - "8445:8445"
+        - "8502:8081"
+      depends_on:
+        - jetty-fuseki
+      volumes:
+        - trellis-binary-volume:/mnt/binaries
+        - ./etc/config.yml:/opt/trellis/etc/config.yml
+        - ./etc/namespaces.json:/opt/trellis/etc/namespaces.json
+        - ./etc/users.auth:/opt/trellis/etc/users.auth
+  
+    jetty-fuseki:
+      image: trellisldp/jetty-fuseki:3.7.0
+      container_name: fuseki
+      restart: always
+      environment:
+          JAVA_OPTIONS: -Xmx8G -Xss8M
+      ports:
+        - "3030:8080"
+      volumes:
+        - triplestore-data-volume:/etc/fuseki/databases/trellis_data
+        - triplestore-backup-volume:/etc/fuseki/backups
+        - ./fuseki-conf/trellis.ttl:/etc/fuseki/configuration/trellis.ttl
+        - ./fuseki-conf/shiro.ini:/etc/fuseki/shiro.ini
+        - ./fuseki-conf/log4j.properties:/etc/fuseki/log4j.properties
+  
+  volumes:
+    trellis-binary-volume:
+    kafka-data-volume:
+    triplestore-data-volume:
+    triplestore-backup-volume:
+  
+  ```
+
+- fichero de configuración trellis **config.yml** en ruta **./etc/**
+
+  ```yml
+  server:
+    applicationConnectors:
+      - type: http
+        port: 8080
+      - type: h2c
+        port: 8445
+    requestLog:
+      appenders:
+        - type: file
+          currentLogFilename: /opt/trellis/log/access.log
+          archive: true
+          archivedLogFilenamePattern: /opt/trellis/log/access-%i.log
+          archivedFileCount: 5
+          maxFileSize: 2m
+  
+  logging:
+    level: WARN
+    appenders:
+      - type: console
+      - type: file
+        currentLogFilename: /opt/trellis/log/trellis.log
+        archive: true
+        archivedLogFilenamePattern: /opt/trellis/log/trellis-%i.log
+        archivedFileCount: 5
+        maxFileSize: 2m
+    loggers:
+      org.trellisldp: DEBUG
+      io.dropwizard: DEBUG
+  
+  binaries: /mnt/binaries
+  
+  resources: http://fuseki:8080/fuseki/trellis
+  
+  # FILESYSTEM
+  #resources: /var/lib/trellis/resources
+  
+  # JETTY LOCALHOST
+  #resources: http://dockerhost:8900/fuseki/trellis
+  
+  mementos: /var/lib/trellis/mementos
+  
+  #baseUrl: https://localhost:8445/
+  
+  namespaces: /opt/trellis/etc/namespaces.json
+  
+  auth:
+      webac:
+          enabled: true
+      anon:
+          enabled: true
+      jwt:
+          enabled: true
+          base64Encoded: false
+          key: secret
+      basic:
+          enabled: false
+          usersFile: /opt/trellis/etc/users.auth
+  
+  cors:
+      enabled: true
+      allowOrigin:
+          - "*"
+      maxAge: 180
+  
+  notifications:
+      max.request.size: 5000000
+      enabled: true
+      type: kafka
+      topicName: "trellis"
+      connectionString: "kafka:9094"
+  
+  # JSON-LD configuration
+  jsonld:
+      cacheSize: 10
+      cacheExpireHours: 24
+      contextWhitelist: []
+      contextDomainWhitelist: []
+  
+  assets:
+      template: org/trellisldp/rdfa/resource-table.mustache
+      js:
+          - "https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js"
+          - "http://localhost:8080/table.js"
+      css:
+          - "http://localhost:8080/trellis.css"
+  
+  ```
+
+##### Prueba de concepto
+
+###### Fuseki
+
+Es un servidor SPARQL, que puede proporcionar capa de seguridad por medio de Apache Shiro. Implementa el protocola SPARQL 1.1 para consultar y actualizar datos de el triple store
+
+Integra TDB, como Triple Store, proporcionando una capa transaccional de persistencia robusta. Además, si fuese necesario puede proporcionar una capa SPARQL para cualquier triple store, seria un componente reutilizable.
+
+- Expone un endpoint Sparql (http://localhost:3030/fuseki), en apariencia, bastante completo
+
+  ![image-20200226104816659](https://i.ibb.co/WH1KMYP/blazegraph-endpoint.png)
+
+  - Además es posible atacar su API directamente:
+
+    - Petición
+
+    ```http
+    POST /fuseki/trellis/query?query=PREFIX+un%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2007%2Font%2Funit%23%3E%0APREFIX+uni%3A+%3Chttp%3A%2F%2Fpurl.org%2Fweso%2Funi%2Funi.html%23%3E%0Aprefix+univ%3A%3Chttp%3A%2F%2Fpeople.brunel.ac.uk%2F~csstnns%2Funiversity.owl%23%3E%0Aprefix+sp%3A%3Chttp%3A%2F%2Fwww.meta-qsar.org%2Fontologies%2Fsport.owl%23%3E%0Aprefix+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0A%0ASELECT+%3Fsubject+%3Fpredicate+%3Fobject%0A%09WHERE+%7B%0A+%09%09+%3Fsubject+%3Fpredicate+%3Fobject%0A%09%7D HTTP/1.1
+    Host: localhost:3030
+    Accept: application/sparql-results+json,*/*;q=0.9
+    ```
+
+    - Respuesta
+
+    ```
+    {
+      "head": {
+        "vars": [
+          "subject",
+          "predicate",
+          "object"
+        ]
+      },
+      "results": {
+        "bindings": [
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/ldp#BasicContainer"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/modified"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:09:51.660696Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/#auth"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/auth/acl#mode"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/auth/acl#Read"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/#auth"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/auth/acl#mode"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/auth/acl#Write"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/#auth"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/auth/acl#mode"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/auth/acl#Control"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/#auth"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/auth/acl#agentClass"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://xmlns.com/foaf/0.1/Agent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/#auth"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/auth/acl#accessTo"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:data/"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/ldp#BasicContainer"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/modified"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:13:18.561635Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/isPartOf"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:data/"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/title"
+            },
+            "object": {
+              "type": "literal",
+              "value": "Another Basic Container"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1dfb55ec42-066e-4f52-b301-53e0f53f732a"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1dfb55ec42-066e-4f52-b301-53e0f53f732a"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1dfb55ec42-066e-4f52-b301-53e0f53f732a"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Create"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1dfb55ec42-066e-4f52-b301-53e0f53f732a"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1dfb55ec42-066e-4f52-b301-53e0f53f732a"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:09:51.615106Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/de0d6c74-be44-465f-9938-0722edc2d36f"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/ldp#Resource"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/de0d6c74-be44-465f-9938-0722edc2d36f"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/modified"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:10:28.694309Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/de0d6c74-be44-465f-9938-0722edc2d36f"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d36a7cfea-8eaa-4fbb-8ed9-a8232b5da2a4"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/de0d6c74-be44-465f-9938-0722edc2d36f"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1db06783d2-d181-48ca-b66e-539392cfe8a7"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/de0d6c74-be44-465f-9938-0722edc2d36f"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#DeletedResource"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d36a7cfea-8eaa-4fbb-8ed9-a8232b5da2a4"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d36a7cfea-8eaa-4fbb-8ed9-a8232b5da2a4"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Create"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d36a7cfea-8eaa-4fbb-8ed9-a8232b5da2a4"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d36a7cfea-8eaa-4fbb-8ed9-a8232b5da2a4"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:10:28.556225Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1db06783d2-d181-48ca-b66e-539392cfe8a7"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1db06783d2-d181-48ca-b66e-539392cfe8a7"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Delete"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1db06783d2-d181-48ca-b66e-539392cfe8a7"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1db06783d2-d181-48ca-b66e-539392cfe8a7"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:10:28.693291Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/72f24f5a-91a1-4bb9-a8da-f618688f2648"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/ldp#RDFSource"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/72f24f5a-91a1-4bb9-a8da-f618688f2648"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://example.com/ns#Bug"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/72f24f5a-91a1-4bb9-a8da-f618688f2648"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/modified"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:10:30.863477Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/72f24f5a-91a1-4bb9-a8da-f618688f2648"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/isPartOf"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:data/basic"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/72f24f5a-91a1-4bb9-a8da-f618688f2648"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/title"
+            },
+            "object": {
+              "type": "literal",
+              "value": "Another bug to test."
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/72f24f5a-91a1-4bb9-a8da-f618688f2648"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d763decdd-58fd-444e-8b3b-de5575cf925e"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/72f24f5a-91a1-4bb9-a8da-f618688f2648"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d8cc3c959-16dd-4ee0-941b-e7c54c18fb3f"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/72f24f5a-91a1-4bb9-a8da-f618688f2648"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1da4bb9c23-c342-4006-a932-27c2cfbaea2d"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/72f24f5a-91a1-4bb9-a8da-f618688f2648"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://example.com/ns#severity"
+            },
+            "object": {
+              "type": "literal",
+              "value": "High"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/72f24f5a-91a1-4bb9-a8da-f618688f2648"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/description"
+            },
+            "object": {
+              "type": "literal",
+              "value": "Issues that need to be fixed."
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d763decdd-58fd-444e-8b3b-de5575cf925e"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d763decdd-58fd-444e-8b3b-de5575cf925e"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Create"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d763decdd-58fd-444e-8b3b-de5575cf925e"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d763decdd-58fd-444e-8b3b-de5575cf925e"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:10:30.569222Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d8cc3c959-16dd-4ee0-941b-e7c54c18fb3f"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d8cc3c959-16dd-4ee0-941b-e7c54c18fb3f"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Delete"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d8cc3c959-16dd-4ee0-941b-e7c54c18fb3f"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d8cc3c959-16dd-4ee0-941b-e7c54c18fb3f"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:10:30.671473Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1da4bb9c23-c342-4006-a932-27c2cfbaea2d"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1da4bb9c23-c342-4006-a932-27c2cfbaea2d"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Create"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1da4bb9c23-c342-4006-a932-27c2cfbaea2d"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1da4bb9c23-c342-4006-a932-27c2cfbaea2d"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:10:30.861691Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/2923dcfc-bab9-4f29-93ad-05b3ed2ceac5"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/ldp#Resource"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/2923dcfc-bab9-4f29-93ad-05b3ed2ceac5"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/modified"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:12:56.947562Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/2923dcfc-bab9-4f29-93ad-05b3ed2ceac5"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d726a5cee-343a-4ebe-b75d-52cd7c2769a1"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/2923dcfc-bab9-4f29-93ad-05b3ed2ceac5"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1dd42c55a4-d185-4cdf-a44c-e7029323b9cd"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/2923dcfc-bab9-4f29-93ad-05b3ed2ceac5"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#DeletedResource"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d726a5cee-343a-4ebe-b75d-52cd7c2769a1"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d726a5cee-343a-4ebe-b75d-52cd7c2769a1"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Create"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d726a5cee-343a-4ebe-b75d-52cd7c2769a1"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d726a5cee-343a-4ebe-b75d-52cd7c2769a1"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:12:56.597678Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1dd42c55a4-d185-4cdf-a44c-e7029323b9cd"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1dd42c55a4-d185-4cdf-a44c-e7029323b9cd"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Delete"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1dd42c55a4-d185-4cdf-a44c-e7029323b9cd"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1dd42c55a4-d185-4cdf-a44c-e7029323b9cd"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:12:56.947237Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/66717854-4149-4202-9bef-6383980e0ce8"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/ldp#RDFSource"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/66717854-4149-4202-9bef-6383980e0ce8"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://example.com/ns#Bug"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/66717854-4149-4202-9bef-6383980e0ce8"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/modified"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:13:07.232997Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/66717854-4149-4202-9bef-6383980e0ce8"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/isPartOf"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:data/basic"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/66717854-4149-4202-9bef-6383980e0ce8"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/title"
+            },
+            "object": {
+              "type": "literal",
+              "value": "Another bug to test."
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/66717854-4149-4202-9bef-6383980e0ce8"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d24bc20de-7f77-4acd-82f2-68ad00abece0"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/66717854-4149-4202-9bef-6383980e0ce8"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d9d10a0c3-00c7-4c0f-9d8d-c3418bd9c06f"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/66717854-4149-4202-9bef-6383980e0ce8"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1dc4f2de56-dc3f-46e3-b027-30a8e8b458ff"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/66717854-4149-4202-9bef-6383980e0ce8"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://example.com/ns#severity"
+            },
+            "object": {
+              "type": "literal",
+              "value": "High"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/66717854-4149-4202-9bef-6383980e0ce8"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/description"
+            },
+            "object": {
+              "type": "literal",
+              "value": "Issues that need to be fixed."
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d24bc20de-7f77-4acd-82f2-68ad00abece0"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d24bc20de-7f77-4acd-82f2-68ad00abece0"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Create"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d24bc20de-7f77-4acd-82f2-68ad00abece0"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d24bc20de-7f77-4acd-82f2-68ad00abece0"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:13:07.014343Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d9d10a0c3-00c7-4c0f-9d8d-c3418bd9c06f"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d9d10a0c3-00c7-4c0f-9d8d-c3418bd9c06f"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Delete"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d9d10a0c3-00c7-4c0f-9d8d-c3418bd9c06f"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d9d10a0c3-00c7-4c0f-9d8d-c3418bd9c06f"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:13:07.139548Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1dc4f2de56-dc3f-46e3-b027-30a8e8b458ff"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1dc4f2de56-dc3f-46e3-b027-30a8e8b458ff"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Create"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1dc4f2de56-dc3f-46e3-b027-30a8e8b458ff"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1dc4f2de56-dc3f-46e3-b027-30a8e8b458ff"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:13:07.229718Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/62b10f4d-8fb9-4816-b767-9a2235f15ce7"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/ldp#Resource"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/62b10f4d-8fb9-4816-b767-9a2235f15ce7"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/modified"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:13:16.655819Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/62b10f4d-8fb9-4816-b767-9a2235f15ce7"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d3dab139f-bef7-4f52-b10d-b2fc43f29261"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/62b10f4d-8fb9-4816-b767-9a2235f15ce7"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d7249295f-6225-490e-afe4-4aba5087db06"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/62b10f4d-8fb9-4816-b767-9a2235f15ce7"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#DeletedResource"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d3dab139f-bef7-4f52-b10d-b2fc43f29261"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d3dab139f-bef7-4f52-b10d-b2fc43f29261"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Create"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d3dab139f-bef7-4f52-b10d-b2fc43f29261"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d3dab139f-bef7-4f52-b10d-b2fc43f29261"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:13:16.478981Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d7249295f-6225-490e-afe4-4aba5087db06"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d7249295f-6225-490e-afe4-4aba5087db06"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Delete"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d7249295f-6225-490e-afe4-4aba5087db06"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d7249295f-6225-490e-afe4-4aba5087db06"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:13:16.655469Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/7f2ade30-1c6c-41f8-842b-8f6221802cab"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/ldp#RDFSource"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/7f2ade30-1c6c-41f8-842b-8f6221802cab"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://example.com/ns#Bug"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/7f2ade30-1c6c-41f8-842b-8f6221802cab"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/modified"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:13:18.561635Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/7f2ade30-1c6c-41f8-842b-8f6221802cab"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/isPartOf"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:data/basic"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/7f2ade30-1c6c-41f8-842b-8f6221802cab"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/title"
+            },
+            "object": {
+              "type": "literal",
+              "value": "Another bug to test."
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/7f2ade30-1c6c-41f8-842b-8f6221802cab"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d58a65ddf-48d3-490d-98b5-edcca9d48e9a"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/7f2ade30-1c6c-41f8-842b-8f6221802cab"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d2b241dd5-d710-4579-9213-7089a36288c0"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/7f2ade30-1c6c-41f8-842b-8f6221802cab"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "object": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d8346c9f3-7e02-43ef-8d6b-f508b52bd17e"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/7f2ade30-1c6c-41f8-842b-8f6221802cab"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://example.com/ns#severity"
+            },
+            "object": {
+              "type": "literal",
+              "value": "High"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:data/basic/7f2ade30-1c6c-41f8-842b-8f6221802cab"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://purl.org/dc/terms/description"
+            },
+            "object": {
+              "type": "literal",
+              "value": "Issues that need to be fixed."
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d58a65ddf-48d3-490d-98b5-edcca9d48e9a"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d58a65ddf-48d3-490d-98b5-edcca9d48e9a"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Create"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d58a65ddf-48d3-490d-98b5-edcca9d48e9a"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d58a65ddf-48d3-490d-98b5-edcca9d48e9a"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:13:18.269274Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d2b241dd5-d710-4579-9213-7089a36288c0"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d2b241dd5-d710-4579-9213-7089a36288c0"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Delete"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d2b241dd5-d710-4579-9213-7089a36288c0"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d2b241dd5-d710-4579-9213-7089a36288c0"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:13:18.367935Z"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d8346c9f3-7e02-43ef-8d6b-f508b52bd17e"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#Activity"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d8346c9f3-7e02-43ef-8d6b-f508b52bd17e"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "type": "uri",
+              "value": "https://www.w3.org/ns/activitystreams#Create"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d8346c9f3-7e02-43ef-8d6b-f508b52bd17e"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasAssociatedWith"
+            },
+            "object": {
+              "type": "uri",
+              "value": "http://www.trellisldp.org/ns/trellis#AnonymousAgent"
+            }
+          },
+          {
+            "subject": {
+              "type": "uri",
+              "value": "trellis:bnode/1ce4fc42-ef3d-4842-8a3f-37e9d1901d1d8346c9f3-7e02-43ef-8d6b-f508b52bd17e"
+            },
+            "predicate": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#atTime"
+            },
+            "object": {
+              "type": "literal",
+              "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "value": "2020-03-10T12:13:18.555521Z"
+            }
+          }
+        ]
+      }
+    }
+    ```
+
+  - O mediante su interface grafica:
+
+    ![fuseki](https://i.ibb.co/Z1HJZ5Y/fuseki.png)
+
+
+#### Trellis
 
 Se realizan pruebas mínimas como la creación de contenedores y recursos. La documentación de Trellis parece no estar actualizada (no funciona), y por lo tanto, se realizan las pruebas, siguiendo las especificaciones de la [LDP](https://www.w3.org/TR/ldp-primer/). No todas las operaciones funcionan correctamente, por ejemplo, es necesario sustituir las operaciones POST, indicadas en la LDP, por operaciones PUT
 
@@ -873,6 +2849,8 @@ Link: <http://www.w3.org/ns/ldp/BasicContainer>; rel="type"
             <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  ldp:RDFSource .
     ```
 
+
+
 ##### Comentarios sobre la prueba de concepto
 
 ###### Ventajas
@@ -892,18 +2870,22 @@ Se trata de una herramienta con muchas posibilidades pero también dispone de al
 - Apenas existe documentación al respecto, y la que hay no esta actualizada.
 - La propia versión del proyecto (0.10.0), habla de su estado de inmadurez relativa.
 - No se encuentran ejemplos de uso, por lo que se infiere que la permeabilidad en proyectos reales es muy baja.
-- Dada la escasez de documentación, el número de horas destinadas a inferir su correcto uso serán elevadas, y la probabilidad de cometer errores alta.
-- Es precisa la generación previa de RDF a partir de los POJOs, teniendo que utilizar para ello algún framework
 
 #### Conclusión
 
-Trellis por si mismo no es capaz de cumplir con todos los requisitos del proyecto, por lo que utilizar las distribuciones existentes provistas por el fabricante no sería una opción suficiente. 
+Trellis, según el [ldp-testsuite](https://w3c.github.io/ldp-testsuite/), parece cumplir razonablemente bien, con los estandares dispuestos por la LDP. 
 
-Sería necesario invertir tiempo en adaptar el producto, a las necesidades del proyecto Hércules, lo cual sería posible gracias a su arquitectura modular, usando aquellos módulos que sirvan a nuestros propósitos y sustituyendo el resto por implementaciones propias.
+Es cierto que en caso de necesitar llegar a un grado de cumplimiento completo del estándar LDP, es probable que necesitemos realzar algunas modificaciones sobre el Core de Trellis, pero siendo un proyecto de código abierto, pues esto seria posible.
 
-Otra conclusión que se puede obtener en la presente prueba de concepto, es que el triple store Blazegraph, parece cumplir con ciertas garantías con algunos de los requisitos demandados por el cliente, tal como el endpoint SPARQL, aunque probablemente  sea necesario introducir un proxy, para manejar los temas relativos a la seguridad.
+Por otra parte, también implementa el estándar Memento, lo que nos permitiría cumplir con el requisito de   almacenamiento y acceso cualquier versión de un documento en el tiempo.
 
-Una de las grandes ventajas que aportaría Trellis sería el hecho de que sería capaz de proveer un API conforme a la especificación LDP 1.0, lo cual en caso de tener que implementarlo manualmente conllevaría un gran esfuerzo.
+Parece integrable con cualquier tipo de almacenamiento tanto relacional como triple store, cumpliendo en ambos casos, los estándares de la LDP.
+
+Por otro lado es fácilmente integrable en una arquitectura de micro servicios por medio de su integración con Kafka.
+
+También a priori parece encajar bien el modulo de autentificación y autorización dispuesto, a falta de tener una definición mas exhaustiva de los requisitos que esta a de cumplir.
+
+Todo ello, hace de la herramienta Trellis, una herramienta con un gran encaje en el proyecto.
 
 ## Testing de cumplimiento LDP
 
