@@ -897,6 +897,51 @@ Se trata de una herramienta con muchas posibilidades pero también dispone de al
 - Dada la escasez de documentación, el número de horas destinadas a inferir su correcto uso serán elevadas, y la probabilidad de cometer errores alta.
 - Es precisa la generación previa de RDF a partir de los POJOs, teniendo que utilizar para ello algún framework
 
+#### Adaptación de Trellis
+
+Tras la primera prueba de concepto se analiza cómo de factible es modificar Trellis. Las opción más directa a priori pasaría por modificar directamente el código de Trellis pero esto tendría las siguientes desventajas:
+
+- Compilación del producto completo cuando solamente se pretenden modificar ciertos módulos
+- Dificultad en las actualizaciones de versión de Trellis ya que habría que hacer un merge con los cambios subidos al respositorio de Trellis
+- Necesidad de entender exactamente cómo está montado Trellis
+- Utilización de las herramientas de desarrollo de Trellis (gradle, etc.)
+
+Dado que trellis dispone de una arquitecura modular, y teniendo en cuenta que todas librerias (módulos) están disponibles a través de repositorios Maven, la mejor opción sería aprovechar estos artefactos que ya están previamente compilados, añadiendo nuevos artefactos con la lógica de la aplicación que se quiere añadir / adaptar.
+
+Trellis está compuesto de varios módulos que se ensamblan en una única aplicación. Para hacer este ensamblado se ha generado un proyecto que contiene como dependencia todas aquellas librerías que contiene trellis además de las nuevas que se añadan:
+
+- trellis-triplestore
+- trellis-constraint-rules
+- trellis-io-jena
+- trellis-api
+- trellis-http
+- trellis-app
+- trellis-cache
+- trellis-dropwizard
+- trellis-vocabulary
+- trellis-file
+- trellis-namespaces
+- trellis-audit
+- trellis-event-jackson
+- trellis-webac
+- trellis-jms
+- trellis-rdfa
+- trellis-kafka
+- trellis-auth-oauth
+- trellis-auth-basic
+
+En caso que se quiera modificar una de ellas, como por ejemplo la capa de persistencia, sería necesario sustituir la librería `trellis-triplestore` por una nueva personalizada.
+
+Para generar el empaquetado con todas estas librerías se utiliza el [framework dropwizard](https://www.dropwizard.io/), el cual permite además de realizar el empaquetado, gestionar la [configuración de la aplicación](#configuracion), mediante un fichero yml. 
+
+Una aplicación Dropwizard dispone de su propia subclase de `io.dropwizard.Configuration` la cual dispone de los parámetros específicos del entorno.  Trellis dispone de la implementación base `org.trellisldp.dropwizard.config.TrellisConfiguration` la cual será preciso extender.  
+
+Será preciso también crear una clase que extendienda la clase es.um.asio.ldp.app.TrellisApplication, la cual a su vez extiende `io.dropwizard.Application<T>`, la cual tiene estará parametrizada con la clase de configuración indicada anteriormente. Esta será la clase que contenta el método `main` de la aplicación y por tanto la que hay que ejecutar para arrancar el servicio.
+
+##### Comentarios sobre la adaptación
+
+Trellis al disponer de una arquitectura modular permite de una forma bastante sencilla generar un nuevo empaquetado modificando o añadiendo módulos de la aplicación. Esto es una gran ventaja que aporta de cara a poder adaptarlo a las necesidades del proyecto Hércules.
+
 #### Conclusión
 
 Trellis por si mismo no es capaz de cumplir con todos los requisitos del proyecto, por lo que utilizar las distribuciones existentes provistas por el fabricante no sería una opción suficiente. 
