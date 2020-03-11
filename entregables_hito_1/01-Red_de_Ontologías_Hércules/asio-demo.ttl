@@ -358,7 +358,8 @@ asio:AdministrativePersonnel rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#Article
 asio:Article rdf:type owl:Class ;
              rdfs:subClassOf asio:ScientificPublication ;
-             rdfs:label "Article"@en .
+             rdfs:label "Article"@en ;
+             skos:prefLabel "Article"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#BachelorsThesis
@@ -824,6 +825,7 @@ asio:PhDStudent rdf:type owl:Class ;
                                "Estudiante de doctorado"@es ;
                 skos:altLabel "Doctorando"@es ,
                               "Doctorand"@ca ,
+                              "Doctorant"@fr ,
                               "Doctorando"@gl ,
                               "Doutorando"@pt ,
                               "PhD candidate"@en .
@@ -894,11 +896,13 @@ asio:RegionalProject rdf:type owl:Class ;
                      rdfs:subClassOf foaf:Project ;
                      rdfs:comment "A project developed and funded at the regional level."@en ;
                      rdfs:label "Projecte regional"@ca-ad ,
+                                "Projecte regional"@ca-es ,
                                 "Projet régional"@fr ,
                                 "Projeto regional"@pt ,
                                 "Proyecto regional"@es ,
                                 "Regional project"@en ;
                      skos:prefLabel "Projecte regional"@ca-ad ,
+                                "Projecte regional"@ca-es ,
                                 "Projet régional"@fr ,
                                 "Projeto regional"@pt ,
                                 "Proyecto regional"@es ,
@@ -953,12 +957,14 @@ asio:ResearchInstitute rdf:type owl:Class ;
 
 ###  http://www.asio.es/asioontologies/asio#ResearchMaterial
 asio:ResearchMaterial rdf:type owl:Class ;
-                      rdfs:label "Research material"@en .
+                      rdfs:label "Research material"@en ;
+                      skos:prefLabel "Research material"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#ResearchMethod
 asio:ResearchMethod rdf:type owl:Class ;
-                    rdfs:label "Research method"@en .
+                    rdfs:label "Research method"@en ;
+                    skos:prefLabel "Research method"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#ResearchPersonnel
@@ -981,12 +987,14 @@ asio:ResearchPersonnel rdf:type owl:Class ;
 
 ###  http://www.asio.es/asioontologies/asio#ResearchProblem
 asio:ResearchProblem rdf:type owl:Class ;
-                     rdfs:label "Research problem"@en .
+                     rdfs:label "Research problem"@en ;
+                     skos:prefLabel "Research problem"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#ResearchResult
 asio:ResearchResult rdf:type owl:Class ;
-                    rdfs:label "Research result"@en .
+                    rdfs:label "Research result"@en ;
+                    skos:prefLabel "Research result"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#SME
