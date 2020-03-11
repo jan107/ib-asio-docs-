@@ -383,7 +383,7 @@ asio:BachelorsThesis rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#BacherlorsDegree
 asio:BacherlorsDegree rdf:type owl:Class ;
                       rdfs:subClassOf asio:AcademicDegree ;
-                      rdfs:comment "An undergraduate academic degree awarded by colleges and universities upon completion of a course of study lasting three to four years (depending on institution and academic discipline)."
+                      rdfs:comment "An undergraduate academic degree awarded by colleges and universities upon completion of a course of study lasting three to four years (depending on institution and academic discipline)."@en ;
                       rdfs:label "Bachelor's degree"@en ,
                                  "Licenciatura (pós-Bologna)"@pt-pt ,
                                  "Títol de bàtxelor"@ca-ad ,
@@ -1184,8 +1184,7 @@ asio:University rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio/modules#GeopoliticalEntities
 modules:GeopoliticalEntities rdf:type owl:Class ;
                              rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
-                             rdfs:comment "This vertical module in ASIO models all the geopolitical/administrative levels (from municipalities, to provinces, regions, countries and European-level entities) that might have a role in the ontological architecture of the project. It is modeled hierarchically though relevant administrative levels potentially funding projects.
-In the Asio project the proof of concept is carried out with the whole administrative levels of Spain, Portugal, Andorra and France, in addition to the relevant European administrative entities."@en ;
+                             rdfs:comment "This vertical module in ASIO models all the geopolitical/administrative levels (from municipalities, to provinces, regions, countries and European-level entities) that might have a role in the ontological architecture of the project. It is modeled hierarchically though relevant administrative levels potentially funding projects. In the Asio project the proof of concept is carried out with the whole administrative levels of Spain, Portugal, Andorra and France, in addition to the relevant European administrative entities."@en ;
                              rdfs:label "Entidades geopolíticas"@es ,
                                         "Entidades geopolíticas"@pt ,
                                         "Entitats geopolítiques"@ca-ad ,
