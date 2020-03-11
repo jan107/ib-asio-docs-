@@ -1139,7 +1139,8 @@ asio:Thesis rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio#UndergraduateStudent
 asio:UndergraduateStudent rdf:type owl:Class ;
                           rdfs:subClassOf asio:Student ;
-                          rdfs:label "Undergraduate student"@en .
+                          rdfs:label "Undergraduate student"@en ;
+                          skos:prefLabel "Undergraduate student"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#University
@@ -1150,7 +1151,15 @@ asio:University rdf:type owl:Class ;
                            "Universitat"@ca-ad ,
                            "Universitat"@ca-es ,
                            "University"@en ,
-                           "Unibertsitate"@eu
+                           "Unibertsitate"@eu ,
+                           "Universidade"@gl ,
+                           "Université"@fr ;
+                skos:prefLabel "Universidade"@pt ,
+                           "Universitat"@ca-ad ,
+                           "Universitat"@ca-es ,
+                           "University"@en ,
+                           "Unibertsitate"@eu ,
+                           "Universidade"@gl ,
                            "Université"@fr .
 
 
@@ -1175,8 +1184,8 @@ asio:University rdf:type owl:Class ;
 ###  http://www.asio.es/asioontologies/asio/modules#GeopoliticalEntities
 modules:GeopoliticalEntities rdf:type owl:Class ;
                              rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
-                             rdfs:comment """This vertical module in ASIO models all the geopolitical/administrative levels (from municipalities, to provinces, regions, countries and European-level entities) that might have a role in the ontological architecture of the project. It is modeled hierarchically though relevant administrative levels potentially funding projects.
-In the Asio project the proof of concept is carried out with the whole administrative levels of Spain, Portugal, Andorra and France, in addition to the relevant European administrative entities."""@en ;
+                             rdfs:comment "This vertical module in ASIO models all the geopolitical/administrative levels (from municipalities, to provinces, regions, countries and European-level entities) that might have a role in the ontological architecture of the project. It is modeled hierarchically though relevant administrative levels potentially funding projects.
+In the Asio project the proof of concept is carried out with the whole administrative levels of Spain, Portugal, Andorra and France, in addition to the relevant European administrative entities."@en ;
                              rdfs:label "Entidades geopolíticas"@es ,
                                         "Entidades geopolíticas"@pt ,
                                         "Entitats geopolítiques"@ca-ad ,
@@ -1189,7 +1198,13 @@ In the Asio project the proof of concept is carried out with the whole administr
 modules:ScientificDomain rdf:type owl:Class ;
                          rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
                          rdfs:comment "This ASIO vertical module organizes hierarchically the scientific domains related to research projects as established by Spain's Agencia Estatal de Investigación, depending from the Ministerio de Economía y Competitividad."@en ;
-                         rdfs:label "Domains scientifiques"@fr ,
+                         rdfs:label "Domaines scientifiques"@fr ,
+                                    "Dominis científics"@ca-ad ,
+                                    "Dominis científics"@ca-es ,
+                                    "Scientific domains"@en ,
+                                    "Áreas científicas"@es ,
+                                    "Áreas científicas"@pt ;
+                         skos:prefLabel "Domaines scientifiques"@fr ,
                                     "Dominis científics"@ca-ad ,
                                     "Dominis científics"@ca-es ,
                                     "Scientific domains"@en ,
