@@ -1,4 +1,4 @@
-# baseURI: http://www.asio.es/asioontologies/asio/alignment/dcat
+# baseURI: http://www.asio.es/asioontologies/asio-mappings
 # imports: http://purl.org/dc/dcmitype
 # imports: http://purl.org/vocommons/voaf
 # imports: http://www.weso.es/ontologies/2020/1/asio
@@ -15,14 +15,14 @@
 # imports: http://sweetontology.net/humanTechReadiness/
 
 @prefix : <http://www.asio.es/asioontologies/asio/dcat> .
-@prefix acm: <http://acm.rkbexplorer.com/ontologies/acm#>
+@prefix acm: <http://acm.rkbexplorer.com/ontologies/acm#> .
 @prefix aiiso: <http://purl.org/vocab/aiiso/schema#> .
 @prefix asio: <http://www.asio.es/asioontologies/asio#> .
-@prefix bbccore: <http://www.bbc.co.uk/ontologies/coreconcepts/>
+@prefix bbccore: <http://www.bbc.co.uk/ontologies/coreconcepts/> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
-@prefix bibtex: <http://purl.org/net/nknouf/ns/bibtex#>
-@prefix bio: <http://purl.org/vocab/bio/0.1/>
-@prefix bf: <http://id.loc.gov/ontologies/bibframe/Publication>
+@prefix bibtex: <http://purl.org/net/nknouf/ns/bibtex#> . 
+@prefix bio: <http://purl.org/vocab/bio/0.1/> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/Publication> .
 @prefix cerif: <http://purl.org/cerif/> .
 @prefix cogs: <http://vocab.deri.ie/cogs#> .
 @prefix cv: <http://rdfs.org/resume-rdf/cv.rdfs#> .
@@ -32,20 +32,20 @@
 @prefix dct: <http://purl.org/dc/dcmitype/> .
 @prefix doap: <http://usefulinc.com/ns/doap#> . 
 @prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
-@prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#>
+@prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
 @prefix fabio: <http://purl.org/spar/fabio/> .
 @prefix fea: <http://vocab.data.gov/def/fea#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix frapo: <http://purl.org/cerif/frapo/> .
-@prefix lib: <http://purl.org/library/>
+@prefix lib: <http://purl.org/library/> .
 @prefix lsc: <http://linkedscience.org/lsc/ns#> .
 @prefix modules: <http://www.asio.es/asioontologies/asio/modules> .
-@prefix npg: <http://ns.nature.com/terms/>
-@prefix opus: <http://lsdis.cs.uga.edu/projects/semdis/opus#>
+@prefix npg: <http://ns.nature.com/terms/> .
+@prefix opus: <http://lsdis.cs.uga.edu/projects/semdis/opus#> .
 @prefix org: <http://www.w3.org/ns/org#> .
-@prefix orkg: <http://orkg.org/core#>
+@prefix orkg: <http://orkg.org/core#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix pc: <http://purl.org/procurement/public-contracts#>
+@prefix pc: <http://purl.org/procurement/public-contracts#> .
 @prefix pdo: <http://ontologies.smile.deri.ie/pdo#> .
 @prefix pext: <http://www.ontotext.com/proton/protonext#> .
 @prefix poder: <http://dev.poderopedia.com/vocab/> .
@@ -54,16 +54,16 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix semcerif: <http://eurocris.org/ontology/semcerif#> .
-@prefix sio: <http://semanticscience.org/resource/>
+@prefix sio: <http://semanticscience.org/resource/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix swpo: <http://sw-portal.deri.org/ontologies/swportal#> .
-@prefix swrc: <http://swrc.ontoware.org/ontology#>
+@prefix swrc: <http://swrc.ontoware.org/ontology#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix vivo: <http://vivoweb.org/ontology/core#> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 # add new/missing list of prefixes here
-@base <http://www.asio.es/asioontologies/asio/alignment/dcat> .
+@base <http://www.asio.es/asioontologies/asio-mappings> .
 
 foaf:Organization
   owl:equivalentClass org:Organization ,

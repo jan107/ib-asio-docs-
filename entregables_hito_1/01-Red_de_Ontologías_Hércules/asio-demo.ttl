@@ -1079,15 +1079,17 @@ asio:Spinoff rdf:type owl:Class ;
              rdfs:label "Corporate spin-off"@en ,
                         "Empresa derivada"@ca-ad ,
                         "Empresa derivada"@ca-es ,
+                        "Spin-off enpresa"@eu ,
                         "Empresa derivada"@pt ,
                         "Société scindée"@fr ,
-                        "Spin-off"@es ;
+                        "Empresa spin-off"@es ;
              skos:prefLabel "Corporate spin-off"@en ,
                         "Empresa derivada"@ca-ad ,
                         "Empresa derivada"@ca-es ,
+                        "Spin-off enpresa"@eu ,
                         "Empresa derivada"@pt ,
                         "Société scindée"@fr ,
-                        "Spin-off"@es .
+                        "Empresa spin-off"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio#Student
@@ -1140,8 +1142,22 @@ asio:TechnicalReport rdf:type owl:Class ;
 asio:Thesis rdf:type owl:Class ;
             rdfs:subClassOf asio:AcademicPublication ;
             rdfs:comment "Any kind of thesis (bachelor's, master's, PhD) produced to receive some sort of university degree."@en ;
-            rdfs:label "Thesis"@en ;
-            skos:prefLabel "Thesis"@en .
+            rdfs:label "Thesis"@en ,
+                      "Tesi"@ca-AD ,
+                      "Tesi"@ca-ES ,
+                      "Tesis"@es ,
+                      "Tesi"@eu ,
+                      "Thèse"@fr ,
+                      "Tese"@gl ,
+                      "Tese"@pt ;
+            skos:prefLabel "Thesis"@en ,
+                      "Tesi"@ca-AD ,
+                      "Tesi"@ca-ES ,
+                      "Tesis"@es ,
+                      "Tesi"@eu ,
+                      "Thèse"@fr ,
+                      "Tese"@gl ,
+                      "Tese"@pt .
 
 
 ###  http://www.asio.es/asioontologies/asio#UndergraduateStudent
