@@ -369,16 +369,28 @@ asio:BachelorsThesis rdf:type owl:Class ;
                                       asio:PhDThesis ;
                      rdfs:comment "A thesis reporting a research project undertaken as part of an undergraduate course of education to receive a bachelor's degree."@en ;
                      rdfs:label "Bachelor's thesis"@en ,
+                                "Trabayu de fin de grau"@ast ,
                                 "Mémoire de fin de licence"@fr ,
                                 "Trabajo de fin de grado"@es-es ,
                                 "Treball fi de bàtxelor"@ca-ad ,
                                 "Treball fi de grau"@ca-es ;
                      skos:prefLabel "Bachelor's thesis"@en ,
+                                "Trabayu de fin de grau"@ast ,
                                 "Mémoire de fin de licence"@fr ,
                                 "Trabajo de fin de grado"@es-es ,
+                                "Gradu Amaierako Lana"@eu ,
                                 "Treball de fi de bàtxelor"@ca-ad ,
                                 "Traballo de fin de grao"@gl ,
-                                "Treball de fi de grau"@ca-es .
+                                "Treball de fi de grau"@ca-es ;
+                      skos:altLabel "TFB"@ca-ad ,
+                                 "TFG"@ca-es ,
+                                 "TFG"@ast ,
+                                 "Honour's thesis"@en-CA ,
+                                 "Honour's thesis"@en-GB ,
+                                 "Honor's thesis"@en-US ,
+                                 "TFG"@es ,
+                                 "GALa"@eu ,
+                                 "TFG"@gl .
 
 
 ###  http://www.asio.es/asioontologies/asio#BacherlorsDegree
@@ -751,13 +763,19 @@ asio:MastersThesis rdf:type owl:Class ;
                               "Tesis de maestría"@es-cu ,
                               "Tesis de maestría"@es-mx ,
                               "Trabajo de fin de máster"@es-es ,
+                              "Master Amaierako Lana"@eu ,
                               "Treball de fi de màster"@ca-ad ,
                               "Treball de fi de màster"@ca-es ;
                    skos:altLabel "Traballo de fin de mestrado"@gl ,
+                              "TFM"@ca-ad ,
                               "Treball de fi de master"@ca-ad ,
                               "Treball de fi de master"@ca-es ,
+                              "TFM"@ca-ad ,
+                              "TFM"@ca-es ,
+                              "TFM"@es-es ,
                               "Trabajo de fin de master"@es-es ,
-                              "Traballo de fin de master"@gl ,
+                              "MALa"@es-eu ,
+                              "TFM"@gl ,
                               "Treball de fi de mestratge"@ca-ad ,
                               "Treball de fi de mestratge"@ca-es .
 
