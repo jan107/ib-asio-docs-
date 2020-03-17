@@ -1,3 +1,5 @@
+![](./images/logos_feder.png)
+
 # Recomendaciones URIs
 
 - Evitar declarar el nombre del proyecto u organización que genera la URI si no aporta nada al significado de la misma

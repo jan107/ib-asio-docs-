@@ -1,3 +1,5 @@
+![](./images/logos_feder.png)
+
 # Arquitectura de URIs
 
 El servidor de linked data se encargará de **gestionar todas las peticiones** de entrada de los clientes al sistema y redireccionarlas a los elementos que correspondan como puede ser, peticiones al API REST, al servicio de publicación de la Web, al gestor de datos o directamente al Endpoint SPARQL. Estas peticiones se regirán por el esquema de URIs propuesto, por lo que es de vital importancia definir unas pautas correctas y estables desde el comienzo del proyecto.
