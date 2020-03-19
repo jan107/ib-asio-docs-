@@ -145,30 +145,31 @@ A alto nivel, la arquitectura se divide en varias partes:
 
 - Backend: Módulo encargado de la ingesta de datos desde un origen, procesando la información e insertándola en los diferentes almacenamientos
 - Gestión: Módulo backoffice encargado de la gestión del sistema
-- Servicio de publicación web: Servicio encargado de la consulta de datos por parte de los usuarios / máquinas
-- API Rest LDP
-- Autorización y autenticación
+- Servicio de publicación web: Servicio web encargado de la consulta de datos por parte de los usuarios
+- API Rest LDP: plataforma conforme a la especificación [Linked Data Platform del W3C](https://www.w3.org/TR/ldp/)
+- Endpoint SPARQL: Endpoint SPARQL indicado para la conexión con el sistema a través de este protocolo
+- Autorización y autenticación: Módulo de autorización encargado de gestionar la autenticación y autorización haciendo la conexión entre la solución y el sistema SIR
 
 También formarán parte de esta visión general:
 
-- Orígenes de datos
-- Almacenamientos de datos RDF
+- Orígenes de datos en diferentes formatos (XML, servicio web, API REST, etc.)
+- Almacenamientos de datos triplestore
 - Sistema de logging y monitorización
 - Bus de servicio general de la aplicación
 - Base de datos de gestión
 
 ## Arquitectura Backend
 
-El módulo de backend es el encargado de la ingesta de datos desde un origen, procesando la información e insertándola en los diferentes almacenamientos.
+El módulo de backend es el encargado de la ingesta de datos desde un origen, procesando la información e insertándola finalmente en el triplestore para que esté accesible posteriormente por el servidor LDP.
 
 ![Arquitectura backend alto nivel](./images/backend.png)
 
 Este módulo estará formado por varias piezas:
 
-- Entrada de datos: módulo encargado de obtener los datos de una entrada de datos (fuentes externas), haciendo las adaptaciones necesarias para que conciliarlos con entides internas e ingesta en bus de servicio general
+- Entrada de datos: módulo encargado de obtener los datos de diferentes fuentes de datos (fuentes externas), haciendo las adaptaciones necesarias para que conciliarlos con entidades internas (POJOs) e ingesta en bus de servicio general
 - Sistema de gestión: servicio encargado de consumir los eventos del bus de servicio y decidir si deben ir al módulo de gestión de eventos
-- Gestión de eventos: módulo encargado de procesar los eventos generados por el módulo de entrada, permitiendo almacenar los datos en los diferntes sistemas de almacenamiento
-- Bus de servicio general (kafka): cola de mensajes utilizada para la comunicación asíncrona entre los módulos
+- Gestión de eventos: módulo encargado de procesar los eventos generados por el módulo de entrada, permitiendo almacenar los datos en el triplestore
+- Service bus general (kafka): cola de mensajes utilizada para la comunicación asíncrona entre los módulos
 
 ### Entrada de datos
 
@@ -176,7 +177,7 @@ El sistema de entrada de datos, tiene como función, procesar los datos de fuent
 
 ![Arquitectura entrada de datos](./images/input.png)
 
-Está formado por una serie de importadores y conversores de datos externos, apoyados por una factoría de URIs que se encargará de asignar URIs a los recursos generados de acuerdo a la política de URIs establecida. Durante el procesamiento de datos, se realizarán las tareas necesarias de conciliación y descubrimiento de entidades en otras fuentes de datos enlazados.
+Estará formado por varios importadores de datos, uno por cada una de las fuentes externas de las que se tome la información. Cada una de estas fuentes dispone de los datos en un formato de entrada, el cual no tiene porque ser el mismo que la estructura de datos con las que vaya a trabajar el sistema, con lo que será preciso realizar una adaptación de los mismos.
 
 **Implementación:** Para su implementación se desarrollarán una serie de microservicios. Potencialmente hay servicios que estarán muy acoplados a cliente (importadores) y otros menos, por lo que será conveniente que cada componente realice las operaciones de la forma más atómica y desacoplada posible.
 
@@ -184,28 +185,41 @@ Está formado por una serie de importadores y conversores de datos externos, apo
 
 #### Importadores
 
-Se trata de N microservicios, uno por cada fuente de datos, que se encargarán de procesar las fuentes externas y adaptar los datos recuperados al formato establecido en la aplicación.
+Se trata de N microservicios, uno por cada fuente de datos, que se encargarán de leer los datos de estas fuentes e ingestarlos en el sistema a través de un topic de Kafka. Su única misión será la de leer los datos de diferentes fuentes y no realizarán transformación alguna sobre ellos.
 
-Por ejemplo, en el caso de una fuentes de datos vía FTP, el importador correspondientes se encargaría de recuperar los ficheros vía FTP, procesar los ficheros y extraer los datos. 
+Por ejemplo, en el caso de una fuentes de datos vía FTP, el importador correspondientes se encargaría de recuperar los ficheros vía FTP, procesar los ficheros y extraer los datos. Otra fuente podría ser un servicio web o un API REST.
 
 **Implementación:** Existen librerías que podrían facilitar la implementación: 
 
-- ShExML : Librería desarrollada por WESO, que permite mapear datos.
-- RML : Lenguaje que permite definir el mapeo de forma escalable y reutilizable con distintas fuentes, orientado a generar documentos RDFs.
+- **Input:** Fuentes de datos externas
+- **Output:** Evento publicado en Service Bus interno (topic de Kafka) del módulo de entrada
 
-- **Input:** Fuente de datos externa
-- **Output:** Evento publicado en Service Bus interno del módulo de entrada
+#### Procesador de datos
 
-#### Procesador
+La tarea del procesamiento de datos se encarga de transformar los datos de entrada en los datos que se precisa para la ontología (POJOs). Dado que el formato de los datos de entrada no coincide con el de los POJOs, incluso existiendo la posibilidad de usar datos de diferentes datos de entrada para componer un único POJO, es necesario realizar este procesamiento en dos pasos.
 
-Obtiene los datos desde el importador y realiza tareas de conciliación y descubrimiento de entidades de otras fuentes de datos enlazados y genera las URIs de los recursos de acuerdo con la política establecida.
+1. Realizar una importación completa de los datos en una base de datos persistiéndolos en una base de datos intermedia
+2. Proceso de conciliación de datos para generar los POJOs
 
-**Implementación:** Se apoyará en las siguientes librerías:
-- Factoría de URIs
-- Librería de descubrimiento.
+##### Procesador
 
-- **Input:** Evento recibido desde el service bus interno del módulo de entrada
-- **Output:** Evento publicado en Service Bus general
+El procesador será el encargado de ir insertando los datos en una base de datos intermedia. Esta base de datos intermedia dispondrá de los datos en el formato de entrada.
+
+La base de datos elegida es una base de datos NoSQL, en concreto MongoDB, la cual permite introducir datos no estructurado con diferentes campos.
+
+**Implementación:** 
+
+* **Input:** Evento recibido desde el service bus interno del módulo de entrada
+* **Output:** Datos introducidos en formato de entrada en la base de datos intermedia del módulo de entrada
+
+##### ETL
+
+Una vez se hayan cargado todos los datos de una de las fuentes, el módulo ETL será el encargado de leer los datos de la base de datos intermedia y transformarlos en la estructura de datos definida por la ontología (POJOs).
+
+**Implementación:** 
+
+- **Input:** Datos procedentes de la base de datos intermedia en formato del módulo de entrada
+- **Output:** Evento publicado en Service Bus general, en formato POJO
 
 #### Service bus interno del módulo de entrada
 
@@ -213,41 +227,59 @@ Se trata de una cola Kafka para garantizar que el procesamiento de los datos de 
 
 ### Gestión de eventos
 
-El módulo de gestión de eventos se encargará de recoger los eventos generados por el sistema de entrada y procesarlos, hasta su guardado en los diferentes sistemas de almacenamiento que se definan.
+El módulo de gestión de eventos se encargará de recoger los eventos generados por el sistema de entrada y procesarlos, hasta su guardado en el triplestore.
 
 ![Arquitectura gestión de eventos](./images/event-management.png)
 
-**Implementación:** Para su implementación se desarrollarán una serie de microservicios. Se debería disponer de unos servicios lo más atómico posible, sobre todo en el caso de los microservicios dedicados a interacturar con los sistemas de almacenamiento, los cuales van a estar muy ligados a las APIs provistas por estos.
+**Implementación:** Para su implementación se desarrollarán una serie de microservicios. Se debería disponer de unos servicios lo más atómico posible, sobre todo en el caso de los microservicios dedicados a interactuar con los sistemas de almacenamiento, los cuales van a estar muy ligados a las APIs provistas por estos.
 
 **Lenguaje:** Para la implementación de los microservicios involucrados en este módulo se recomienda lenguaje de la JVM, por compatibilidad con librerías, principalmente Java o Scala.
 
-#### Sisstema de gestión
+#### Sistema de gestión
 
-El sistema de gestión se encargará de decidir qué eventos enviar a los procesadores de datos y bajo qué condiciones. Se encargará de consumir los eventos del bus de servicio general del sistema e ingestar en el bus de servicio de gestión aquellos eventos que se deban procesar.
+El sistema de gestión será el encargado de recoger los datos en formato POJO del service bus general. Con ellos lo que hará será:
 
-- **Input:** Evento recibido desde el service bus general del sistema
-- **Output:** Evento publicado en Service Bus de gestión
+- Utilizar la librería de descubrimiento para validar si se trata de un nuevo recurso, uno ya existente que hay que actualizar o bien es necesario realizar un borrado
+- Generación de RDF apoyándose en la factoría de URIs
+- Ingesta de RDF en service bus del módulo de gestión, junto con la operación a realizar, lo que permitirá disponer de un log de todas las operaciones realizadas en el sistema, pudiendo ser útil en caso de necesitar restaurar la información.
 
-#### Procesadores de eventos
+**Implementación:**
 
-Cada uno de los procesadores de eventos se encargarán de consumir los mensajes disponibles en el bus de servicio de gestión con el fin de ser almancenados en un almacenamiento concreto. La idea es que exista un procesador de eventos por cada uno de los diferentes almacenamientos / Triple stores (WikiBase, Apache Jena, etc.), de esta forma es muy sencillo activar o desactivar los sistemas de almacenamiento en un momento dado, simplemente con levantar o parar el microservicio procesador de eventos.
+* **ShExML:** Librería desarrollada por WESO, que permite mapear datos.
 
-Cuando se procese un evento, este se enviará al storage adapter correspondiente para su almacenamiento en el sistema adecuado.
+- **Input:** Evento recibido desde el service bus general del sistema, con datos en formato POJO
+- **Output:** Evento publicado en Service Bus de gestión, con el RDF además de la operación a realizar
+
+#### Procesador de eventos
+
+El procesador de eventos será el encargado de recoger los datos desde el service bus del módulo de gestión y enviarlos al almacenamiento por medio de un adaptador.
+
+Cuando se procese un evento, este se enviará al storage adapter su almacenamiento en el sistema adecuado.
+
+**Implementación:**
 
 - **Input:** Evento recibido desde el service bus de gestión
 - **Output:** Invocación a storage adapter para almacenamiento de mensaje
 
 #### Storage adapters
 
-Por cada uno de los sistemas de almacenamiento existirá un storage adapter que se encargará de adaptar los datos de la aplicación para poder ser insertados en un sistema de almacenamiento. Como sistema de almacenamiento se entenderá por ejemplo un Triple Store como WikiBase o Apache Jena, no obstante este sistema también permitiría guardar datos en otro tipo de sistemas como una base de datos (relacional, NoSQL, ...), fichero (plano, csv, ...) o cualquier otro mecanismo que fuese necesario.
+En lugar de añadir la lógica correspondiente a un sistema de almacenamiento, se utilizará un adaptador el cual dispondrá de toda la lógica necesaria para interactuar con el triplestore. Esto permite que en caso que se quiera cambiar de sistema de almacenamiento, solo con cambiar este adaptador es suficiente para poder trabajar con este nueva capa de persistencia.
+
+Dentro del transcurso del proyecto se desarrollará un adaptador para la ingesta de datos en el sistema [Trellis](https://www.trellisldp.org/).
+
+**Implementación:**
 
 - **Input:** Mensaje recibido mediante invocación desde el procesador de eventos a través de un API Rest
-- **Output:** Información persistida en el sistema de almacenamiento
+- **Output:** Información enviada a Trellis a través de su API LDP
 
-Además del almacenamiento de información, también serviría de interprete para consulta de la misma, recuperándola del sistema de almacenamiento y devolviéndola al sistema. Esto será util para las APIs de consulta. En este caso la entrada y salida sería la siguiente:
+#### Trellis
 
-- **Input:** Solicitud de consulta de información mediante API Rest
-- **Output:** Datos correspondiente a la consulta realizada
+Trellis es un servidor LDP Modular que soporta el escalado horizontal y redundancia, el cual soporta diferentes sistemas de almacenamiento, siendo por defecto triplestore y base de datos. Al disponer de una arquitectura modular y también al proveer todas sus librerías subidas a repositorios Maven, permite de forma sencilla utilizarlas para componer un empaquetado "custom". Esto facilitaría también el intercambio de ciertas piezas como puede ser la capa de persistencia para permitir así cumplir con el requisito de que la plataforma sea capaz de soportar el intercambio de triplestore.
+
+**Implementación:**
+
+- **Input:** Datos procedentes del adaptador de Trellis
+- **Output:** Datos persistidos en un triplestore
 
 #### Logging y monitorización
 
@@ -259,9 +291,17 @@ Más información: [https://www.graylog.org/](https://www.graylog.org/)
 
 ### APIs / Web (Frontend)
 
-El sistema Frontend se encargará de interatuar con los usuarios que intenten acceder al sistema, ya sean personas o máquinas. Se permitirá tanto la consulta de datos como la introducción de nuevos datos en el sistema mediante esta vía.
+El sistema Frontend se encargará de interactuar con los usuarios que intenten acceder al sistema, ya sean personas o máquinas. Se permitirá tanto la consulta de datos como la introducción de nuevos datos en el sistema mediante esta vía.
 
-![Arquitectura APIs / Web](./images/apis-web.png)
+![Arquitectura APIs / Web](./images/api-web.png)
+
+El sistema dispondrá de los siguientes elementos:
+
+- **API REST LDP:** API REST que cumpla con la recomendación [LDP (Linked Data Platform)](https://www.w3.org/TR/ldp/) en la que cada se definen los conceptos de recursos y contenedores. Los recursos pueden ser recursos con información RDF o recursos no-RDF. Para cada entidad, se define el conjunto de verbos http disponibles: GET, PUT, POST, DELETE, HEAD, PATCH y OPTIONS
+- **Servicio e publicación web:** ofrecerá una capa Web de acceso a los diferentes recursos de investigación. El servicio ofrecerá facilidades para la visualización y búsqueda de datos enlazados, así como negociación de contenido para que la información sea útil tanto para humanos como máquinas.
+- **Endpoint SPARQL:** endpoint para la realización de consultas SPARQL
+
+Además, todos estos elementos estarán acompañados por una capa de negociación de contenido que permita obtener los datos ya sean del API Rest LDP o bien de alguno de los demás servicios en función de reglas. 
 
 Para el acceso a este módulo existirá una capa de seguridad (autenticación y autorización) que garantizará que cada uno de los usuarios puede ejecutar las acciones que permite su rol.
 
@@ -271,12 +311,12 @@ Para el acceso a este módulo existirá una capa de seguridad (autenticación y 
 
 #### Servicio de publicación web
 
-El servicio de publicación web se encargará de ofrecer el interfaz externo del backend SGI. Ofrecerá mecanismos para realizar consultas de la información y mostrar el detalle de los elementos, así como ofrecer la posibilidad de insertar información en el sistema de forma manual.
+El servicio de publicación web es el encargado de mostrar un frontal HTML para la visualización de los datos. También dispondrá de un editor de consultas SPARQL.
 
 Está formado por dos partes:
 
 - Frontal: Se trata de una aplicación desarrollada mediante la utilización de un framework SPA.
-- API: El frontal necesita un API para poder iteractuar con el sistema, será necesario definir un API Rest que permita esta comunicación.
+- API: El frontal necesita un API para poder interactuar con el sistema, será necesario definir un API Rest que permita esta comunicación.
 
 #### API Rest LDP
 
@@ -284,14 +324,19 @@ Se propone la creación de un API Rest para la gestión de los diferentes recurs
 
 Smart-API es una especificación basada en OpenAPI que permite añadir metadatos utilizando JSON-LD. De esta forma, en lugar de devolver valores JSON simples, se devuelven valores JSON-LD que encajan con el modelo de datos enlazados. También dispone de un registro de APIs que facilitan el descubrimiento de servicios. 
 
-En principio se propone que el API REST cumpla con la recomendación LDP (Linked Data Platform)  en la que cada se definen los conceptos de recursos y contenedores. Los recursos pueden ser recursos con información RDF o recursos no-RDF. Para cada entidad, se define el conjunto de verbos http disponibles: GET, PUT, POST, DELETE, HEAD, PATCH y OPTIONS.
+Se propone que el API REST cumpla con la recomendación LDP (Linked Data Platform)  en la que cada se definen los conceptos de recursos y contenedores. Los recursos pueden ser recursos con información RDF o recursos no-RDF. Para cada entidad, se define el conjunto de verbos http disponibles: GET, PUT, POST, DELETE, HEAD, PATCH y OPTIONS.
 
-### Gestor de comunicación
+Para ello se utilizará el propio API REST LDP proporcionado por Trellis.
 
-El gestor de comunicación será el encargado de manejar las peticiones que se reciban desde las APIs de comunicación. En caso de tratarse de peticiones de consulta, se accederá directamente a los Storage Adapters, mientras que en caso de escritura de nuevos datos, estos pasarán por el sistema de gestión para que los ingeste en el service bus de gestión.
+#### Endpoint SPARQL
 
-- **Input:** Mensaje recibido mediante invocación desde las APIs
-- **Output:** Información devuelta desde los storage adapters. En el caso de inserción de información, el output será mediante invocación al sistema de gestión.
+El endpoint SPARQL será el encargado de ofrecer a los usuarios de la plataforma un endpoint SPARQL. Realmente lo que hará será delegar en el endpoint proporcionado por el triplestore para realizar las consultas, haciendo de esta forma transparente para los usuarios el endpoint utilizado internamente. Para ello hará uso de un adaptador para facilitar realizar el cambio de triplestore en caso que sea preciso.
+
+**Implementación:**
+
+- **Input:** Consulta SPARQL procedente desde los usuarios (personas o máquinas)
+
+- **Output:** Datos procedentes de la ejecución de la consulta
 
 ## Arquitectura aplicación de gestión
 
@@ -324,7 +369,7 @@ Este sistema se apoyará en una base de datos de tipo NoSQL, como lo es MongoDB.
 
 ## Autenticación
 
-La aplicacion dispondrá de un sistema de autenticación que permita identificar a los usuarios que van a trabajar con la misma. Esl sistema de autenticación dará acceso a los usuarios mediante sus credenciales. Para este cometido se utilizará se propone la utilización de un Single Sign On, que permita abstraer a cada uno de los servicios de este cometido, centralizando el proceso de autenticación en un único lugar.
+La aplicación dispondrá de un sistema de autenticación que permita identificar a los usuarios que van a trabajar con la misma. El sistema de autenticación dará acceso a los usuarios mediante sus credenciales. Para este cometido se utilizará se propone la utilización de un Single Sign On, que permita abstraer a cada uno de los servicios de este cometido, centralizando el proceso de autenticación en un único lugar.
 
 Dado que Backend SGI es previsto que sea utilizado por usuarios de diferentes organizaciones, lo más adecuado es que se utilice un sistema de autenticación federado que permita utilizar la plataforma de autenticación de la organización a la que pertenezca cada uno de ellos. 
 
@@ -333,7 +378,7 @@ Dado que Backend SGI es previsto que sea utilizado por usuarios de diferentes or
 En un sistema federado existen los siguientes roles:
 
 - **Proveedor de identidad:** encargado de realizar la autenticación del usuario y emitir las credenciales del mismo, pudiendo incluir información adicional sobre los atributos del usuario
-- **Proveedor de servicio:** responsale de validar las credenciales. Es posible que el usuario se haya autenticado pero no sea válido para el servicio en cuestión (por roles por ejemplo), en este caso se denegaría la entrada.
+- **Proveedor de servicio:** responsable de validar las credenciales. Es posible que el usuario se haya autenticado pero no sea válido para el servicio en cuestión (por roles por ejemplo), en este caso se denegaría la entrada.
 
 Para este cometido se recomienda federar la aplicación en el sistema SIR.
 
@@ -544,7 +589,7 @@ Para poder conseguir esta integración es necesario disponer de una pieza que ha
 
 ![Bridge de autorización](./images/authorization-bridge.png)
 
-En este caso existirá un servidor de autenticacion que realice este rol. De puertas a fuera se trabajará con SAML, haciendo la integración son SIR, mientras que de puertas a dentro se dispondrá de un token JWT proporcionado por el servidor de autenticación.
+En este caso existirá un servidor de autenticacion que realice este rol. De puertas a fuera se trabajará con SAML, haciendo la integración son SIR, mientras que de puertas a dentro se dispondrá de un token JWT proporcionado por el servidor de autenticación. Para facilitar esta integración, se estudiará la utilización de herramientas como [Keycloak](https://www.keycloak.org/).
 
 # Vista de Despliegue
 
@@ -609,8 +654,6 @@ La presente propuesta se basa en los siguientes patrones arquitectónicos:
 
 # Decisiones de Diseño
 
-## <*Procesamiento asíncrono*>
-
 ## Procesamiento de streams
 
 Con el fin de aumentar la **escalabilidad y alta disponibilidad del sistema**, se propone la utilización de un sistema de procesamiento de flujos (streams) de eventos. Este tipo de sistemas están siendo utilizados en proyectos que requieren el procesamiento de grandes cantidades de datos y consisten en utilizar un mecanismo de publicación/suscripción a un log distribuido de sólo lectura. La ventaja es que las operaciones de escritura en el log son más eficientes que las actualizaciones en una base de datos. 
@@ -659,9 +702,7 @@ Además, muchas de las librerías de web semántica como Apache Jena ó RDF4J es
 
 A pesar de ello, tampoco se descarta la creación de ejemplos o prototipos en otros entornos como NodeJs que pueden servir como prueba de concepto de interoperabilidad, o incluso como desarrollos rápidos de ciertas funcionalidades que sean demandadas por el cliente.
 
-<*Definir stack tecnológico*>
-
-### <*Spring*>
+### *Spring*
 
 Como framework de desarrollo se utilizará Spring el cual es el framework "Open Source" más utilizado para la plataforma J2EE. 
 
