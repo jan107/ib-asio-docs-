@@ -383,13 +383,16 @@ asio:BachelorsThesis rdf:type owl:Class ;
                                 "Traballo de fin de grao"@gl ,
                                 "Treball de fi de grau"@ca-es ;
                       skos:altLabel "TFB"@ca-ad ,
+                                 "Treball de fi de carrera"@ca-es ,
                                  "TFG"@ca-es ,
                                  "TFG"@ast ,
                                  "Honour's thesis"@en-CA ,
                                  "Honour's thesis"@en-GB ,
                                  "Honor's thesis"@en-US ,
+                                 "Trabajo de fin de carrera"@es ,
                                  "TFG"@es ,
                                  "GALa"@eu ,
+                                 "Traballo de fin de carreira"@gl ,
                                  "TFG"@gl .
 
 
