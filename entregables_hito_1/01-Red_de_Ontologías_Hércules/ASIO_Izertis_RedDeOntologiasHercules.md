@@ -325,6 +325,6 @@ FIXME
 
 | Competence question                                          | Comment |
 | ------------------------------------------------------------ | ------- |
-| Estado del arte: ¿puedo ver los resultados de proyectos por temática concreta de proyectos desarrollados en la red, diferenciando a nivel regional, nacional, europeo? |         |
-| Búsqueda de socios: ¿puedo ver los consorcios de proyectos de otras universidades por proyecto y temática? |         |
+| Estado del arte: ¿puedo ver los resultados de proyectos por temática concreta de proyectos desarrollados en la red, diferenciando a nivel regional, nacional, europeo? | Pending |
+| Búsqueda de socios: ¿puedo ver los consorcios de proyectos de otras universidades por proyecto y temática? | Pending |
 
