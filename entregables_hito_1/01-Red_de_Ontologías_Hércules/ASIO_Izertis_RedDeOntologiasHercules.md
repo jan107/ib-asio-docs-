@@ -243,3 +243,88 @@ Vandenbussche, P.; Atemezing, G.; Poveda-Villalón, M.; Vatant, B. (2014). *Pie
 
 
 
+# Annex: the competence questions and the ontology
+
+This annex provides a list ofthe competence questions provided by the University of Murcia and the current responses for them by the ASIO ontology so far. The satisfaction of the questions is still temporary, as it is a work in progress at the moment of this writing, and it is expected to be concluded for the milestone of May.
+
+The status for the competence question can be 'yes', 'no' or 'partially', being the latter a
+
+## General questions
+
+FIXME
+
+| Competence question                                          | Comment                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Como usuario requiero obtener un listado de los centros/estructuras de investigación que trabajan en un área/disciplina específica. | Pending. Awaiting for the *scientific domains* vertical module |
+| Como usuario requiero obtener un listado de los investigadores de un centro/estructura de investigación de un área/disciplina específica. Este listado podrá filtrarse según el tipo de investigador ya sea docente, personal investigador en formación, etc. | Pending. Awaiting for the *scientific domains* vertical module |
+| Como usuario requiero obtener el Top 10 (o el número que se considere relevante pues será parametrizable) de los investigadores de un centro/estructura de investigación ordenados por el número de citas, número de publicaciones, h-index, etc. en un área/disciplina específica. | Pending. Awaiting for the *scientific domains* vertical module |
+| Como usuario requiero obtener el Top 10 (o el número que se considere relevante pues será parametrizable) de centros/estructuras de investigación que posean sellos de calidad asociados, por ejemplo: el sello Severo Ochoa. | Pending. Awaiting for the classifying parameter              |
+| Como usuario requiero obtener un listado de los centros/estructuras de investigación que hayan realizado proyectos H2020 y/o proyectos del Plan Estatal. | Yes                                                          |
+| Como usuario requiero obtener un listado de la producción científica en un determinado rango de fechas de un centro/estructura de investigación en un área/disciplina. Para cada resultado se incluirán algunos metadatos importantes de la producción como, por ejemplo, DOI, año de publicación, etc. | Yes                                                          |
+| Como usuario requiero obtener una visualización en la que se recoja la distribución de la producción científica española, por ejemplo, de artículos publicados en revistas, según las comunidades autónomas en un rango de años. | Yes                                                          |
+| Como usuario requiero comparar comunidades autónomas, universidades, grupos de investigación, etc. en determinados tópicos para identificar cuál es el más competitivo y por qué. | Yes                                                          |
+| Como usuario requiero obtener un listado de patentes, diseños industriales, etc. de un centro/estructura de investigación en un área/disciplina. | Yes                                                          |
+| Como investigador y personal no investigador de la universidad requiero obtener un listado de los proyectos adjudicados/desarrollados, de un centro/estructura de investigación, de un área/disciplina, en un determinado año de búsqueda en los que se tenga acceso al detalle de al menos:<br/>○	Nombre del proyecto<br/>○	Palabras claves<br/>○	Tipo de participación: coordinador o participante<br/>○	Tipo de proyecto: competitivo o no competitivo<br/>○	Tipo de financiamiento: público o privado.<br/>○	Tipo de convocatoria: nacional, H2020, etc.<br/>○	Número y listado de personas involucradas en el proyecto<br/>○	Nombre(s) del investigador(s) principal<br/>○	Entregables/memoria del proyecto<br/>○	Producción científica relacionada con el proyecto<br/>○	Entidades colaboradoras/participantes<br/>○	Cuantía<br/>○	etc. | Pending. Awaiting for the *scientific domains* vertical module |
+| Como usuario académico no investigador necesito conocer el tamaño, experiencia y envejecimiento de un área de investigación a escala de universidad, regional, nacional. | Yes                                                          |
+| Como usuario necesito conocer el porcentaje de participación de un centro/estructura de investigación en proyectos nacionales o europeos. | Yes                                                          |
+| Como investigador, personal no investigador de la universidad requiero insertar/modificar los datos relacionados con los proyectos de investigación, incluyendo los entregables que se hayan generado en la fase de propuesta. El usuario tendrá acceso a esta información según el nivel de acceso que se le haya proporcionado previamente según su rol, según niveles de confidencialidad de ser el caso. Entre los datos que se proporcionarán por cada proyecto se tendrá al menos:<br/>○	Nombre del proyecto<br/>○	Palabras claves<br/>○	Tipo de participación de la entidad: coordinador o participante<br/>○	Tipo de proyecto: competitivo o no competitivo<br/>○	Tipo de financiamiento: público o privado<br/>○	Tipo de convocatoria: nacional, H2020, etc.<br/>○	Número y listado de personas involucradas en el proyecto<br/>○	Nombre(s) del investigador(s) principal<br/>○	Entregables/memoria del proyecto<br/>○	Producción científica relacionada con el proyecto<br/>○	Entidades colaboradoras/participantes<br/>○	Cuantía<br/>○	Etc. | No                                                           |
+| Como usuario necesito una visualización [filtering] que me permita explorar la información de cada proyecto según los filtros que haya elegido, por ejemplo, por años, por tipo de convocatoria, por cuantía mayor a determinado valor, según un área/disciplina, según la ubicación geográfica, etc. | Pending. Awaiting for the *scientific domains* vertical module |
+| Identificar proyectos con temática y objetivos científicos similares. En este caso, el usuario podrá acceder a visualizaciones comparativas de la información de proyectos similares. | Pending. Awaiting for the *scientific domains* vertical module |
+| Como usuario necesito una visualización que me permita analizar la evolución de un investigador, conjunto de investigadores o líneas de investigación a través de los resultados de los proyectos realizados. Se podrá hacer una selección de los proyectos a incluir. El usuario podrá acceder a visualizaciones comparativas de la información de investigadores, conjuntos de investigadores o líneas de investigación seleccionados. | Yes                                                          |
+| Como usuario necesito obtener el listado de indicadores con su respectivo valor y unidad de medida (porcentaje, número, etc.) calculados en un periodo de tiempo, ya sea para toda la universidad o para cada centro/estructura de investigación de cada universidad. | No                                                           |
+| Como usuario necesito una visualización de la evolución de indicadores según la línea del tiempo (años, trimestres, etc.) | No                                                           |
+| Como usuario necesito acceder a una predicción de la evolución de indicadores a partir de la serie temporal de sus valores y de las variables existentes en el sistema que se consideren relacionadas, lo cual se podrá parametrizar. | No                                                           |
+| Como usuario necesito detectar tendencias en áreas y líneas investigación a partir de los datos disponibles en Hércules. | Pending. Awaiting for the *scientific domains* vertical module |
+| Como usuario necesito cuantificar la contribución de cada investigador, línea de investigación, área de conocimiento, centro de investigación, comunidad autónoma, etc. a cada indicador. | Yes                                                          |
+| Como usuario tengo interés en hacer clusters de líneas y áreas de investigación, investigadores, grupos, centros de investigación, comunidades autónomas, etc. usando como criterio de clasificación uno o varios indicadores de productividad a elegir por el usuario. | Pending. Awaiting for the *scientific domains* vertical module |
+| Como usuario investigador y gestor, estoy interesado en conocer qué líneas y áreas de investigación, investigadores, grupos, centros de investigación, comunidades autónomas, etc. presentan desviaciones significativas con respecto a la media de los indicadores de productividad científica. | Pending. Awaiting for the *scientific domains* vertical module |
+| Como decisor tengo interés en conocer el perfil y evolución de la relación de investigación y transferencia de una empresa con un conjunto de centros de investigación en un período de tiempo. | Yes                                                          |
+| Obtener el listado de los trabajos que he dirigido/codirigido ya sean de grado (TFG), máster (TFM), o tesis doctorales. | Yes                                                          |
+| Obtener el listado de congresos/workshops y eventos de divulgación científica en los que haya participado indicando el rol que he tenido: organizador, expositor, etc. | No                                                           |
+| Obtener el listado de patentes, diseños industriales, etc. que haya registrado como titular o cotitular X o Y persona, Z o K institución. | Yes                                                          |
+| Obtener el listado de proyectos en los que he participado incluyendo el rol que he desempeñado, por ejemplo, investigador principal. | Yes                                                          |
+| Obtener el listado de mi producción científica.              | Yes                                                          |
+| Obtener el listado de startup o spin-off que he fundado o de las que he sido socio. | Yes                                                          |
+| Obtener los indicadores de mi producción científica como, por ejemplo, total de citas, h-index, etc. | No                                                           |
+| Visualizar mi trayectoria según la línea del tiempo y parametrizable de acuerdo criterios como, por ejemplo, proyectos, tesis dirigidas/codirigidas, etc. | Yes                                                          |
+| Saber si soy apto para solicitar una evaluación relativa al nuevo sexenio de transferencia del conocimiento e innovación  o alguna de las evaluaciones que realiza la ANECA. | No                                                           |
+| Introducir ofertas tecnológicas dirigidas a empresas, para lo cual tendré que describir la oferta, asociarle un nivel de madurez (TRL) y asociar evidencias que soporten el nivel de madurez asignado. | Yes                                                          |
+
+
+
+## Questions involving governmental bodies (ministerial and regional)
+
+FIXME
+
+| Competence question                                          | Comment |
+| ------------------------------------------------------------ | ------- |
+| Puedo ver el avance justificación técnica y económica de proyectos nacionales/regionales en colaboración entre universidades (agregado y detallado por categoría de gasto)? | Pending |
+| Estadísticas: ¿Puedo hacer un ranking de universidades que más fondos han obtenido por temática a nivel nacional o regional? | Pending |
+| Estadísticas: ¿Puedo cuantificar las colaboraciones entre universidades del país o una región? | Pending |
+| Estadísticas: Puedo ver las publicaciones de un investigador postdoctoral en todas las Universidades de la red. | Pending |
+| Estadísticas: Financiación atraída en unos años por todos los investigadores del área de conocimiento X. | Pending |
+| Estadísticas: Publicaciones de Universidades andaluzas en colaboración con investigadores fuera de la UE en revistas académicas de impacto. | Pending |
+| Control de fraude: identificar sinergias entre proyectos financiados a nivel europeo, nacional y/o regional financiados por diferentes entidades. | Pending |
+
+## High-level user's queries
+
+FIXME
+
+| Competence question                                          | Comment |
+| ------------------------------------------------------------ | ------- |
+| Puedo ver quien tiene ERCs, Marie Curie, etc. ¿De mi centro y otros centros en una temática concreta? | Pending |
+| ¿Puedo identificar qué universidades de la red cuentan con la distinción de excelencia Severo Ochoa, María de Maeztu o las equivalentes a nivel regional y por temática? | Pending |
+| Estadísticas: ¿Se pueden cuantificar los proyectos en convocatorias competitivas de un grupo de investigación en un rango de años con grupos de investigación de otras Universidades? | Pending |
+| Investigadores que dirigen tesis en programas de doctorado diferentes a los de su Universidad, y cuántas de esas tesis dirigidas han obtenido mención cum laude. | Pending |
+
+
+
+## User's queries
+
+FIXME
+
+| Competence question                                          | Comment |
+| ------------------------------------------------------------ | ------- |
+| Estado del arte: ¿puedo ver los resultados de proyectos por temática concreta de proyectos desarrollados en la red, diferenciando a nivel regional, nacional, europeo? |         |
+| Búsqueda de socios: ¿puedo ver los consorcios de proyectos de otras universidades por proyecto y temática? |         |
+
