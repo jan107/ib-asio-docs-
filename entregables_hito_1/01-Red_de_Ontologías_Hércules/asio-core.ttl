@@ -1322,6 +1322,25 @@ foaf:Project rdf:type owl:Class ;
 #    Individuals
 #################################################################
 
+###  http://www.asio.es/asioontologies/asio#CentreDeRegulacioGenomica
+asio:CentreDeRegulacioGenomica rdf:type owl:NamedIndividual ,
+                                        asio:ResearchInstitute ;
+                               asio:hasSealOfQuality asio:SeveroOchoaSealOfExcellence ;
+                               rdfs:label "Centre de Regulació Genòmica"@ca-es ,
+                                          "Centre for Genomic Regulation"@en ,
+                                          "Centro de Regulación Genómica"@es ;
+                               skos:altLabel "CRG"@ca-es .
+
+
+###  http://www.asio.es/asioontologies/asio#CentroNacionalDeInvestigacionesCardiovasculares
+asio:CentroNacionalDeInvestigacionesCardiovasculares rdf:type owl:NamedIndividual ,
+                                                              asio:ResearchInstitute ;
+                                                     asio:hasSealOfQuality asio:SeveroOchoaSealOfExcellence ;
+                                                     rdfs:label "Centro Nacional de Investigaciones Cardiovasculares"@es ,
+                                                                "Spanish National Center for Cardiovascular Research"@en ;
+                                                     skos:altLabel "CNIC"@es .
+
+
 ###  http://www.asio.es/asioontologies/asio#EURO-INFSealOfExcellence
 asio:EURO-INFSealOfExcellence rdf:type owl:NamedIndividual ,
                                        asio:SealOfQuality ;
@@ -1346,6 +1365,25 @@ asio:MasterUniversitarioEnIngenieriaWeb rdf:type owl:NamedIndividual ,
                                         rdfs:label "Master in Web Engineering"@en ,
                                                    "Máster de Ingeniería Web"@es ,
                                                    "Máster en Inxeniería Web"@ast .
+
+
+###  http://www.asio.es/asioontologies/asio#SE511855C2
+asio:SE511855C2 rdf:type owl:NamedIndividual ,
+                         asio:Patent ;
+                rdfs:label "SE 511855 C2"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#SeveroOchoaSealOfExcellence
+asio:SeveroOchoaSealOfExcellence rdf:type owl:NamedIndividual ,
+                                          asio:SealOfQuality ;
+                                 rdfs:label "Apoyo y acreditación de Centros de Excelencia «Severo Ochoa»"@es ,
+                                            "Seal of excellence «Severo Ochoa»"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#US5579430
+asio:US5579430 rdf:type owl:NamedIndividual ,
+                        asio:Patent ;
+               rdfs:label "US 5579430"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#UniversityOfOviedo-FacultyOfHumanities
