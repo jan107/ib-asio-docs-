@@ -130,6 +130,12 @@ asio:hasCode rdf:type owl:ObjectProperty ;
              rdfs:label "has Code"@en .
 
 
+###  http://www.asio.es/asioontologies/asio#hasPatent
+asio:hasPatent rdf:type owl:ObjectProperty ;
+               rdfs:range asio:Patent ;
+               rdfs:label "has patent"@en .
+
+
 ###  http://www.asio.es/asioontologies/asio#hasResearchContribution
 asio:hasResearchContribution rdf:type owl:ObjectProperty ;
                              rdfs:label "has research contribution"@en .
@@ -1393,6 +1399,27 @@ asio:DepartamentDeTecnologiesDeLaInformacioILesComunicacions rdf:type owl:NamedI
                                                                            "DTIC-UPF"@es .
 
 
+###  http://www.asio.es/asioontologies/asio#ES2270650
+asio:ES2270650 rdf:type owl:NamedIndividual ,
+                        asio:Patent ;
+               rdfs:comment "Fernández, M.; Alvarez, M.A. Detección de bacterias del ácido láctico productoras de tiramina mediante reacción en cadena de la polimerasa (pcr) y sus aplicaciones. Patente de Invención ES2270650 (B1) Fecha de publicación: 16.03.2008."@en ;
+               rdfs:label "ES 2270650 B1"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#ES2276597
+asio:ES2276597 rdf:type owl:NamedIndividual ,
+                        asio:Patent ;
+               rdfs:comment "del Río, B.; Martín, M.C.; Binetti, A.G.; Ariza, M.; Hernández-Magadán, A.; Fernández, M.; Alvarez, M.A. Detección e identificación de bacteriófagos de bacterias del ácido láctico mediante reacción en cadena de la polimerasa múltiple (multi-pcr) y su uso. Patente de Invención. ES2276597 (B1) Ampliación de patente Internacional Solicitud de Patente WO2006136640 (A1) Fecha de publicación: 16.06.2007 Licenciada a Corporación Alimentaria Peñasanta S.A. (CAPSA)"@en ;
+               rdfs:label "ES 2276597 B1"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#ES2326349B1
+asio:ES2326349B1 rdf:type owl:NamedIndividual ,
+                          asio:Patent ;
+                 rdfs:comment "del Río, B.; Martín, M.C.; Martínez, N.; Hernández Magadán, A.; Alvarez, M.A. Detección de bacteriófagos que infectan Lactobacillus delbrueckii mediante reacción en cadena de la polimerasa cuantitativa a tiempo real (qrt-pcr) y su uso. Patente de Invención. ES2326349 (B1). Fecha de publicación: 07.10.2010. Licenciada a Corporación Alimentaria Peñasanta S.A. (CAPSA)."@en ;
+                 rdfs:label "ES 2326349 B1"@en .
+
+
 ###  http://www.asio.es/asioontologies/asio#EURO-INFSealOfExcellence
 asio:EURO-INFSealOfExcellence rdf:type owl:NamedIndividual ,
                                        asio:SealOfQuality ;
@@ -1441,6 +1468,17 @@ asio:InstitutoDeFisicaTeorica rdf:type owl:NamedIndividual ,
                                          "Instituto de Física Teorica"@es ;
                               skos:altLabel "IFT"@en ,
                                             "IFT"@es .
+
+
+###  http://www.asio.es/asioontologies/asio#InstitutoDeProductosLacteosDeAsturias
+asio:InstitutoDeProductosLacteosDeAsturias rdf:type owl:NamedIndividual ,
+                                                    asio:ResearchInstitute ;
+                                           asio:hasPatent asio:ES2270650 ,
+                                                          asio:ES2276597 ,
+                                                          asio:ES2326349B1 ;
+                                           rdfs:label "Dairy Research Institute of Asturias"@en ;
+                                           skos:altLabel "IPLA"@en ,
+                                                         "Instituto de Productos Lácteos de Asturias"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#InstitutoGallegoDeFisicaDeAltasEnergias
