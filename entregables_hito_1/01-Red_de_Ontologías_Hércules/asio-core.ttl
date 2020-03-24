@@ -1322,10 +1322,21 @@ foaf:Project rdf:type owl:Class ;
 #    Individuals
 #################################################################
 
+###  http://www.asio.es/asioontologies/asio#BasqueCentreForClimateChange
+asio:BasqueCentreForClimateChange rdf:type owl:NamedIndividual ,
+                                           asio:ResearchInstitute ;
+                                  asio:hasSealOfQuality asio:SealOfQualityMariaDeMaeztu ;
+                                  rdfs:label "Basque Centre for Climate Change"@en ,
+                                             "Klima Aldaketa Ikergai"@eu ;
+                                  skos:altLabel "BC3"@en ,
+                                                "BC3"@eu .
+
+
 ###  http://www.asio.es/asioontologies/asio#CentreDeRecercaMatematica
 asio:CentreDeRecercaMatematica rdf:type owl:NamedIndividual ,
                                         asio:ResearchInstitute ;
-                               rdfs:label "Centre de recerca matemàtica"@ca-es .
+                               rdfs:label "Centre de recerca matemàtica"@ca-es ,
+                                          "Centre for Research in Mathematics"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#CentreDeRegulacioGenomica
@@ -1336,6 +1347,15 @@ asio:CentreDeRegulacioGenomica rdf:type owl:NamedIndividual ,
                                           "Centre for Genomic Regulation"@en ,
                                           "Centro de Regulación Genómica"@es ;
                                skos:altLabel "CRG"@ca-es .
+
+
+###  http://www.asio.es/asioontologies/asio#CentreInternacionalDeMetodesNumericsALEnginyeria
+asio:CentreInternacionalDeMetodesNumericsALEnginyeria rdf:type owl:NamedIndividual ,
+                                                               asio:ResearchInstitute ;
+                                                      rdfs:label "Centre Internacional de Mètodes Numèrics a l'Enginyeria"@ca-es ,
+                                                                 "International Centre for Numerical Methods in Engineering"@en ;
+                                                      skos:altLabel "CIMNE"@ca-es ,
+                                                                    "CIMNE"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#CentroNacionalDeInvestigacionesCardiovasculares
@@ -1355,11 +1375,60 @@ asio:CentrosDeEstudiosMonetariosYFinancieros rdf:type owl:NamedIndividual ,
                                              skos:altLabel "CEMFI"@es .
 
 
+###  http://www.asio.es/asioontologies/asio#DepartamentDeTecnologiesDeLaInformacioILesComunicacions
+asio:DepartamentDeTecnologiesDeLaInformacioILesComunicacions rdf:type owl:NamedIndividual ,
+                                                                      asio:ResearchInstitute ;
+                                                             asio:hasSealOfQuality asio:SealOfQualityMariaDeMaeztu ;
+                                                             rdfs:label "Departament de Tecnologies de la Informació i les Comunicacions"@ca-es ,
+                                                                        "Departamento de Tecnologías de la Información y las Comunicaciones"@es ;
+                                                             skos:altLabel "DTIC-UPF"@ca ,
+                                                                           "DTIC-UPF"@es .
+
+
 ###  http://www.asio.es/asioontologies/asio#EURO-INFSealOfExcellence
 asio:EURO-INFSealOfExcellence rdf:type owl:NamedIndividual ,
                                        asio:SealOfQuality ;
                               rdfs:comment "EURO-INF Seal of Excellence"@en ;
                               rdfs:label "EURO-INF Seal of Excellence"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#InstitutoDeAstrofisicaDeAndalucia
+asio:InstitutoDeAstrofisicaDeAndalucia rdf:type owl:NamedIndividual ,
+                                                asio:ResearchInstitute ;
+                                       asio:hasSealOfQuality asio:SeveroOchoaSealOfExcellence ;
+                                       rdfs:label "Instituto de Astrofísica de Andalucía"@es ;
+                                       skos:altLabel "IAA"@en ,
+                                                     "IAA"@es .
+
+
+###  http://www.asio.es/asioontologies/asio#InstitutoDeAstrofisicaDeCanarias
+asio:InstitutoDeAstrofisicaDeCanarias rdf:type owl:NamedIndividual ,
+                                               asio:ResearchInstitute ;
+                                      asio:hasSealOfQuality asio:SeveroOchoaSealOfExcellence ;
+                                      rdfs:label "Canarian Astrophysical Institute"@en ,
+                                                 "Instituto de Astrofísica de Canarias"@es ;
+                                      skos:altLabel "IAC"@en ,
+                                                    "IAC"@es .
+
+
+###  http://www.asio.es/asioontologies/asio#InstitutoDeFisicaTeorica
+asio:InstitutoDeFisicaTeorica rdf:type owl:NamedIndividual ,
+                                       asio:ResearchInstitute ;
+                              asio:hasSealOfQuality asio:SeveroOchoaSealOfExcellence ;
+                              rdfs:label "Institute for Theoretical Physics"@en ,
+                                         "Instituto de Física Teorica"@es ;
+                              skos:altLabel "IFT"@en ,
+                                            "IFT"@es .
+
+
+###  http://www.asio.es/asioontologies/asio#InstitutoGallegoDeFisicaDeAltasEnergias
+asio:InstitutoGallegoDeFisicaDeAltasEnergias rdf:type owl:NamedIndividual ,
+                                                      asio:ResearchInstitute ;
+                                             asio:hasSealOfQuality asio:SealOfQualityMariaDeMaeztu ;
+                                             rdfs:label "Instituto Galego de Física de Altas Enerxías"@gl ,
+                                                        "Instituto Gallego de Física de Altas Energías"@es ;
+                                             skos:altLabel "IGFAE"@es ,
+                                                           "IGFAE"@gl .
 
 
 ###  http://www.asio.es/asioontologies/asio#MasterInTransportAndLogisticsManagement
