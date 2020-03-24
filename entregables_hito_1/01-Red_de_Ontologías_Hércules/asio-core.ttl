@@ -1322,6 +1322,12 @@ foaf:Project rdf:type owl:Class ;
 #    Individuals
 #################################################################
 
+###  http://www.asio.es/asioontologies/asio#CentreDeRecercaMatematica
+asio:CentreDeRecercaMatematica rdf:type owl:NamedIndividual ,
+                                        asio:ResearchInstitute ;
+                               rdfs:label "Centre de recerca matemàtica"@ca-es .
+
+
 ###  http://www.asio.es/asioontologies/asio#CentreDeRegulacioGenomica
 asio:CentreDeRegulacioGenomica rdf:type owl:NamedIndividual ,
                                         asio:ResearchInstitute ;
@@ -1339,6 +1345,14 @@ asio:CentroNacionalDeInvestigacionesCardiovasculares rdf:type owl:NamedIndividua
                                                      rdfs:label "Centro Nacional de Investigaciones Cardiovasculares"@es ,
                                                                 "Spanish National Center for Cardiovascular Research"@en ;
                                                      skos:altLabel "CNIC"@es .
+
+
+###  http://www.asio.es/asioontologies/asio#CentrosDeEstudiosMonetariosYFinancieros
+asio:CentrosDeEstudiosMonetariosYFinancieros rdf:type owl:NamedIndividual ,
+                                                      asio:ResearchInstitute ;
+                                             asio:hasSealOfQuality asio:SealOfQualityMariaDeMaeztu ;
+                                             rdfs:label "Centros de Estudios Monetarios y Financieros"@es ;
+                                             skos:altLabel "CEMFI"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio#EURO-INFSealOfExcellence
@@ -1371,6 +1385,15 @@ asio:MasterUniversitarioEnIngenieriaWeb rdf:type owl:NamedIndividual ,
 asio:SE511855C2 rdf:type owl:NamedIndividual ,
                          asio:Patent ;
                 rdfs:label "SE 511855 C2"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#SealOfQualityMariaDeMaeztu
+asio:SealOfQualityMariaDeMaeztu rdf:type owl:NamedIndividual ,
+                                         asio:SealOfQuality ;
+                                rdfs:label "Seal of quality «María de Maeztu»"@en ,
+                                           "Segell de qualitat \"María de Maeztu\""@ca-es ,
+                                           "Sello de calidad \"María de Maeztu\""@es ,
+                                           "Selo de calidade \"María de Maeztu\""@gl .
 
 
 ###  http://www.asio.es/asioontologies/asio#SeveroOchoaSealOfExcellence
