@@ -1385,7 +1385,8 @@ asio:CentroNacionalDeInvestigacionesCardiovasculares rdf:type owl:NamedIndividua
 asio:CentrosDeEstudiosMonetariosYFinancieros rdf:type owl:NamedIndividual ,
                                                       asio:ResearchInstitute ;
                                              asio:hasSealOfQuality asio:SealOfQualityMariaDeMaeztu ;
-                                             rdfs:label "Centros de Estudios Monetarios y Financieros"@es ;
+                                             rdfs:label "Center of Monetary and Financial Studies"@en ,
+                                                        "Centros de Estudios Monetarios y Financieros"@es ;
                                              skos:altLabel "CEMFI"@es .
 
 
@@ -1394,7 +1395,8 @@ asio:DepartamentDeTecnologiesDeLaInformacioILesComunicacions rdf:type owl:NamedI
                                                                       asio:ResearchInstitute ;
                                                              asio:hasSealOfQuality asio:SealOfQualityMariaDeMaeztu ;
                                                              rdfs:label "Departament de Tecnologies de la Informació i les Comunicacions"@ca-es ,
-                                                                        "Departamento de Tecnologías de la Información y las Comunicaciones"@es ;
+                                                                        "Departamento de Tecnologías de la Información y las Comunicaciones"@es ,
+                                                                        "Department of Technologies for Information and Communication"@en ;
                                                              skos:altLabel "DTIC-UPF"@ca ,
                                                                            "DTIC-UPF"@es .
 
@@ -1430,14 +1432,16 @@ asio:EURO-INFSealOfExcellence rdf:type owl:NamedIndividual ,
 ###  http://www.asio.es/asioontologies/asio#IMIDA
 asio:IMIDA rdf:type owl:NamedIndividual ,
                     asio:ResearchInstitute ;
-           rdfs:label "Instituto Murciano de Investigación y Desarrollo Agrario y Alimenticio"@es ;
+           rdfs:label "Instituto Murciano de Investigación y Desarrollo Agrario y Alimenticio"@es ,
+                      "Murcian Institute for Agrifood Research and Development"@en ;
            skos:altLabel "IMIDA"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio#IUIE
 asio:IUIE rdf:type owl:NamedIndividual ,
                    asio:ResearchInstitute ;
-          rdfs:label "Instituto Universitario de Investigación en Envejecimiento"@es ;
+          rdfs:label "Instituto Universitario de Investigación en Envejecimiento"@es ,
+                     "University Institute for Aging Research"@en ;
           skos:altLabel "IUIE"@es .
 
 
@@ -1445,7 +1449,8 @@ asio:IUIE rdf:type owl:NamedIndividual ,
 asio:InstitutoDeAstrofisicaDeAndalucia rdf:type owl:NamedIndividual ,
                                                 asio:ResearchInstitute ;
                                        asio:hasSealOfQuality asio:SeveroOchoaSealOfExcellence ;
-                                       rdfs:label "Instituto de Astrofísica de Andalucía"@es ;
+                                       rdfs:label "Andalucia's Institute for Astrophysics"@en ,
+                                                  "Instituto de Astrofísica de Andalucía"@es ;
                                        skos:altLabel "IAA"@en ,
                                                      "IAA"@es .
 
@@ -1470,6 +1475,15 @@ asio:InstitutoDeFisicaTeorica rdf:type owl:NamedIndividual ,
                                             "IFT"@es .
 
 
+###  http://www.asio.es/asioontologies/asio#InstitutoDeNeurocienciasDeAlicante
+asio:InstitutoDeNeurocienciasDeAlicante rdf:type owl:NamedIndividual ,
+                                                 asio:ResearchInstitute ;
+                                        rdfs:label "Alacant's Institute of Neurosciences"@en ,
+                                                   "Institut de Neurociències d'Alacant"@ca-es ,
+                                                   "Instituto de Neurociencias de Alicante"@es ;
+                                        skos:altLabel "IN"@es .
+
+
 ###  http://www.asio.es/asioontologies/asio#InstitutoDeProductosLacteosDeAsturias
 asio:InstitutoDeProductosLacteosDeAsturias rdf:type owl:NamedIndividual ,
                                                     asio:ResearchInstitute ;
@@ -1478,6 +1492,7 @@ asio:InstitutoDeProductosLacteosDeAsturias rdf:type owl:NamedIndividual ,
                                                           asio:ES2326349B1 ;
                                            rdfs:label "Dairy Research Institute of Asturias"@en ;
                                            skos:altLabel "IPLA"@en ,
+                                                         "IPLA"@es ,
                                                          "Instituto de Productos Lácteos de Asturias"@en .
 
 
@@ -1485,7 +1500,8 @@ asio:InstitutoDeProductosLacteosDeAsturias rdf:type owl:NamedIndividual ,
 asio:InstitutoGallegoDeFisicaDeAltasEnergias rdf:type owl:NamedIndividual ,
                                                       asio:ResearchInstitute ;
                                              asio:hasSealOfQuality asio:SealOfQualityMariaDeMaeztu ;
-                                             rdfs:label "Instituto Galego de Física de Altas Enerxías"@gl ,
+                                             rdfs:label "Galician Institute of High Energies"@en ,
+                                                        "Instituto Galego de Física de Altas Enerxías"@gl ,
                                                         "Instituto Gallego de Física de Altas Energías"@es ;
                                              skos:altLabel "IGFAE"@es ,
                                                            "IGFAE"@gl .
@@ -1517,6 +1533,41 @@ asio:MasterUniversitarioEnIngenieriaWeb rdf:type owl:NamedIndividual ,
                                                    "Máster en Inxeniería Web"@ast .
 
 
+###  http://www.asio.es/asioontologies/asio#MinimalIntelligenceLab
+asio:MinimalIntelligenceLab rdf:type owl:NamedIndividual ,
+                                     asio:ResearchInstitute ;
+                            rdfs:label "Laboratorio de Inteligencia Mínima"@es ,
+                                       "Minimal Intelligence Lab"@en ;
+                            skos:altLabel "MINT Lab"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#PacoCalvo
+asio:PacoCalvo rdf:type owl:NamedIndividual ,
+                        <http://www.asio.es/asioontologies/asio#Research&TeachingPersonnel> ;
+               rdfs:label "Paco Calvo"@en ,
+                          "Paco Calvo"@es .
+
+
+###  http://www.asio.es/asioontologies/asio#PacoCalvoSPaper1
+asio:PacoCalvoSPaper1 rdf:type owl:NamedIndividual ,
+                               asio:PeerReviewedArticle ;
+                      rdfs:comment "Calvo P. (2007). The quest for cognition in plant neurobiology. Plant Signaling and Behavior 2, 208– 211."@en ;
+                      rdfs:label "The quest for cognition in plant neurobiology"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#PacoCalvoSPaper2
+asio:PacoCalvoSPaper2 rdf:type owl:NamedIndividual ,
+                               asio:PeerReviewedArticle ;
+                      rdfs:comment "Calvo P. (2016). The philosophy of plant neurobiology: a manifesto. Synthese 193, 1323–1343."@en ;
+                      rdfs:label "The philosophy of plant neurobiology: a manifesto."@en .
+
+
+###  http://www.asio.es/asioontologies/asio#PlantSignalingAndBehavior
+asio:PlantSignalingAndBehavior rdf:type owl:NamedIndividual ,
+                                        asio:EditedPublication ;
+                               rdfs:label "Plant Signaling and Behavior"@en .
+
+
 ###  http://www.asio.es/asioontologies/asio#SE511855C2
 asio:SE511855C2 rdf:type owl:NamedIndividual ,
                          asio:Patent ;
@@ -1539,10 +1590,56 @@ asio:SeveroOchoaSealOfExcellence rdf:type owl:NamedIndividual ,
                                             "Seal of excellence «Severo Ochoa»"@en .
 
 
+###  http://www.asio.es/asioontologies/asio#Synthese
+asio:Synthese rdf:type owl:NamedIndividual ,
+                       asio:EditedPublication ;
+              rdfs:label "Synthese"@en .
+
+
 ###  http://www.asio.es/asioontologies/asio#US5579430
 asio:US5579430 rdf:type owl:NamedIndividual ,
                         asio:Patent ;
                rdfs:label "US 5579430"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#UniversityOfBarcelona
+asio:UniversityOfBarcelona rdf:type owl:NamedIndividual ,
+                                    asio:University ;
+                           rdfs:label "Universidad de Barcelona"@es ,
+                                      "Universitat de Barcelona"@ca-es ,
+                                      "University of Barcelona"@en ;
+                           skos:altLabel "UAB"@ca .
+
+
+###  http://www.asio.es/asioontologies/asio#UniversityOfDeusto
+asio:UniversityOfDeusto rdf:type owl:NamedIndividual ,
+                                 asio:University ;
+                        rdfs:label "Deustuko Unibertsitatea"@eu ,
+                                   "University of Deusto"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#UniversityOfGirona
+asio:UniversityOfGirona rdf:type owl:NamedIndividual ,
+                                 asio:University ;
+                        rdfs:label "Universitat de Girona"@ca-es ,
+                                   "University of Girona"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#UniversityOfMurcia
+asio:UniversityOfMurcia rdf:type owl:NamedIndividual ,
+                                 asio:University ;
+                        rdfs:label "Universidad de Murcia"@es ,
+                                   "University of Murcia"@en ;
+                        skos:altLabel "UM"@es .
+
+
+###  http://www.asio.es/asioontologies/asio#UniversityOfOviedo
+asio:UniversityOfOviedo rdf:type owl:NamedIndividual ,
+                                 asio:University ;
+                        rdfs:label "Universidad de Oviedo"@es ,
+                                   "Universidá d'Uviéu"@ast ,
+                                   "University of Oviedo"@en ;
+                        skos:altLabel "UNIOVI"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio#UniversityOfOviedo-FacultyOfHumanities
@@ -1560,6 +1657,25 @@ asio:UniversityOfOviedoSchoolOfComputerScienceEngineering rdf:type owl:NamedIndi
                                                           rdfs:label "Escuela d'Inxeniería Informática de la Universidá d'Uviéu"@ast ,
                                                                      "Escuela de Ingeniería Informática de la Universidad de Oviedo"@es ,
                                                                      "University of Oviedo's School of Computer Science Engineering"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#UniversityOfSantiagoDeCompostela
+asio:UniversityOfSantiagoDeCompostela rdf:type owl:NamedIndividual ,
+                                               asio:University ;
+                                      rdfs:label "Universidade de Santiago de Compostela"@gl ,
+                                                 "University of Santiago de Compostela"@en ;
+                                      skos:altLabel "USC"@en ,
+                                                    "USC"@gl .
+
+
+###  http://www.asio.es/asioontologies/asio#UniversityOfTheBasqueCountry
+asio:UniversityOfTheBasqueCountry rdf:type owl:NamedIndividual ,
+                                           asio:University ;
+                                  rdfs:label "Euskal Herriko Unibertsitatea"@eu ,
+                                             "Universidad del País Vasco"@es ,
+                                             "University of the Basque Country"@en ;
+                                  skos:altLabel "EHU"@eu ,
+                                                "UPV"@es .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
