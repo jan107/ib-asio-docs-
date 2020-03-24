@@ -1358,6 +1358,14 @@ asio:CentreInternacionalDeMetodesNumericsALEnginyeria rdf:type owl:NamedIndividu
                                                                     "CIMNE"@en .
 
 
+###  http://www.asio.es/asioontologies/asio#CentroDeInvestigacionYTecnologiaAgroalimentariaDeAragon
+asio:CentroDeInvestigacionYTecnologiaAgroalimentariaDeAragon rdf:type owl:NamedIndividual ,
+                                                                      asio:ResearchInstitute ;
+                                                             rdfs:label "Agrifood Research and Technology Centre of Aragon"@en ,
+                                                                        "Centro de Investigación y Tecnología Agroalimentaria de Aragón"@es ;
+                                                             skos:altLabel "CITA"@es .
+
+
 ###  http://www.asio.es/asioontologies/asio#CentroNacionalDeInvestigacionesCardiovasculares
 asio:CentroNacionalDeInvestigacionesCardiovasculares rdf:type owl:NamedIndividual ,
                                                               asio:ResearchInstitute ;
@@ -1390,6 +1398,20 @@ asio:EURO-INFSealOfExcellence rdf:type owl:NamedIndividual ,
                                        asio:SealOfQuality ;
                               rdfs:comment "EURO-INF Seal of Excellence"@en ;
                               rdfs:label "EURO-INF Seal of Excellence"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#IMIDA
+asio:IMIDA rdf:type owl:NamedIndividual ,
+                    asio:ResearchInstitute ;
+           rdfs:label "Instituto Murciano de Investigación y Desarrollo Agrario y Alimenticio"@es ;
+           skos:altLabel "IMIDA"@es .
+
+
+###  http://www.asio.es/asioontologies/asio#IUIE
+asio:IUIE rdf:type owl:NamedIndividual ,
+                   asio:ResearchInstitute ;
+          rdfs:label "Instituto Universitario de Investigación en Envejecimiento"@es ;
+          skos:altLabel "IUIE"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio#InstitutoDeAstrofisicaDeAndalucia
@@ -1429,6 +1451,13 @@ asio:InstitutoGallegoDeFisicaDeAltasEnergias rdf:type owl:NamedIndividual ,
                                                         "Instituto Gallego de Física de Altas Energías"@es ;
                                              skos:altLabel "IGFAE"@es ,
                                                            "IGFAE"@gl .
+
+
+###  http://www.asio.es/asioontologies/asio#InstitutoMurcianoDeInvestigacionBiosanitaria
+asio:InstitutoMurcianoDeInvestigacionBiosanitaria rdf:type owl:NamedIndividual ,
+                                                           asio:ResearchInstitute ;
+                                                  rdfs:label "Instituto Murciano de Investigación Biosanitaria"@es ;
+                                                  skos:altLabel "IMIB"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio#MasterInTransportAndLogisticsManagement
