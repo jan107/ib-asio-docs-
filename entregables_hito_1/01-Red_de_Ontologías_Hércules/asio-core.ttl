@@ -74,7 +74,8 @@ asio:advises rdf:type owl:ObjectProperty ;
 
 ###  http://www.asio.es/asioontologies/asio#authors
 asio:authors rdf:type owl:ObjectProperty ;
-             owl:inverseOf asio:isAuthoredBy .
+             owl:inverseOf asio:isAuthoredBy ;
+             rdfs:label "authors"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#capital
@@ -178,7 +179,8 @@ asio:isAdvisedBy rdf:type owl:ObjectProperty ;
 
 
 ###  http://www.asio.es/asioontologies/asio#isAuthoredBy
-asio:isAuthoredBy rdf:type owl:ObjectProperty .
+asio:isAuthoredBy rdf:type owl:ObjectProperty ;
+                  rdfs:label "is authored by"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#isFundedBy
@@ -227,6 +229,17 @@ asio:researchesIn rdf:type owl:ObjectProperty ;
 asio:spinsOffFrom rdf:type owl:ObjectProperty ;
                   rdfs:domain asio:Spinoff ;
                   rdfs:label "spins of from"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#supervised
+asio:supervised rdf:type owl:ObjectProperty ;
+                owl:inverseOf asio:supervisedBy ;
+                rdfs:label "supervised"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#supervisedBy
+asio:supervisedBy rdf:type owl:ObjectProperty ;
+                  rdfs:label "supervised by"@en .
 
 
 ###  http://www.asio.es/asioontologies/asio#utilizes
@@ -1458,6 +1471,14 @@ asio:EURO-INFSealOfExcellence rdf:type owl:NamedIndividual ,
                               rdfs:label "EURO-INF Seal of Excellence"@en .
 
 
+###  http://www.asio.es/asioontologies/asio#HernanSagasteguiChigne
+asio:HernanSagasteguiChigne rdf:type owl:NamedIndividual ,
+                                     <http://www.asio.es/asioontologies/asio#Research&TeachingPersonnel> ;
+                            asio:authors asio:Thesis2 ;
+                            rdfs:label "Hernán Sagastegui Chigne"@en ,
+                                       "Hernán Sagastegui Chigne"@es .
+
+
 ###  http://www.asio.es/asioontologies/asio#IMIDA
 asio:IMIDA rdf:type owl:NamedIndividual ,
                     asio:ResearchInstitute ;
@@ -1544,12 +1565,28 @@ asio:InstitutoMurcianoDeInvestigacionBiosanitaria rdf:type owl:NamedIndividual ,
                                                   skos:altLabel "IMIB"@es .
 
 
+###  http://www.asio.es/asioontologies/asio#JoseAlbertoBenitezAndrades
+asio:JoseAlbertoBenitezAndrades rdf:type owl:NamedIndividual ,
+                                         <http://www.asio.es/asioontologies/asio#Research&TeachingPersonnel> ;
+                                asio:authors asio:Thesis3 ;
+                                rdfs:label "Jose Alberto Benítez Andrades"@en ,
+                                           "Jose Alberto Benítez Andrades"@es .
+
+
 ###  http://www.asio.es/asioontologies/asio#JoseEmilioLabraGayo
 asio:JoseEmilioLabraGayo rdf:type owl:NamedIndividual ,
                                   <http://www.asio.es/asioontologies/asio#Research&TeachingPersonnel> ;
                          asio:isMemberOf asio:WESO ;
                          rdfs:label "José Emilio Labra Gayo"@en ,
                                     "José Emilio Labra Gayo"@es .
+
+
+###  http://www.asio.es/asioontologies/asio#JoseMariaAlvarezRodriguez
+asio:JoseMariaAlvarezRodriguez rdf:type owl:NamedIndividual ,
+                                        <http://www.asio.es/asioontologies/asio#Research&TeachingPersonnel> ;
+                               asio:authors asio:Thesis1 ;
+                               rdfs:label "Jose María Álvarez Rodríguez"@en ,
+                                          "Jose María Álvarez Rodríguez"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio#JournalOfConsciousnessStudies
@@ -1659,6 +1696,33 @@ asio:SeveroOchoaSealOfExcellence rdf:type owl:NamedIndividual ,
 asio:Synthese rdf:type owl:NamedIndividual ,
                        asio:EditedPublication ;
               rdfs:label "Synthese"@en .
+
+
+###  http://www.asio.es/asioontologies/asio#Thesis1
+asio:Thesis1 rdf:type owl:NamedIndividual ,
+                      asio:PhDThesis ;
+             asio:isAuthoredBy asio:JoseMariaAlvarezRodriguez ;
+             asio:supervisedBy asio:JoseEmilioLabraGayo ;
+             asio:publicationDate 2012 ;
+             rdfs:label "Métodos semánticos de reutilización de datos abiertos enlazados en las licitaciones públicas"@es .
+
+
+###  http://www.asio.es/asioontologies/asio#Thesis2
+asio:Thesis2 rdf:type owl:NamedIndividual ,
+                      asio:PhDThesis ;
+             asio:isAuthoredBy asio:HernanSagasteguiChigne ;
+             asio:supervisedBy asio:JoseEmilioLabraGayo ;
+             asio:publicationDate 2015 ;
+             rdfs:label "Desarrollo de Tecnologías Colaborativas para Entornos virtuales de apoyo al aprendizaje"@es .
+
+
+###  http://www.asio.es/asioontologies/asio#Thesis3
+asio:Thesis3 rdf:type owl:NamedIndividual ,
+                      asio:PhDThesis ;
+             asio:isAuthoredBy asio:JoseAlbertoBenitezAndrades ;
+             asio:supervisedBy asio:JoseEmilioLabraGayo ;
+             asio:publicationDate 2017 ;
+             rdfs:label "Tecnologías Semánticas aplicadas al Análisis de Redes Sociales en el ámbito de la Salud"@es .
 
 
 ###  http://www.asio.es/asioontologies/asio#US5579430
