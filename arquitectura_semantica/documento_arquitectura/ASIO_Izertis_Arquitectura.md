@@ -16,7 +16,8 @@ Hruschka y Dr. Gernot Starke.
 # Introducción y Metas
 
 El presente documento parte de la arquitectura descrita en los documentos Estudio de viabilidad y especialmente el anexo anex3_AnyDisBackendSGI.docx.
-Se propone esta arquitectura como base sobre la que iterar, incorporando a la misma, necesidades que pudiesen surgir bien en la fase de implementación, bien en base a las necesidades del equipo de WESO. 
+
+Define la arquitectura de la parte semántica de la solución así como la integración y puntos de unión con la infraestructura ontológica. Se propone esta arquitectura como base sobre la que iterar, incorporando a la misma, necesidades que pudiesen surgir bien en la fase de implementación, bien en base a las necesidades del equipo de WESO. 
 
 El documento utiliza el esquema Arc42 que define una estructura general homogénea y ágil para la documentación de arquitecturas del Software.
 
@@ -97,13 +98,7 @@ El sistema a modelar se enmarca en un contexto universitario, en la cual existen
 
 ![Diagrama de contexto de la infraestructura ontológica](./images/diagrama-contexto-infraestructura-ontologica.png)
 
-## Contexto Técnico
 
-<**Diagrama o Tabla**>
-
-<**Opcional: Explicación de las interfases técnicas**>
-
-<**Mapeo de Entrada/Salida a canales**>
 
 # Estrategia de solución
 
@@ -227,9 +222,11 @@ Se trata de una cola Kafka para garantizar que el procesamiento de los datos de 
 
 ### Gestión de eventos
 
-El módulo de gestión de eventos se encargará de recoger los eventos generados por el sistema de entrada y procesarlos, hasta su guardado en el triplestore.
+El módulo de gestión de eventos se encargará de recoger los eventos generados por el sistema de entrada y procesarlos, hasta su guardado en el triplestore. 
 
 ![Arquitectura gestión de eventos](./images/event-management.png)
+
+Dada la arquitectura basada en _event processing_, el sistema es capaz de forma muy sencilla disponer de varios procesadores de eventos que permitan la persistencia de los datos en diferentes sistemas de almacenamiento. Al enviar los datos una vez procesados a una cola Kafka (service bus gestión), es posible tener tantos consumidores como sistemas de almacenamiento se quieran añadir, teniendo todos ellos la posibilidad de recibir todos los elementos enviados a la cola. Estos sistemas de procesamiento delegarán en un storage adaptar adaptado especialmente para cada uno de los sistemas a los que se desee enviar los datos. Actualmente está prevista la integración con Trellis LDP y Wikibase, aunque no sería descartable que en el trascurso del desarrollo del proyecto aparezcan nuevos sistemas a los que enviar los datos (por ejemplo un Elasticsearc o Solr para mejorar las búsquedas o un Neo4J).
 
 **Implementación:** Para su implementación se desarrollarán una serie de microservicios. Se debería disponer de unos servicios lo más atómico posible, sobre todo en el caso de los microservicios dedicados a interactuar con los sistemas de almacenamiento, los cuales van a estar muy ligados a las APIs provistas por estos.
 
@@ -250,11 +247,9 @@ El sistema de gestión será el encargado de recoger los datos en formato POJO d
 - **Input:** Evento recibido desde el service bus general del sistema, con datos en formato POJO
 - **Output:** Evento publicado en Service Bus de gestión, con el RDF además de la operación a realizar
 
-#### Procesador de eventos
+#### Procesadores de eventos
 
-El procesador de eventos será el encargado de recoger los datos desde el service bus del módulo de gestión y enviarlos al almacenamiento por medio de un adaptador.
-
-Cuando se procese un evento, este se enviará al storage adapter su almacenamiento en el sistema adecuado.
+Cada uno de los procesadores de eventos se encargarán de consumir los mensajes disponibles en el service bus del módulo de gestión y enviarlos al almacenamiento correspondiente de un adaptador. La idea es que exista un procesador de eventos por cada uno de los diferentes almacenamientos / Triple stores (WikiBase, Trellis, etc.), de esta forma es muy sencillo activar o desactivar los sistemas de almacenamiento en un momento dado, simplemente con levantar o parar el microservicio procesador de eventos.
 
 **Implementación:**
 
@@ -265,7 +260,7 @@ Cuando se procese un evento, este se enviará al storage adapter su almacenamien
 
 En lugar de añadir la lógica correspondiente a un sistema de almacenamiento, se utilizará un adaptador el cual dispondrá de toda la lógica necesaria para interactuar con el triplestore. Esto permite que en caso que se quiera cambiar de sistema de almacenamiento, solo con cambiar este adaptador es suficiente para poder trabajar con este nueva capa de persistencia.
 
-Dentro del transcurso del proyecto se desarrollará un adaptador para la ingesta de datos en el sistema [Trellis](https://www.trellisldp.org/).
+Dentro del transcurso del proyecto se desarrollará un adaptador para la ingesta de datos en el sistema [Trellis](https://www.trellisldp.org/), así como en [Wikibase](https://www.mediawiki.org/wiki/Wikibase/es), aunque no sería descartable generar otros adaptadores en caso que sea necesario.
 
 **Implementación:**
 
@@ -280,6 +275,16 @@ Trellis es un servidor LDP Modular que soporta el escalado horizontal y redundan
 
 - **Input:** Datos procedentes del adaptador de Trellis
 - **Output:** Datos persistidos en un triplestore
+
+#### Wikibase
+
+Wikibase es las solución de MediaWiki para el manejo de datos. En el siguiente esquema, podemos apreciar la [arquitectura de Wikibase](https://addshore.com/2018/12/wikidata-architecture-overview-diagrams/)
+
+![Wikibase Architecture](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Wikidata_Architecture_Overview_-_High_Level.svg/800px-Wikidata_Architecture_Overview_-_High_Level.svg.png)
+
+Uno de los problemas de Wikibase es que se aprecia un gran bloque funcional (en azul), el cual soporta la mayor parte de la carga funcional. Uno de los contras con el que nos encontramos con Wikibase es que no se aprecia suficiente como para cubrir los requisitos del sistema en lo referente a al a segurdiad, LDP y SPARQL. Se ha realizado un [estudio detallado sobre el uso Wikibase y Trellis en el proyecto ASIO](./Análisis sobre uso de Wikibase vs Trellis + Fuseki en proyecto ASIO) en el que se ponen sobre la balanza los pros y contras de cada uno de ellos y se muestra más información acerca de este tema.
+
+El uso de Wikibase en el proyecto se valorará como una opción para un perfil de usuario de tipo administración o backoffice, así como para los datos públicos.
 
 #### Logging y monitorización
 
@@ -590,6 +595,22 @@ Para poder conseguir esta integración es necesario disponer de una pieza que ha
 ![Bridge de autorización](./images/authorization-bridge.png)
 
 En este caso existirá un servidor de autenticacion que realice este rol. De puertas a fuera se trabajará con SAML, haciendo la integración son SIR, mientras que de puertas a dentro se dispondrá de un token JWT proporcionado por el servidor de autenticación. Para facilitar esta integración, se estudiará la utilización de herramientas como [Keycloak](https://www.keycloak.org/).
+
+### Integración entre arquitectura semántica e infraestructura ontológica
+
+En la solución existen dos partes, por un lado está la infraestructura semántica que es aquella destinada a la definición de los datos y su ontología y por otro lado se encuentra la arquitectura semántica dirigida a la importación, almacenamiento y explotación de los datos.
+
+La integración de estas dos partes se realizará en diferentes puntos.
+
+![Integración arquitectura semántica e infraestructura ontológica](./images/io-as.png)
+
+#### Wikibase
+
+Por un lado se encuentra la integración a través de Wikibase. La infraestructura ontológica generará toda la estructura de datos en Wikibase. Mediante la ingesta de datos en Wikibase por parte de la Arquitectura semántica se consigue disponer de un repositorio común tanto con ontología como datos.
+
+#### Factoría de URIs
+
+La factoría de URIs será la encargada de generar las URIs tanto para tipo de recursos (clases), atributos como para instancias. En el caso de la Infraestructura ontológica, cuando se cree o actualice la ontología, esta hará uso de la factoría de URIs para realizar el mapeo entre clases y atributos con las URIs correspondientes. Cuando la arquitectura semántica trate de insertar o actualizar un dato, hará uso de la factoría de URIs para resolver la URI correspondiente a la clase de la instancia así como de los atributos. De esta manera la factoría de URIs actuará de pegamento entre las dos partes de la aplicación.
 
 # Vista de Despliegue
 
