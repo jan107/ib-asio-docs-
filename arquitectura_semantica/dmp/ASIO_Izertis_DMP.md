@@ -156,7 +156,7 @@ La calidad de datos es el grado en el que los datos cumplen un conjunto de carac
 
 Las tres fases principales en la calidad del dato son:
 
-![](C:\Users\Jose\GD Izertis\Universidad de Murcia\ASIO\Ejecución\DMP\images\calidad_fases.png)             
+![](.\images\calidad_fases.png)             
 
 ##### Fase 1: Perfilado de Datos
 
@@ -214,7 +214,7 @@ Pentaho Data Integration, cuyo nombre clave es Kettle, es una herramienta de la 
 
 
 
-![](C:\Users\Jose\GD Izertis\Universidad de Murcia\ASIO\Ejecución\DMP\images\kettle_arquitecture.png)
+![](.\images\kettle_arquitecture.png)
 
 Todos estos procesos se realizan con la herramienta Pentaho Data Integrator a partir de los siguientes elementos:
 
@@ -370,7 +370,7 @@ A continuación, a modo de referencia, se detallan las preguntas incluidas en la
 
 ### DMPTool
 
-Adicionalmente se incluye la plantilla de preguntas que integra la herramienta DMPTool, la cual contempla cuestiones no cubiertas por la propuesta de la Comisión Europea.
+Adicionalmente se incluye la plantilla de preguntas que integra la herramienta [DMPTool](https://libraries.mit.edu/data-management/plan/write/) del [MIT](http://web.mit.edu/), la cual contempla cuestiones no cubiertas por la propuesta de la Comisión Europea.
 
 #### *Project, experiment, and data description*
 
