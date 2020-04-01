@@ -156,7 +156,7 @@ La calidad de datos es el grado en el que los datos cumplen un conjunto de carac
 
 Las tres fases principales en la calidad del dato son:
 
-![](.\images\calidad_fases.png)             
+![](./images/calidad_fases.png)             
 
 ##### Fase 1: Perfilado de Datos
 
@@ -214,7 +214,7 @@ Pentaho Data Integration, cuyo nombre clave es Kettle, es una herramienta de la 
 
 
 
-![](.\images\kettle_arquitecture.png)
+![](./images/kettle_arquitecture.png)
 
 Todos estos procesos se realizan con la herramienta Pentaho Data Integrator a partir de los siguientes elementos:
 
