@@ -723,11 +723,11 @@ A groso modo, las alternativas que existirían son las siguientes:
 - Implementación ad-hoc utilizando diferentes piezas que den lugar a una arquitectura completa y extensible. Para ello se puede hacer uso de diferentes frameworks
 - Utilización de un Linked Data Platform, el cual por si mismo aporta todas las piezas ya montadas y listas para su utilización
 
-En el documento [Elección arquitectura semántica](./ASIO_Izertis_Arquitectura) se hace un análisis sobre cada una de las alternativas disponibles.
+En el documento [Elección arquitectura semántica](./eleccion_arquitectura_semantica.md) se hace un análisis sobre cada una de las alternativas disponibles.
 
 ## Adecuación de Trellis y Wikibase al proyecto
 
-Se ha confeccionado un [documento para verificar la adecuación de Trellis y Wikibase](./Análisis sobre uso de Wikibase vs Trellis + Fuseki en proyecto ASIO) en el proyecto así como su encaje en el mismo.
+Se ha confeccionado un [documento para verificar la adecuación de Trellis y Wikibase](./Análisis sobre uso de Wikibase vs Trellis + Fuseki en proyecto ASIO.md) en el proyecto así como su encaje en el mismo.
 
 ## Seguimiento de principios Solid
 
@@ -833,5 +833,3 @@ En este apartado se identifican algunos riesgos detectados en el desarrollo del 
 
 - Riesgo: La traducción entre tokens de SAML y JWT puede traer complicaciones ya que es posible que se pierda cierta información en el proceso
 - Plan: aunque es cierto que el riesgo existe, existen documentación disponible que plantea este escenario y resolviendolo de una forma adecuada.
-
-
