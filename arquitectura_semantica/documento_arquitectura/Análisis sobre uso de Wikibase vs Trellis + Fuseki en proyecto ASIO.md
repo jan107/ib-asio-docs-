@@ -1,3 +1,5 @@
+![](./images/logos_feder.png)
+
 # Análisis sobre uso de Wikibase vs Trellis + Fuseki en proyecto ASIO
 
 - Status: Propuesta
