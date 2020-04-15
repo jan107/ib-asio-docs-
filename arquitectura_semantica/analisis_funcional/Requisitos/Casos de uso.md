@@ -27,7 +27,7 @@ Para entender los casos de uso debemos saber que en la aplicación ASIO disponem
 
 ### Autentificación
 
-Los usuarios públicos se registran y acceden a través del sistema SIR.
+Un usuario público se puede registrar y acceden a través del sistema SIR.
 
 ![Autentificación](./images/casos-de-uso/autentificacion.JPG)
 
@@ -65,6 +65,6 @@ Todos los usuarios podrán acceder a la pantalla de consultas y hacer consultas 
 
 ## Página web de documentación
 
-La aplicación web permitirá ver las diferentes documentaciones disponibles 
+La aplicación web permitirá ver las diferentes documentaciones disponibles a cualquier usuario.
 
 ![pagina web de documentación](./images/casos-de-uso/pagina-web-de-documentacion.JPG)
