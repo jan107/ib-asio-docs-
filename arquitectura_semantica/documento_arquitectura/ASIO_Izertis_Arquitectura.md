@@ -16,7 +16,8 @@ Hruschka y Dr. Gernot Starke.
 # Introducción y Metas
 
 El presente documento parte de la arquitectura descrita en los documentos Estudio de viabilidad y especialmente el anexo anex3_AnyDisBackendSGI.docx.
-Se propone esta arquitectura como base sobre la que iterar, incorporando a la misma, necesidades que pudiesen surgir bien en la fase de implementación, bien en base a las necesidades del equipo de WESO. 
+
+Define la arquitectura de la parte semántica de la solución así como la integración y puntos de unión con la infraestructura ontológica. Se propone esta arquitectura como base sobre la que iterar, incorporando a la misma, necesidades que pudiesen surgir bien en la fase de implementación, bien en base a las necesidades del equipo de WESO. 
 
 El documento utiliza el esquema Arc42 que define una estructura general homogénea y ágil para la documentación de arquitecturas del Software.
 
@@ -97,13 +98,7 @@ El sistema a modelar se enmarca en un contexto universitario, en la cual existen
 
 ![Diagrama de contexto de la infraestructura ontológica](./images/diagrama-contexto-infraestructura-ontologica.png)
 
-## Contexto Técnico
 
-<**Diagrama o Tabla**>
-
-<**Opcional: Explicación de las interfases técnicas**>
-
-<**Mapeo de Entrada/Salida a canales**>
 
 # Estrategia de solución
 
@@ -227,9 +222,11 @@ Se trata de una cola Kafka para garantizar que el procesamiento de los datos de 
 
 ### Gestión de eventos
 
-El módulo de gestión de eventos se encargará de recoger los eventos generados por el sistema de entrada y procesarlos, hasta su guardado en el triplestore.
+El módulo de gestión de eventos se encargará de recoger los eventos generados por el sistema de entrada y procesarlos, hasta su guardado en el triplestore. 
 
 ![Arquitectura gestión de eventos](./images/event-management.png)
+
+Dada la arquitectura basada en _event processing_, el sistema es capaz de forma muy sencilla disponer de varios procesadores de eventos que permitan la persistencia de los datos en diferentes sistemas de almacenamiento. Al enviar los datos una vez procesados a una cola Kafka (service bus gestión), es posible tener tantos consumidores como sistemas de almacenamiento se quieran añadir, teniendo todos ellos la posibilidad de recibir todos los elementos enviados a la cola. Estos sistemas de procesamiento delegarán en un storage adaptar adaptado especialmente para cada uno de los sistemas a los que se desee enviar los datos. Actualmente está prevista la integración con Trellis LDP y Wikibase, aunque no sería descartable que en el trascurso del desarrollo del proyecto aparezcan nuevos sistemas a los que enviar los datos (por ejemplo un Elasticsearc o Solr para mejorar las búsquedas o un Neo4J).
 
 **Implementación:** Para su implementación se desarrollarán una serie de microservicios. Se debería disponer de unos servicios lo más atómico posible, sobre todo en el caso de los microservicios dedicados a interactuar con los sistemas de almacenamiento, los cuales van a estar muy ligados a las APIs provistas por estos.
 
@@ -250,11 +247,9 @@ El sistema de gestión será el encargado de recoger los datos en formato POJO d
 - **Input:** Evento recibido desde el service bus general del sistema, con datos en formato POJO
 - **Output:** Evento publicado en Service Bus de gestión, con el RDF además de la operación a realizar
 
-#### Procesador de eventos
+#### Procesadores de eventos
 
-El procesador de eventos será el encargado de recoger los datos desde el service bus del módulo de gestión y enviarlos al almacenamiento por medio de un adaptador.
-
-Cuando se procese un evento, este se enviará al storage adapter su almacenamiento en el sistema adecuado.
+Cada uno de los procesadores de eventos se encargarán de consumir los mensajes disponibles en el service bus del módulo de gestión y enviarlos al almacenamiento correspondiente de un adaptador. La idea es que exista un procesador de eventos por cada uno de los diferentes almacenamientos / Triple stores (WikiBase, Trellis, etc.), de esta forma es muy sencillo activar o desactivar los sistemas de almacenamiento en un momento dado, simplemente con levantar o parar el microservicio procesador de eventos.
 
 **Implementación:**
 
@@ -265,7 +260,7 @@ Cuando se procese un evento, este se enviará al storage adapter su almacenamien
 
 En lugar de añadir la lógica correspondiente a un sistema de almacenamiento, se utilizará un adaptador el cual dispondrá de toda la lógica necesaria para interactuar con el triplestore. Esto permite que en caso que se quiera cambiar de sistema de almacenamiento, solo con cambiar este adaptador es suficiente para poder trabajar con este nueva capa de persistencia.
 
-Dentro del transcurso del proyecto se desarrollará un adaptador para la ingesta de datos en el sistema [Trellis](https://www.trellisldp.org/).
+Dentro del transcurso del proyecto se desarrollará un adaptador para la ingesta de datos en el sistema [Trellis](https://www.trellisldp.org/), así como en [Wikibase](https://www.mediawiki.org/wiki/Wikibase/es), aunque no sería descartable generar otros adaptadores en caso que sea necesario.
 
 **Implementación:**
 
@@ -280,6 +275,16 @@ Trellis es un servidor LDP Modular que soporta el escalado horizontal y redundan
 
 - **Input:** Datos procedentes del adaptador de Trellis
 - **Output:** Datos persistidos en un triplestore
+
+#### Wikibase
+
+Wikibase es las solución de MediaWiki para el manejo de datos. En el siguiente esquema, podemos apreciar la [arquitectura de Wikibase](https://addshore.com/2018/12/wikidata-architecture-overview-diagrams/)
+
+![Wikibase Architecture](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Wikidata_Architecture_Overview_-_High_Level.svg/800px-Wikidata_Architecture_Overview_-_High_Level.svg.png)
+
+Uno de los problemas de Wikibase es que se aprecia un gran bloque funcional (en azul), el cual soporta la mayor parte de la carga funcional. Uno de los contras con el que nos encontramos con Wikibase es que no se aprecia suficiente como para cubrir los requisitos del sistema en lo referente a al a segurdiad, LDP y SPARQL. Se ha realizado un [estudio detallado sobre el uso Wikibase y Trellis en el proyecto ASIO](./Análisis sobre uso de Wikibase vs Trellis + Fuseki en proyecto ASIO) en el que se ponen sobre la balanza los pros y contras de cada uno de ellos y se muestra más información acerca de este tema.
+
+El uso de Wikibase en el proyecto se valorará como una opción para un perfil de usuario de tipo administración o backoffice, así como para los datos públicos.
 
 #### Logging y monitorización
 
@@ -591,6 +596,22 @@ Para poder conseguir esta integración es necesario disponer de una pieza que ha
 
 En este caso existirá un servidor de autenticacion que realice este rol. De puertas a fuera se trabajará con SAML, haciendo la integración son SIR, mientras que de puertas a dentro se dispondrá de un token JWT proporcionado por el servidor de autenticación. Para facilitar esta integración, se estudiará la utilización de herramientas como [Keycloak](https://www.keycloak.org/).
 
+### Integración entre arquitectura semántica e infraestructura ontológica
+
+En la solución existen dos partes, por un lado está la infraestructura semántica que es aquella destinada a la definición de los datos y su ontología y por otro lado se encuentra la arquitectura semántica dirigida a la importación, almacenamiento y explotación de los datos.
+
+La integración de estas dos partes se realizará en diferentes puntos.
+
+![Integración arquitectura semántica e infraestructura ontológica](./images/io-as.png)
+
+#### Wikibase
+
+Por un lado se encuentra la integración a través de Wikibase. La infraestructura ontológica generará toda la estructura de datos en Wikibase. Mediante la ingesta de datos en Wikibase por parte de la Arquitectura semántica se consigue disponer de un repositorio común tanto con ontología como datos.
+
+#### Factoría de URIs
+
+La factoría de URIs será la encargada de generar las URIs tanto para tipo de recursos (clases), atributos como para instancias. En el caso de la Infraestructura ontológica, cuando se cree o actualice la ontología, esta hará uso de la factoría de URIs para realizar el mapeo entre clases y atributos con las URIs correspondientes. Cuando la arquitectura semántica trate de insertar o actualizar un dato, hará uso de la factoría de URIs para resolver la URI correspondiente a la clase de la instancia así como de los atributos. De esta manera la factoría de URIs actuará de pegamento entre las dos partes de la aplicación.
+
 # Vista de Despliegue
 
 El despliegue de la aplicación se realizará en un entorno de contenedores orquestado mediante Kubernetes.
@@ -665,7 +686,7 @@ Este estilo arquitectónico se ha denominado arquitectura Kappa y suele material
 - La utilización del log distribuido como fuente de verdad permite desarrollar diferentes vistas de los mismos datos. Una vista puede ser una base de datos RDF o un índice de búsqueda como ElasticSearch. Si algún componente falla, las vistas pueden recomponerse a partir del log distribuido
 - Si una aplicación productora de eventos comienza a fallar generando datos incorrectos, es relativamente sencillo modificar los consumidores de eventos para que ignoren los datos erróneos. Por el contrario, si una base de datos se corrompe, su restauración puede ser más complicada y requerir el uso de copias de resguardo.
 - La depuración puede ser más sencilla en un log de solo escritura que en una base de datos que se modifica continuamente puesto que los eventos pueden volver a ejecutarse para diagnosticar qué ocurrió en una determinada situación
-- Para el modelado de datos, la utilización de un log que solamente permite añadir datos puede ser más sencilla que el uso de transacciones ACID sobre bases de datos tradicionales. El patrón event-sourcing [16] encaja con este estilo arquitectónico. 
+- Para el modelado de datos, la utilización de un log que solamente permite añadir datos puede ser más sencilla que el uso de transacciones ACID sobre bases de datos tradicionales. El patrón event-sourcing encaja con este estilo arquitectónico. 
 - Este estilo puede facilitar el análisis de datos posterior. En muchas ocasiones es más útil entender cómo se ha llegado a un estado de la base de datos, que disponer únicamente del estado final de la base de datos.
 - El patrón publicación/suscripción permite desacoplar el sistema de publicación de eventos de los sistemas consumidores. En caso de que un consumidor de eventos falle, puede haber otros consumidores funcionando.
 
@@ -686,6 +707,28 @@ A continuación, se enumeran algunos de los Triple-stores considerados:
 - Data.world  es una empresa que permite albergar catálogos de datos empresariales. Internamente utilizan HDT para representar RDF de forma eficiente. Los costes dependen del número de miembros que los vayan a utilizar, rondando los 25 $ por miembro y mes.
 - Neptune (Amazon Web Services)  es una solución de la compañía Amazon para el almacenamiento de RDF en la nube. Amazon Neptune da soporte SPARQL con una tasa de 0,1$ por GB al mes y 0,2$ por cada millón de peticiones. En un ejemplo base, Amazon sostiene que un coste medio habitual podría ser de unos 300 €/mes.
 
+## Elección de arquitectura semántica
+
+La arquitectura semántica pretende cubrir cómo se va a proceder al guardado de datos, así como a exponer los mismos para la utilización posteror por los distintos tipos de usuarios. Se deberían cubrir los siguientes aspectos:
+
+- Facilitar la generación de RDF a partir de POJOs
+- Almacenamiento de la información en triple store
+- Endpoint SPARQL
+- Linked Data Server
+
+Hay que tener en cuenta que uno de los requisitos que se persigue es que la arquitectura sea capaz de abstraer el triple store utilizado para que en momento dado se pueda intercambiar por otro de forma sencilla.
+
+A groso modo, las alternativas que existirían son las siguientes:
+
+- Implementación ad-hoc utilizando diferentes piezas que den lugar a una arquitectura completa y extensible. Para ello se puede hacer uso de diferentes frameworks
+- Utilización de un Linked Data Platform, el cual por si mismo aporta todas las piezas ya montadas y listas para su utilización
+
+En el documento [Elección arquitectura semántica](./eleccion_arquitectura_semantica.md) se hace un análisis sobre cada una de las alternativas disponibles.
+
+## Adecuación de Trellis y Wikibase al proyecto
+
+Se ha confeccionado un [documento para verificar la adecuación de Trellis y Wikibase](./Análisis sobre uso de Wikibase vs Trellis + Fuseki en proyecto ASIO.md) en el proyecto así como su encaje en el mismo.
+
 ## Seguimiento de principios Solid
 
 Con el fin de proporcionar a los investigadores una infraestructura de confianza en la que tengan un mayor control sobre los datos privados de sus experimentos y que a su vez puedan compartir algunos de esos datos con otros investigadores con los que quieran colaborar, se propone el seguimiento de los principios SOLID en los que se define el concepto de POD (Personal online datastore) que contiene información privada de un investigador de forma descentralizada, que podrá compartir si lo desea con otros investigadores.
@@ -702,131 +745,7 @@ Además, muchas de las librerías de web semántica como Apache Jena ó RDF4J es
 
 A pesar de ello, tampoco se descarta la creación de ejemplos o prototipos en otros entornos como NodeJs que pueden servir como prueba de concepto de interoperabilidad, o incluso como desarrollos rápidos de ciertas funcionalidades que sean demandadas por el cliente.
 
-### *Spring*
-
-Como framework de desarrollo se utilizará Spring el cual es el framework "Open Source" más utilizado para la plataforma J2EE. 
-
-![Logo Spring](./images/spring.png)
-
-Spring ofrece módulos para proveer diferentes funcionalidades dentro de una aplicación J2EE, como por ejemplo:
-
-- Administración del ciclo de vida de los objetos Java
-- Inyección de dependencias (DI)
-- Configuración
-- Acceso a datos, por sí mismo o en conjunto con otros componentes como Hibernate
-- Gestión de transaccionalidad
-- Modelo Vista Controlador (MVC)
-- Autenticación y autorización
-- Aspectos
-- Testing
-
-Las ventajas que nos proporcionaría Spring para este tipo de proyectos serían un poco las ya comentadas, aunque si bien es cierto que pueden existir alternativas para la funcionalidad básica de inyección de dependencias y transaccionalidad utilizando CDI (de hecho Spring se podría utilizar como una implementación de CDI), Spring provee otro tipo de herramientas que facilitarían simplificarían de forma sustancial el desarrollo, como por ejemplo:
-
-- Mediante Spring Data se provee una implementación de los Repositories (DAO) con las operaciones más comunes (save, delete, update, findAll, …), por tanto sin necesidad de implementarlos para todas y cada una de las entidades. Además dispone de un mecanismo por el cual, con la definición de un método en la interfaz del repositorio, mediante su nombre es capaz de "autoimplementarlo", como por ejemplo si en la entidad existe una propiedad "name" y en el nombre del método se llama findByName, automáticamente es capaz de realizar la búsqueda sin necesidad de definir una implementación que contenga una named query o un criteria. Más información: https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#reference
-- Spring Data también incluye el concepto de Specification, que ayudan a utilizar Criteria API de forma que facilitan la implementación de buscadores
-- Spring Security es uno de los mecanismos más potentes para implementar toda la capa de seguridad, dando la posibilidad de utilizar distintos mecanismos de seguridad como CAS, OAuth, etc.
-- Spring Boot es capaz de eliminar todos y cada uno de los ficheros de configuración XML, utilizando en sustitución clases Java anotadas con `@Configuration`. Esto da una potencia y flexibilidad enorme a la hora de definir los Beans más complejos. https://www.baeldung.com/spring-bean-annotations
-- Spring provee starters que ayudan en la configuración de la aplicación, así como la integración de la misma con servicios externos, siempre que no se salga de los rangos habituales
-- Spring Batch, para la generación de procesos desatendidos que se tengan que ejecutar periódicamente
-- Spring AOP para la definición de Aspectos y Proxies
-- En general, es tan extenso que para cualquier problema que se presente, es muy probable que Spring tenga una solución que ayude a su implementación / configuración
-
-### Docker
-
-Docker es un conjutno de herramientas que se usan para virtualizar a nivel de sistema operativo con el objetivo de distribuir paquetes de software mediante contenedores.
-
-![Logo Docker](./images/docker.png)
-
-Las ventajas que aporta son las siguientes:
-
-- Los contenedores se encuentran aislados unos de los otros
-- Contienen todo el software que es necesario para la correcta ejecución del software
-- La plataforma es capaz de ejecutar cualquier tipo de aplicación que corra en un contenedor, independiementemente de como esté desarrollada
-
-### Kubernetes
-
-Kubernetes es una plataforma opensource para orquestar contenedores como por ejemplo Docker. Las aplicaciones de un entorno productivo real puedean abarcar varios contenedores, los cuales hay que alojarlos en varios nodos físicos con varias instancias de cada uno. Kubernetes ofrede la capacidad de organización y gestión necesaria para implementar contenedores para soportar grandes cargas de trabajo. 
-
-![Logo Kubernetes](./images/kubernetes.png)
-
-Entre las ventajas que aporta Kubernetes:
-
-- Orquestar contenedores en múltiples hosts.
-- Hacer un mejor uso del hardware para maximizar los recursos necesarios para ejecutar sus aplicaciones empresariales.
-- Controlar y automatizar las implementaciones y actualizaciones de las aplicaciones.
-- Montar y añadir almacenamiento para ejecutar aplicaciones con estado.
-- Escalar las aplicaciones en contenedores y sus recursos sobre la marcha.
-- Administrar servicios de forma declarativa, que garanticen que las aplicaciones implementadas siempre se ejecuten del modo que las implementó.
-- Comprobaciones de estado y autorregeneración de sus aplicaciones con ubicación, reinicio, replicación y escalamiento automáticos.
-
-#### Pods
-
-La unidad básica de planificación en Kubernetes se denomina pod. Esta agrega un nivel de abstracción más elevado a los componentes en contenedores. Un pod consta de uno o más contenedores en los que se garantiza su ubicación en el mismo equipo anfitrión y pueden compartir recursos. Cada pod en Kubernetes es asignado a una única dirección IP (dentro del clúster) que permite a las aplicaciones utilizar puertos sin riesgos de conflictos. Un pod puede definir un volumen, como puede ser un directorio de disco local o un disco de red, y exponerlo a los contenedores dentro del pod. Los pods pueden ser administrados manualmente a través de la API de Kubernetes, o su administración puede ser delegada a un controlador.
-
-#### Controladores
-
-Un controlador es un bucle de reconciliación que lleva al estado real del clúster hacia el estado deseado. Hace esto mediante la administración de un conjunto de pods. Un tipo de controlador es un "Replication Controller", que se encarga de la replicación y escala mediante la ejecución de un número especificado de copias de un pod a través de un clúster. También se encarga de crear pods de reemplazo si un nodo subyacente falla. Otros controladores que forma parte del sistema central de Kubernetes incluye al "DaemonSet Controller" para la ejecución de exactamente un pod en cada máquina (o algún subconjunto de máquinas), y un "Job Controller" para ejecutar pods que ejecutan hasta su finalización, por ejemplo como parte de un trabajo batch. El conjunto de pods que un controlador administra está determinado por los selectores de etiquetas que forman parte de la definición del controlador.
-
-#### Servicios
-
-Un servicio Kubernetes es un conjunto de pods que trabajan en conjunto, como una capa de una aplicación multicapas. El conjunto de pods que constituyen un servicio está definido por el selector de etiquetas. Kubernetes provee de un servicio de descubrimiento y enrutamiento de pedidos mediante la asignación de una dirección IP estable y un nombre DNS al servicio, y balancea la carga de tráfico en un estilo round-robin hacia las conexiones de red de las direcciones IP entre los pods que verifican el selector (incluso cuando fallas causan que los pods se muevan de máquina en máquina). Por defecto un servicio es expuesto dentro de un cluster (por ejemplo, pods de un back end pueden ser agrupados en un servicio, con las peticiones de los pods de front end siendo balanceadas entre ellos), pero un servicio también puede ser expuesto hacia afuera del clúster.
-
-### Frontales
-
-Para los frontales se propone la utilización de Angular como framework de desarrollo.
-
-Angular es un framework de JavaScript Open Source, mantenido por Google, que se utiliza para crear y mantener aplicaciones web "single page". Una single-page application (SPA), o aplicación de página única es una aplicación web o es un sitio web que cabe en una sola página con el propósito de dar una experiencia más fluida a los usuarios como una aplicación de escritorio.
-
-Angular es un framework muy simple en su uso, con una curva de aprendizaje que lo hace muy fácil de aprender, pero difícil de dominar. Esto hace que tenga un peaje de entrada muy bajo para nuevos desarrolladores.
-
-#### Patrones de diseño 
-
-El framework está apoyado en los patrones MVC y MVVM que aportan grandes bondades a la arquitectura del front como son:
-- Separación semántica de capas: la aplicación se divide claramente en la capa de controladores, servicios y vista, dando una separación clara de responsabilidades para cada componente.
-- Vinculación directa del controlador y la vista a través del patrón MVVM: Como se comentó anteriormente, gracias al patrón dirty-checking no se requiere utilizar un patrón especial y se evita en gran medida la microprogramación, reduciendo en gran medida los errores de programación.
-- Actualización directa de la vista por medio de bindings: El patrón MVVM permite actualizar la vista desde la lógica del controlador sin necesidad de microprogramación.
-- Inyección de dependencias: El framework incluye un sistema de inyección de dependencias y gestión de espacios de nombres, que evitan el uso de librerías externas como RequireJS.
-
-#### Templating
-
-Los templates de Angular se basan 100% en lenguaje HTML, lo cual simplifica las tareas de maquetación y los cambios requeridos en la estructura HTML de la salida deseada. Además, este es un hecho que facilita incluso que un maquetador que no sabe nada de Angular pueda realizar trabajos en la aplicación de manera rápida sin requerir muchas explicaciones o asistencia. Ejemplo:
-
-```html
-<ul> 
-    <li ng-repeat="framework in frameworks" title="{{framework.description}}">               
-                  {{framework.name}} 
-    </li> 
-</ul>
-```
-
-En este sentido los templates se basan en lo que Angular denomina "directivas", que en este entorno se traducen en etiquetas y atributos en el template según se desee.
-
-#### Testing
-
-Como parte de Angular se encuentra desarrollado un módulo que permite generar mocks de inyecciones de dependencias y servicios REST de una forma ágil.
-
-Se suele usar en conjunción con Jasmine y Karma para la automatización de tests en entornos de integración continua y la publicación de resultados.
-
-- Karma: Se trata de una librería NodeJS para la inicialización de un servidor web simple que sirva el código de los tests para su ejecución en navegadores de manera automatizada. Por ejemplo, PhantomJS (un navegador headless webkit).
-- Jasmine: Herramienta para la creación de tests de comportamiento. 
-
-También posee herramientas para la generación de tests E2E (end-to-end) que simulan la interacción del usuario con la aplicación. Igualmente, los tests utilizan Jasmine para su des-cripción, dando un resultado coherente.
-
-Todo esto está documentado y apoyado por los creadores del framework de manera oficial.
-
-#### Documentación
-
-Un aspecto importante de cara al aprendizaje y la mantenibilidad es una buena documentación.
-
-Angular provee un extenso sitio web que contiene la documentación de todas las versiones publicadas: [https://angular.io/docs](https://angular.io/docs)
-
-Además, también se pueden encontrar multitud de tutoriales en internet de diferentes naturalezas que cubren prácticamente todos los aspectos del framework.
-
-#### Gestión de dependencias
-
-Aunque no es una característica única de Angular, es compatible con NPM para la gestión dependencias al estilo de cómo se utiliza Maven en entornos Java permitiendo evitar mantener pesados repositorios GIT o SVN con código que no pertenece realmente a la aplicación.
-
-Esta herramienta también ofrece soporte a la coherencia de las versiones instaladas de cada librería para evitar incompatibilidades y también a su actualización.
+En el documento [Anexo - Stack tecnológico](./anexos/anexo-stack-tecnologico.md) se dispone de una descripción sobre las principales tecnologías propuestas..
 
 # Requerimientos de Calidad
 
@@ -898,6 +817,11 @@ En este apartado se identifican algunos riesgos detectados en el desarrollo del 
 - Riesgo: Los desarrolladores iniciales del proyecto Blazegraph han dejado de trabajar activamente en el proyecto, lo cual podría suponer un problema en la adopción de Wikibase, al estar basado en blazegraph.
 - Plan: Aunque es cierto que ese riesgo existe, el sistema que se propone no depende en exclusivo de Wikibase, y podría adaptarse a utilizar triple-stores más convencionales. De hecho, al utilizar Apache Kafka como fuente de verdad, los datos siempre podrían re-generarse en otra triple-store alternativa. Por otro lado, el equipo que desarrolla esta propuesta ha contactado con algunos de los responsables del proyecto Wikibase y ellos han indicado que están trabajando activamente en la creación de canales de mantenimiento de Blazegraph 
 
+## Trellis
+
+- Riesgo: Trellis parece estar en una versión "prerelease" lo cual podría suponer un problema al poder existir partes poco maduras
+- Plan: Anque el riesgo existe, al disponer Trellis de una arquitectura muy mnodular, y también al exponer todos sus módulos a traveés de repositorios públicos, es muy fácil recomponer la aplicación reutilizando los módulos necesarios y sustituyendo aquellos por implementacions propias que lo adapten a la solución
+
 ## Apache Kafka
 
 - Riesgo: La utilización de Apache Kafka puede traer complicaciones extras que no son necesarias para este tipo de proyecto.
@@ -909,5 +833,3 @@ En este apartado se identifican algunos riesgos detectados en el desarrollo del 
 
 - Riesgo: La traducción entre tokens de SAML y JWT puede traer complicaciones ya que es posible que se pierda cierta información en el proceso
 - Plan: aunque es cierto que el riesgo existe, existen documentación disponible que plantea este escenario y resolviendolo de una forma adecuada.
-
-

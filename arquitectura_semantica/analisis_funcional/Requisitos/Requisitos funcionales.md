@@ -13,6 +13,7 @@
 |        | Un usuario público podrá registrarse en la aplicación a través del sistema SIR (Servicio de Identidad de RedIRIS) únicamente. |           |
 |        | El sistema SIR devolverá algunos datos del usuario a la aplicación, al menos un identificador para identificar el usuario y guardarlo en el sistema. |           |
 |        | Un usuario podrá loguearse en la aplicación a través del sistema SIR (Servicio de Identidad de RedIRIS) |           |
+|        | Al registrarse un usuario, si el sistema SIR devuelve algún dato que permita identificar su rol correspondiente, el sistema le asignará automáticamente ese rol. |           |
 |        | La aplicación ASIO ofrecerá un enlace para acceder a través de el sistema SIR, de forma que al acceder mediante este sistema pueda volver a la aplicación de forma automática. |           |
 |        |                                                              |           |
 |        |                                                              |           |
@@ -26,20 +27,20 @@
 
 
 
-- - | Código | Requisito                                                    | Prioridad |
-    | ------ | ------------------------------------------------------------ | --------- |
-    |        | La aplicación constará de una serie de roles predefinidos:<br />- *Gestor ASIO*: Es el administrador del sistema. Podrá administrar roles y modificar la frecuencia de los procesos automáticos de carga de datos. <br />- *Administrador de universidad*: Podrá crear y modificar ontologías relativas a su universidad y les asignará roles, cargar datos relativos a esa universidad y modificar los roles de los datos<br />- *Investigador de universidad*: Podrá ver los datos asignados a su rol, y los datos de usuario para consultas.<br />- *Usuario para consultas de universidad*: Podrá ver datos asignados a este rol.<br />- *Administrador de Ministerio (ministerio, FECYT agencia de ciencia):* Podrá añadir/borrar consultas SparQL personalizadas para los usuarios de Ministerio.<br />- *Usuario de Ministerio (ministerio, FECYT agencia de ciencia):* Podrá ver los datos asignados a su rol y ejecutar consultas SparQL personalizadas.<br />- *Gobierno regional*: Podrá ver los datos asignados a su rol.<br />- *Agencia Española de investigación*: Podrá ver los datos asignados a su rol. |           |
-    |        | Cuando el usuario se registra a través de SIR, si este sistema devuelve su rol y hay una equivalencia con los roles existentes en la aplicación, se le asignará su rol automáticamente. |           |
-    |        | Cuando el usuario se registra a través de SIR, si este sistema devuelve su rol y no hay una equivalencia con los roles existentes en la aplicación, se creará su usuario pero sólo podrá acceder al contenido público del portal. |           |
-    |        | Los usuarios con rol gestor ASIO podrán crear roles mediante una pantalla. |           |
-    |        | Los usuarios con rol gestor ASIO podrán modificar roles mediante una pantalla. |           |
-    |        | Los usuarios con rol gestor ASIO podrán borrar roles mediante una pantalla. |           |
-    |        | Los usuarios con rol gestor ASIO podrán modificar el rol de un usuario haciendo una búsqueda previa de ese usuario en la aplicación web. |           |
-    |        | Los usuarios con rol Gestor ASIO podrán configurar en la aplicación web la frecuencia con la que la aplicación lanzará los procesos automáticos para cargar y actualizar los datos. |           |
-    |        | Los usuarios con rol Gestor Asio podrán modificar los roles asignados a una funcionalidad. |           |
-    |        | Una funcionalidad siempre tendrá un rol asignado, nunca podrá existir una funcionalidad sin rol asignado. |           |
-    |        | Los usuarios con rol Gestor Asio gestionarán los roles asignados a funcionalidades a través de una pantalla diseñada para ello. |           |
-    |        | Los roles asignados a funcionalidades por defecto en la aplicación y sus funcionalidades son:<br />  - Gestor ASIO: Gestionar la administración de roles y de la aplicación, asignar roles a funcionalidades y configurar frecuencia de procesos automáticos.<br />- Administrador de Ministerios: Crear, modificar y borrar las consultas SPARQL predefinidas para los usuarios de ministerios.<br />- Administrador de universidad: Cargar, modificar y borrar datos relativos a investigaciones a su universidad y asignar roles a los campos de las ontologías de su universidad. |           |
+| Código | Requisito                                                    | Prioridad |
+| ------ | ------------------------------------------------------------ | --------- |
+|        | La aplicación constará de una serie de roles predefinidos:<br />- *Gestor ASIO*: Es el administrador del sistema. Podrá administrar roles y modificar la frecuencia de los procesos automáticos de carga de datos. <br />- *Administrador de universidad*: Podrá crear y modificar ontologías relativas a su universidad y les asignará roles, cargar datos relativos a esa universidad y modificar los roles de los datos<br />- *Investigador de universidad*: Podrá ver los datos asignados a su rol, y los datos de usuario para consultas.<br />- *Usuario para consultas de universidad*: Podrá ver datos asignados a este rol.<br />- *Administrador de Ministerio (ministerio, FECYT agencia de ciencia):* Podrá añadir/borrar consultas SparQL personalizadas para los usuarios de Ministerio.<br />- *Usuario de Ministerio (ministerio, FECYT agencia de ciencia):* Podrá ver los datos asignados a su rol y ejecutar consultas SparQL personalizadas.<br />- *Gobierno regional*: Podrá ver los datos asignados a su rol.<br />- *Agencia Española de investigación*: Podrá ver los datos asignados a su rol. |           |
+|        | Cuando el usuario se registra a través de SIR, si este sistema devuelve su rol y hay una equivalencia con los roles existentes en la aplicación, se le asignará su rol automáticamente. |           |
+|        | Cuando el usuario se registra a través de SIR, si este sistema devuelve su rol y no hay una equivalencia con los roles existentes en la aplicación, se creará su usuario pero sólo podrá acceder al contenido público del portal. |           |
+|        | Los usuarios con rol gestor ASIO podrán crear roles mediante una pantalla. |           |
+|        | Los usuarios con rol gestor ASIO podrán modificar roles mediante una pantalla. |           |
+|        | Los usuarios con rol gestor ASIO podrán borrar roles mediante una pantalla. |           |
+|        | Los usuarios con rol gestor ASIO podrán modificar el rol de un usuario haciendo una búsqueda previa de ese usuario en la aplicación web. |           |
+|        | Los usuarios con rol Gestor ASIO podrán configurar en la aplicación web la frecuencia con la que la aplicación lanzará los procesos automáticos para cargar y actualizar los datos. |           |
+|        | Los usuarios con rol Gestor Asio podrán modificar los roles asignados a una funcionalidad. |           |
+|        | Una funcionalidad siempre tendrá un rol asignado, nunca podrá existir una funcionalidad sin rol asignado. |           |
+|        | Los usuarios con rol Gestor Asio gestionarán los roles asignados a funcionalidades a través de una pantalla diseñada para ello. |           |
+|        | Los roles asignados a funcionalidades por defecto en la aplicación y sus funcionalidades son:<br />  - Gestor ASIO: Gestionar la administración de roles y de la aplicación, asignar roles a funcionalidades y configurar frecuencia de procesos automáticos.<br />- Administrador de Ministerios: Crear, modificar y borrar las consultas SPARQL predefinidas para los usuarios de ministerios.<br />- Administrador de universidad: Cargar, modificar y borrar datos relativos a investigaciones a su universidad y asignar roles a los campos de las ontologías de su universidad. |           |
 
 
 
@@ -51,24 +52,15 @@
 | Código | Requisito                                                    | Prioridad |
 | ------ | ------------------------------------------------------------ | --------- |
 |        | Se definirá un vocabulario común que pueda ser comprendido tanto por los desarrolladores como los expertos del dominio. |           |
-|        | Los usuarios con rol administrador de una universidad podrán crear nuevas ontologías usando ficheros como CSV, XML, Json a través de la web con ficheros con un límite de tamaño. |           |
-|        | Los usuarios con rol administrador de una universidad podrán crear nuevas ontologías usando ficheros como CSV, XML, Json a través de un Servicio Rest. |           |
-|        | Los usuarios con rol administrador de una universidad podrán modificar  ontologías usando ficheros como CSV, XML, Json a través de la web. |           |
-|        | Los usuarios con rol administrador de una universidad podrán modificar  ontologías usando ficheros como CSV, XML, Json a través de un Servicio Rest. |           |
-|        | Al importar ontologías por primera vez, a través de cualquier medio, se guardarán los datos, pero las siguientes veces se actualizarán esos datos. |           |
+|        | Al importar los datos de las ontologías por primera vez se guardarán los datos, pero las siguientes veces se actualizarán esos datos. |           |
+|        | Al importar los CVNs por primera vez se guardarán los datos, pero las siguientes veces se actualizarán esos datos. |           |
+|        | Los datos de las ontologías se actualizarán a través de procesos automáticos. |           |
+|        | Los datos de los cvn se actualizarán a través de procesos automáticos. |           |
+|        | Los procesos automáticos tendrán una frecuencia configurable por el usuario con rol administrador de universidad. |           |
 |        | Al crear o modificar ontologías, los campos por defecto tendrán visualización publica, es decir, cualquier usuario, tanto registrados como no registrados, podrán ver los datos de esa ontología. |           |
 |        | Los usuarios con rol administrador de una universidad podrán modificar los roles permitidos para visualizar los campos de una ontología a través de una sección en la aplicación web. |           |
-|        | Los datos se cargarán de forma inicial con un proceso que los importará de la Universidad de Murcia, SGI Hércules, CVN y dos formatos adicionales que serán proporcionados por la universidad de Murcia para su implementación durante el hito 2. |           |
-|        | Se realizará una carga inicial de datos de los **CVNs.**     |           |
-|        | A partir de esa carga inicial sólo se enviarán actualizaciones. |           |
 |        | La aplicación debe de estar preparada para que cada profesor puede disponer de varios currículums. |           |
 |        | Se guardarán CVNs de la Universidad de Murcia, pero el diseño de la aplicación se realizará en base a que se puedan guardar CVNs de todas las universidades. |           |
-|        | Los usuarios con rol administrador de una universidad podrán actualizar los datos de las ontologías usando ficheros como CSV, XML, Json a través de la web con ficheros con un límite de tamaño. |           |
-|        | Los usuarios con rol administrador de una universidad podrán actualizar los datos de las ontologías usando ficheros como CSV, XML, Json a través de un Servicio Rest. |           |
-|        | El sistema dispondrá de un sitio FTP para poder almacenar ficheros de actualización y creación de ontologías. |           |
-|        | El sistema dispondrá de un sitio FTP para poder almacenar ficheros de actualización de datos. |           |
-|        | El sistema dispondrá de un sistema automático, cuya frecuencia podrá ser configurada por los usuarios con rol Gestor ASIO, que actualizará o creará las ontologías con los ficheros del FTP. |           |
-|        | El sistema dispondrá de un sistema automático, cuya frecuencia podrá ser configurada por los usuarios con rol Gestor ASIO, que actualizará o creará los datos de las ontologías con los ficheros del FTP. |           |
 |        | Se realizarán actualizaciones increméntales de datos consultando a los distintos SGIs de las universidades que se harán de forma automática. |           |
 |        | Los datos de entrada al *backend SGI* podrán ser tomados de varias fuentes que pueden estar en formatos diferentes a RDF por lo que el sistema contará con una **librería de importación** de datos que convertirá datos de fuentes heterogéneas en RDF. |           |
 |        | Se creará un Gestor de Datos que coordinará la actividad de todos los módulos para poder realizar las funciones principales del Backend SGI. |           |
@@ -85,7 +77,6 @@
 |        | Al crear un elemento, se buscará su URI y si no existe, se generará una nueva con el generador de URIs. |           |
 |        | **Integración cotínua de las ontologías:** las ontologías serán almacenadas en modo texto en el sistema de control de versiones con el fin de que los creadores de ontologías puedan hacer uso de las prácticas habituales en ingeniería del software para gestión de software mediante control de versiones. |           |
 |        | Estas ontologías, una vez guardadas en el control de versiones, se pasarán a integración contínua para integrarlas en el triple store. |           |
-|        | Las cargas iniciales se realizarán a partir de procesos automáticos. |           |
 |        |                                                              |           |
 
 
