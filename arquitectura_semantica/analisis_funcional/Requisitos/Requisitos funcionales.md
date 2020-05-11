@@ -10,11 +10,12 @@
 
 | Código | Requisito                                                    | Prioridad |
 | ------ | ------------------------------------------------------------ | --------- |
-|        | Un usuario público podrá registrarse en la aplicación a través del sistema SIR (Servicio de Identidad de RedIRIS) únicamente. |           |
-|        | El sistema SIR devolverá algunos datos del usuario a la aplicación, al menos un identificador para identificar el usuario y guardarlo en el sistema. |           |
-|        | Un usuario podrá loguearse en la aplicación a través del sistema SIR (Servicio de Identidad de RedIRIS) |           |
-|        | Al registrarse un usuario, si el sistema SIR devuelve algún dato que permita identificar su rol correspondiente, el sistema le asignará automáticamente ese rol. |           |
 |        | La aplicación ASIO ofrecerá un enlace para acceder a través de el sistema SIR, de forma que al acceder mediante este sistema pueda volver a la aplicación de forma automática. |           |
+|        | Para que un nuevo usuario, de tipo diferente a profesor PDI, pueda acceder a la parte privada de la aplicación, un usuario administrador deberá dar de alta a este nuevo usuario usando su identificador único, email. |           |
+|        | Un usuario de tipo profesor PDI podrá registrarse en la aplicación a través de SIR, sin necesidad de estar dado de alta en la aplicación. |           |
+|        | Un usuario podrá acceder a la aplicación a través del sistema SIR (Servicio de Identidad de RedIRIS). |           |
+|        | El sistema SIR devolverá algunos datos del usuario a la aplicación, al menos un identificador para identificar el usuario y actualizarlo, en caso necesario, sus datos en el sistema. |           |
+|        | Al registrarse un usuario, si el sistema SIR devuelve algún dato que permita identificar su rol correspondiente, el sistema le asignará automáticamente ese rol. |           |
 |        |                                                              |           |
 |        |                                                              |           |
 |        |                                                              |           |
@@ -32,14 +33,14 @@
 |        | La aplicación constará de una serie de roles predefinidos:<br />- *Gestor ASIO*: Es el administrador del sistema. Podrá administrar roles y modificar la frecuencia de los procesos automáticos de carga de datos. <br />- *Administrador de universidad*: Podrá crear y modificar ontologías relativas a su universidad y les asignará roles, cargar datos relativos a esa universidad y modificar los roles de los datos<br />- *Investigador de universidad*: Podrá ver los datos asignados a su rol, y los datos de usuario para consultas.<br />- *Usuario para consultas de universidad*: Podrá ver datos asignados a este rol.<br />- *Administrador de Ministerio (ministerio, FECYT agencia de ciencia):* Podrá añadir/borrar consultas SparQL personalizadas para los usuarios de Ministerio.<br />- *Usuario de Ministerio (ministerio, FECYT agencia de ciencia):* Podrá ver los datos asignados a su rol y ejecutar consultas SparQL personalizadas.<br />- *Gobierno regional*: Podrá ver los datos asignados a su rol.<br />- *Agencia Española de investigación*: Podrá ver los datos asignados a su rol. |           |
 |        | Cuando el usuario se registra a través de SIR, si este sistema devuelve su rol y hay una equivalencia con los roles existentes en la aplicación, se le asignará su rol automáticamente. |           |
 |        | Cuando el usuario se registra a través de SIR, si este sistema devuelve su rol y no hay una equivalencia con los roles existentes en la aplicación, se creará su usuario pero sólo podrá acceder al contenido público del portal. |           |
+|        | La aplicación SIR dispondrá de una serie de funcionalidades que se podrán realizar en al aplicación. |           |
+|        | Los usuarios con rol Gestor ASIO podrán asociar funcionalidades a cada rol. |           |
+|        | Una funcionalidad siempre tendrá un rol asignado, nunca podrá existir una funcionalidad sin rol asignado. |           |
 |        | Los usuarios con rol gestor ASIO podrán crear roles mediante una pantalla. |           |
 |        | Los usuarios con rol gestor ASIO podrán modificar roles mediante una pantalla. |           |
 |        | Los usuarios con rol gestor ASIO podrán borrar roles mediante una pantalla. |           |
 |        | Los usuarios con rol gestor ASIO podrán modificar el rol de un usuario haciendo una búsqueda previa de ese usuario en la aplicación web. |           |
 |        | Los usuarios con rol Gestor ASIO podrán configurar en la aplicación web la frecuencia con la que la aplicación lanzará los procesos automáticos para cargar y actualizar los datos. |           |
-|        | Los usuarios con rol Gestor Asio podrán modificar los roles asignados a una funcionalidad. |           |
-|        | Una funcionalidad siempre tendrá un rol asignado, nunca podrá existir una funcionalidad sin rol asignado. |           |
-|        | Los usuarios con rol Gestor Asio gestionarán los roles asignados a funcionalidades a través de una pantalla diseñada para ello. |           |
 |        | Los roles asignados a funcionalidades por defecto en la aplicación y sus funcionalidades son:<br />  - Gestor ASIO: Gestionar la administración de roles y de la aplicación, asignar roles a funcionalidades y configurar frecuencia de procesos automáticos.<br />- Administrador de Ministerios: Crear, modificar y borrar las consultas SPARQL predefinidas para los usuarios de ministerios.<br />- Administrador de universidad: Cargar, modificar y borrar datos relativos a investigaciones a su universidad y asignar roles a los campos de las ontologías de su universidad. |           |
 
 
@@ -103,6 +104,7 @@
 |        | Si se accede a un elemento, a través de una consulta o de su URL asociada, se mostrarán su información de forma similar a cómo se muestran los datos en wikidata: https://www.wikidata.org/wiki/Q378619 |           |
 |        | En la pantalla de consultas SPARQL, un usuario podrá ver el resultado de las consultas de agregación de los campos que no son visibles para él, por ejemplo, una suma, pero no podrá ver estos datos en detalle. |           |
 |        | Un usuario sólo podrá ver o descargar los datos para los cuales tenga permisos. |           |
+|        | Los usuarios de una universidad, sólo podrán acceder a los datos de esa universidad para los cuales tengan permisos. |           |
 |        | Se podrán descargar los datasets de todas las ontologías de la aplicación a través de la página web. |           |
 |        | Se dispondrá de un servicio donde las máquinas puedan hacer consultas mediante GET/POST, con negociación de contenido: En el caso de que una máquina haga un GET con cabeceras Accept de HTML, esa consulta aparecerá ejecutada en el formulario web y con resultado. Por ejemplo: https://query.wikidata.org/#SELECT%20%2a%0AWHERE%20%7B%0A%20%3Fs%20%3Fp%20%3Fo%0A%7D%0ALIMIT%ste |           |
 |        | El servicio para que las máquinas realicen consultas describirá el endpoint de la manera más rica posible, utilizando vocabularios como VoID y SPARQL Service Description, para que el endpoint sea lo más “descubrible” posible (Aranda 2013). |           |
