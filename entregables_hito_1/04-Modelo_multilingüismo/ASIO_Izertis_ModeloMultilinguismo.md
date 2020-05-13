@@ -1,6 +1,6 @@
 ![](./images/logos_feder.png)
 
-# Multilingüismo (y *multiescriptalismo*) en las ontologías ASIO
+# Multilingüismo (*multilocalismo* y *multiescriptalismo*) en las ontologías ASIO
 
 Introducción 
 ============
@@ -278,6 +278,13 @@ Así, lo más normal actualmente sería encontrar una transliteración como "Vnu
 
 En definitiva, con este ejemplo hemos querido demostrar la relevancia del multiescriptalismo, como complemento del multilingüismo, en aquellos casos en que a la diversidad lingüística se le suma la diversidad de sistemas de escritura.
 
+*Multilocalismo*
+====================
+
+Denominamos "multilocalismo", basándonos en el concepto de *locale* en internacionalización y localización, a la asignación de locales diferentes a las lenguas.
+
+FIXME
+
 
 
 Los módulos verticales de la ontología ASIO como campo de pruebas
@@ -339,7 +346,7 @@ El multilingüismo es relevante en este módulo tanto a nivel nacional, siendo E
 
 
 
-Multilingüismo, *multiescriptalismo* y Wikidata/Wikibase
+Multilingüismo, *multilocalismo* y *multiescriptalismo* usando Wikidata/Wikibase
 ========================================================
 
 El modelo de datos que subyace a los enlaces de Wikibase se basa en "entidades" que incluyen elementos individuales, etiquetas o identificadores para describirlos y *declaraciones* *semánticas* que atribuyen "propiedades" a cada elemento.

@@ -1,5 +1,6 @@
 @prefix : <http://purl.org/hercules/asio/core#> .
 @prefix ro: <http://purl.org/wf4ever/ro#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix deo: <http://purl.org/spar/deo/> .
 @prefix org: <http://www.w3.org/ns/org#> .
@@ -29,8 +30,17 @@
 
 <http://purl.org/hercules/asio/core#> rdf:type owl:Ontology ;
                                        owl:versionIRI <http://purl.org/hercules/asio/core/0.0.1> ;
+                                       owl:versionInfo "0.0.1"^^xsd:string ;
                                        dct:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+                                       dc:contributor "José Emilio Labra Gayo"^^xsd:string ;
+                                       dc:contributor "Alejandro González Hevia"^^xsd:string ;
+                                       dc:creator "Emilio Rubiera Azcona"^^xsd:string ;
+                                       dc:date "2020-05-04"^^xsd:string ;
+                                       dc:description """FIXME"""^^xsd:string ;
+                                       dc:title "The ASIO ontology"^^xsd:string ;
+                                       owl:imports <http://xmlns.com/foaf/spec/> ;
                                        rdfs:label "ASIO core ontology" .
+
 
 #################################################################
 #    Annotation properties
@@ -163,6 +173,13 @@ asio:codeOf rdf:type owl:ObjectProperty ;
             rdfs:range skos:Concept ;
             rdfs:comment "A code is assigned to a concept."@en ;
             rdfs:label "code of"@en .
+
+
+###  http://purl.org/hercules/asio/core#companyFounder
+asio:companyFounder rdf:type owl:ObjectProperty ;
+                    rdfs:domain foaf:Person ;
+                    rdfs:range asio:Company ;
+                    rdfs:label "company founder"@en .
 
 
 ###  http://purl.org/hercules/asio/core#coordinatedBy
@@ -341,6 +358,48 @@ asio:participates rdf:type owl:ObjectProperty ;
                   rdfs:label "participates"@en .
 
 
+###  http://purl.org/hercules/asio/core#patentAssignee
+asio:patentAssignee rdf:type owl:ObjectProperty ;
+                    rdfs:domain asio:Patent ;
+                    rdfs:range foaf:Organization ;
+                    rdfs:label "patent assignee"@en .
+
+
+###  http://purl.org/hercules/asio/core#patentAssistantExaminer
+asio:patentAssistantExaminer rdf:type owl:ObjectProperty ;
+                             rdfs:domain foaf:Person ;
+                             rdfs:range asio:Patent ;
+                             rdfs:label "patent assistant examiner"@en .
+
+
+###  http://purl.org/hercules/asio/core#patentCountry
+asio:patentCountry rdf:type owl:ObjectProperty ;
+                   rdfs:domain asio:Patent ;
+                   rdfs:range asio:Country ;
+                   rdfs:label "patent country"@en .
+
+
+###  http://purl.org/hercules/asio/core#patentInventor
+asio:patentInventor rdf:type owl:ObjectProperty ;
+                    rdfs:domain asio:Patent ;
+                    rdfs:range foaf:Person ;
+                    rdfs:label "patent inventor"@en .
+
+
+###  http://purl.org/hercules/asio/core#patentPrimaryExaminer
+asio:patentPrimaryExaminer rdf:type owl:ObjectProperty ;
+                           rdfs:domain foaf:Person ;
+                           rdfs:range asio:Patent ;
+                           rdfs:label "patent primary examiner"@en .
+
+
+###  http://purl.org/hercules/asio/core#patentStatus
+asio:patentStatus rdf:type owl:ObjectProperty ;
+                  rdfs:domain asio:Patent ;
+                  rdfs:range asio:Status ;
+                  rdfs:label "patent status"@en .
+
+
 ###  http://purl.org/hercules/asio/core#personalizes
 asio:personalizes rdf:type owl:ObjectProperty ;
                   rdfs:domain asio:Profile ;
@@ -467,6 +526,10 @@ foaf:member rdf:type owl:ObjectProperty ;
             rdfs:label "member"@en .
 
 
+###  https://www.w3.org/TR/prov-o/#wasDerivedFrom
+<https://www.w3.org/TR/prov-o/#wasDerivedFrom> rdf:type owl:ObjectProperty .
+
+
 #################################################################
 #    Data properties
 #################################################################
@@ -506,6 +569,27 @@ asio:isActive rdf:type owl:DatatypeProperty ;
               rdfs:comment """This property allows to specify which is the user profile that is active,
 given a interaction between two applications."""@en ;
               rdfs:label "is active"@en .
+
+
+###  http://purl.org/hercules/asio/core#isCompetitive
+asio:isCompetitive rdf:type owl:DatatypeProperty ;
+                   rdfs:domain foaf:Project ;
+                   rdfs:range xsd:boolean ;
+                   rdfs:label "is competitive"@en .
+
+
+###  http://purl.org/hercules/asio/core#patentDate
+asio:patentDate rdf:type owl:DatatypeProperty ;
+                rdfs:domain asio:Patent ;
+                rdfs:range xsd:date ;
+                rdfs:label "date of patent"@en .
+
+
+###  http://purl.org/hercules/asio/core#patentExpirationDate
+asio:patentExpirationDate rdf:type owl:DatatypeProperty ;
+                          rdfs:domain asio:Patent ;
+                          rdfs:range xsd:date ;
+                          rdfs:label "patent expiration date"@en .
 
 
 ###  http://purl.org/hercules/asio/core#projectAcronym
@@ -997,6 +1081,12 @@ asio:Grant rdf:type owl:Class ;
            rdfs:subClassOf asio:Funding ;
            rdfs:comment "A financial award provided by a funding organisation for a particular project or purpose, usually awarded on the basis of a competitive application."@en ;
            rdfs:label "Grant"@en .
+
+
+###  http://purl.org/hercules/asio/core#InternalProject
+asio:InternalProject rdf:type owl:Class ;
+                     rdfs:subClassOf foaf:Project ;
+                     rdfs:label "Internal project"@en .
 
 
 ###  http://purl.org/hercules/asio/core#InternationalProject
@@ -1568,6 +1658,24 @@ asio:Administrative rdf:type owl:NamedIndividual ,
                              asio:Role .
 
 
+###  http://purl.org/hercules/asio/core#CatedraticoEscuelaUniversitaria
+asio:CatedraticoEscuelaUniversitaria rdf:type owl:NamedIndividual ,
+                                              asio:Role ;
+                                     rdfs:label "Catedràtic d'escola universitària"@ca-ad ,
+                                                "Catedrático de escola universitaria"@gl ,
+                                                "Catedrático de escuela universitaria"@es ,
+                                                "Catedráticu d'escuela universitaria"@ast .
+
+
+###  http://purl.org/hercules/asio/core#CatedraticoUniversidad
+asio:CatedraticoUniversidad rdf:type owl:NamedIndividual ,
+                                     asio:Role ;
+                            rdfs:label "Catedràtic d'universitat"@ca-ad ,
+                                       "Catedrático de universidad"@es ,
+                                       "Catedrático de universidade"@gl ,
+                                       "Catedráticu d'universidá"@ast .
+
+
 ###  http://purl.org/hercules/asio/core#EventOrganiser
 asio:EventOrganiser rdf:type owl:NamedIndividual ,
                              asio:Role ;
@@ -1578,6 +1686,22 @@ asio:EventOrganiser rdf:type owl:NamedIndividual ,
 ###  http://purl.org/hercules/asio/core#MasterStudent
 asio:MasterStudent rdf:type owl:NamedIndividual ,
                             asio:Role .
+
+
+###  http://purl.org/hercules/asio/core#PASfuncionario
+asio:PASfuncionario rdf:type owl:NamedIndividual ,
+                             asio:Role ;
+                    rdfs:label "PAS funcionari"@ca-ad ,
+                               "PAS funcionario"@es ,
+                               "PAS funcionario"@gl ,
+                               "PAS funcionariu"@ast .
+
+
+###  http://purl.org/hercules/asio/core#PASlaboral
+asio:PASlaboral rdf:type owl:NamedIndividual ,
+                         asio:Role ;
+                rdfs:label "PAS laboral"@ca-ad ,
+                           "PAS laboral"@es .
 
 
 ###  http://purl.org/hercules/asio/core#PhDStudent
@@ -1598,6 +1722,15 @@ asio:Teaching rdf:type owl:NamedIndividual ,
 ###  http://purl.org/hercules/asio/core#TechnicalSupport
 asio:TechnicalSupport rdf:type owl:NamedIndividual ,
                                asio:Role .
+
+
+###  http://purl.org/hercules/asio/core#TitularUniversidad
+asio:TitularUniversidad rdf:type owl:NamedIndividual ,
+                                 asio:Role ;
+                        rdfs:label "Profesor titular d'universidá"@ast ,
+                                   "Profesor titular de universidad"@es ,
+                                   "Profesor titular de universidade"@gl ,
+                                   "Professor titular d'universitat"@ca-ad .
 
 
 ###  http://purl.org/hercules/asio/core#UndergraduateStudent

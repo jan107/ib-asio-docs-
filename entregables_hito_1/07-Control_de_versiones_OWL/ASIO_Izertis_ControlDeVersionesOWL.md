@@ -1,6 +1,6 @@
 ![](./resources/logos_feder.png)
 
-# Sistema de Integración continua para desarrollo de ontologías con control de versiones.
+# Control de versiones sobre ontologías OWL.
 
 El sistema de integración continua para el desarrollo de ontologías en un sistema de control de versiones permite que para cada cambio (commit) que se realiza sobre la ontología se realicen una serie de tests (test suite) durante los cuales lo que se comprueba es que los cambios introducidos no interfieren con las restricciones definidas en los datos de validación.
 
