@@ -188,6 +188,7 @@ Por ejemplo, en el caso de una fuentes de datos vía FTP, el importador correspo
 
 - **Input:** Fuentes de datos externas
 - **Output:** Evento publicado en Service Bus interno (topic de Kafka) del módulo de entrada
+- **Control:** Llamada al API del procesador de datos para conocer la fecha de la última importación
 
 #### Procesador de datos
 
@@ -205,13 +206,16 @@ La base de datos elegida es una base de datos NoSQL, en concreto MongoDB, la cua
 **Implementación:** 
 
 * **Input:** Evento recibido desde el service bus interno del módulo de entrada
-* **Output:** Datos introducidos en formato de entrada en la base de datos intermedia del módulo de entrada
+* **Output:** Datos introducidos en formato de entrada en la base de datos intermedia del módulo de entrada. Adicionalmente para el primer hito se enviarán los datos también al Service Bus General para que sean tratados como POJOs.
+* **Control:** Llamada a API del ETL para indicar el comienzo de la transformación de datos
 
 ##### ETL
 
 Una vez se hayan cargado todos los datos de una de las fuentes, el módulo ETL será el encargado de leer los datos de la base de datos intermedia y transformarlos en la estructura de datos definida por la ontología (POJOs).
 
 **Implementación:** 
+
+Para la implementación de la ETL se utilizará Pentaho Data Integration el cual es un software que facilita la extracción, transformación y carga de datos, y por tanto indicado para hacer la transformación de los datos de entrada al formato "POJO".
 
 - **Input:** Datos procedentes de la base de datos intermedia en formato del módulo de entrada
 - **Output:** Evento publicado en Service Bus general, en formato POJO
@@ -259,6 +263,8 @@ Cada uno de los procesadores de eventos se encargarán de consumir los mensajes 
 #### Storage adapters
 
 En lugar de añadir la lógica correspondiente a un sistema de almacenamiento, se utilizará un adaptador el cual dispondrá de toda la lógica necesaria para interactuar con el triplestore. Esto permite que en caso que se quiera cambiar de sistema de almacenamiento, solo con cambiar este adaptador es suficiente para poder trabajar con este nueva capa de persistencia.
+
+Estos adaptadores se encargarán también de transformar el RDF recibido para que concuerde con el sistema final, como por ejemplo las URIs, para lo cual se apoyará en la factoría de URIs.
 
 Dentro del transcurso del proyecto se desarrollará un adaptador para la ingesta de datos en el sistema [Trellis](https://www.trellisldp.org/), así como en [Wikibase](https://www.mediawiki.org/wiki/Wikibase/es), aunque no sería descartable generar otros adaptadores en caso que sea necesario.
 
