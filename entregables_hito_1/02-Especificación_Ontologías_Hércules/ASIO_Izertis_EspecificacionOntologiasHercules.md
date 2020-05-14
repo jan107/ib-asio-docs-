@@ -1,15 +1,17 @@
 ![](./images/logos_feder.png)
 
-# 0. About this document
+# Ontology specification
 
-This document reports the current status of the ASIO ontology files and more specifically it describes *grosso modo* three of the files currently available in our repositories, namely:
+## 0. About this document
 
-- [asio-core.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontolog%C3%ADas_H%C3%A9rcules/asio-core.owl)
-- [asio-mappings.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-mappings.ttl)
-- [asio-vertical-module-geopol.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-vertical-module-geopol.ttl)
-- [asio-vertical-module-scientificdomains.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-vertical-scientificdomains.ttl)
-- [asio-vertical-module-subjectareas.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-vertical-subjectareas.ttl)
-- [asio-vertical-module-universities.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-vertical-module-universities.ttl)
+This document reports the current status of the ASIO ontology files and more specifically it describes *grosso modo* six of the files currently available in our repositories, namely:
+
+- [asio-core.ttl](asio-core.ttl)
+- [asio-mappings.ttl](asio-mappings.ttl)
+- [asio-vertical-module-geopol.ttl](asio-vertical-module-geopol.ttl)
+- [asio-vertical-module-scientificdomains.ttl](asio-vertical-scientificdomains.ttl)
+- [asio-vertical-module-subjectareas.ttl](asio-vertical-subjectareas.ttl)
+- [asio-vertical-module-universities.ttl](asio-vertical-module-universities.ttl)
 
 The first one is the ***core*** ontology and the second one corresponds to the class-by-class ***alignements*** towards external vocabularies
 
@@ -17,13 +19,11 @@ In addition to these two files, a number of ***vertical modules*** have being re
 
 Two other vertical modules, related within each other, are the **scientific domains** and the **subject areas**. Both are controlled vocabularies including scientific domains and fields and used in different requirements by the core ontology.
 
-Finally, the vertical module **universities** included the full list of universities from Spain with a limited sample of university subdivisions (centres, campus, faculties, etc.) corresponding to the Murcia, Oviedo, Santiago de Compostela and Basque contry universities.
+Finally, the vertical module **universities** included the full list of universities from Spain with a limited sample of university subdivisions (centres, campus, faculties, etc.) corresponding to the Murcia, Oviedo, Santiago de Compostela and Basque country universities.
 
 
 
-
-
-# 1. Introduction
+## 1. Introduction
 
 The ASIO ontologies are standardised data schemas (or "vocabularies") designed to address the Research Management of the particular case of the University of Murcia but by applying an encompassing model capable of addressing too other universities both at the national level and at the international level.
 
@@ -37,9 +37,9 @@ On the basis of this distinction, we develop an architecture of the ontological 
 
 
 
-# 2. Core ontology
+## 2. Core ontology
 
-## 2.1. prolegomena
+### 2.1. prolegomena
 
 In any informational system, in this case an ontology, there must be non-modular processing –or what we call central processing, to distinguish it from modular processing, which is peripheral (our vertical modules).
 
@@ -47,7 +47,7 @@ To say that a part of the ontology is core (i.e. involves central processing act
 
 
 
-## 2.2. the core ontology at a glance
+### 2.2. the core ontology at a glance
 
 In this draft doccument due to time limitation, we are just going to show the reader the classes through a screenshot from Protégé and a diagram showing some of the classes and properties in use.
 
@@ -71,7 +71,7 @@ An example loosely coming from one of competence questions shows how some of the
 
 
 
-## 2.3. imported vocabularies
+### 2.3. imported vocabularies
 
 Two external vocabularies are imported to deal with specific-knowledge domains of relevance for the project:
 
@@ -89,7 +89,7 @@ We can consider a temporary and sui generis semi-importation the usage of some c
 
 
 
-## 2.4. multilingualism in the core ontology
+### 2.4. multilingualism in the core ontology
 
 The entire list of classes in the core ontology is enriched multilingually via the data property `rdfs:label` and, besides the two obvious working languages (English, Spanish), three more languages are included: Catalan, French and Portuguese, as corresponding to the three other countries that we take into account in addition to Spain for geographically modelling our domain: Andorra, France and Portugal.
 
@@ -134,7 +134,7 @@ Obviously, the granularity of detail regarding ***i18n*** and ***L10n*** applied
 
 
 
-# 3. Alignements with other vocabularies
+## 3. Alignements with other vocabularies
 
 In addition to reusing specific classes and properties or importing full external vocabularies of interest, as described above, the ASIO ontology also provides mappings to classes considered equivalent to the ones defined in the specification.
 
@@ -146,28 +146,29 @@ More details about these alignments, carried out following consolidated recommen
 
 
 
-# 4. Vertical modules
+## 4. Vertical modules
 
-As far as the **vertical modules** are concerned another three final candidates are being implemented so far, in particular:
+As far as the **vertical modules** are concerned another five final candidates are being implemented so far, in particular:
 
 - geopolitical entities
 - administrative entities
 - scientific domains
-- Spain's university staffing
+- subject areas
+- Spanish universities
 
-However, in this first version of the document we describe with some detail just the first and the third vertical modules (*geopolitical entities* and *scientific domains*).
+An extra vertical module, called *Spain's university staffing*, is currently located within the core ontology as instances of the class *asio:Role*, but it is currently being migrated as an independent vertical module, so other equivalent university staffing from other countries can be plugged in an easier way by replicating the provided framework and populating it with the reality of, for instance, Portugal's university staffing or France's.
 
 The vertical modules are the ideal playground for testing multilingualism and multiscriptalism.
 
 
 
-## 4.1. geopolitical entities
+### 4.1. geopolitical entities
 
-As we mentioned at the beginning of this document, the more advanced vertical module so far, already released in an early version, is the geopolitical one. It covers at the moment the geopolitical subdivisions of:
+As we mentioned at the beginning of this document, the more advanced vertical module so far, already released in an early version, is the geopolitical one. It currently covers the full list of countries and the geopolitical subdivisions of:
 
 - Andorra: implementing just the first-level subdivisions (*parròquies*)
 - Portugal: implementing both the first (*distritos e regiões*) and the second-level (*municípios*) subdivisions.
-- Spain: covering the first (*comunidades autónomas*), the second (*provincias*) and the third-level subdivisions (*municipios*).
+- Spain: covering the first (*comunidades autónomas*) and the second (*provincias*). The third-level subdivisions (*municipios*) are already implemented and ready to be plugged in but have not being added yet.
 
 At the moment of this writing France and its subdivisions (*régions* and *départements*) are being transformed and is expected to be released in the next weeks, linked to the other datasets.
 
@@ -177,31 +178,25 @@ The main goal of this vertical module, which is in a way also transversal, is to
 
 
 
-## 4.2. administrative entities
-
-This vertical module is designed to encompass all the relevant entities belonging to Spain's *administración autonómica* related to the geopolitical subdivisions of the previous vertical module, to which they are going to be seamlessly linked.
-
-It is, at the moment of this writing, a work in progress but the implementation so far includes the first-level bodies of *administración autonómica* (*conserjerías*), as available at Spain's administration portal [[1]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/comunidadesAutonomas/comunidadesAutonomas.htm?idCCAA=14), and the second-level [[2]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/fichaUnidadOrganica.htm?idUnidOrganica=123276&origenUO=comunidadesAutonomas&volver=comunidadesAutonomas&idCCAA=14), mainly *direcciones generales* and *consorcios*.
-
-The implementation of this vertical module is also carried out using SKOS-Core.
 
 
 
-## 4.3. scientific domains
+
+### 4.2. scientific domains
 
 **Note** that this vertical module is being implemented at the moment and it is not included in this release but, as it is already designed, we include already documentation about it. The transformation of the tabular data will be carried out in the next weeks so to be *plugged in* as vertical module, similarly to the geopoolitical one.
 
-### 4.3.1 prolegomena
+#### 4.2.1 prolegomena
 
 The [Spain's Ministry of Science, Innovation and Universities](http://www.ciencia.gob.es/), through its [State Research Agency](http://www.ciencia.gob.es/portal/site/MICINN/menuitem.8d78849a34f1cd28d0c9d910026041a0/?vgnextoid=664cfb7e04195510VgnVCM1000001d04140aRCRD), published a document featuring a number of [**Scientific domains**](http://www.ciencia.gob.es/stfls/MICINN/Ayudas/PE_2013_2016/PE_Promocion_e_Incorporacion_Talento_y_su_Empleabilidad/FICHEROS/SE_Incorporacion/Ayudas_contratos_RYC_2016/Clasificacion_areas_cientificas_2016_AEI.pdf) which are the basis for several ones among the competence questions provided by the University of Murcia in order to model the ontology.
 
-### 4.3.2. modelling & transformation
+#### 4.2.2. modelling & transformation
 
 After a thorough analysis of that document, a clear hierarchical structure of domains and subdomains was identified and it was deemed as seamlessly fitting a thesaurus-like structure and hence suitable to be ontologically transformed using the W3C's standard for controlled vocabularies: [SKOS-Core](https://www.w3.org/TR/swbp-skos-core-spec/).
 
 SKOS-Core is not just the most appropriate solution for such a document featuring a level-structure thesaurus-like fully exploiting its classes `skos:Concept` (for *agglutinating* concepts) and `skos:ConceptScheme` (in order to arrange concepts *knitting* them together into schemes of concepts), but it also provides means to include models densely multilingual, as checkable with some European thesauri such as [GEMET]([ttps://www.eionet.europa.eu/gemet/en/about/](https://www.eionet.europa.eu/gemet/en/about/)) or [EuroVoc](https://data.europa.eu/euodp/en/data/dataset/eurovoc).
 
-### 4.3.3. added value
+#### 4.2.3. added value
 
 Hence, besides being able to seamlessly *assimilate* these **Scientific domains** within the ASIO ontology through an *ad hoc*, vertical module, we have improved the Ministry's document in a number of ways:
 
@@ -216,9 +211,11 @@ where still in a tabular format we can check out a first column with codes that 
 
 In addition to the ontological possibilities offered by SKOS (which is itself an ad hoc ontology) with respect to the ASIO core ontology, these mentioned multilingual labels provide idoneous raw materials to carry out extensively testing with respect to multilingualism, as detailed in the previous section and in a complementary deliverable (*ModeloMultilinguismo*).
 
+### 4.3 subject areas
 
 
-## 4.4. Spain's university staffing
+
+### 4.4. Spain's university staffing
 
 Finally, all the specificities of the teaching-and-research positions in the universities of Spain are dealt with in this vertical module, which is still a **work in progress**.
 
@@ -234,9 +231,15 @@ As a **disclaimer** we must warn the reader that these entities are not at all f
 
 
 
+### 4.5. administrative entities
 
+Another vertical module being implemented right now but not yet available is designed to encompass all the relevant entities belonging to Spain's *administración autonómica* related to the geopolitical subdivisions of the previous vertical module, to which they are going to be seamlessly linked.
 
-# 5. References
+It is, at the moment of this writing, a work in progress but the implementation so far includes the first-level bodies of *administración autonómica* (*conserjerías*), as available at Spain's administration portal [[1]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/comunidadesAutonomas/comunidadesAutonomas.htm?idCCAA=14), and the second-level [[2]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/fichaUnidadOrganica.htm?idUnidOrganica=123276&origenUO=comunidadesAutonomas&volver=comunidadesAutonomas&idCCAA=14), mainly *direcciones generales* and *consorcios*.
+
+The implementation of this vertical module will be also carried out using SKOS-Core.
+
+## 5. References
 
 Fodor, J. A. (1983). *The modularity of mind*. Bradford/MIT Press, Cambride, Mass. 
 
@@ -250,15 +253,13 @@ Vandenbussche, P.; Atemezing, G.; Poveda-Villalón, M.; Vatant, B. (2014). *Pie
 
 
 
-# Annex: competence questions and the ontology
+## Annex: competence questions and the ontology
 
 This annex provides a list of the competence questions provided by the University of Murcia and the current responses for them by the ASIO ontology so far. The satisfaction of the questions is still temporary, as it is a work in progress at the moment of this writing, and it is expected to be concluded for the milestone of May.
 
 The status for the competence question can be 'yes', 'no' or 'partially', being the latter a
 
-## General questions
-
-
+### General questions
 
 | Competence question                                          | Comment                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -299,9 +300,7 @@ The status for the competence question can be 'yes', 'no' or 'partially', being 
 
 
 
-## Questions involving governmental bodies (ministerial and regional)
-
-FIXME
+### Questions involving governmental bodies (ministerial and regional)
 
 | Competence question                                          | Comment |
 | ------------------------------------------------------------ | ------- |
@@ -313,9 +312,7 @@ FIXME
 | Estadísticas: Publicaciones de Universidades andaluzas en colaboración con investigadores fuera de la UE en revistas académicas de impacto. | Pending |
 | Control de fraude: identificar sinergias entre proyectos financiados a nivel europeo, nacional y/o regional financiados por diferentes entidades. | Pending |
 
-## High-level user's queries
-
-FIXME
+### High-level user's queries
 
 | Competence question                                          | Comment |
 | ------------------------------------------------------------ | ------- |
@@ -326,9 +323,7 @@ FIXME
 
 
 
-## User's queries
-
-FIXME
+### User's queries
 
 | Competence question                                          | Comment |
 | ------------------------------------------------------------ | ------- |
