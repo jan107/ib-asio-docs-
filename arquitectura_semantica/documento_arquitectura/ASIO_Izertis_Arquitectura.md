@@ -605,6 +605,10 @@ Para poder conseguir esta integración es necesario disponer de una pieza que ha
 
 En este caso existirá un servidor de autenticación que realice este rol. De puertas a fuera se trabajará con SAML, haciendo la integración son SIR, mientras que de puertas a dentro se dispondrá de un token JWT proporcionado por el servidor de autenticación. Para facilitar esta integración, se estudiará la utilización de herramientas como [Keycloak](https://www.keycloak.org/).
 
+#### Integración de autenticación y autorización con servicios LDP y Wikibase
+
+En el anexo [Estudio sobre autenticación y autorización](./anexos/anexo_autenticacion_autorizacion.md) se hace un estudio sobre como integrar la autenticación y autorización en Wikibase y Trellis.
+
 ### Integración entre arquitectura semántica e infraestructura ontológica
 
 En la solución existen dos partes, por un lado está la infraestructura semántica que es aquella destinada a la definición de los datos y su ontología y por otro lado se encuentra la arquitectura semántica dirigida a la importación, almacenamiento y explotación de los datos.
