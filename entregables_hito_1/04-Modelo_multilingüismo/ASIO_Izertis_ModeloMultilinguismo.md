@@ -283,7 +283,7 @@ En definitiva, con este ejemplo hemos querido demostrar la relevancia del multie
 
 Denominamos "multilocalismo", basándonos en el concepto de *locale* en internacionalización y localización, a la asignación de locales diferentes a las lenguas.
 
-FIXME
+Así, por poner un ejemplo, lenguas globales como el español, el francés, el portugués o el inglés muestran una variación terminológica importante en cuanto a la nomenclatura de los títulos académicos o programas de estudios y no es lo mismo la denominación de "máster", usada predominantemente en español de España, frente a la de "maestría", usada en *locales* del español en América latina.
 
 
 
@@ -294,11 +294,7 @@ Recuérdese que el modelado ontológico de ASIO es, inspirándonos remotamente e
 
 En los módulos verticales de la ontología ASIO se incluyen modelizaciones de dominios específicos que quedan fuera del _core_ de la ontología propiamente dicho pero que son complementarios a él y lo enriquecen.
 
-En esta fase inicial de desarrollo de contemplan por el momento tres módulos verticales que exigen tratamiento multiligüe en mayor o menor medida. En concreto y por orden de más a menos en cuanto al multilingüismo éstos son:
-
-- Entidades geopolíticas
-- Áreas científicas
-- Entidades administrativas
+En esta fase inicial de desarrollo de contempla un número de módulos verticales que exigen tratamiento multiligüe en mayor o menor medida. 
 
 Estos módulos verticales suponen el patio de recreo ideal, así como el caldo de cultivo idóneo, para hacer pruebas de concepto y evaluar limitaciones y alcance del modelo multilingüe del modelo ontológico, ya que incluyen frecuentemente entidades susceptibles de ser tratadas en base a diversas lenguas naturales.
 
@@ -312,11 +308,9 @@ En una primera fase, el módulo se limitará a España y sus niveles administrat
 
 También se eligió SKOS para la modelización de este módulo dado el modelo jerárquico obvio de las entidades geopolíticas.
 
-**FIXME-> describir con más detalle el dataset: características, multilingüismo y multiescriptalismo**
 
 
-
-## áreas científicas
+## áreas científicas y áreas temáticas
 
 La [Agencia Estatal de Investigación](http://www.ciencia.gob.es/portal/site/MICINN/menuitem.8d78849a34f1cd28d0c9d910026041a0/?vgnextoid=664cfb7e04195510VgnVCM1000001d04140aRCRD), dependiente del [Ministerio de Ciencia, Innovación y Universidades](http://www.mineco.gob.es/), es autora de un documento que establece una lista jerárquica de [**áreas científicas**](http://www.ciencia.gob.es/stfls/MICINN/Ayudas/PE_2013_2016/PE_Promocion_e_Incorporacion_Talento_y_su_Empleabilidad/FICHEROS/SE_Incorporacion/Ayudas_contratos_RYC_2016/Clasificacion_areas_cientificas_2016_AEI.pdf) de referencia en proyectos de investigación y que nos fue propuesto como referencia en el documento de preguntas de competencia suministrado por la Universidad de Murcia.
 
@@ -330,20 +324,6 @@ De este modo, estas 'Áreas científicas' han sido *mejoradas* respecto a la ver
 
 Además de las posibilidades de explotación ontológica que proporciona SKOS, que no deja de ser una ontología a su vez, con respecto al *core* de ASIO, las etiquetas multilingües suponen una materia prima interesante para llevar a cabo muchas pruebas *lingüísticas*.
 
-**FIXME-> describir con más detalle el dataset respecto al multilingüismo: lenguas cooficiales españolas, en/fr/pt**
-
-## 
-
-
-
-## entidades administrativas
-
-El módulo vertical de las entidades administrativas FIXME y se relaciona directamente con la adscripción de los proyectos dentro de los niveles local, regional, nacional e internacional.
-
-El multilingüismo es relevante en este módulo tanto a nivel nacional, siendo España un país con una realidad multilingüe importante y con lenguas cooficiales en varias comunidades autónomas, como a nivel translacional y europeo.
-
-**FIXME-> describir con más detalle el dataset respecto al multilingüismo: lenguas cooficiales españolas (ca, eu, gl) y no (exactamente) cooficiales (an,ast, oc)**
-
 
 
 Multilingüismo, *multilocalismo* y *multiescriptalismo* usando Wikidata/Wikibase
@@ -351,9 +331,15 @@ Multilingüismo, *multilocalismo* y *multiescriptalismo* usando Wikidata/Wikibas
 
 El modelo de datos que subyace a los enlaces de Wikibase se basa en "entidades" que incluyen elementos individuales, etiquetas o identificadores para describirlos y *declaraciones* *semánticas* que atribuyen "propiedades" a cada elemento.
 
-En principio, las etiquetas o identificadores soportan potencialmente el tratamiento multilingüe, aunque queda por analizar si este soporte alcanza plenamente para la renderización de los diferentes sistemas de escritura, cómo lo lleva a cabo y si su procedimiento es realmente conforme a los requisitos de la Web Semántica y los principios de Datos Enlazados.
+En principio, las etiquetas o identificadores de Wikibase soportan potencialmente el tratamiento multilingüe, aunque se han detectado algunos problemas, a saber:
 
-**FIXME->dificultades con respecto al multiescriptalismo**
+- *Locales* no presentes
+- Sistemas de escritura no presentes
+
+Wikibase no incluye por defecto todos los locales existentes para las lenguas y solamente los de las comunidades más activas se suelen encontrar [disponibles](https://www.wikidata.org/wiki/Help:Wikimedia_language_codes/lists/all). En caso de necesitar incluir nuevos *locales*, los usuarios deben crear un *issue* específico con el que solicitar su inclusión. El proceso de aceptación de *locales* nuevos se somete a la opinión de un comité que analiza si es idóneo para el entorno de Wikimedia.
+
+Algo parecido sucede con los sistemas de escritura, incluídos ejemplos más extremos como el del [IPA](https://www.ipachart.com/
+), que utilizamos en la ontología para testar límites y que no ha sido posible trasladar a Wikibase aún.
 
 
 
