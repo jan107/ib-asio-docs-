@@ -4,15 +4,22 @@
 
 This document reports the current status of the ASIO ontology files and more specifically it describes *grosso modo* three of the files currently available in our repositories, namely:
 
-- [asio-demo.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontolog%C3%ADas_H%C3%A9rcules/asio-demo.owl)
+- [asio-core.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontolog%C3%ADas_H%C3%A9rcules/asio-core.owl)
 - [asio-mappings.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-mappings.ttl)
-- [asio-vertical-module-geopolitical.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-vertical-module-geopolitical.ttl)
+- [asio-vertical-module-geopol.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-vertical-module-geopol.ttl)
+- [asio-vertical-module-scientificdomains.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-vertical-scientificdomains.ttl)
+- [asio-vertical-module-subjectareas.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-vertical-subjectareas.ttl)
+- [asio-vertical-module-universities.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-vertical-module-universities.ttl)
 
 The first one is the ***core*** ontology and the second one corresponds to the class-by-class ***alignements*** towards external vocabularies
 
-In addition to these two files, a number of ***vertical modules*** are going to be released little by little. An early release is the **geopolitical module** (the third file listed above) including so far just the geopolitical entities of Andorra, Spain and Portugal (France is the other country to be taken into account in this vertical module in the next update). At the moment of this writing, three more vertical modules are almost ready to be released, as we will see in the section devoted to these modules.
+In addition to these two files, a number of ***vertical modules*** have being released at the moment of this writing. The earliest release was the **geopolitical module** (the third file listed above) including so far the full list of world's countries, the geopolitical entities of Andorra, Spain and Portugal (France is the other country to be taken into account in this vertical module in the next update).
 
-Keep in mind that both this document and the ontology files are a **work in progress** and the deadline to deliver the 80% of the specification is mid May, so there might still be some inconsistencies, imperfections, potential improvement and relevant addings.
+Two other vertical modules, related within each other, are the **scientific domains** and the **subject areas**. Both are controlled vocabularies including scientific domains and fields and used in different requirements by the core ontology.
+
+Finally, the vertical module **universities** included the full list of universities from Spain with a limited sample of university subdivisions (centres, campus, faculties, etc.) corresponding to the Murcia, Oviedo, Santiago de Compostela and Basque contry universities.
+
+
 
 
 
