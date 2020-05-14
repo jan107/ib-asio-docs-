@@ -42,7 +42,7 @@ Que es exportado a formato CSV manualmente:
 
 
 
-Y que finalmente es *explotado* y convertido a SKOS-Core después de escribir un epqueño programa de transformación que ofrece este aspecto:
+Y que finalmente es *explotado* y convertido a SKOS-Core después de escribir un pequeño programa de transformación que ofrece este aspecto:
 
 
 
