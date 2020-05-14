@@ -4,12 +4,12 @@
 
 This document lists and briefly describes the ttl files corresponding to the Hercules ontologies, namely:
 
-- [asio-core.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontolog%C3%ADas_H%C3%A9rcules/asio-core.owl)
-- [asio-mappings.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-mappings.ttl)
-- [asio-vertical-module-geopol.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-vertical-module-geopol.ttl)
-- [asio-vertical-module-scientificdomains.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-vertical-scientificdomains.ttl)
-- [asio-vertical-module-subjectareas.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-vertical-subjectareas.ttl)
-- [asio-vertical-module-universities.ttl](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/entregables_hito_1/01-Red_de_Ontologías_Hércules/asio-vertical-module-universities.ttl)
+- [asio-core.ttl](asio-core.ttl)
+- [asio-mappings.ttl](asio-mappings.ttl)
+- [asio-vertical-module-geopol.ttl](asio-vertical-module-geopol.ttl)
+- [asio-vertical-module-scientificdomains.ttl](asio-vertical-scientificdomains.ttl)
+- [asio-vertical-module-subjectareas.ttl](asio-vertical-subjectareas.ttl)
+- [asio-vertical-module-universities.ttl](asio-vertical-module-universities.ttl)
 
 The first one is the ***core*** ontology and the second one corresponds to the class-by-class ***alignements*** towards external vocabularies
 
