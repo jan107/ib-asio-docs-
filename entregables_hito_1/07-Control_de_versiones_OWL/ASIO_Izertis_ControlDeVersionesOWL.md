@@ -1,88 +1,52 @@
 ![](./resources/logos_feder.png)
 
 # Control de versiones sobre ontologías OWL.
-
-El sistema de integración continua para el desarrollo de ontologías en un sistema de control de versiones permite que para cada cambio (commit) que se realiza sobre la ontología se realicen una serie de tests (test suite) durante los cuales lo que se comprueba es que los cambios introducidos no interfieren con las restricciones definidas en los datos de validación.
+Este documento se centra en explicar las decisiones tomadas para intentar solucionar los problemas que emergen cuando se intenta mantener un control de versiones efectivo durante el desarrollo de ontologías.
 
 ## Introducción
+Una problemática conocida de las ontologías es su serialización no determinista. Esto implica que realizar un control de versiones efectivo sobre ellas sea imposible. En el siguiente [artículo](https://rd.springer.com/chapter/10.1007/978-3-319-99701-8_10) se puede ver más en detalle la problemática descrita.
 
-Para poder llevar a cabo esta tarea necesitamos tres elementos que serán la entrada de nuestro sistema.
+Sin embargo existen distintas metodologías y procesos que se pueden aplicar para paliar este problema. De forma que se puede a llegar a desarrollar una ontología bajo un control de versiones en el que los cambios realizados queden registrados de forma unívoca.
 
-1. La ontología en formato OWL. Puede estar compuesta por uno o por múltiples ficheros.
-2. Los datos de validación. Se compone de instancias RDF que han sido certificadas como la fuente de verdad para las restricciones que tiene que cumplir la ontología. Están definidos como recursos RDF.
-3. Los casos de prueba que queremos lanzar contra la ontología. En este caso se implementan por medio de shape expressions. Cada caso de prueba se declara en un fichero separado y define una restricción que tiene que cumplir la ontología. De esta forma existirá un output directamente relacionado con cada archivo de shape expressions.
+## Solución planteada
+A continuación describiremos la solución que hemos planteado para solucionar la problemática descrita previamente. Nuestra solución se divide en cinco niveles ortogonales y totalmente complementarios, con distintos niveles de completitud actualmente. La primera es una solución sintáctica, mientras que el resto serían soluciones a nivel semántico. Estos niveles se describirán a continuación.
 
-A contiunuación se muestra un esquema gerneral de la arquitectura externa e interna del sistema.
+### Nivel 1: Ontología
+A nivel de la ontología, planteamos una solución sintáctica que es obligar el uso del editor [Protégé](https://protege.stanford.edu) por parte de los contribuidores de la ontología. En las últimas versiones de Protégé, basado en OWLAPI, se mantiene un orden determinista en la serialización de las ontologías que permite un mayor seguimiento de las diferencias entre versiones. Información adicional sobre el algoritmo implementado para mantener un orden determinista puede ser consultada a través del [siguiente issue](https://github.com/owlcs/owlapi/issues/273) del repositorio de OWLAPI. Además, en el [siguiente artículo](https://cgi.csc.liv.ac.uk/~valli/OWLED2015/OWLED_2015_paper_12.pdf) se especifica en detalle las optimizaciones llevadas a cabo en los algoritmos de serialización de ontologías.
 
-![](./resources/diagram-high-level.png)
+### Nivel 2: Sistema de control de versiones
+El propio sistema de control de versiones (en nuestro caso GitHub, basado en Git) también hay bastantes soluciones dispobibles para el problema presente.
 
-## Datos de entrada
+Una de las soluciones que hemos llevado a cabo es el almacenamiento de forma independiente de cada una de las versiones de la ontología a traves de la rama donde ésta se encuentra publicada (gh-pages). Cada vez que se crea una nueva release en GitHub, se lanza un sistema de scripts que se encarga de mergear cada uno de los grafos procedentes de la ontología (core + módulos verticales + alignments) y de serializar el grafo mergeado en la rama gh-pages, junto con la información del día en el que se produjo esa versión. Esta serialización se lleva a cabo con la librería [rdflib](https://rdflib.readthedocs.io/en/stable/) de Python, y está implementada de forma determinista.
 
-Como se comenta en la introducción los datos de entrada son los ficheros OWL que contienen la ontología, los datos de validación en RDF y los casos de pruebas en formato de shape expressions.
+Por último, la organización de carpetas correspondientes a la publicación de la ontología sigue un criterio de nombrado ya utilizado por ejemplo en las [SPAR Ontologies](https://sparontologies.github.io/article/spar-iswc2018/), que facilita el acceso y uso de cada una de las versiones por parte de los consumidores.
 
-Estos datos se encuentran en directorios diferentes, la ontología se encuentra en `/ontology`, los datos de validación en `/data` y los casos de prueba en `/test`. Una vez tenemos esa estructura de directorios hecha encontramos en el directorio `/ci` el código fuente necesario para realizar la integración continua. Más adelante se hablará sobre ese códifo fuente.
+### Nivel 3: Wikibase
+A nivel de Wikibase, el propio software tiene un sistema de control de cambios que nos permite obtener información adicional sobre los cambios que se han realizado. Estos cambios incluyen un timestamp, información sobre la cuenta que los ha realizado, así como la opción de poder revertir los cambios que sean necesarios. En la siguiente imagen se puede observar a modo de ejemplo este sistema de versiones que ofrece Wikibase:
+![](./resources/wikidata_recent_changes.png)
 
-Como se ve en la arquitectura el módulo de I/O es el encargado de encontrar todos estos directorios, para ello su algoritmo de funcionamiento es el siguiente:
+Aunque este sistema fue originalmente diseñado como medida para evitar posibles actos de vandalismo a nivel de datos por parte de contribuyentes externos, creemos que nos puede ofrecer una gran base para poder manejar el control de versiones y cambios que se realicen en la ontología, la cuál se encontrará publicada en este sistema.
 
-```java
-o = directorio ontología
-d = directorio datos
-t = directorio tests
+### Nivel 4: Sincronización a wikibase
+Actualmente Wikibase ya ofrece información sobre la evolución de los datos que guarda y por tanto se puede seguir el rastro de las distintas versiones de los componentes de una ontología. Sin embargo, el sistema de propagación de cambios diseñado permitiría enriquecer aún más esta información.
 
-oa = obtenArchivosConExtensionDedirectorio(o, ".owl")
-da = obtenArchivosConExtensionDedirectorio(d, ".rdf")
-ta = obtenArchivosConExtensionDedirectorio(t, ".shex")
-```
+Desde este sistemas sería posible añadir metadatos adicionales en el momento de la sincronización de la ontología con Wikibase. Estos metadatos pueden incluir por ejemplo el fichero original a través del cual se realizó la sincronización, y otros datos procedentes del propio sistema de control de versiones, como puede ser el issue o el pull request relacionado con el cambio.
 
-De esta forma en oa, da, ta tenemos los archivos correspondientes a la ontología, los datos y los tests. Estos datos son inmediatamente enviados al engine para que empiece a procesarlos.
+Actualmente este nivel todavía no se encuentra implementado en el sistema de sincronización, pero es algo que tenemos contemplado y nuestra idea es implementar este nivel de cara a futuras versiones del sistema de sincronización.
 
-## Motor de integración continua
+### Nivel 5: Sincronización desde Wikibase
+Este nivel se correspondería con la sincronización de cambios que se produzcan en Wikibase al sistema de control de versiones donde se almacena la ontología (sincionización hacia atrás).
 
-El motor de integración continua entra en acción en el momento en el que recibe los archivos de la interfaz de entrada / salida.
+Por ejemplo, sería posible añadir metadatos a la propia ontología indicando la versión y la procedencia de estos cambios.
 
-## Recepción de los datos.
+Dado que la sincronización hacia atrás todavía es una funcionalidad que no se encuentra disponible en el sistema de sincronización, este nivel todavía se encuentra en una fase de análisis y exploración por nuestra parte. A medida que se vaya avanzando en la funcionalidad, se irían concretando las medidas adicionales que podrían llevarse a cabo en este nivel.
 
-Nada más recibidos los datos en oa, da y ta se empieza por realizar una agregación de los archivos de la ontología para construir en memeoria un grafo representativo. Este grafo será llamado O. La agregación de la ontología se realiza de la siguiente forma.
+## Validación de los cambios en el sistema de control versiones
+Una vez se han producido cambios sobre la ontología y por tanto en el control de versiones es necesario validar que estos cambios no tienen un efecto negativo sobre las versiones ya existentes de la ontología. Esto es, que por ejemplo no se empleé un prefijo que no ha sido definido con anterioridad, algo que sintácticamente es posible pero semánticamente produciría un error en los sistemas que consuman la ontología en el futuro.
 
-```java
+Para ver como se soluciona este problema se ha diseñado e implementado un sistema de integración continua que se ejecuta cada vez que se produce un cambio en la ontología dentro del sistema de control de versiones. Toda la documentación referente a este sistema se encuentra dentro de la carpeta `integracion_continua_github` de este mismo directorio.
 
-G = fold oa_1 over oa_i till oa_n
+## Propagación de los cambios al triplestore
+Una vez los cambios en la ontología han pasado el proceso de validación, y los administradores de ésta consideran que se puede crear una nueva versión estable, se procederá a la sincronización de los cambios producidos en la ontología a Wikibase.
 
-```
-Para saber más sobre la función matemática fold reocmendamos este [enlace](https://www.modernescpp.com/index.php/fold-expressions).
-
-## Invocación de tests dinámicos
-
-Una vez tenemos la ontología agregada sobre `G` tenemos que crear un caso de prueba para cada uno de los ficheros hallados en el directorio de `/tests`. Se realiza a través del siguiente algoritmo.
-
-```java
-para cada archivoTest::ta_i en ta:
-  Factoria de tests -> genera nuevo test para el conjunto (G, da_i, ta_i)
-```
-
-A partir de este punto se delega el trabajo a la factoría de tests.
-
-# Creación dinámica de tests
-
-Cada vez que desde el motor de integración continua se invoca a la factoría de tests esta genera un test dinámico de java/sacala que se agrega a una test suite de forma que es imprescindible que todos y cada uno de ellos terminen satisfactoriamente para que cualquier sistema de integración continua como travis / jenkins marquen el cambio como correcto.
-
-Cada uno de los tests creados invocan a la librería de SHACLEX de la siguiente forma:
-
-```java
-createTests(test):
-  SHACLEX -> validator -> valida el conjunto formado por (G, da_i, ta_i)
-```
-
-Donde recordamos que G es `fold oa_1 over oa_i till oa_n`.
-
-# Salida de datos: resultados
-
-La idea general del sistema de integración continua es que ayude en el desarrollo de ontologías y por tanto los mensajes de error que se generen han de ser lo suficientemente descriptivos como para que los usuarios entiendan donde han cometido el fallo.
-
-De esta forma el formato de salida tras la ejecución de la validación es:
-
-```java
-[OK]      Test IntegridadReferencialDoctorado.
-[OK]      Test HerenciaClaseProfesor.
-[NOT OK]  Test HetenciaGrupoInvestigación. :: Nodo Labra no cumple restricción de tener propiedad NOMBRE (P09823475).
-```
+Estos cambios se realizarán de forma automática cada vez que se realice una nueva [release](https://help.github.com/en/enterprise/2.13/user/articles/creating-releases) en el repositorio donde la ontología se encuentra almacenada. Toda la documentación sobre este sistema se encuentra dentro de la carpeta `sincronizacion_ontologia_wikibase` de este directorio.
