@@ -49,7 +49,7 @@ To say that a part of the ontology is core (i.e. involves central processing act
 
 ### 2.2. the core ontology at a glance
 
-In this draft doccument due to time limitation, we are just going to show the reader the classes through a screenshot from Protégé and a diagram showing some of the classes and properties in use.
+In this section, we are going to show the reader the classes through a screenshot from Protégé and some diagrams showing some of the classes and properties in use in a number of examples.
 
 These are the full list of classes (available also in the [LODE](https://essepuntato.it/lode/) generated HTML file accompaning this document), with the miniature on the left shwing just the superclasses and the two in the central and right part of the illustration the whole list of classes:
 
@@ -57,7 +57,11 @@ These are the full list of classes (available also in the [LODE](https://essepun
 
 ![1st-example](./images/core-deployed.png)
 
+The participation in a project by a consortium of a company and a research group belonging to a university can be grasped by the following figure:
 
+![1st-example](./images/project-participation.png)
+
+where the specific case of the Hércules project is illustrated highliting the participants.
 
 A graphical example elaborating how the core ontology deals with a Patent shows the classes (Patent, Person, Organization), object and data properties involved in the modelling:
 
