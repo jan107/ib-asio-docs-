@@ -3,7 +3,6 @@
 
 
 
-
 ![](./images/logos_feder.png)
 
 # Análisis de métodos FAIR
@@ -155,7 +154,7 @@ La distribución de prioridades por áreas sería la siguiente:
 | ------------------- | -------- | --------- | ------------- | -------- | ------ |
 | **ESSENTIAL** (⬤⬤⬤) | 7        | 8         | 0             | 5        | **20** |
 | **IMPORTANT** (⬤⬤)  | 0        | 3         | 7             | 4        | **14** |
-| **USEFUL **(⬤)      | 0        | 1         | 5             | 1        | **7**  |
+| **USEFUL**(⬤)      | 0        | 1         | 5             | 1        | **7**  |
 | **TOTAL**           | **7**    | **12**    | **12**        | **10**   | **41** |
 
 El detalle sobre cómo evaluar cada indicador está recogido en la propuesta de recomendación [RDA, 2020].
@@ -191,8 +190,6 @@ En esta alternativa se puede comprobar fácilmente el nivel de *FAIRness* por á
 La evaluación conjunta de ambas alternativas puede realizarse a través de un [fichero Excell recientemente publicado por la RDA](https://drive.google.com/file/d/125jD_IWEbbLcwyw83HfMc8oEsILlVdPn/view). Adicionalmente pueden consultarse otros indicadores alternativos que han sido descartados en el octavo workshop del grupo de trabajo [RDA, 2020b] y otros indicadores adicionales a FAIR incluidos en el informe de evaluación de frameworks de evaluación [RDA, 2019].
 
 ## Referencias. 
-
-**FIXME** Unificar formato de referencias
 
 [Collins, 2018] Collins S., et al. (2018). **Turning FAIR into a reality, Final Report and Action Plan on FAIR Data**. European Commission, Directorate General  for Research and Innovation, Bruselas, 2018. 
 https://ec.europa.eu/info/sites/info/files/turning_fair_into_reality_1.pdf
