@@ -246,9 +246,8 @@ Vandenbussche, P.; Atemezing, G.; Poveda-Villalón, M.; Vatant, B. (2014). *Pier
 
 ## Annex: competence questions and the ontology
 
-This annex provides a list of the competence questions provided by the University of Murcia and the current responses for them by the ASIO ontology so far. The satisfaction of the questions is still temporary, as it is a work in progress at the moment of this writing, and it is expected to be concluded for the milestone of May.
-
-The status for the competence question can be 'yes', 'no' or 'partially', being the latter a
+This annex provides a list of the competence questions provided by the University of Murcia and the current responses for them by the ASIO ontology.
+For each one it is included links to the issue where it was discussed and solved the answer and also to query (sometimes multiple ones) to finally solved the competence question.
 
 ### General questions
 
