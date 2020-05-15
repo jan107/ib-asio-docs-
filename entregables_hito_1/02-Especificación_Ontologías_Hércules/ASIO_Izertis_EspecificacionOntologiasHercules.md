@@ -232,7 +232,7 @@ It also includes a limited sample of subdivisions (schools, faculties, centres) 
 
 
 
-### 4.5. other vertical modules being currently implementedadministrative entities
+### 4.5. other vertical modules being currently implementedad
 
 At the moment of this writing, we are working on a couple of extra vertical modules: *Spanish administrative entities* and the transformation of the information about *Spain's university staffing*, which is right now included as instances of the core-class *asio:Role*.
 The first one is designed to encompass all the relevant entities belonging to Spain's *administración autonómica* related to the geopolitical subdivisions of the previous vertical module, to which they are going to be seamlessly linked.
