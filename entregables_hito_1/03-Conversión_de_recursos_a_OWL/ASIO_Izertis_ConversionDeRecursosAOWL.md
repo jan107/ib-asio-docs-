@@ -51,7 +51,7 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX asioModules: <http://purl.org/asio/modules#> 
-PREFIX emergel: <http://purl.org/asio/core#>
+PREFIX asio: <http://purl.org/asio/core#>
 PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
 PREFIX provo: <http://www.w3.org/ns/prov#>
 
