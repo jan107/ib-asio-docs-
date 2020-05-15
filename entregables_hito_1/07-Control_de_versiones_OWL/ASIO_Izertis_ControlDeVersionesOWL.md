@@ -34,7 +34,7 @@ Desde este sistemas sería posible añadir metadatos adicionales en el momento d
 
 Actualmente este nivel todavía no se encuentra implementado en el sistema de sincronización, pero es algo que tenemos contemplado y nuestra idea es implementar este nivel de cara a futuras versiones del sistema de sincronización.
 
-### Nivel 5: Sincronización desde Wikibase
+### Nivel 5: Sincronización desde Wikibase
 Este nivel se correspondería con la sincronización de cambios que se produzcan en Wikibase al sistema de control de versiones donde se almacena la ontología (sincionización hacia atrás).
 
 Por ejemplo, sería posible añadir metadatos a la propia ontología indicando la versión y la procedencia de estos cambios.
@@ -44,9 +44,9 @@ Dado que la sincronización hacia atrás todavía es una funcionalidad que no se
 ## Validación de los cambios en el sistema de control versiones
 Una vez se han producido cambios sobre la ontología y por tanto en el control de versiones es necesario validar que estos cambios no tienen un efecto negativo sobre las versiones ya existentes de la ontología. Esto es, que por ejemplo no se empleé un prefijo que no ha sido definido con anterioridad, algo que sintácticamente es posible pero semánticamente produciría un error en los sistemas que consuman la ontología en el futuro.
 
-Para ver como se soluciona este problema se ha diseñado e implementado un sistema de integración continua que se ejecuta cada vez que se produce un cambio en la ontología dentro del sistema de control de versiones. Toda la documentación referente a este sistema se encuentra dentro de la carpeta `integracion_continua_github` de este mismo directorio.
+Para ver como se soluciona este problema se ha diseñado e implementado un sistema de integración continua que se ejecuta cada vez que se produce un cambio en la ontología dentro del sistema de control de versiones. Toda la documentación referente a este sistema se encuentra dentro de la carpeta `01_ontology_continuous_integration` de este mismo directorio.
 
 ## Propagación de los cambios al triplestore
 Una vez los cambios en la ontología han pasado el proceso de validación, y los administradores de ésta consideran que se puede crear una nueva versión estable, se procederá a la sincronización de los cambios producidos en la ontología a Wikibase.
 
-Estos cambios se realizarán de forma automática cada vez que se realice una nueva [release](https://help.github.com/en/enterprise/2.13/user/articles/creating-releases) en el repositorio donde la ontología se encuentra almacenada. Toda la documentación sobre este sistema se encuentra dentro de la carpeta `sincronizacion_ontologia_wikibase` de este directorio.
+Estos cambios se realizarán de forma automática cada vez que se realice una nueva [release](https://help.github.com/en/enterprise/2.13/user/articles/creating-releases) en el repositorio donde la ontología se encuentra almacenada. Toda la documentación sobre este sistema se encuentra dentro de la carpeta `02_hercules_synchronization` de este directorio.
