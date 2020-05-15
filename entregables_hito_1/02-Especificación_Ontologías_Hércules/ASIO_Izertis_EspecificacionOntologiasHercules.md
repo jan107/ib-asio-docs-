@@ -57,6 +57,8 @@ These are the full list of classes (available also in the [LODE](https://essepun
 
 ![1st-example](./images/core-deployed.png)
 
+The first column in the left, shows the first-level classes, under *owl:Thing*, without specifying subclasses. The central column shows the subclasses of the upper-level part of the first column, and, finally, the column in the right deploys the subclasses of the lower-levelclasses part of the first column.
+This figure illustrates hence in a non-orthodox way the entire list of classes included in the ASIO ontology and we are going to .
 The participation in a project by a consortium of a company and a research group belonging to a university can be grasped by the following figure:
 
 ![1st-example](./images/project-participation.png)
