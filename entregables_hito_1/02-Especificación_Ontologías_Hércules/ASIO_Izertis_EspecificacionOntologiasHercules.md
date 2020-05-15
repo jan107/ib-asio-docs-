@@ -71,16 +71,18 @@ As far as the different profiles and roles of a person are concerned, the next f
 
 ![1st-example](./images/roles.png)
 
-Person Daniel can seamlessly have a twofold role: a teaching role and a researching one, which can co-exist for that given individual. Besides that, thanks to the class *asio:Profile*, not featured in the diagram, a given person can combine and/split her different profiles according to a given context (class asio:Context).
+Person Daniel can seamlessly have a twofold role: a teaching role and a researching one, which can co-exist for that given individual. Besides that, thanks to the class *asio:Profile*, not featured in the diagram, a given person can combine and/split her different profiles according to a given context (class *asio:Context*).
 
-Another *graphical* example elaborating how the core ontology deals with a Patent shows the classes (Patent, Person, Organization), object and data properties involved in the modelling:
+Several other parts of the core ontology could be illustrated here by means of figures but, as we already include an extensive annex with competences questions answered through SPARQL queries, we are not going to be exhaustive here.
+
+As a final *graphical* example we are going to elaborate how the core ontology deals with a Patent shows the classes (Patent, Person, Organization), object and data properties involved in the modelling:
 
 
 
 ![1st-example](./images/patent.png)
 
 
-The part of the core ontology involving patents is a clear candidate to integrate an ad hoc horizontal module, given its autonomous nature.
+The part of the core ontology involving patents is a clear candidate to integrate an *ad hoc* horizontal module, given its autonomous nature. Other theme areas as well, and in future releases of the core these areas will be *severed* and separate.
 
 
 
