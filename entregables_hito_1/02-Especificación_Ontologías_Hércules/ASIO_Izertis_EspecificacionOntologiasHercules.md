@@ -101,7 +101,7 @@ In that sense, the labels in the Western *killer* *languages*, a concept we take
 
 Let's have a look at one example corresponding to the class **Master's thesis**:
 
-```
+```turtle
 ###  http://www.asio.es/asioontologies/asio#MastersThesis
 asio:MastersThesis rdf:type owl:Class ;
                    rdfs:subClassOf asio:Thesis ;
@@ -249,7 +249,7 @@ Mihaly, Heder (2017). "From NASA to EU: the evolution of the TRL scale in Public
 
 Skutnabb-Kangas, T. (2000). *Linguistic Genocide in Education*. New Jersey: Lawrence Erlbaum Associates Inc.
 
-Vandenbussche, P.; Atemezing, G.; Poveda-Villalón, M.; Vatant, B. (2014). *Pierre-Yves V. et al. / LOV: a gateway to reusable semantic vocabularies on the Web*. (article, IOS Press, 2014), DOI: 8. 437-452. 10.3233/SW-160213, available at [Semantic Web Journal](http://www.semantic-web-journal.net/system/files/swj1127.pdf).
+Vandenbussche, P.; Atemezing, G.; Poveda-Villalón, M.; Vatant, B. (2014). *Pierre-Yves V. et al. / LOV: a gateway to reusable semantic vocabularies on the Web*. (article, IOS Press, 2014), DOI: 8. 437-452. 10.3233/SW-160213, available at [Semantic Web Journal](http://www.semantic-web-journal.net/system/files/swj1127.pdf).
 
 
 
