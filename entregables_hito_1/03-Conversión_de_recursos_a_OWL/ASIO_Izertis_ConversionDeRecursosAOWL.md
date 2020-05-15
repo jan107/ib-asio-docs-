@@ -1,17 +1,13 @@
 ![](./images/logos_feder.png)
 
-# Herramientas de conversión de recursos a OWL/RDF
+# Herramientas de Conversión de Recursos a OWL/RDF
 
-## 0. sobre este documento
-
-Este documento enumera someramente las herramientas consideradas y utilizadas para la conversión de recursos desestructurados (documentos, PDFs, etc.) a formatos estructurados y reparovechables en los módulos verticales de la ontología ASIO, que ya han sido descritos con detalle en el documento de la especificación de la ontología.
-
-## 1. introducción
+## Introducción
+Este documento enumera las herramientas consideradas y utilizadas para la conversión de recursos desestructurados (documentos, PDFs, etc.) a formatos estructurados y re-aprovechables en los módulos verticales de la ontología Hércules, que ya han sido descritos con detalle en el documento de la especificación de la ontología.
 
 Con el fin de convertir a formatos semánticos recursos interesantes de ser incluídos en la ontología, sobre todo vocabularios cuyas fuentes venían en formatos desestructurados, se llevó a cabo una búsqueda de herramientas que facilitaran la labor.
 
-## 2. herramientas consideradas
-
+## Herramientas Consideradas
 El equipo de desarrollo ya conocía dos herramientas candidatas, desarrolladas con la participación de  miembros del grupo de investigación WESO.
 
 La primera de ellas, [ShExML](http://shexml.herminiogarcia.com/), explota Shape Expressions Mapping Language, un lenguaje heterogéneo para el mapeo de datos basado en Shape Expressions (ShEx), cuyo objetivo es permitir a usuarios mapear y conglomerar fuentes de datos heterogéneas en un medio de representación unificado en RDF.
@@ -20,9 +16,8 @@ Sin embargo, para esta fase inicial del proyecto se desestimó el uso de esta he
 
 La segunda herramienta, [Tablines](https://bitbucket.org/alfonso_noriega/tablines/src/default/), fue originalmente desarrollada en la Fundación CTIC, en Asturias, con la participación de uno de los integrantes actuales del grupo WESO, y fue la que finalmente se utilizó, sobre todo por el conocimiento del lenguaje necesario para crear los programas de transformación de ese integrante.
 
-## 3. ejemplo de conversión
-
-Uno de los ejemplos más representativos de conversión de datos se utilizan en el módulo vertical de las áreas temáticas, que proceden de la Agencia Estatal de Investigación del ministerio. Este documento es un PDF, formato poco procesable, en el que se incluye rudimentariamente como anexo una tabla que se convirtió a datos tabulares desde el PDF y a continuación a RDF, bajo el formato SKOS-Core.
+## Ejemplo de Conversión
+Uno de los ejemplos más representativos de conversión de datos se utilizan en el módulo vertical de las áreas temáticas, que proceden de la Agencia Estatal de Investigación del Ministerio de Economía Industria y Competitividad. Este documento es un PDF, formato poco procesable, en el que se incluye rudimentariamente como anexo una tabla que se convirtió a datos tabulares desde el PDF y a continuación a RDF, bajo el formato SKOS-Core.
 
 El documento ofrece este aspecto en su cabecera:
 
@@ -60,37 +55,26 @@ PREFIX emergel: <http://purl.org/asio/core#>
 PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
 PREFIX provo: <http://www.w3.org/ns/prov#>
 
- 
-
-
-FOR ?rowId IN rows FILTER get-row(?rowId)
-    MATCH [?subject2ndCode,?subject3rdCode,?subjectArea,?anlabel,?astlabel,?calabel,?enlabel,?eslabel,?extlabel,?eulabel,?frlabel,?gllabel,?oclabel,?ptlabel] IN horizontal 
+FOR ?rowId IN rows
+    FILTER get-row(?rowId)
+    MATCH [?subject2ndCode,?subject3rdCode,?subjectArea,?anlabel,?astlabel,?calabel,?enlabel,?eslabel,?extlabel,?eulabel,?frlabel,?gllabel,?oclabel,?ptlabel]
+    IN horizontal 
     
-  LET ?subjectArea3rdResource = resource(concat("ES_SUBJECT_AREA_LEVEL_3_",replace(?subject3rdCode,"-","_")),asioModules)
-  LET ?subjectArea3rdCodeResource = resource(concat("ES_SUBJECT_AREA_LEVEL_3_CODE_",replace(?subject3rdCode,"-","_")),asioModules)
-
- 
-
-  LET ?subjectArea2ndResource = resource(concat("ES_SUBJECT_AREA_LEVEL_2_",replace(?subject2ndCode,"-","_")),asioModules)
-
- 
-
-    LET ?esLangLabel = setLangTag(?eslabel, "es")
-    LET ?astLangLabel = setLangTag(?astlabel, "ast")
-    LET ?caLangLabel = setLangTag(?calabel, "ca")
-    LET ?glLangLabel = setLangTag(?gllabel, "gl")
-    LET ?ptLangLabel = setLangTag(?ptlabel, "pt")
-    LET ?frLangLabel = setLangTag(?frlabel, "fr")
-    LET ?enLangLabel = setLangTag(?enlabel, "en")
-
- 
-
- { 
-    WHEN not matches(?anlabel,"") DO
-      LET ?anLangLabel = setLangTag(?anlabel, "an");
-    WHEN not matches(?eulabel,"") DO
-      LET ?euLangLabel = setLangTag(?eulabel, "eu");
-      
+        LET ?subjectArea3rdResource = resource(concat("ES_SUBJECT_AREA_LEVEL_3_",replace(?subject3rdCode,"-","_")),asioModules)
+        LET ?subjectArea3rdCodeResource = resource(concat("ES_SUBJECT_AREA_LEVEL_3_CODE_",replace(?subject3rdCode,"-","_")),asioModules)
+        LET ?subjectArea2ndResource = resource(concat("ES_SUBJECT_AREA_LEVEL_2_",replace(?subject2ndCode,"-","_")),asioModules)
+        LET ?esLangLabel = setLangTag(?eslabel, "es")
+        LET ?astLangLabel = setLangTag(?astlabel, "ast")
+        LET ?caLangLabel = setLangTag(?calabel, "ca")
+        LET ?glLangLabel = setLangTag(?gllabel, "gl")
+        LET ?ptLangLabel = setLangTag(?ptlabel, "pt")
+        LET ?frLangLabel = setLangTag(?frlabel, "fr")
+        LET ?enLangLabel = setLangTag(?enlabel, "en")
+            { 
+                WHEN not matches(?anlabel,"") DO
+                  LET ?anLangLabel = setLangTag(?anlabel, "an");
+                WHEN not matches(?eulabel,"") DO
+                  LET ?euLangLabel = setLangTag(?eulabel, "eu");
     ...
 ```
 
