@@ -82,7 +82,16 @@ As a final *graphical* example we are going to elaborate how the core ontology d
 ![1st-example](./images/patent.png)
 
 
-The part of the core ontology involving patents is a clear candidate to integrate an *ad hoc* horizontal module, given its autonomous nature. Other theme areas show as well some topic independence, and in future releases of the core, these areas will be *severed* and separate.
+In this example, an instance of the class *asio:Patent*, the "SELF-GENERATING AUTOMATIC CODE GENERATOR", is linked to some people:
+
+* its inventor, Nelson H. Lin
+* its primary examiner, Jean-Pierre Peguy (a key person in any patent assessment)
+* Jean-Pierre Peguy's assistant, (another key person in any patent assessment)
+
+and also to a patent assignee, in this case the company Robocoder Corporation.
+On the other hand, any patent has always a patent number, a patent application number, a date, a nationality, etc.
+
+As we already aforementioned, we are currently studying the segmentation of the core ontology into horizontal modules and it is precisely the part involving patents a clear candidate to integrate an *ad hoc* horizontal module, given its autonomous nature. Other theme areas show as well some topic independence, and in future releases of the core, these areas will be *severed* and separate.
 
 
 
