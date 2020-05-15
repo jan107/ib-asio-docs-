@@ -61,7 +61,7 @@ The participation in a project by a consortium of a company and a research group
 
 ![1st-example](./images/project-participation.png)
 
-where the specific case of the Hércules project is illustrated highliting the participants.
+where the specific case of the Hércules project is illustrated highliting the participants (Izertis and WESO).
 
 As far as the different profiles and roles of a person are concerned, the next figure illustrates how a single person can play different roles:
 
