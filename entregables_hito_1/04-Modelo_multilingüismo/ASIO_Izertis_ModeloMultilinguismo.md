@@ -41,7 +41,7 @@ Así por ejemplo, en el caso de la Región de Murcia, el recurso se crearía a p
 
 Una vez creado el recurso a partir de ese código ISO, inserto en la URI y opaco respecto al lenguaje natural, ese recurso puede ya recibir un tratamiento multilingüe, sin causar problemas de codificación, por medio de etiquetas `xml:lang` o `skos:prefLabel`:
 
-```
+```turtle
 skos:prefLabel "Región de Murcia"@es ;
 skos:prefLabel "Região de Múrcia"@pt ;
 skos:prefLabel "Region of Murcia"@en ;
@@ -94,8 +94,6 @@ Si en un principio se pensó utilizar únicamente etiquetas `rdfs:label` para to
 
 Sin embargo, las etiquetas léxicas de rdfs (como `rdfs:label`) podrían no ser suficientes en todos los casos hacer una duplicación por medio de las etiquetas léxicas de SKOS (como `skos:prefLabel`) podría resultar útil, sobre todo por ponerla en relación con posibles etiquetas alternativas, explicitadas por medio de `skos:altLabel`  o, incluso, `skos:hiddenLabel` y así mantener una relación léxica de sinonimia más lógica y *modelada*.
 
-**FIXME-> desarrollo en profundidad y ejemplos de etiquetas léxicas más allá de las de rdfs**
-
 
 
 Propiedades de documentación
@@ -107,7 +105,6 @@ Recurrir a la etiqueta `rdfs:comment` para documentar y explicar las entidades e
 
 También [SKOS-Core](https://www.w3.org/TR/swbp-skos-core-spec/) ofrece otras interesantes para nuestros intereses, sobre todo aplicables a los esquemas de conceptos que se explotarán en los módulos verticales de la ontología, como `skos:definition` o `skos:notation`.
 
-**FIXME-> desarrollo en profundidad y ejemplos concretos de documentación**
 
 
 
@@ -121,9 +118,6 @@ Sin embargo, Lemon puede no ser suficiente para representar todo el conocimiento
 
 A la hora de seleccionar vocabularios para reutilizar, elegir vocabularios multilingües en la medida que sea posible[^7].
 
-
-
-**FIXME-> desarrollo en profundidad (SKOS-XL; limitaciones de Lemon; iniciativas de superación) y ejemplos concretos de representación léxica**
 
 *Multiescriptalismo*
 ====================
@@ -163,7 +157,7 @@ Veamos algún ejemplo de como las URIs deberían
 
 Para el caso griego,
 
-```
+```turtle
 rdfs:label "Ηλίας Κουμπαράκης"@el ;
 rdfs:label "Ilias Koubarakis"@el-Latn ;
 skos:prefLabel "Ηλίας Κουμπαράκης"@el ;
@@ -189,7 +183,8 @@ skos:prefLabel "Grigor Batinkov"@bg-Latn ;
 
 Para el caso serbio,
 
-```rdfs:label \"Александар Карађорђевић\"\@sr
+```turtle
+rdfs:label \"Александар Карађорђевић\"\@sr
 rdfs:label "Aleksandar Karađorđević"@sr-Latn ;
 skos:prefLabel "Александар Карађорђевић"@sr ;
 skos:altLabel "Саша Карађорђевић"@sr ;
@@ -201,7 +196,7 @@ skos:altLabel "Aleksandar Karadjordjević"@sr-Latn ;
 
 Para el caso ruso,
 
-```
+```turtle
 rdfs:label "Иван Уваров"@ru
 rdfs:label "Ivan Uvarov"@ru-Latn
 skos:prefLabel "Иван Уваров"@ru
@@ -230,7 +225,7 @@ que nos dejaría en la inopia incluso utilizando todas las habilidades y trucos 
 
 Un tratamiento cuidadoso y *consciente* del multiescriptalismo como el que mostramos a continuación:
 
-```
+```turtle
 #author:
 rdfs:label "Александр Николаевич Соколов"@ru
 rdfs:label "Aleksandr Nikolaevich Sokolov"@ru-Latn
