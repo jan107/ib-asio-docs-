@@ -6,7 +6,7 @@ El presente documento intenta determinar la idoneidad  de la aplicación del con
 
 En definitiva, el documento trata de analizar, pros y contras de su uso, ya sea de forma global o parcial, desde el punto de vista del proyecto ASIO.
 
-Para ello, este documento se basara en los principios y conclusiones expuestas en los documentos previos [Requisitos funcionales para API REST LDP en proyecto ASIO de la UM](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/arquitectura_semantica/analisis_funcional/Requisitos LDP Server/Requisitos funcionales para API REST LDP en proyecto ASIO de la UM.md) y [Propuesta de diseño API LDP y EndPoint SPARQL](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/arquitectura_semantica/analisis_funcional/Requisitos LDP Server/Propuesta de diseño API LDP y EndPoint SPARQL.md).
+Para ello, este documento se basara en los principios y conclusiones expuestas en los documentos previos [Requisitos funcionales para API REST LDP en proyecto ASIO de la UM](https://github.com/HerculesCRUE/ib-asio-docs-/blob/master/entregables_hito_1/10-Análisis_sobre_necesidad_de_cumplimiento_LDP/Requisitos LDP Server/Requisitos funcionales para API REST LDP en proyecto ASIO de la UM.md) y [Propuesta de diseño API LDP y EndPoint SPARQL](https://github.com/HerculesCRUE/ib-asio-docs-/blob/master/entregables_hito_1/10-Análisis_sobre_necesidad_de_cumplimiento_LDP/Requisitos LDP Server/Propuesta de diseño API LDP y EndPoint SPARQL.md)
 
 ## Drivers de decisión
 
@@ -119,7 +119,7 @@ Dado que hay multitud de [implementaciones de servidores LDP](https://www.w3.org
 
 ### Posibles no cumplimientos del  la LDP en proyecto ASIO
 
-Existen otros protocolos que pueden resultar interesantes para el proyecto ASIO, como es el caso de el estándar Memento descrito en el documento [Memento Guía y Normativa](./Requisitos LDP Server/Memento Guía y Normativa.md). Dicho protocolo establece los requerimientos para implementar un servidor que permita acceder a un mismo recurso en distintos estados del tiempo, con lo que realizar una consulta en un determinado espacio temporal, seria posible.
+Existen otros protocolos que pueden resultar interesantes para el proyecto ASIO, como es el caso de el estándar Memento descrito en el documento [Memento Guía y Normativa](https://github.com/HerculesCRUE/ib-asio-docs-/blob/master/entregables_hito_1/10-Análisis_sobre_necesidad_de_cumplimiento_LDP/Requisitos LDP Server/Memento Guía y Normativa.md). Dicho protocolo establece los requerimientos para implementar un servidor que permita acceder a un mismo recurso en distintos estados del tiempo, con lo que realizar una consulta en un determinado espacio temporal, seria posible.
 
 El protocolo Memento, entra en conflicto, con 2 requerimientos de tipo **SHOULD** expresado por la LDP
 
