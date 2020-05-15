@@ -7,9 +7,6 @@ Introducción
 
 Este informe documenta los casos de uso y contextos que se utilizarán en el proyecto Hércules para poner a prueba modelos multilingües (y de multiescriptalismo).
 
-**FIXME->una vez cerrada la estructura del doc (sin más secciones potenciales) y avanzadas casi conclusivamente todas las secciones, completar la intro**
-
-
 
 # Reglas del modelo de multilingüismo
 
@@ -117,10 +114,10 @@ También [SKOS-Core](https://www.w3.org/TR/swbp-skos-core-spec/) ofrece otras in
 Otros metadatos lingüísticos
 ----------------------------
 
-Utilización de metadatos lingüísticos cuando sea necesario (patrón *linguistic metadata*[^4]). Aunque para muchos recursos, puede ser suficiente disponer de una representación en lenguaje natural ligera con
+Utilización de metadatos lingüísticos cuando sea necesario (patrón *linguistic metadata*[^4]). Aunque para muchos recursos, puede ser suficiente disponer de una representación en lenguaje natural ligera con
 etiquetas como `rdfs:label`, `rdfs:comment`, etc. En algunos vocabularios puede ser interesante utilizar representaciones lingüísticas más ricas como puede ser el modelo Lemon[^5], que permite representar aspectos léxicos de forma semántica.
 
-Sin embargo, Lemon puede no ser suficiente para representar todo el conocimiento léxico de forma semántica \[2\] y este tipo de representaciones es una línea de investigación activa. A modo de ejemplo, en el proyecto europeo Prêt-à-LLOD[^6] se está actualmente trabajando en la creación y representación de datos enlazados multilingües.
+Sin embargo, Lemon puede no ser suficiente para representar todo el conocimiento léxico de forma semántica \[2\] y este tipo de representaciones es una línea de investigación activa. A modo de ejemplo, en el proyecto europeo Prêt-à-LLOD[^6] se está actualmente trabajando en la creación y representación de datos enlazados multilingües.
 
 A la hora de seleccionar vocabularios para reutilizar, elegir vocabularios multilingües en la medida que sea posible[^7].
 
