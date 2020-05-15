@@ -14,13 +14,17 @@
 
 ​	[2.1. Gestión de usuarios y roles](#gestión-de-usuarios-y-roles)
 
-​		[2.1.1. Edición de perfil](#edición-de-perfil)
+[2.. Gestión de usuarios y roles](#gestión-de-usuarios-y-roles)
+
+​		[2.1.1. Dar de alta usuario no PDI](#dar-de-alta -usuario-no-PDI)
+
+​		[2.1.2. Edición de perfil](#edición-de-perfil)
 
 ​		[2.1.2. Pantalla de gestión de roles](#pantalla-de-gestión-de-roles)
 
-​		[2.1.3. Edición de perfil y sus roles por el usuario administrador](#edición-de-perfil-y-sus-roles-por-el-usuario-administrador)
+​		[2.1.4. Edición de perfil y sus roles por el usuario administrador](#edición-de-perfil-y-sus-roles-por-el-usuario-administrador)
 
-​		[2.1.4. Gestión de ASIO](#gestión-de-asio)
+​		[2.1.5. Gestión de ASIO](#gestión-de-asio)
 
 ​	[2.2. Administración ontologías y datos de las ontologías](#administración-ontologías-y-datos-de-las-ontologías)
 
@@ -59,6 +63,14 @@ Gestión de usuarios y roles
 
 
 
+### Dar de alta usuario no PDI
+
+Un usuario no PDI deberá de estar dado de alta antes por un usuario administrador, que deberá introducir su email en el sistema.
+
+![Administrador añade usuarios](./images/mocks/administrador-añade-usuario.png)
+
+
+
 ### Edición de perfil
 
 Cualquier usuario podrá editar su propio perfil.
@@ -91,6 +103,8 @@ A partir de esta pantalla de búsqueda podrá editarlo.
 
 
 
+
+
 ### Gestión de ASIO
 
 Los usuarios con rol Gestor ASIO podrán modificar la frecuencia de carga
@@ -103,11 +117,7 @@ de datos automática de la aplicación:
 Administración ontologías y datos de las ontologías
 ---------------------------------------------------
 
-### Cargar datos
 
-Los usuarios con rol administrador de la universidad, podrán cargar ontologías y sus datos a través de la aplicación web. Para esto dispondrán de una pantalla en la podrán seleccionar un fichero con formato CSV, XML o Json, que podrá ser de un tamaño máximo. *Los campos de las ontologías importadas tendrán visualización pública por defecto.*
-
-![Administrador universidad carga datos](./images/mocks/cargar-datos.png)
 
 ### Modificar ontologías y sus roles
 

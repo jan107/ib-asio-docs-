@@ -57,11 +57,14 @@ These are the full list of classes (available also in the [LODE](https://essepun
 
 ![1st-example](./images/core-deployed.png)
 
-The participation in a project by a consortium of a company and a research group belonging to a university can be grasped by the following figure:
+The first column in the left, shows the first-level classes, under *owl:Thing*, without specifying subclasses. The central column shows the subclasses of the upper-level part of the first column, and, finally, the column in the right deploys the subclasses of the lower-levelclasses part of the first column.
+This figure illustrates hence in a non-orthodox way the entire list of classes included in the ASIO ontology, however, as the number is quite extensive, in this document we are going to showcase just some *theme* examples by providing classes, instances and properties in specific contexts.
+
+For instance, the participation in a project by a consortium of a company and a research group belonging to a university can be grasped by the following figure:
 
 ![1st-example](./images/project-participation.png)
 
-where the specific case of the Hércules project is illustrated highliting the participants.
+where the specific case of the Hércules project is illustrated and both participants, a company such as Izertis and a research group from the University of Oviedo, WESO are highlited.
 
 As far as the different profiles and roles of a person are concerned, the next figure illustrates how a single person can play different roles:
 
@@ -76,7 +79,7 @@ A graphical example elaborating how the core ontology deals with a Patent shows 
 ![1st-example](./images/patent.png)
 
 
-
+The part of the core ontology involving patents is a clear candidate to integrate an ad hoc horizontal module, given its autonomous nature.
 
 
 
@@ -232,7 +235,7 @@ It also includes a limited sample of subdivisions (schools, faculties, centres) 
 
 
 
-### 4.5. other vertical modules being currently implementedadministrative entities
+### 4.5. other vertical modules being currently implementedad
 
 At the moment of this writing, we are working on a couple of extra vertical modules: *Spanish administrative entities* and the transformation of the information about *Spain's university staffing*, which is right now included as instances of the core-class *asio:Role*.
 The first one is designed to encompass all the relevant entities belonging to Spain's *administración autonómica* related to the geopolitical subdivisions of the previous vertical module, to which they are going to be seamlessly linked.
