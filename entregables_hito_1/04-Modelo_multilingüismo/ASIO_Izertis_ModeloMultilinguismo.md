@@ -171,7 +171,7 @@ la romanización ISO[^9].
 
 Para el caso búlgaro,
 
-```
+```turtle
 rdfs:label "Григор Батинков"@bg ;
 rdfs:label "Grigor Batinkov"@bg-Latn ;
 skos:prefLabel "Григор Батинков"@bg ;
