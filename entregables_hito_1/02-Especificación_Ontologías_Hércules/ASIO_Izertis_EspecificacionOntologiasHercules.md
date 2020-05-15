@@ -59,15 +59,14 @@ These are the full list of classes (available also in the [LODE](https://essepun
 
 
 
-An example loosely coming from one of competence questions shows how some of these classes, through instances are related:
+An example elaborating how the core ontology deals with a Patent shows the classes, object and data properties involved in the modelling:
 
 
 
-![1st-example](./images/glance1.png)
+![1st-example](./images/patent.png)
 
 
 
-**DISCLAIMER about the properties**: Properties, from both the object and data type, are still a work in progress and the assignation of domains and ranges are often neglected at this stage of the implementation. Domains and ranges are delicate matter with respect to the ontological commitments of the vocabulary and must be still studied.
 
 
 
