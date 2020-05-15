@@ -46,7 +46,53 @@ Y que finalmente es *explotado* y convertido a SKOS-Core después de escribir un
 
 
 
-![1st-example](./images/areas-tematicas-4.png)
+```
+PREFIX project: <http://weso.es/tablines/project/subjectAreas/>
+PREFIX my: <http://weso.es/tablines/project/subjectAreas/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX asioModules: <http://purl.org/asio/modules#> 
+PREFIX emergel: <http://purl.org/asio/core#>
+PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
+PREFIX provo: <http://www.w3.org/ns/prov#>
+
+ 
+
+
+FOR ?rowId IN rows FILTER get-row(?rowId)
+    MATCH [?subject2ndCode,?subject3rdCode,?subjectArea,?anlabel,?astlabel,?calabel,?enlabel,?eslabel,?extlabel,?eulabel,?frlabel,?gllabel,?oclabel,?ptlabel] IN horizontal 
+    
+  LET ?subjectArea3rdResource = resource(concat("ES_SUBJECT_AREA_LEVEL_3_",replace(?subject3rdCode,"-","_")),asioModules)
+  LET ?subjectArea3rdCodeResource = resource(concat("ES_SUBJECT_AREA_LEVEL_3_CODE_",replace(?subject3rdCode,"-","_")),asioModules)
+
+ 
+
+  LET ?subjectArea2ndResource = resource(concat("ES_SUBJECT_AREA_LEVEL_2_",replace(?subject2ndCode,"-","_")),asioModules)
+
+ 
+
+    LET ?esLangLabel = setLangTag(?eslabel, "es")
+    LET ?astLangLabel = setLangTag(?astlabel, "ast")
+    LET ?caLangLabel = setLangTag(?calabel, "ca")
+    LET ?glLangLabel = setLangTag(?gllabel, "gl")
+    LET ?ptLangLabel = setLangTag(?ptlabel, "pt")
+    LET ?frLangLabel = setLangTag(?frlabel, "fr")
+    LET ?enLangLabel = setLangTag(?enlabel, "en")
+
+ 
+
+ { 
+    WHEN not matches(?anlabel,"") DO
+      LET ?anLangLabel = setLangTag(?anlabel, "an");
+    WHEN not matches(?eulabel,"") DO
+      LET ?euLangLabel = setLangTag(?eulabel, "eu");
+      
+    ...
+```
 
 
 
