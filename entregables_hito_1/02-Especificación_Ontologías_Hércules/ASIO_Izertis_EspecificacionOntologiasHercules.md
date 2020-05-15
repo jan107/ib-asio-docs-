@@ -223,13 +223,13 @@ It also includes a limited sample of subdivisions (schools, faculties, centres) 
 
 
 
-### 4.5. administrative entities
+### 4.5. other vertical modules being currently implementedadministrative entities
 
-Another vertical module being implemented right now but not yet available is designed to encompass all the relevant entities belonging to Spain's *administración autonómica* related to the geopolitical subdivisions of the previous vertical module, to which they are going to be seamlessly linked.
+At the moment of this writing, we are working on a couple of extra vertical modules: *Spanish administrative entities* and the transformation of the information about *Spain's university staffing*, which is right now included as instances of the core-class *asio:Role*.
+The first one is designed to encompass all the relevant entities belonging to Spain's *administración autonómica* related to the geopolitical subdivisions of the previous vertical module, to which they are going to be seamlessly linked.
+The implementation of this vertical module will be also carried out using SKOS-Core as it shows a clear hierarchical structure and it will include the first-level bodies of *administración autonómica* (*conserjerías*), as available at Spain's administration portal [[1]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/comunidadesAutonomas/comunidadesAutonomas.htm?idCCAA=14), and the second-level [[2]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/fichaUnidadOrganica.htm?idUnidOrganica=123276&origenUO=comunidadesAutonomas&volver=comunidadesAutonomas&idCCAA=14), mainly *direcciones generales* and *consorcios*.
 
-It is, at the moment of this writing, a work in progress but the implementation so far includes the first-level bodies of *administración autonómica* (*conserjerías*), as available at Spain's administration portal [[1]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/comunidadesAutonomas/comunidadesAutonomas.htm?idCCAA=14), and the second-level [[2]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/fichaUnidadOrganica.htm?idUnidOrganica=123276&origenUO=comunidadesAutonomas&volver=comunidadesAutonomas&idCCAA=14), mainly *direcciones generales* and *consorcios*.
-
-The implementation of this vertical module will be also carried out using SKOS-Core.
+As far as the *Spain's university staffing*, this vertical module will be unplugged from the core ontology and rendered autonomous so similar ones containing the reality of other countries can be implemented in similar fashion and complete the model.
 
 ## 5. References
 
