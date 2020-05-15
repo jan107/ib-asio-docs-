@@ -1,31 +1,15 @@
-**"Proyecto HÉRCULES:**
+![](./images/logos_feder.png)
 
-***Semántica de Datos de Investigación de Universidades* "**
+
 
 Implementación del protocolo OIA PMH
 ====================================
 
 
-                             
-
-Tabla de contenido {#tabla-de-contenido .TOC-Heading}
-==================
-
-Implementación del protocolo OIA PMH 1
-
-
 
 [**Servicio ListIdentifiers** ](#servicio-listidentifiers)
 
-[Respuesta correcta](#respuesta-correcta)
-
-[Respuesta indicando error](#respuesta-indicando-error)
-
 [**Servicio GetRecord** ](#servicio-getrecord)
-
-[Respuesta correcta](#respuesta-correcta-1)
-
-[Respuesta indicando error](#respuesta-indicando-error-1)
 
 [**Más información sobre el protocolo**](#más-información-sobre-el-protocolo)
 
