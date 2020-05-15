@@ -6,6 +6,9 @@ Introducción
 ============
 
 Este informe documenta los casos de uso y contextos que se utilizarán en el proyecto Hércules para poner a prueba modelos multilingües (y de multiescriptalismo).
+La primera parte del informe se centra en el tratamiento dado a los recursos respecto a esos 3 aspectos en el ámbito estrictamente de la Web semántica con ejemplos relevantes del caso de estudio del proyecto.
+
+La segunda parte o final describe las dificultades que nos estamos encontrando ahora mismo para trastaladar esas reglas de modelo al universo de Wikibase.
 
 
 # Reglas del modelo de multilingüismo
@@ -316,7 +319,9 @@ De este modo, estas 'Áreas científicas' han sido *mejoradas* respecto a la ver
 
 Además de las posibilidades de explotación ontológica que proporciona SKOS, que no deja de ser una ontología a su vez, con respecto al *core* de ASIO, las etiquetas multilingües suponen una materia prima interesante para llevar a cabo muchas pruebas *lingüísticas*.
 
+La misma [Agencia Estatal de Investigación](http://www.ciencia.gob.es/portal/site/MICINN/menuitem.8d78849a34f1cd28d0c9d910026041a0/?vgnextoid=664cfb7e04195510VgnVCM1000001d04140aRCRD), publica otro documento en PDF similar en formato y contenidos aunque ligeramente matiado incluyendo unas áreas temáticas que se utilizan para especificar la temática de un proyecto en una convocatoria de ayuda.
 
+Este documento fue sometido a un tratamiento similar al que acabamos de describir para obtener otro módulo vertical dentro de la ontología.
 
 Multilingüismo, *multilocalismo* y *multiescriptalismo* usando Wikidata/Wikibase
 ========================================================
