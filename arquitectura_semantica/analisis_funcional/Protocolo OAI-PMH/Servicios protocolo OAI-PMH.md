@@ -211,7 +211,7 @@ Enviará un XML con la siguiente estructura donde:
 
 
 
-<?xml version=\"1.0\" encoding=\"UTF-8\"?\>
+\<?xml version=\"1.0\" encoding=\"UTF-8\"?\>
 
 \<OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"
 
