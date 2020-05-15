@@ -63,6 +63,12 @@ The participation in a project by a consortium of a company and a research group
 
 where the specific case of the Hércules project is illustrated highliting the participants.
 
+As far as the different profiles and roles of a person are concerned, the next figure illustrates how a single person can play different roles:
+
+![1st-example](./images/roles.png)
+
+where a teaching role and a researching one can co-exist for a given individual.
+
 A graphical example elaborating how the core ontology deals with a Patent shows the classes (Patent, Person, Organization), object and data properties involved in the modelling:
 
 
