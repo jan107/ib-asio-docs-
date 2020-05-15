@@ -76,7 +76,7 @@ A graphical example elaborating how the core ontology deals with a Patent shows 
 ![1st-example](./images/patent.png)
 
 
-
+The part of the core ontology involving patents is a clear candidate to integrate an ad hoc horizontal module, given its autonomous nature.
 
 
 
