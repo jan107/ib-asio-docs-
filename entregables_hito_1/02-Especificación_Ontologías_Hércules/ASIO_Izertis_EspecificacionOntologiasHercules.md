@@ -64,15 +64,15 @@ For instance, the participation in a project by a consortium of a company and a 
 
 ![1st-example](./images/project-participation.png)
 
-where the specific case of the Hércules project is illustrated and both participants, a company such as Izertis and a research group from the University of Oviedo, WESO are highlited.
+where the specific case of the Hércules project is illustrated and both participants, a company such as Izertis and a research group from the University of Oviedo, WESO, are highlited.
 
 As far as the different profiles and roles of a person are concerned, the next figure illustrates how a single person can play different roles:
 
 ![1st-example](./images/roles.png)
 
-where a teaching role and a researching one can co-exist for a given individual.
+Person Daniel can seamlessly have a twofold role: a teaching role and a researching one, which can co-exist for that given individual. Besides that, thanks to the class *asio:Profile*, not featured in the diagram, a given person can combine and/split her different profiles according to a given context (class asio:Context).
 
-A graphical example elaborating how the core ontology deals with a Patent shows the classes (Patent, Person, Organization), object and data properties involved in the modelling:
+Another *graphical* example elaborating how the core ontology deals with a Patent shows the classes (Patent, Person, Organization), object and data properties involved in the modelling:
 
 
 
