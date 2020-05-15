@@ -212,22 +212,14 @@ where still in a tabular format we can check out a first column with codes that 
 In addition to the ontological possibilities offered by SKOS (which is itself an ad hoc ontology) with respect to the ASIO core ontology, these mentioned multilingual labels provide idoneous raw materials to carry out extensively testing with respect to multilingualism, as detailed in the previous section and in a complementary deliverable (*ModeloMultilinguismo*).
 
 ### 4.3 subject areas
+The same exploitation have been used to created the related vertical module Subject areas, from the same [State Research Agency](http://www.ciencia.gob.es/portal/site/MICINN/menuitem.8d78849a34f1cd28d0c9d910026041a0/?vgnextoid=664cfb7e04195510VgnVCM1000001d04140aRCRD), which is used for slightly different cases with the core ontology, but which was modelled equally following the schema provided by SKOS.
 
 
+### 4.4. Spanish universities
 
-### 4.4. Spain's university staffing
-
-Finally, all the specificities of the teaching-and-research positions in the universities of Spain are dealt with in this vertical module, which is still a **work in progress**.
-
-Following a number of informal interviews with informants directly linked to the domain, we have started to gather together an alluvium of entities:
-
-
-
-![1st-example](./images/hr-tea&res-pers.png)
-
-As a **disclaimer** we must warn the reader that these entities are not at all final candidates to populate the vertical module: they are just a starting point in the modelling and just the result of an initial brainstorm carried out in one specific university. They will be contrasted with equivalent entities in the university of Murcia, other universities and, obviously, with reference documents such as the [Ley Orgánica de Universidades](https://www.boe.es/buscar/pdf/2001/BOE-A-2001-24515-consolidado.pdf
-) and the [Estatuto Básico del Empleado Público](https://www.boe.es/buscar/act.php?id=BOE-A-2015-11719
-).
+Another vertical module includes the entire list of the universities of Spain which rich data retrieved from the [RUCT](https://www.educacion.gob.es/ruct/consultacentros.action?actual=centros) portal.
+Initially also modelled using SKOS, it included encompassing *metadata* about each institution, such as specific codes for each centre, multilingual labels when applicable and other information.
+It also includes a limited sample of subdivisions (schools, faculties, centres) from the universities of Murcia, Oviedo, Santiago de Compostela and the Basque Country, and it receives as well special care regarding multilingualism, official codes from the Ministry, etc.
 
 
 
