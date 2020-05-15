@@ -82,7 +82,7 @@ As a final *graphical* example we are going to elaborate how the core ontology d
 ![1st-example](./images/patent.png)
 
 
-The part of the core ontology involving patents is a clear candidate to integrate an *ad hoc* horizontal module, given its autonomous nature. Other theme areas as well, and in future releases of the core these areas will be *severed* and separate.
+The part of the core ontology involving patents is a clear candidate to integrate an *ad hoc* horizontal module, given its autonomous nature. Other theme areas show as well some topic independence, and in future releases of the core, these areas will be *severed* and separate.
 
 
 
