@@ -2,6 +2,20 @@
 
 # Arquitectura de URIs
 
+El servidor de linked data se encargará de **gestionar todas las peticiones** de entrada de los clientes al sistema y redireccionarlas a los elementos que correspondan como puede ser, peticiones al API REST, al servicio de publicación de la Web, al gestor de datos o directamente al Endpoint SPARQL. Estas peticiones se regirán por el esquema de URIs propuesto, por lo que es de vital importancia definir unas pautas correctas y estables desde el comienzo del proyecto.
+
+Este servidor también dispondrá de un sistema de **mapeado entre URIs externas y URIs internas**. Tal y como se indica en el pliego de condiciones, se crearán las siguientes redirecciones:
+
+- **URIs de recursos**: servicio de publicación en la Web con negociación de contenido
+- **URIs OWL o SKOS**: servicio de publicación de ontologías
+- **URIs SPARQL**: Endpoint SPARQL
+- **URIs de documentación**: página Web de documentación
+- **Otras peticiones**: error con enlace a documentación
+
+La API REST a su vez consiste en una capa de acceso al modelo de dominio para ofrecer un punto de acceso desde el exterior, siguiendo el modelo LDP ([Linked Data Platform](https://www.w3.org/TR/ldp/)), en el que se generan representaciones RDF para los recursos y se ofrece el **concepto de contenedores de recursos** así como enlaces entre los mismos. La utilización de un API REST permite que el sistema sea independiente del lenguaje de programación con el que esté implementado e incluso la convivencia de servicios desarrollados en diferentes lenguajes.
+
+El Servicio publicación Web ofrece acceso a los recursos semánticos mediante **negociación de contenidos**. Se ofrecerán al menos formatos HTML y las diversas sintaxis RDF como RDF/XML, Turtle, JSON-LD, etc. Además, el servicio de publicación también ofrecerá una página estática con documentación sobre los datos y cómo acceder a ellos.
+
 ## Objetivo
 
 Todo dato o metadato alojado en el Proyecto Hércules (RDF o  NO-RDF), debe de ser identificado mediante una referencia única, inequívoca, estable, extensible, persistente en el tiempo y ofreciendo garantías de su procedencia, requisitos claves para facilitar su posterior reutilización, basada en  los identificadores de recursos uniformes (URIs).
@@ -21,13 +35,13 @@ Motivados por cumplimiento del requisito de *"el sistema debe de soportar la con
 
 
 
-![doble_architecture](images\double_architecture.png)
+![doble_architecture](./images/double_architecture.png)
 
 
 
 Derivado de la decisión arquitectónica de soportar distintos triple stores, e incluso distintos modelos de datos (actualmente el modelo de Wikibase y modelo de Trellis), surge la necesidad de conciliar, el diseño de URIs que decidamos apropiado para el proyecto, con el modelo de datos de cada uno de los sistemas soportados. Esto a priori, supone que, especialmente en el caso de Wikibase, las URIs, podrían estar sujetas a el modelo de datos de cada uno de los sistemas.
 
-Para evitar el acoplamiento que pudiese derivarse de el uso de una u otra herramienta, y a la vez, mejorar la persistencia de las URIs generadas haciéndolas independientes de la ubicación del recurso, decidimos hacer uso de [PURL](https://es.wikipedia.org/wiki/Localizador_persistente_uniforme_para_recursos) (Localizador persistente de recursos), es decir, el sistema será capaz de realizar un **mapeo**, de la **URI externa** o canónica (que seguirá el diseño expuesto en este documento) para un recurso determinado, y las **URIs internas** del recurso, que representan las ubicaciones "reales" de dicho recurso (que vendrá determinada por el modelo de datos y/o la configuración aplicada), es decir resolverá la URL de cada uno de los modelos a partir de la URI canónica, y viceversa, es decir a partir de la ubicación real del recurso, se podrá también obtener la URI canónica. El componente encargado de realizar la transformación de una URI en otra, será la **Factoría de URIs**.
+Para evitar el acoplamiento que pudiese derivarse de el uso de una u otra herramienta, y a la vez, mejorar la persistencia de las URIs generadas haciéndolas independientes de la ubicación del recurso, decidimos hacer uso de [PURL](https://es.wikipedia.org/wiki/Localizador_persistente_uniforme_para_recursos) (localizador persistente de recursos), es decir, el sistema será capaz de realizar un **mapeo**, de la **URI externa** o canónica (que seguirá el diseño expuesto en este documento) para un recurso determinado, y las **URIs internas** del recurso, que representan las ubicaciones "reales" de dicho recurso (que vendrá determinada por el modelo de datos y/o la configuración aplicada), es decir resolverá la URL de cada uno de los modelos a partir de la URI canónica, y viceversa, es decir a partir de la ubicación real del recurso, se podrá también obtener la URI canónica. El componente encargado de realizar la transformación de una URI en otra, será la **Factoría de URIs**.
 
 Creemos que esta solución aporta la flexibilidad necesaria, para que podamos hacer independiente cualquier diseño esquema de URIs, incluido el que se presenta en este documento, con cualquier ubicación física impuesta por cualquier tipo de herramienta, que a tal efecto podamos usar (actualmente Trellis y/o Wikibase, futuramente cualquier otra).
 
@@ -36,8 +50,6 @@ Por otro lado, esta solución podría dar soporte también al **multilingüismo*
 
 
 ![multilanguage](images/multi_languege_map_language.png)
-
-
 
 
 
@@ -51,9 +63,9 @@ Para garantizar un buen esquema de URIs, creemos que es importante enumerar los 
 
 - Usar protocolo HTTP
 - Ofrecer una estructura
-  - Consistente: De forma que la estructura de la propia URI, obedezca un patrón constante, para cualquier tipo de recurso.
-  - Extensible: De forma que además de dar cabida al conjunto de datos actuales, sea capaz de ofrecer la flexibilidad necesaria para incorporar de forma consistente, los datos que puedan generarse en un futuro.
-  - Persistente: De forma que se de cobertura a las URIs generadas en cualquier momento del tiempo, ante acciones tales como borrado, modificación o cambio de localización del recurso, haciendo uso de los códigos HTTP 3xx para las redirecciones, y 410 para los recursos que ya no están disponibles de forma permanente. 
+  - **Consistente:** De forma que la estructura de la propia URI, obedezca un patrón constante, para cualquier tipo de recurso.
+  - **Extensible:** De forma que además de dar cabida al conjunto de datos actuales, sea capaz de ofrecer la flexibilidad necesaria para incorporar de forma consistente, los datos que puedan generarse en un futuro.
+  - **Persistente:** De forma que se de cobertura a las URIs generadas en cualquier momento del tiempo, ante acciones tales como borrado, modificación o cambio de localización del recurso, haciendo uso de los códigos HTTP 3xx para las redirecciones, y 410 para los recursos que ya no están disponibles de forma permanente. 
 - Ofrecer una estructura comprensible y relevante de forma que la estructura de la URI, ofrezca hasta cierto punto, información relativa a el propio recurso, y su procedencia.
 - No exponer detalles relativos a su implementación técnica (evitar extensiones).
 
@@ -63,15 +75,15 @@ Para cumplir los requisitos enumerados, de la mejor forma posible, se propone el
 
 **http://{dominio}/[{subdominio}]/{tipo}/{concepto}\[/{referencia}\]**
 
-o  para URIs canónicas para un determinado idioma
+Y  para URIs canónicas para un determinado idioma:
 
 **http://{dominio}/[{subdominio}]/{idioma}/{tipo}/{concepto}\[/{referencia}\]**
 
-donde cada elemento del esquema de URIs a partir del elemento idioma (tipo, concepto y referencia) debe mostrarse en el idioma indicado en la URI, si procede (probablemente no procederá para el caso de los identificadores opacos como la referencia)
+Cada elemento del esquema de URIs a partir del elemento idioma (tipo, concepto y referencia) debe mostrarse en el idioma indicado en la URI, si procede (probablemente no procederá para el caso de los identificadores opacos como la referencia):
 
-* **dominio:** Representa el nivel mayor del espacio de nombres para la resolución del URI, y para aportar información relevante sobre el propietario de la información. (ejemplo http://**hercules**)
-* **subdominio (si procede):** Aporta información sobre la entidad o departamento dentro de la entidad a la cual pertenece el recurso de información. Representa el nivel menor del espacio nombres para la resolución del URI, y para aportar información relevante sobre el propietario de la información. (ejemplo http://hercules/**um**)
-* **idioma (solo en el caso de URI canónica por idioma):** codificación de idioma (según la norma internacional ISO 639-1). Dicha selección afectara a, el literal de todas los demás componentes (tipo, concepto y referencia) que deben mostrarse, si es posible, según el idioma indicado en la URL. Esto implica un mapeo de cada URI canónica, a n URIs canónicas  por idioma de forma que sea posible pasar de una a otra forma canónica. Esta transformación se realizara en la Factoría de URIs.
+* **dominio:** Representa el nivel mayor del espacio de nombres para la resolución del URI, y para aportar información relevante sobre el propietario de la información. (ejemplo http://**hercules.org**)
+* **subdominio (si procede):** Aporta información sobre la entidad o departamento dentro de la entidad a la cual pertenece el recurso de información. Representa el nivel menor del espacio nombres para la resolución del URI, y para aportar información relevante sobre el propietario de la información. (ejemplo http://**hercules.org/um**)
+* **idioma (solo en el caso de URI canónica por idioma):** codificación de idioma (según la norma internacional ISO 639-1). Dicha selección afectara a, el literal de todas los demás componentes (tipo, concepto y referencia) que deben mostrarse, si es posible, según el idioma indicado en la URL. Esto implica un mapeo de cada URI canónica, a varias URIs canónicas  por idioma de forma que sea posible pasar de una a otra forma canónica. Esta transformación se realizara en la Factoría de URIs.
 
 * **tipo:** Establece el tipo de información que contiene el recurso. Podrá ser uno de los enumerados:
 
@@ -159,7 +171,7 @@ Con el fin de garantizar coherencia en la implementación del patrón descrito, 
   - Eliminar caracteres propios de el idioma, tales como acentos, o signos de puntuación.
   - Usar el guión medio (-) como separador de palabras.
   - Evitar abreviaturas, salvo que esta sea evidente.
-- Para los componentes que definen instancias (referencia), mirar la sección de [identificadores](#Identificadores (URIs)).
+- Para los componentes que definen instancias (referencia), mirar la sección de [Identificadores (URIs)](#Identificadores (URIs)).
 
 ## Identificadores (URIs)
 
@@ -170,15 +182,15 @@ En el caso del proyecto Hércules, el modelo de dominio es más complejo y reque
 - **Investigadores**: profesores, grupos de investigación, colaboradores externos, etc.
 - **Aportaciones**: libros, capítulos de libros, artículos, congresos, tutoriales, etc. 
 - **Instituciones**: universidades, centros de investigación, grupos de investigación, etc.
-- **Otras entidades** (pendiente ontologías)
+- **Otras entidades** (pendientes de definir)
 
 La resolución del identificador se implementara en la Factoría de URIs. Para ello se seguirán siempre los siguientes normas generales
 
-1. Los identificadores deben de ser opacos o semi-opacos.
+1. Los identificadores deben de ser opacos.
 2. No deben de dar información acerca de las propiedades del recurso.
 3. Reusar identificadores existentes en caso de que sea posible (por ejemplo el de la base de datos o fuente de información, de forma que este sea trazable).
 4. Evitar auto incrementos, de forma que el identificador sea determinista e idempotente, es decir una misma entidad, deberá generar siempre un mismo identificador.
-5. Evitar query Strings.
+5. Evitar *query strings* (parámetros de URI).
 6. Evitar extensiones que indiquen la tecnología subyacente.
 7. Los identificadores deben de ser persistentes.
 8. Usar la negociación de contenidos para servir el mismo recurso, en distintos formatos, es decir, el identificador del recurso será el mismo independientemente del formato.
@@ -196,7 +208,7 @@ Como ya se ha mencionado previamente, la negociación de contenidos juega tambi�
 Norma técnica de Interoperatividad (NTI), Agencia Estatal Boletín oficial del estado,  19 febrero de 2013.
 https://www.boe.es/diario_boe/txt.php?id=BOE-A-2013-2380
 
-T. Berners-Lee. Universal resource identifiers - axioms of web architecture, 1996.
+T. Berners-Lee. Universal resource identifiers - axioms of web architecture, 1996.
 http://www.w3.org/DesignIssues/Axioms.html
 
 T. Berners-Lee. Cool uris don't change, 1998.
@@ -210,6 +222,3 @@ http://patterns.dataincubator.org/book/
 
 J. E. Labra Gayo, D. Kontokostas and S. Auer, Semantic Web, vol. 6, no. 4, pp. 319-337, 2015.
 http://www.semantic-web-journal.net/system/files/swj495.pdf
-
-
-
