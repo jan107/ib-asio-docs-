@@ -59,7 +59,7 @@ These are the full list of classes (available also in the [LODE](https://essepun
 
 
 
-An example elaborating how the core ontology deals with a Patent shows the classes, object and data properties involved in the modelling:
+A graphical example elaborating how the core ontology deals with a Patent shows the classes (Patent, Person, Organization), object and data properties involved in the modelling:
 
 
 
