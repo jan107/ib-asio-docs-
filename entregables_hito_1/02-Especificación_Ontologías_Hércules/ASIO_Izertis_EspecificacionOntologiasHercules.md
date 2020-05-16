@@ -6,12 +6,12 @@
 
 This document reports the current status of the ASIO ontology files and more specifically it describes *grosso modo* six of the files currently available in our repositories, namely:
 
-- [asio-core.ttl](asio-core.ttl)
-- [asio-mappings.ttl](asio-mappings.ttl)
-- [asio-vertical-module-geopol.ttl](asio-vertical-module-geopol.ttl)
-- [asio-vertical-module-scientificdomains.ttl](asio-vertical-scientificdomains.ttl)
-- [asio-vertical-module-subjectareas.ttl](asio-vertical-subjectareas.ttl)
-- [asio-vertical-module-universities.ttl](asio-vertical-module-universities.ttl)
+- [asio-core.ttl](../01-Red_de_Ontologías_Hércules/asio-core.ttl)
+- [asio-mappings.ttl](../01-Red_de_Ontologías_Hércules/asio-mappings.ttl)
+- [asio-module-geopol.ttl](../01-Red_de_Ontologías_Hércules/asio-module-geopol.ttl)
+- [asio-module-scientificdomains.ttl](../01-Red_de_Ontologías_Hércules/asio-module-scientificdomains.ttl)
+- [asio-module-subjectareas.ttl](../01-Red_de_Ontologías_Hércules/asio-module-subjectareas.ttl)
+- [asio-module-universities.ttl](../01-Red_de_Ontologías_Hércules/asio-module-universities.ttl)
 
 The first one is the ***core*** ontology and the second one corresponds to the class-by-class ***alignements*** towards external vocabularies
 
