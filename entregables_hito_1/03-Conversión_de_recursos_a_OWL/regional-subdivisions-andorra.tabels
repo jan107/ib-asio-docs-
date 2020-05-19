@@ -1,0 +1,178 @@
+PREFIX project: <http://asio.es/tablines/project/regionsAND/>
+PREFIX my: <http://asio.es/tablines/project/regionsAND/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX asioModules: <http://purl.org/asio/modules#> 
+PREFIX asio: <http://purl.org/asio/core#>
+PREFIX euCountry: <http://publications.europa.eu/resource/authority/country/>
+PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
+PREFIX provo: <http://www.w3.org/ns/prov#>
+
+
+FOR ?rowId IN rows FILTER get-row(?rowId)
+    MATCH [?regionCode,?region,?ISOCode,?FIPSCode,?en,?es,?fr,?pt,?oc,?CPCode,?HASCCode,?DEANDCode,?ipaca] IN horizontal 
+    
+  LET ?regionResource = resource(concat("AD_DIVISION_LEVEL_1_",replace(?regionCode,"-","_")),asioModules)
+  LET ?regionCodeResource = resource(concat("AD_DIVISION_LEVEL_1_ISO_CODE_",replace(?regionCode,"-","_")),asioModules)
+  LET ?regionFIPSCodeResource = resource(concat("AD_DIVISION_LEVEL_1_FIPS_CODE_",replace(?FIPSCode,"-","_")),asioModules)
+  LET ?regionCPCodeResource = resource(concat("AD_CP_CODE_",replace(?CPCode,"-","_")),asioModules)
+  LET ?regionNotationResource = resource(concat("AD_DIVISION_LEVEL_1_ISO_CODE_",replace(?regionCode,"-","_")),asioModules)
+  LET ?regionHASCCodeResource = resource(concat("AD_DIVISION_LEVEL_1_HASC_CODE_",replace(?HASCCode,"-","_")),asioModules)
+  LET ?regionDEANDCodeResource = resource(concat("AD_DIVISION_LEVEL_1_DEAND_CODE_",replace(?DEANDCode,"-","_")),asioModules)
+    LET ?ISOResource = resource(?ISOCode,euCountry)
+    /*name of the country in local languages*/
+    LET ?ocCountryLabel = setLangTag("Andòrra", "oc")
+    LET ?euCountryLabel = setLangTag("Andorra", "eu")
+    LET ?rmyCountryLabel = setLangTag("Andorra", "rmy")
+
+  LET ?ISOPublisher = resource("STANDARDIZATION_ORGANIZATION_ISO",asioModules)
+  LET ?FIPSPublisher = resource("STANDARDIZATION_ORGANIZATION_FIPS",asioModules)
+  LET ?HASCPublisher = resource("STANDARDIZATION_ORGANIZATION_HASC",asioModules)
+  LET ?CPPublisher = resource("STANDARDIZATION_ORGANIZATION_CP",asioModules)
+  LET ?DEANDPublisher = resource("STANDARDIZATION_ORGANIZATION_DEAND",asioModules)
+
+  LET ?caLabel = setLangTag(?region, "ca")
+  LET ?enLabel = setLangTag(?en, "en")
+  LET ?esLabel = setLangTag(?es, "es")
+  LET ?frLabel = setLangTag(?fr, "fr")
+  LET ?ptLabel = setLangTag(?pt, "pt")
+  LET ?ocLabel = setLangTag(?oc, "oc")
+  LET ?ipacaLabel = setLangTag(?ipaca, "ca-AD-fonipa")
+    
+
+CONSTRUCT {
+  
+  asioModules:ADParishList a asioModules:Country;
+                              rdfs:label "Parishes of Andorra" ;
+                              skos:prefLabel "Parishes of Andorra" ;
+                              rdfs:label "Parishes of Andorra"@en ;
+                              skos:prefLabel "Parishes of Andorra"@en ;
+                              rdfs:label "Parròquies d'Andorra"@ca ;
+                              skos:prefLabel "Parròquies d'Andorra"@ca ;
+                              rdfs:label "Paroisses d'Andorra"@fr ;
+                              skos:prefLabel "Paroisses d'Andorra"@fr ;
+                              rdfs:label "Parroquias de Andorra"@es ;
+                              skos:prefLabel "Parroquias de Andorra"@es ;
+                              rdfs:label "Paróquias de Andorra"@pt ;
+                              skos:prefLabel "Paróquias de Andorra"@pt ;
+                              rdfs:label "pə ˈrɔ ki əz ðən ˈdɔ rə"@ca-AD-fonipa ;
+                              skos:prefLabel "pə ˈrɔ ki əz ðən ˈdɔ rə"@ca-AD-fonipa ;
+                              rdfs:label "Parròquias d'Andòrra"@oc ;
+                              skos:prefLabel "Parròquias d'Andòrra"@oc .
+  
+  asioModules:ADParishISOCodeList a asioModules:Country;
+                                   rdfs:label "ISO codes for the parishes of Andorra" ;
+                                   skos:prefLabel "ISO codes for the parishes of Andorra" ;
+                                   rdfs:label "ISO codes for the parishes of Andorra"@en ;
+                                   skos:prefLabel "ISO codes for the parishes of Andorra"@en ;
+                                   rdfs:label "Codis ISO de les parròquies d'Andorra"@ca ;
+                                   skos:prefLabel "Codis ISO de les parròquies d'Andorra"@ca ;
+                                   rdfs:label "Codes ISO des paroisses d'Andorra"@fr ;
+                                   skos:prefLabel "Codes ISO des paroisses d'Andorra"@fr ;
+                                   dct:publisher ?ISOPublisher .
+
+  asioModules:ADParishFIPSCodeList a asioModules:Country;
+                                   rdfs:label "FIPS codes for the parishes of Andorra" ;
+                                   skos:prefLabel "FIPS codes for the parishes of Andorra" ;
+                                   rdfs:label "FIPS codes for the parishes of Andorra"@en ;
+                                   skos:prefLabel "FIPS codes for the parishes of Andorra"@en ;
+                                   rdfs:label "Codis FIPS de les parròquies d'Andorra"@ca ;
+                                   skos:prefLabel "Codis FIPS de les parròquies d'Andorra"@ca ;
+                                   rdfs:label "Codes FIPS des paroisses d'Andorra"@fr ;
+                                   skos:prefLabel "Codes FIPS des paroisses d'Andorra"@fr ;
+                                   dct:publisher ?FIPSPublisher .
+
+  asioModules:ADParishCPCodeList a asioModules:Country;
+                                   rdfs:label "Postal codes for the parishes of Andorra" ;
+                                   skos:prefLabel "Postal codes for the parishes of Andorra" ;
+                                   rdfs:label "Postal codes for the parishes of Andorra"@en ;
+                                   skos:prefLabel "Postal codes for the parishes of Andorra"@en ;
+                                   rdfs:label "Codis postals de les parròquies d'Andorra"@ca ;
+                                   skos:prefLabel "Codis postals de les parròquies d'Andorra"@ca ;
+                                   rdfs:label "Codes postaux des paroisses d'Andorra"@fr ;
+                                   skos:prefLabel "Codes postaux des paroisses d'Andorra"@fr ;
+                                   dct:publisher ?CPPublisher .
+
+  asioModules:ADParishHASCCodeList a asioModules:Country;
+                                   rdfs:label "Hierarchical administrative subdivision codes (HASC) for the parishes of Andorra" ;
+                                   skos:prefLabel "Hierarchical administrative subdivision codes (HASC) for the parishes of Andorra" ;
+                                   rdfs:label "Hierarchical administrative subdivision codes (HASC) for the parishes of Andorra"@en ;
+                                   skos:prefLabel "Hierarchical administrative subdivision codes (HASC) for the parishes of Andorra"@en ;
+                                   rdfs:label "Codes HASC (Hierarchical administrative subdivision codes) des paroisses d'Andorra"@fr ;
+                                   skos:prefLabel "Codes HASC (Hierarchical administrative subdivision codes) des paroisses d'Andorra"@fr ;
+                                   rdfs:label "Codis HASC (Hierarchical administrative subdivision codes) de les parròquies d'Andorra"@ca ;
+                                   skos:prefLabel "Codis HASC (Hierarchical administrative subdivision codes) de les parròquies d'Andorra"@ca ;
+                                   dct:publisher ?HASCPublisher .
+  
+  asioModules:ADParishDEANDCodeList a asioModules:Country;
+                                   rdfs:label "DE (Departament d'Estadística) codes for the parishes of Andorra" ;
+                                   skos:prefLabel "DE (Departament d'Estadística) codes for the parishes of Andorra" ;
+                                   rdfs:label "DE (Departament d'Estadística) codes for the parishes of Andorra"@en ;
+                                   skos:prefLabel "DE (Departament d'Estadística) codes for the parishes of Andorra"@en ;
+                                   rdfs:label "Codis DE (Departament d'Estadística) de les parròquies d'Andorra"@ca ;
+                                   skos:prefLabel "Codis DE (Departament d'Estadística) de les parròquies d'Andorra"@ca ;
+                                   rdfs:label "Codes DE (Departament d'Estadística) des paroisses d'Andorra"@fr ;
+                                   skos:prefLabel "Codes DE (Departament d'Estadística) des paroisses d'Andorra"@fr ;
+                                   dct:publisher ?DEANDPublisher .
+}
+
+CONSTRUCT {
+  ?regionResource a skos:Concept;
+                  rdfs:label ?region ;
+                  skos:prefLabel ?region ; 
+                  skos:prefLabel ?caLabel ;
+                  skos:prefLabel ?enLabel ;
+                  skos:prefLabel ?esLabel ;
+                  skos:prefLabel ?frLabel ;
+                  skos:prefLabel ?ptLabel ;
+                  skos:prefLabel ?ocLabel ;
+                  skos:prefLabel ?ipacaLabel ;
+                  ontolex:phoneticRep ?ipacaLabel ;
+                  skos:inScheme asioModules:ADParishList;
+                  asio:hasCode ?regionCodeResource ;
+                  asio:hasCode ?regionFIPSCodeResource ;
+                  asio:hasCode ?regionHASCCodeResource ;
+                  asio:hasCode ?regionCPCodeResource ;
+                  asio:hasCode ?regionDEANDCodeResource ;
+                  skos:notation ?regionCode ;
+                  skos:broader ?ISOResource .
+
+  ?regionFIPSCodeResource a skos:Concept;
+                  rdfs:label ?FIPSCode ;
+                  skos:prefLabel ?FIPSCode ;
+                  skos:inScheme asioModules:ADParishFIPSCodeList;
+                  asio:codeOf ?regionResource .
+
+  ?regionHASCCodeResource a skos:Concept;
+                  rdfs:label ?HASCCode ;
+                  skos:prefLabel ?HASCCode ;
+                  skos:inScheme asioModules:ADParishHASCCodeList;
+                  asio:codeOf ?regionResource .
+
+  ?regionCPCodeResource a skos:Concept;
+                  rdfs:label ?CPCode ;
+                  skos:prefLabel ?CPCode ;
+                  skos:inScheme asioModules:ADParishCPCodeList;
+                  asio:codeOf ?regionResource .
+
+  ?regionDEANDCodeResource a skos:Concept;
+                  rdfs:label ?DEANDCode ;
+                  skos:prefLabel ?DEANDCode ;
+                  skos:inScheme asioModules:ADParishDEANDCodeList;
+                  asio:codeOf ?regionResource .
+  
+  ?ISOResource skos:narrower ?regionResource ;
+               skos:prefLabel ?ocCountryLabel ;
+               skos:prefLabel ?rmyCountryLabel ;
+               skos:prefLabel ?euCountryLabel .
+  
+  ?regionCodeResource a skos:Concept;
+                  rdfs:label ?regionCode ;
+                  skos:prefLabel ?regionCode ;
+                  skos:inScheme asioModules:ADParishISOCodeList;
+                  asio:codeOf ?regionResource .
+}
