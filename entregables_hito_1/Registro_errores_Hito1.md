@@ -8,8 +8,8 @@
 | 19 Mayo         | Explicación inicial unificada| Todos los entregables                            | Explicación inicial unificada para todos los entregables, en el sentido de indicar el proyecto al que pertenecen, que tipo de documento/entregable es, objetivo y su contribución o razón de ser dentro del modulo al que pertenece y contenido | PENDIENTE |
 | 19 Mayo         | Documentación pruebas| Entregables software                                     | Es necesaria documentación de las pruebas realizadas y el resultado de los test| PENDIENTE |
 | 19 Mayo         | Documento justificativo| N/A | De los entregables con porcentaje asociado, indicando lo que resta para completarse. Para su archivado | PENDIENTE |
-|                 |                  |                                                              |                                                              |           |
-|                 |                  |                                                              |                                                              |           |
+| 19 Mayo         | Manual de usuario| Entregables software finalizados                             |                                                              | PENDIENTE |
+| 19 Mayo         | Manual de despliegue| Entregables software finalizados                          |                                                              | PENDIENTE |
 |                 |                  |                                                              |                                                              |           |
 |                 |                  |                                                              |                                                              |           |
 |                 |                  |                                                              |                                                              |           |
