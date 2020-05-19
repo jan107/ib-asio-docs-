@@ -1,0 +1,137 @@
+PREFIX project: <http://weso.es/tablines/project/subjectAreas/>
+PREFIX my: <http://weso.es/tablines/project/subjectAreas/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX asioModules: <http://purl.org/asio/modules#> 
+PREFIX asio: <http://purl.org/asio/core#>
+PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
+PREFIX provo: <http://www.w3.org/ns/prov#>
+
+
+FOR ?rowId IN rows FILTER get-row(?rowId)
+    MATCH [?subjectCode,?subjectArea,?anlabel,?astlabel,?calabel,?enlabel,?eslabel,?extlabel,?eulabel,?frlabel,?gllabel,?oclabel,?ptlabel,?caipa,?esipa,?engbipa,?enusipa] IN horizontal 
+    
+  LET ?subjectArea1stResource = resource(concat("ES_SUBJECT_AREA_LEVEL_1_",replace(?subjectCode,"-","_")),asioModules)
+  LET ?subjectArea1stCodeResource = resource(concat("ES_SUBJECT_AREA_LEVEL_1_CODE_",replace(?subjectCode,"-","_")),asioModules)
+
+    LET ?esLangLabel = setLangTag(?eslabel, "es")
+    LET ?astLangLabel = setLangTag(?astlabel, "ast")
+    LET ?caLangLabel = setLangTag(?calabel, "ca")
+    LET ?euLangLabel = setLangTag(?eulabel, "eu")
+    LET ?glLangLabel = setLangTag(?gllabel, "gl")
+    LET ?anLangLabel = setLangTag(?anlabel, "an")
+    LET ?ocLangLabel = setLangTag(?oclabel, "oc")
+    LET ?ptLangLabel = setLangTag(?ptlabel, "pt")
+    LET ?frLangLabel = setLangTag(?frlabel, "fr")
+    LET ?enLangLabel = setLangTag(?enlabel, "en")
+    LET ?extLangLabel = setLangTag(?extlabel, "ext")
+
+    LET ?esipaLangLabel = setLangTag(?esipa, "es-ES")
+    LET ?caipaLangLabel = setLangTag(?caipa, "ca")
+    LET ?engbipaLangLabel = setLangTag(?engbipa, "en-GB")
+    LET ?enusipaLangLabel = setLangTag(?enusipa, "en-US")
+
+
+
+CONSTRUCT {
+  
+  asioModules:ESSubjectAreas1stList a asioModules:subjectAreas;
+                              rdfs:label "First-level subject areas of Spain's State Research Agency (AEI)"@en ;
+                              skos:prefLabel "First-level subject areas of Spain's State Research Agency (AEI)"@en ;
+                              rdfs:label "Áreas temáticas de primer nivel de la Agencia Estatal de Investigación (AEI)"@es ;
+                              skos:prefLabel "Áreas temáticas de primer nivel de la Agencia Estatal de Investigación (AEI)"@es ;
+                              rdfs:label "Dominis temàtics de primer nivell de l'Agència Estatal de Recerca (AEI)"@ca ;
+                              skos:prefLabel "Dominis temàtics de primer nivell de l'Agència Estatal de Recerca (AEI)"@ca ;
+                              rdfs:label "Áreas temáticas de primeiro nivel da Axencia Estatal de Investigación (AEI)"@gl ;
+                              skos:prefLabel "Áreas temáticas de primeiro nivel da Axencia Estatal de Investigación (AEI)"@gl ;
+                              rdfs:label "Árees temátiques de primer nivel de l'Axencia Estatal de Investigación (AEI)"@ast ;
+                              skos:prefLabel "Árees temátiques de primer nivel de l'Axencia Estatal de Investigación (AEI)"@ast ;
+                              rdfs:label "Áreas temáticas de primer libel d'a AEI"@an ;
+                              skos:prefLabel "Áreas temáticas de primer libel d'a AEI"@an ;
+                              rdfs:label "FIXME"@eu ;
+                              skos:prefLabel "FIXME"@eu ;
+                              rdfs:label "Áreas tematicas de primièr nivel de l'AEI"@oc ;
+                              skos:prefLabel "Áreas tematicas de primièr nivel de l'AEI"@oc ;
+                              rdfs:label "Domains thématiques de premier niveau de l'Agence Espagnole pour la Recherche (AEI)"@fr ;
+                              skos:prefLabel "Domains thématiques de premier niveau de l'Agence Espagnole pour la Recherche (AEI)"@fr ;
+                              rdfs:label "Áreas temáticas de primeiro nível"@pt ;
+                              skos:prefLabel "Áreas temáticas de primeiro nível"@pt ;
+                              rdfs:label "ˈaɾeas teˈmatikas ðe priˈmer niˈβel ðe la aˈxenθja estaˈtal ðe imbestiɣ̞aˈθjon"@es-ES-fonipa ;
+                              skos:prefLabel "ˈaɾeas teˈmatikas ðe priˈmer niˈβel ðe la aˈxenθja estaˈtal ðe imbestiɣ̞aˈθjon"@es-ES-fonipa ;
+                              ontolex:phoneticRep "ˈaɾeas teˈmatikas ðe priˈmer niˈβel ðe la aˈxenθja estaˈtal ðe imbestiɣ̞aˈθjon"@es-ES-fonipa ;
+                              rdfs:label "duˈminis təˈmatikz ðə pɾiˈme niˈβeʎ ðə ɫə ʒənˈsiə əstəˈtaɫ ðə rəˈsɛrkə"@ca-CA-fonipa ;
+                              skos:prefLabel "duˈminis təˈmatikz ðə pɾiˈme niˈβeʎ ðə ɫə ʒənˈsiə əstəˈtaɫ ðə rəˈsɛrkə"@ca-CA-fonipa ;
+                              ontolex:phoneticRep "duˈminis təˈmatikz ðə pɾiˈme niˈβeʎ ðə ɫə ʒənˈsiə əstəˈtaɫ ðə rəˈsɛrkə"@ca-CA-fonipa ;
+                              rdfs:label "fɜːst ˈlɛvl ˈsʌbʤɪkt ˈeərɪəz"@en-GB-fonipa ;
+                              skos:prefLabel "fɜːst ˈlɛvl ˈsʌbʤɪkt ˈeərɪəz"@en-GB-fonipa ;
+                              ontolex:phoneticRep "fɜːst ˈlɛvl ˈsʌbʤɪkt ˈeərɪəz"@en-GB-fonipa ;
+                              rdfs:label "fɜrst ˈlɛvəl ˈsʌbʤɪkt ˈɛriə"@en-US-fonipa ;
+                              skos:prefLabel "fɜrst ˈlɛvəl ˈsʌbʤɪkt ˈɛriəz"@en-US-fonipa ;
+                              ontolex:phoneticRep "fɜrst ˈlɛvəl ˈsʌbʤɪkt ˈɛriə"@en-US-fonipa .
+  
+  asioModules:ESSubjectCode1stList a asioModules:subjectAreas;
+                                   rdfs:label "ˈkoðiγoz ðe las ˈaɾeas teˈmatikas ðe priˈmer niˈβel ðe la aˈxenθja estaˈtal ðe imbestiɣ̞aˈθjon"@es-ES-fonipa ;
+                                   skos:prefLabel "ˈkoðiγoz ðe las ˈaɾeas teˈmatikas ðe priˈmer niˈβel ðe la aˈxenθja estaˈtal ðe imbestiɣ̞aˈθjon"@es-ES-fonipa ;
+                                   ontolex:phoneticRep "ˈkoðiγoz ðe las ˈaɾeas teˈmatikas ðe priˈmer niˈβel ðe la aˈxenθja estaˈtal ðe imbestiɣ̞aˈθjon"@es-ES-fonipa ;
+                                   rdfs:label "duˈminis təˈmatikz ðə pɾiˈme niˈβeʎ ðə ɫə ʒənˈsiə əstəˈtaɫ ðə rəˈsɛrkə"@ca-CA-fonipa ;
+                                   skos:prefLabel "duˈminis təˈmatikz ðə pɾiˈme niˈβeʎ ðə ɫə ʒənˈsiə əstəˈtaɫ ðə rəˈsɛrkə"@ca-CA-fonipa ;
+                                   ontolex:phoneticRep "duˈminis təˈmatikz ðə pɾiˈme niˈβeʎ ðə ɫə ʒənˈsiə əstəˈtaɫ ðə rəˈsɛrkə"@ca-CA-fonipa ;
+                                   rdfs:label "ˈkəʊdz fɔː ðə fɜːst ˈlɛvl ˈsʌbʤɪkt ˈeərɪəz ɒv speɪnz steɪt rɪˈsɜːʧ ˈeɪʤənsi"@en-GB-fonipa ;
+                                   skos:prefLabel "ˈkəʊdz fɔː ðə fɜːst ˈlɛvl ˈsʌbʤɪkt ˈeərɪəz ɒv speɪnz steɪt rɪˈsɜːʧ ˈeɪʤənsi"@en-GB-fonipa ;
+                                   ontolex:phoneticRep "ˈkəʊdz fɔː ðə fɜːst ˈlɛvl ˈsʌbʤɪkt ˈeərɪəz ɒv speɪnz steɪt rɪˈsɜːʧ ˈeɪʤənsi"@en-GB-fonipa ;
+                                   rdfs:label "ˈkoʊdz fɔr ðə fɜrst ˈlɛvəl ˈsʌbʤɪkt ˈɛriəz ʌv speɪnz steɪt riˈsɜrʧ ˈeɪʤənsi"@en-US-fonipa ;
+                                   skos:prefLabel "ˈkoʊdz fɔr ðə fɜrst ˈlɛvəl ˈsʌbʤɪkt ˈɛriəz ʌv speɪnz steɪt riˈsɜrʧ ˈeɪʤənsi"@en-US-fonipa ;
+                                   ontolex:phoneticRep "ˈkoʊdz fɔr ðə fɜrst ˈlɛvəl ˈsʌbʤɪkt ˈɛriəz ʌv speɪnz steɪt riˈsɜrʧ ˈeɪʤənsi"@en-US-fonipa ;
+                                   rdfs:label "Codes for the first-level subject areas of Spain's State Research Agency (AEI)"@en ;
+                                   skos:prefLabel "Codes for the first-level subject areas of Spain's State Research Agency (AEI)"@en ;
+                                   rdfs:label "Códigos das áreas temáticas de primeiro nível da Agência Estadual de Pesquisa Espanhola (AEI)"@pt ;
+                                   skos:prefLabel "Códigos das áreas temáticas de primeiro nível da Agência Estadual de Pesquisa Espanhola (AEI)"@pt ;
+                                   rdfs:label "Códigos das áreas temáticas de primeiro nivel da Axencia Estatal de Investigación (AEI)"@gl ;
+                                   skos:prefLabel "Códigos das áreas temáticas de primeiro nivel da Axencia Estatal de Investigación (AEI)"@gl ;
+                                   rdfs:label "Códigos de las áreas temáticas de primer nivel de la Agencia Estatal de Investigación (AEI)"@es ;
+                                   skos:prefLabel "Códigos de las áreas temáticas de primer nivel de la Agencia Estatal de Investigación (AEI)"@es ;
+                                   rdfs:label "Códigos de les árees temátiques de primer nivel"@ast ;
+                                   skos:prefLabel "Códigos de les árees temátiques de primer nivel"@ast ;
+                                   rdfs:label "Codis dels dominis temàtics de primer nivell de l'Agència Estatal de Recerca (AEI)"@ca ;
+                                   skos:prefLabel "Codis dels dominis temàtics de primer nivell de l'Agència Estatal de Recerca (AEI)"@ca ;
+                                   rdfs:label "Codes des domains thématiques de premier niveau de l'Agence Espagnole pour la Recherche (AEI)"@fr ;
+                                   skos:prefLabel "Codes des domains thématiques de premier niveau de l'Agence Espagnole pour la Recherche (AEI)"@fr .
+}
+
+CONSTRUCT {
+  ?subjectArea1stResource a skos:Concept;
+                  rdfs:label ?subjectArea ;
+                  skos:prefLabel ?subjectArea ; 
+                  skos:prefLabel ?esLangLabel ;
+                  skos:prefLabel ?astLangLabel ;
+                  skos:prefLabel ?caLangLabel ;
+                  skos:prefLabel ?euLangLabel ;
+                  skos:prefLabel ?glLangLabel ;
+                  skos:prefLabel ?anLangLabel ;
+                  skos:prefLabel ?enLangLabel ;
+                  skos:prefLabel ?ocLangLabel ;
+                  skos:prefLabel ?ptLangLabel ;
+                  skos:prefLabel ?extLangLabel ;
+                  skos:prefLabel ?frLangLabel ;
+                  skos:prefLabel ?caipaLangLabel ;
+                  skos:prefLabel ?esipaLangLabel ;
+                  skos:prefLabel ?engbipaLangLabel ;
+                  skos:prefLabel ?enusipaLangLabel ;
+                  ontolex:phoneticRep ?caipaLangLabel ;
+                  ontolex:phoneticRep ?esipaLangLabel ;
+                  ontolex:phoneticRep ?engbipaLangLabel ;
+                  ontolex:phoneticRep ?enusipaLangLabel ;
+                  skos:inScheme asioModules:ESSubjectAreas1stList;
+                  asio:hasCode ?subjectArea1stCodeResource ;
+                  skos:notation ?subjectCode .
+  
+  ?subjectArea1stCodeResource a skos:Concept;
+                  rdfs:label ?subjectCode ;
+                  skos:prefLabel ?subjectCode ; 
+                  skos:inScheme asioModules:ESSubjectCode1stList;
+                  asio:codeOf ?subjectArea1stResource .
+}

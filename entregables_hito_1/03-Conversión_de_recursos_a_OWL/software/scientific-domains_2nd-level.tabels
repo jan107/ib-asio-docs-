@@ -1,0 +1,156 @@
+PREFIX project: <http://weso.es/tablines/project/scientificDomainss/>
+PREFIX my: <http://weso.es/tablines/project/scientificDomainss/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX asioModules: <http://purl.org/asio/modules#> 
+PREFIX asio: <http://purl.org/asio/core#>
+PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
+PREFIX provo: <http://www.w3.org/ns/prov#>
+
+
+FOR ?rowId IN rows FILTER get-row(?rowId)
+    MATCH [?domainCode,?domain2ndCode,?scientificDomain,?anlabel,?astlabel,?calabel,?enlabel,?eslabel,?extlabel,?eulabel,?frlabel,?gllabel,?oclabel,?ptlabel,?noteca,?noteen,?notees,?notegl] IN horizontal 
+    
+  LET ?scientificDomain2ndResource = resource(concat("ES_SCIENTIFIC_DOMAIN_LEVEL_2_",replace(?domain2ndCode,"-","_")),asioModules)
+  LET ?scientificDomain2ndCodeResource = resource(concat("ES_SCIENTIFIC_DOMAIN_LEVEL_2_CODE_",replace(?domain2ndCode,"-","_")),asioModules)
+
+  LET ?scientificDomain1stResource = resource(concat("ES_SCIENTIFIC_DOMAIN_LEVEL_1_",replace(?domainCode,"-","_")),asioModules)
+
+    LET ?esLangLabel = setLangTag(?eslabel, "es")
+    LET ?astLangLabel = setLangTag(?astlabel, "ast")
+    LET ?caLangLabel = setLangTag(?calabel, "ca")
+    LET ?glLangLabel = setLangTag(?gllabel, "gl")
+    LET ?ptLangLabel = setLangTag(?ptlabel, "pt")
+    LET ?frLangLabel = setLangTag(?frlabel, "fr")
+    LET ?enLangLabel = setLangTag(?enlabel, "en")
+
+    LET ?note_esLang = setLangTag(?notees, "es")
+
+  { 
+    WHEN not matches(?anlabel,"") DO
+      LET ?anLangLabel = setLangTag(?anlabel, "an") 
+    ;
+    WHEN not matches(?eulabel,"") DO
+      LET ?euLangLabel = setLangTag(?eulabel, "eu") 
+    ;
+    WHEN not matches(?extlabel,"") DO
+      LET ?extLangLabel = setLangTag(?extlabel, "ext") 
+    ;
+    WHEN not matches(?oclabel,"") DO
+      LET ?ocLangLabel = setLangTag(?oclabel, "oc")  
+    ;
+    WHEN not matches(?noteca,"") DO
+      LET ?note_caLang = setLangTag(?noteca, "ca")   
+    ;
+    WHEN not matches(?noteen,"") DO
+      LET ?note_enLang = setLangTag(?noteen, "en")    
+    ;
+    WHEN not matches(?notegl,"") DO
+      LET ?note_glLang = setLangTag(?notegl, "gl") 
+}
+
+CONSTRUCT {
+  
+  asioModules:ESscientificDomains2ndList a asioModules:scientificDomains;
+                              rdfs:label "Second-level scientific domains"@en ;
+                              skos:prefLabel "Second-level scientific domains"@en ;
+                              rdfs:label "Áreas científicas de segundo nivel"@es ;
+                              skos:prefLabel "Áreas científicas de segundo nivel"@es ;
+                              rdfs:label "Dominis científics de segon nivell"@ca ;
+                              skos:prefLabel "Dominis científics de segon nivell"@ca ;
+                              rdfs:label "Áreas científicas de segundo nivel"@gl ;
+                              skos:prefLabel "Áreas científicas de segundo nivel"@gl ;
+                              rdfs:label "Árees científiques de segundu nivel"@ast ;
+                              skos:prefLabel "Árees científiques de segundu nivel"@ast ;
+                              rdfs:label "Áreas scientificas de segundo nivel"@an ;
+                              skos:prefLabel "Áreas scientificas de segundo nivel"@an ;
+                              rdfs:label "Bigarren mailako arlo zientifikoak"@eu ;
+                              skos:prefLabel "Bigarren mailako arlo zientifikoak"@eu ;
+                              rdfs:label "Áreas scientificas de segond nivel"@oc ;
+                              skos:prefLabel "Áreas scientificas de segond nivel"@oc ;
+                              rdfs:label "Domains scientifiques de deuxième niveau"@fr ;
+                              skos:prefLabel "Domains scientifiques de deuxième niveau"@fr ;
+                              rdfs:label "Áreas científicas de segundo nível"@pt ;
+                              skos:prefLabel "Áreas científicas de segundo nível"@pt ;
+                              rdfs:label "ˈaɾeas θjen̪ˈtifikas ðe seˈɣ̞un̟do niˈβ̞el"@es-ES-fonipa ;
+                              skos:prefLabel "ˈaɾeas θjen̪ˈtifikas ðe seˈɣ̞un̟do niˈβ̞el"@es-ES-fonipa ;
+                              ontolex:phoneticRep "ˈaɾeas θjen̪ˈtifikas ðe seˈɣ̞un̟do niˈβ̞el"@es-ES-fonipa ;
+                              rdfs:label "duˈminis siənˈtifikz ðə səˈɣon niˈβeʎ"@ca-CA-fonipa ;
+                              skos:prefLabel "duˈminis siənˈtifikz ðə səˈɣon niˈβeʎ"@ca-CA-fonipa ;
+                              ontolex:phoneticRep "duˈminis siənˈtifikz ðə səˈɣon niˈβeʎ"@ca-CA-fonipa ;
+                              rdfs:label "ˈsɛkənd ˈlɛvl ˌsaɪənˈtɪfɪk dəʊˈmeɪnz"@en-GB-fonipa ;
+                              skos:prefLabel "ˈsɛkənd ˈlɛvl ˌsaɪənˈtɪfɪk dəʊˈmeɪnz"@en-GB-fonipa ;
+                              ontolex:phoneticRep "ˈsɛkənd ˈlɛvl ˌsaɪənˈtɪfɪk dəʊˈmeɪnz"@en-GB-fonipa ;
+                              rdfs:label "ˈsɛkənd ˈlɛvəl ˌsaɪənˈtɪfɪk doʊˈmeɪnz"@en-US-fonipa ;
+                              skos:prefLabel "ˈsɛkənd ˈlɛvəl ˌsaɪənˈtɪfɪk doʊˈmeɪnz"@en-US-fonipa ;
+                              ontolex:phoneticRep "ˈsɛkənd ˈlɛvəl ˌsaɪənˈtɪfɪk doʊˈmeɪnz"@en-US-fonipa .
+  
+  asioModules:ESscientificDomains2ndCodeList a asioModules:scientificDomains;
+                                   rdfs:label "Codes for the second-level scientific domains"@en ;
+                                   skos:prefLabel "Codes for the second-level scientific domains"@en ;
+                                   rdfs:label "Códigos das áreas científicas de segundo nível"@pt ;
+                                   skos:prefLabel "Códigos das áreas científicas de segundo nível"@pt ;
+                                   rdfs:label "Códigos das áreas científicas de segundo nivel"@gl ;
+                                   skos:prefLabel "Códigos das áreas científicas de segundo nivel"@gl ;
+                                   rdfs:label "Códigos de las áreas científicas de segundo nivel"@es ;
+                                   skos:prefLabel "Códigos de las áreas científicas de segundo nivel"@es ;
+                                   rdfs:label "Códigos de les árees científiques de segundu nivel"@ast ;
+                                   skos:prefLabel "Códigos de les árees científiques de segundu nivel"@ast ;
+                                   rdfs:label "Codis dels dominis científics de segon nivell"@ca ;
+                                   skos:prefLabel "Codis dels dominis científics de segon nivell"@ca .
+}
+
+CONSTRUCT {
+  ?scientificDomain2ndResource a skos:Concept;
+                  rdfs:label ?scientificDomain ;
+                  skos:prefLabel ?scientificDomain ; 
+                  skos:prefLabel ?esLangLabel ;
+                  skos:prefLabel ?astLangLabel ;
+                  skos:prefLabel ?caLangLabel ;
+                  skos:prefLabel ?glLangLabel ;
+                  skos:prefLabel ?enLangLabel ;
+                  skos:prefLabel ?ptLangLabel ;
+                  skos:prefLabel ?frLangLabel ;
+                  skos:inScheme asioModules:ESscientificDomains2ndList;
+                  skos:broader ?scientificDomain1stResource ;
+                  asio:hasCode ?scientificDomain2ndCodeResource ;
+                  skos:notation ?domain2ndCode .
+  
+  ?scientificDomain2ndCodeResource a skos:Concept;
+                  rdfs:label ?domain2ndCode ;
+                  skos:prefLabel ?domain2ndCode ; 
+                  skos:inScheme asioModules:ESscientificDomains2ndCodeList;
+                  asio:codeOf ?scientificDomain2ndResource .
+}
+
+CONSTRUCT{
+  ?scientificDomain2ndResource skos:prefLabel ?anLangLabel .
+}
+
+CONSTRUCT{
+  ?scientificDomain2ndResource skos:prefLabel ?euLangLabel .
+}
+
+CONSTRUCT{
+  ?scientificDomain2ndResource skos:prefLabel ?extLangLabel .
+}
+
+CONSTRUCT{
+  ?scientificDomain2ndResource skos:prefLabel ?ocLangLabel .
+}
+
+CONSTRUCT{
+  ?scientificDomain2ndResource skos:note ?note_caLang .
+}
+
+CONSTRUCT{
+  ?scientificDomain2ndResource skos:note ?note_enLang .
+}
+
+CONSTRUCT{
+  ?scientificDomain2ndResource skos:note ?note_glLang .
+}

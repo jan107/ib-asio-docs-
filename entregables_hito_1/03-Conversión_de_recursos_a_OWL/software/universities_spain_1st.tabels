@@ -1,0 +1,255 @@
+PREFIX project: <http://weso.es/tablines/project/subjectAreas/>
+PREFIX my: <http://weso.es/tablines/project/subjectAreas/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX asioModules: <http://purl.org/hercules/asio/modules#> 
+PREFIX asio: <http://purl.org/hercules/asio/core#>
+PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
+PREFIX provo: <http://www.w3.org/ns/prov#>
+
+
+FOR ?rowId IN rows FILTER get-row(?rowId)
+    MATCH [?isoC,?geodivision1,?regionLabel,?geodivision2,?uniCode,?unilabel,?notation,?cif,?erasmusCode,?anlabel,?astlabel,?calabel,?enlabel,?eslabel,?extlabel,?eulabel,?frlabel,?gllabel,?oclabel,?ptlabel] IN horizontal 
+    
+  LET ?unilabelResource = resource(concat("ES_UNIVERSITY_",replace(?uniCode,"-","_")),asioModules)
+  LET ?uniCodeResource = resource(concat("ES_UNIVERSITY_CODE_",replace(?uniCode,"-","_")),asioModules)
+  LET ?unicifCodeResource = resource(concat("ES_UNIVERSITY_VAT_NUMBER_",replace(?cif,"-","_")),asioModules)
+
+  LET ?geodivisionResource1 = resource(concat(substring(?geodivision1,0,2),"_DIVISION_LEVEL_1_",replace(?geodivision1,"-","_")),asioModules)
+  LET ?geodivisionResource2 = resource(concat(substring(?geodivision2,0,2),"_DIVISION_LEVEL_2_",replace(?geodivision2,"-","_")),asioModules)
+
+    LET ?enLangLabel = setLangTag(?enlabel, "en")
+    LET ?esLangLabel = setLangTag(?eslabel, "es")
+    LET ?caLangLabel = setLangTag(?calabel, "ca")
+
+ { 
+    WHEN not matches (?erasmusCode,"") DO
+    LET ?erasmusCodeResource = resource(concat("ES_UNIVERSITY_ERASMUS_CODE_",replace(?erasmusCode," ","_")),asioModules)
+    ; 
+    WHEN not matches(?frlabel,"") DO
+      LET ?frLangLabel = setLangTag(?frlabel, "fr") 
+    ; 
+    WHEN not matches(?ptlabel,"") DO
+      LET ?ptLangLabel = setLangTag(?ptlabel, "pt") 
+    ;  
+    WHEN not matches(?gllabel,"") DO
+      LET ?glLangLabel = setLangTag(?gllabel, "gl")
+    ; 
+    WHEN not matches(?anlabel,"") DO
+      LET ?anLangLabel = setLangTag(?anlabel, "an") 
+    ;
+    WHEN not matches(?eulabel,"") DO
+      LET ?euLangLabel = setLangTag(?eulabel, "eu") 
+    ;
+    WHEN not matches(?extlabel,"") DO
+      LET ?extLangLabel = setLangTag(?extlabel, "ext")  
+    ;
+    WHEN not matches(?astlabel,"") DO
+      LET ?astLangLabel = setLangTag(?astlabel, "ast") 
+    ;
+    WHEN not matches(?oclabel,"") DO
+      LET ?ocLangLabel = setLangTag(?oclabel, "oc")  
+}
+
+
+
+CONSTRUCT {
+  
+  asioModules:UniversityList a asioModules:Universities;
+                              rdfs:label "Universities"@en ;
+                              skos:prefLabel "Universities"@en ;
+                              rdfs:label "Universidades"@es ;
+                              skos:prefLabel "Universidades"@es ;
+                              rdfs:label "Unibertsitateak"@eu ;
+                              skos:prefLabel "Unibertsitateak"@eu ;
+                              rdfs:label "Universidades"@gl ;
+                              skos:prefLabel "Universidades"@gl ;
+                              rdfs:label "Universidades"@pt ;
+                              skos:prefLabel "Universidades"@pt ;
+                              rdfs:label "Universidatz"@an ;
+                              skos:prefLabel "Universidatz"@an ;
+                              rdfs:label "Universités"@fr ;
+                              skos:prefLabel "Universités"@fr ;
+                              rdfs:label "Universidaes"@ast ;
+                              skos:prefLabel "Universidaes"@ast ;
+                              rdfs:label "Univelsiais"@ext ;
+                              skos:prefLabel "Univelsiais"@ext ;
+                              rdfs:label "Universitats"@ca ;
+                              skos:prefLabel "Universitats"@ca ;
+                              rdfs:label "Universitats"@oc ;
+                              skos:prefLabel "Universitats"@oc .
+
+  asioModules:ESUniversityList a asioModules:Universities;
+                              rdfs:label "Universities of Spain"@en ;
+                              skos:prefLabel "Universities of Spain"@en ;
+                              rdfs:label "Universidades de España"@es ;
+                              skos:prefLabel "Universidades de España"@es ;
+                              rdfs:label "Espainiako unibertsitateak"@eu ;
+                              skos:prefLabel "Espainiako unibertsitateak"@eu ;
+                              rdfs:label "Universidades de España"@gl ;
+                              skos:prefLabel "Universidades de España"@gl ;
+                              rdfs:label "Universidades de Espanha"@pt ;
+                              skos:prefLabel "Universidades de Espanha"@pt ;
+                              rdfs:label "Universidatz d'Espanya"@an ;
+                              skos:prefLabel "Universidatz d'Espanya"@an ;
+                              rdfs:label "Universités d'Espagne"@fr ;
+                              skos:prefLabel "Universités d'Espagne"@fr ;
+                              rdfs:label "Universidaes d'España"@ast ;
+                              skos:prefLabel "Universidaes d'España"@ast ;
+                              rdfs:label "Univelsiais d'España"@ext ;
+                              skos:prefLabel "Univelsiais d'España"@ext ;
+                              rdfs:label "Universitats d'Espanya"@ca ;
+                              skos:prefLabel "Universitats d'Espanya"@ca ;
+                              rdfs:label "Universitats d'Espanha"@oc ;
+                              skos:prefLabel "Universitats d'Espanha"@oc .
+
+  asioModules:ESUniversityCodeList a asioModules:Universities;
+                              rdfs:label "Codes for the universities of Spain"@en ;
+                              skos:prefLabel "Codes for the universities of Spain"@en ;
+                              rdfs:label "Códigos de las universidades de España"@es ;
+                              skos:prefLabel "Códigos de las universidades de España"@es ;
+                              rdfs:label "Espainiako unibertsitateak - kodeak"@eu ;
+                              skos:prefLabel "Espainiako unibertsitateak - kodeak"@eu ;
+                              rdfs:label "Códigos das universidades de España"@gl ;
+                              skos:prefLabel "Códigos das universidades de España"@gl ;
+                              rdfs:label "Códigos das universidades de Espanha"@pt ;
+                              skos:prefLabel "Códigos das universidades de Espanha"@pt ;
+                              rdfs:label "Codigos d'as universidatz d'Espanya"@an ;
+                              skos:prefLabel "Codigos d'as universidatz d'Espanya"@an ;
+                              rdfs:label "Codes des universités d'Espagne"@fr ;
+                              skos:prefLabel "Codes des universités d'Espagne"@fr ;
+                              rdfs:label "Códigos de les universidaes d'España"@ast ;
+                              skos:prefLabel "Códigos de les universidaes d'España"@ast ;
+                              rdfs:label "Códigus delas univelsiais d'España"@ext ;
+                              skos:prefLabel "Códigus delas univelsiais d'España"@ext ;
+                              rdfs:label "Codis de les universitats d'Espanya"@ca ;
+                              skos:prefLabel "Codis de les universitats d'Espanya"@ca ;
+                              rdfs:label "Còdis de las universitats d'Espanha"@oc ;
+                              skos:prefLabel "Còdis de las universitats d'Espanha"@oc .
+
+  asioModules:ESUniversityVATNumberList a asioModules:Universities;
+                              rdfs:label "VAT numbers (CIF) for the universities of Spain"@en ;
+                              skos:prefLabel "VAT numbers (CIF) for the universities of Spain"@en ;
+                              rdfs:label "Códigos CIF de las universidades de España"@es ;
+                              skos:prefLabel "Códigos CIF de las universidades de España"@es ;
+                              rdfs:label "Espainiako unibertsitateak - CIF kodeak"@eu ;
+                              skos:prefLabel "Espainiako unibertsitateak - CIF kodeak"@eu ;
+                              rdfs:label "Códigos CIF das universidades de España"@gl ;
+                              skos:prefLabel "Códigos CIF das universidades de España"@gl ;
+                              rdfs:label "Códigos CIF das universidades de Espanha"@pt ;
+                              skos:prefLabel "Códigos CIF das universidades de Espanha"@pt ;
+                              rdfs:label "Codigos CIF d'as universidatz d'Espanya"@an ;
+                              skos:prefLabel "Codigos CIF d'as universidatz d'Espanya"@an ;
+                              rdfs:label "Codes CIF des universités d'Espagne"@fr ;
+                              skos:prefLabel "Codes CIF des universités d'Espagne"@fr ;
+                              rdfs:label "Códigos CIF de les universidaes d'España"@ast ;
+                              skos:prefLabel "Códigos CIF de les universidaes d'España"@ast ;
+                              rdfs:label "Códigus CIF delas univelsiais d'España"@ext ;
+                              skos:prefLabel "Códigus CIF delas univelsiais d'España"@ext ;
+                              rdfs:label "Codis CIF de les universitats d'Espanya"@ca ;
+                              skos:prefLabel "Codis CIF de les universitats d'Espanya"@ca ;
+                              rdfs:label "Còdis CIF de las universitats d'Espanha"@oc ;
+                              skos:prefLabel "Còdis CIF de las universitats d'Espanha"@oc .
+
+  asioModules:ESUniversityErasmusCodeList a asioModules:Universities;
+                              rdfs:label "Codes Erasmus for the universities of Spain"@en ;
+                              skos:prefLabel "Codes Erasmus for the universities of Spain"@en ;
+                              rdfs:label "Códigos Erasmus de las universidades de España"@es ;
+                              skos:prefLabel "Códigos Erasmus de las universidades de España"@es ;
+                              rdfs:label "Espainiako unibertsitateak - Erasmus kodeak"@eu ;
+                              skos:prefLabel "Espainiako unibertsitateak - Erasmus kodeak"@eu ;
+                              rdfs:label "Códigos Erasmus das universidades de España"@gl ;
+                              skos:prefLabel "Códigos Erasmus das universidades de España"@gl ;
+                              rdfs:label "Códigos Erasmus das universidades de Espanha"@pt ;
+                              skos:prefLabel "Códigos Erasmus das universidades de Espanha"@pt ;
+                              rdfs:label "Codigos Erasmus d'as universidatz d'Espanya"@an ;
+                              skos:prefLabel "Codigos Erasmus d'as universidatz d'Espanya"@an ;
+                              rdfs:label "Codes Erasmus des universités d'Espagne"@fr ;
+                              skos:prefLabel "Codes Erasmus des universités d'Espagne"@fr ;
+                              rdfs:label "Códigos Erasmus de les universidaes d'España"@ast ;
+                              skos:prefLabel "Códigos Erasmus de les universidaes d'España"@ast ;
+                              rdfs:label "Códigus Erasmus delas univelsiais d'España"@ext ;
+                              skos:prefLabel "Códigus Erasmus delas univelsiais d'España"@ext ;
+                              rdfs:label "Codis Erasmus de les universitats d'Espanya"@ca ;
+                              skos:prefLabel "Codis Erasmus de les universitats d'Espanya"@ca ;
+                              rdfs:label "Còdis Erasmus de las universitats d'Espanha"@oc ;
+                              skos:prefLabel "Còdis Erasmus de las universitats d'Espanha"@oc .
+
+}
+
+
+CONSTRUCT {
+  ?unilabelResource a skos:Concept;
+                  rdfs:label ?unilabel ;
+                  skos:prefLabel ?unilabel ; 
+                  skos:prefLabel ?esLangLabel ;
+                  skos:prefLabel ?enLangLabel ;
+                  skos:prefLabel ?caLangLabel ;
+                  skos:inScheme asioModules:ESUniversityList;
+                  skos:inScheme asioModules:UniversityList;
+                  asio:hasCode ?uniCodeResource ;
+                  asio:hasCode ?unicifCodeResource ;
+                  asio:geoDivision ?geodivisionResource1 ;
+                  asio:geoDivision ?geodivisionResource2 ;
+                  skos:notation ?notation ;
+                  skos:notation ?uniCode .
+  
+  ?uniCodeResource a skos:Concept;
+                  rdfs:label ?uniCode ;
+                  skos:prefLabel ?uniCode ; 
+                  skos:inScheme asioModules:ESUniversityCodeList;
+                  asio:codeOf ?unilabelResource .
+  
+  ?unicifCodeResource a skos:Concept;
+                  rdfs:label ?cif ;
+                  skos:prefLabel ?cif ; 
+                  skos:inScheme asioModules:ESUniversityVATNumberList;
+                  asio:codeOf ?unilabelResource .
+}
+
+CONSTRUCT {
+
+?unilabelResource asio:hasCode ?erasmusCodeResource .
+
+?erasmusCodeResource a skos:Concept;
+               rdfs:label ?erasmusCode ;
+               skos:prefLabel ?erasmusCode ; 
+               skos:inScheme asioModules:ESUniversityErasmusCodeList ;
+               asio:codeOf ?unilabelResource .
+}
+
+CONSTRUCT{
+  ?unilabelResource skos:prefLabel ?anLangLabel .
+}
+
+CONSTRUCT{
+  ?unilabelResource skos:prefLabel ?euLangLabel .
+}
+
+CONSTRUCT{
+  ?unilabelResource skos:prefLabel ?extLangLabel .
+}
+
+CONSTRUCT{
+  ?unilabelResource skos:prefLabel ?ocLangLabel .
+}
+
+CONSTRUCT{
+  ?unilabelResource skos:prefLabel ?frLangLabel .
+}
+
+CONSTRUCT{
+  ?unilabelResource skos:prefLabel ?ptLangLabel .
+}
+
+CONSTRUCT{
+  ?unilabelResource skos:prefLabel ?glLangLabel .
+}
+
+CONSTRUCT{
+  ?unilabelResource skos:prefLabel ?astLangLabel .
+}
