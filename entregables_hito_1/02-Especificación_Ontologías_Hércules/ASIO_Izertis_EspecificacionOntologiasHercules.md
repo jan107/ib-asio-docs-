@@ -26,7 +26,7 @@ In addition to that, the last section of this document includes an annex with a 
 
 ## 1. Introduction
 
-The ASIO ontologies are standardised data schemas (or "vocabularies") designed to address the Research Management of the particular case of the University of Murcia but by applying an encompassing model capable of addressing too other universities both at the national level and at the international level.
+The ASIO ontologies are standardised data schemas (or "vocabularies") designed to address the Research Management of the [CRUE](http://www.crue.org/SitePages/Inicio.aspx)'s Spanish University System (Sistema Universitario Español) through the particular case  of the University of Murcia but always applying an encompassing model capable of addressing the rest of universities of the CRUE and even more belonging to the European level.
 
 In this brief section we are going to explain the large-scale organization of the ASIO ontology, which is split into a central and peripheral components, loosely inspiring ourselves in Fodor (1983). To do so we need to distinguish between two fundamentally different types of information processing (relying upon information architecture and datasets).
 
