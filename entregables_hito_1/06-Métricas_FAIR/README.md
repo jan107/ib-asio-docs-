@@ -1,16 +1,30 @@
 ![](./images/logos_feder.png)
 
+| Entregable     | Métricas FAIR                                                |
+| -------------- | ------------------------------------------------------------ |
+| Fecha          | 25/05/2020                                                   |
+| Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
+| Módulo         | Infraestructura Ontológica                                   |
+| Tipo           | Software y resultados                                        |
+| Objetivo       | Evaluar el cumplimiento de las métricas FAIR definidas en el documento de [Análisis de métodos FAIR](https://github.com/HerculesCRUE/ib-asio-docs-/blob/master/entregables_hito_1/05-An%C3%A1lisis_de_m%C3%A9todos_FAIR/ASIO_Izertis_AnalisisDeMetodosFAIR.md) sobre el proyecto ASIO, tanto a nivel de ontología como de conjuntos de datos. A partir de dicha evaluación se generan gráficas de nivel de cumplimiento por áreas e indicadores individuales de forma automática para su posterior integración en páginas web y/o informes. |
+| Estado         | **100%** La evaluación de los indicadores se ha realizado completamente y el software permite generar las gráficas necesarias, incluyendo pruebas unitarias pertinentes. |
+| Próximos pasos | A la finalización del proyecto se volverán a evaluar las métricas sobre el despliegue final, con previsión de obtener un nivel máximo de cumplimiento en todos los indicadores. |
+| Documentación  | [Manual de usuario](manual_usuario.md)<br />[Manual de despliegue](manual_despliegue.md)<br />[Documentación técnica](manual_tecnico.md) |
+
+
+![](./images/logos_feder.png)
+
 # Métricas FAIR
 
 La evaluación de indicadores de realiza de forma individual y se agrupa por áreas FAIR (FINDABLE, ACCESIBLE, INTEROPERABLE y REUSABLE).
 
 El resultado de la evaluación por indicadores individuales se muestra a continuación:
 
-![](./images/evaluacion_indicadores.png)
+![](./plots/levels_plot.png)
 
 El resultado de la evaluación por áreas sería el siguiente:
 
-![](./images/evaluacion_areas.png)
+![](./plots/radar_plot.png)
 
 De forma general, la conclusión de la evaluación FAIR es bastante positiva, dado que por la naturaleza del proyecto ASIO, la mayoría de indicadores se cumplen de-facto, por el uso de tecnologías de linked data 5 estrellas (OWL, SKOS, HTTP, RDF, etc).
 
