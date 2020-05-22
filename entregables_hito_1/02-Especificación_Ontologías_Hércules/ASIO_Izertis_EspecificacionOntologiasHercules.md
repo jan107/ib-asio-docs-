@@ -4,22 +4,27 @@
 
 ## 0. About this document
 
-This document reports the current status of the ASIO ontology files and more specifically it describes *grosso modo* six of the files currently available in our repositories, namely:
+This document reports the current status of the ASIO ontology files and more specifically it describes *grosso modo* the nine files currently available in our repositories, namely:
 
-- [asio-core.ttl](../01-Red_de_Ontologías_Hércules/asio-core.ttl)
-- [asio-mappings.ttl](../01-Red_de_Ontologías_Hércules/asio-mappings.ttl)
-- [asio-module-geopol.ttl](../01-Red_de_Ontologías_Hércules/asio-module-geopol.ttl)
-- [asio-module-scientificdomains.ttl](../01-Red_de_Ontologías_Hércules/asio-module-scientificdomains.ttl)
-- [asio-module-subjectareas.ttl](../01-Red_de_Ontologías_Hércules/asio-module-subjectareas.ttl)
-- [asio-module-universities.ttl](../01-Red_de_Ontologías_Hércules/asio-module-universities.ttl)
+1. [asio-core.ttl](../01-Red_de_Ontologías_Hércules/asio-core.ttl)
+2. [asio-mappings.ttl](../01-Red_de_Ontologías_Hércules/asio-mappings.ttl)
+3. [asio-module-geopol.ttl](../01-Red_de_Ontologías_Hércules/asio-module-geopol.ttl)
+4. [asio-module-scientificdomains.ttl](../01-Red_de_Ontologías_Hércules/asio-module-scientificdomains.ttl)
+5. [asio-module-subjectareas.ttl](../01-Red_de_Ontologías_Hércules/asio-module-subjectareas.ttl)
+6. [asio-module-universities.ttl](../01-Red_de_Ontologías_Hércules/asio-module-universities.ttl)
+7. asio-module-universityhr-es
+8. asio-module-universityhr-pt
+9. asio-module-universityhr-vivo
 
-The first one is the ***core*** ontology and the second one corresponds to the class-by-class ***alignements*** towards external vocabularies
+The first one is the ***core*** ontology and the second one corresponds to the class-by-class ***alignements*** towards both external vocabularies and also between individuals within the vertical modules.
 
 In addition to these two files, a number of ***vertical modules*** have being released at the moment of this writing. The earliest release was the **geopolitical module** (the third file listed above) including so far the full list of world's countries, the geopolitical entities of Andorra, Spain and Portugal (France is the other country to be taken into account in this vertical module in the next update).
 
-Two other vertical modules, related within each other, are the **scientific domains** and the **subject areas**. Both are controlled vocabularies including scientific domains and fields and used in different requirements by the core ontology.
+Two other vertical modules, related within each other, are the **scientific domains** and the **subject areas**, 4th and 5th respectively. Both are controlled vocabularies including scientific domains and fields used in different requirements by the core ontology.
 
-Finally, the vertical module **universities** included the full list of universities from Spain with a limited sample of university subdivisions (centres, campus, faculties, etc.) corresponding to the Murcia, Oviedo, Santiago de Compostela and Basque country universities.
+The sixth vertical module, **universities**, includes the full list of universities from Spain as well as a limited sample of university subdivisions (centres, campus, faculties, etc.) corresponding to the Murcia, Oviedo, Santiago de Compostela and Basque country universities.
+
+Finally, the 7th, 8th and 9th files corresponds to **human resources** belonging to the university systems of Spain and Portugal and also to some Anglosaxon positions (USA, Canada and other countries of the so-called Commonwealth) included in the [VIVO ontology](https://github.com/vivo-project/VIVO).
 
 In addition to that, the last section of this document includes an annex with a number of competence questions which can be solved with the ontology. The answers to those questions includes direct links to discussion issues and SPARQL queries for each one of them.
 
@@ -168,6 +173,8 @@ The same applies to relevant properties belonging to concurrent vocabularies, wh
 
 More details about these alignments, carried out following consolidated recommendations (Vandenbussche et al.: 2014), will be provided in more consolidated documentation to be generated soon, but right now it suffices to access the file using a source code editor and have a look at the large list of equivalences, chiefly focusing on concomitant vocabularies such as CERIF, VIVO or the SPAR family of ontologies but also going beyond these ones.
 
+In addition to these external mappings, the file also contains some *inner* ones. An example of this would be the human resources from some university national systems included in the corresponding vertical modules. The mappings are still state-of-the-art ones as studying and comparing the academic reality of new countries demands a thorough analysis that was not within the reach of this first milestone of the project. However, mappings between academic positions from Spain and Portugal are provided and also matching positions available in the VIVO ontology.
+
 
 
 ## 4. Vertical modules
@@ -179,6 +186,7 @@ As far as the **vertical modules** are concerned another five final candidates a
 - scientific domains
 - subject areas
 - Spanish universities
+- human resources from some national university systems (Spain, Portugal and others)
 
 An extra vertical module, called *Spain's university staffing*, is currently located within the core ontology as instances of the class *asio:Role*, but it is currently being migrated as an independent vertical module, so other equivalent university staffing from other countries can be plugged in an easier way by replicating the provided framework and populating it with the reality of, for instance, Portugal's university staffing or France's.
 
