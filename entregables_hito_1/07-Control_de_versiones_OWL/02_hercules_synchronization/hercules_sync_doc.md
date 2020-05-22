@@ -1,5 +1,15 @@
 ![](./images/logos_feder.png)
 
+| Entregable     | Sistema de sincronización Hércules                           |
+| -------------- | ------------------------------------------------------------ |
+| Fecha          | 22/05/2020                                                   |
+| Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
+| Módulo         | Infraestructura Ontológica                                   |
+| Tipo           | Documento + Software                                         |
+| Objetivo       | Este documento consiste en la especificación del sistema de sincronización automática de ontologías con un triplestore. |
+| Estado         | **70%** El sistema se encuentra ya en funcionamiento y deplegado. Actualmente se está trabajando en mejoras del módulo que se encuentran definidas y detalladas a lo largo del documento. |
+| Próximos pasos | Implementación de la sincronización desde el triplestore a los ficheros de la ontología. Solución a los problemas definidos en el capítulo de Riesgos y Deuda Técnica. |
+
 # Hercules synchronization module architecture
 
 > __Note: Web Version__ <br>
@@ -21,7 +31,7 @@ In this section we will enumerate the top quality goals for the system's archite
 | Priority | Goal | Scenario |
 | ---- | ----------- | -------- |
 | 1 | Consistency | Changes to the ontology should be completely reflected in the triplstore. Both the triple store and the ontology should have the same information. |
-| 1 | Flexibility | Although the initial implementation of the system will work through the BlazeGraph triple store of Wikibase, the triple store where the changes will be propagated to should be easily extended.  |
+| 1 | Flexibility | Although the initial implementation of the system will work through the BlazeGraph triple store of Wikibase, the triple store where the changes will be propagated to should be easily extended.  |
 | 1 | Fault Tolerance | In case that one of the components that surround the synchronization system fails, the system must be able to continue working and keep the other quality goals whenever possible. |
 
 ### Stakeholders
