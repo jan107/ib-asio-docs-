@@ -6,7 +6,7 @@
 
 
 
-| Entregable     | Análisis de método FAIR                                      |
+| Entregable     | Manual de usuario                                            |
 | -------------- | ------------------------------------------------------------ |
 | Fecha          | 25/05/2020                                                   |
 | Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
@@ -47,7 +47,7 @@ Ahora mismo la aplicación ASIO no dispone de aplicación web propia, en su luga
 
 
 
-A Trellis se importan todos los datos importados, tanto de los datasets como de los CVNs. Además de esto, se han creado unos [POJOs](../Pojos Hito 1/pojos.md) de contingencia que se guardan tanto con Trellis como con Wikibase. Estos POJOs nos dan la respuesta a la pregunta de competencia "**Como investigador y personal no investigador de la universidad requiero obtener un listado de los proyectos adjudicados/desarrollados de un centro/estructura de investigación**"
+A Trellis se importan todos los datos importados, tanto de los datasets como de los CVNs. Además de esto, se han creado unos [POJOs](../Pojos Hito 1/pojos.md) que se guardan tanto con Trellis como con Wikibase. Estos POJOs nos dan la respuesta a la pregunta de competencia "**Como investigador y personal no investigador de la universidad requiero obtener un listado de los proyectos adjudicados/desarrollados de un centro/estructura de investigación**"
 
 
 
