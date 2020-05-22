@@ -11,6 +11,15 @@
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
 
+asioModules:PT_UNIVERSITY_HR_PTPEM
+      a       owl:NamedIndividual , asio:Role , skos:Concept ;
+      rdfs:label "Professor emérito"@pt ;
+      asio:country euCountry:PRT ;
+      asio:hasCode asioModules:PT_UNIVERSITY_HR_CODE_PTPEM ;
+      skos:inScheme asioModules:PTUniversityHumanResourcesList ;
+      skos:notation "PTPEM" ;
+      skos:prefLabel "Profesor emérito"@es , "Profesor emérito"@gl , "Profesor eméritu"@ast , "Professor emèrit"@ca , "Professor emérito"@pt .
+
 asioModules:PT_UNIVERSITY_HR_PTPC
       a       owl:NamedIndividual , asio:Role , skos:Concept ;
       rdfs:label "Professor catedrático"@pt ;
@@ -52,6 +61,13 @@ asioModules:PT_UNIVERSITY_HR_CODE_PTPAS
       asio:codeOf asioModules:PT_UNIVERSITY_HR_PTPAS ;
       skos:inScheme asioModules:PTUniversityHumanResourcesCodesList ;
       skos:prefLabel "PTPAS" .
+
+asioModules:PT_UNIVERSITY_HR_CODE_PTPEM
+      a       skos:Concept ;
+      rdfs:label "PTPEM" ;
+      asio:codeOf asioModules:PT_UNIVERSITY_HR_PTPEM ;
+      skos:inScheme asioModules:PTUniversityHumanResourcesCodesList ;
+      skos:prefLabel "PTPEM" .
 
 asioModules:PT_UNIVERSITY_HR_PTPAS
       a       owl:NamedIndividual , asio:Role , skos:Concept ;

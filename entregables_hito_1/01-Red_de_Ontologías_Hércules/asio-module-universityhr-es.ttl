@@ -108,6 +108,7 @@ asioModules:ES_UNIVERSITY_HR_ESFPTU
       asio:hasCode asioModules:ES_UNIVERSITY_HR_CODE_ESFPTU ;
       skos:inScheme asioModules:ESUniversityHumanResourcesList ;
       skos:notation "ESFPTU" ;
+      skos:closeMatch asioModules:PT_UNIVERSITY_HR_PTPC ;
       skos:prefLabel "Professor titular de universidade"@pt , "Professor titular d'universitat"@ca , "Irakasle titularra"@eu , "Profesor titular de universidade"@gl , "Profesor titular d'universidá"@ast , "Professeur titulaire d'université"@fr , "Profesor titular de universidad"@es .
 
 asioModules:ES_UNIVERSITY_HR_CODE_ESLPI
@@ -148,6 +149,7 @@ asioModules:ES_UNIVERSITY_HR_CODE_ESPLEM
       a       skos:Concept ;
       rdfs:label "ESPLEM" ;
       asio:codeOf asioModules:ES_UNIVERSITY_HR_ESPLEM ;
+      skos:closeMatch asioModules:PT_UNIVERSITY_HR_PTPEM ;
       skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
       skos:prefLabel "ESPLEM" .
 
@@ -399,6 +401,7 @@ asioModules:ES_UNIVERSITY_HR_ESLPAS
       asio:country euCountry:ESP ;
       asio:hasCode asioModules:ES_UNIVERSITY_HR_CODE_ESLPAS ;
       skos:inScheme asioModules:ESUniversityHumanResourcesList ;
+      skos:closeMatch asioModules:PT_UNIVERSITY_HR_PTPAS ;
       skos:notation "ESLPAS" ;
       skos:prefLabel "Profesor asociáu"@ast , "Professor associat"@ca , "Irakasle elkartua"@eu , "Profesor asociado"@gl , "Profesor asociado"@es .
 

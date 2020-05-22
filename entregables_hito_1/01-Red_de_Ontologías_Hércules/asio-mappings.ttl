@@ -40,6 +40,7 @@
 @prefix lib: <http://purl.org/library/> .
 @prefix lsc: <http://linkedscience.org/lsc/ns#> .
 @prefix modules: <http://purl.org/hercules/asio/modules#> .
+@prefix asioModules: <http://purl.org/hercules/asio/modules#> .
 @prefix npg: <http://ns.nature.com/terms/> .
 @prefix opus: <http://lsdis.cs.uga.edu/projects/semdis/opus#> .
 @prefix org: <http://www.w3.org/ns/org#> .

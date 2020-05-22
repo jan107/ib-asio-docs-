@@ -255,13 +255,59 @@ It also includes a limited sample of subdivisions (schools, faculties, centres) 
 
 
 
-### 4.5. other vertical modules being currently implementedad
+### 4.5. human resources from national university systems
 
-At the moment of this writing, we are working on a couple of extra vertical modules: *Spanish administrative entities* and the transformation of the information about *Spain's university staffing*, which is right now included as instances of the core-class *asio:Role*.
-The first one is designed to encompass all the relevant entities belonging to Spain's *administración autonómica* related to the geopolitical subdivisions of the previous vertical module, to which they are going to be seamlessly linked.
-The implementation of this vertical module will be also carried out using SKOS-Core as it shows a clear hierarchical structure and it will include the first-level bodies of *administración autonómica* (*conserjerías*), as available at Spain's administration portal [[1]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/comunidadesAutonomas/comunidadesAutonomas.htm?idCCAA=14), and the second-level [[2]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/fichaUnidadOrganica.htm?idUnidOrganica=123276&origenUO=comunidadesAutonomas&volver=comunidadesAutonomas&idCCAA=14), mainly *direcciones generales* and *consorcios*.
+A very complex issue to address among national university systems is human resources, specially those belonging to academia. Spain, for instance, shows a wide variety of positions that can be even wider when considering also some peculiarities at regional level. There are very specific cases in Andalusia, Catalonia or the Basque country.
+
+
+
+from some national university systems (Spain, Portugal and others)
+
+
+
+and the transformation of the information about *Spain's university staffing*, which is right now included as instances of the core-class *asio:Role*.
 
 As far as the *Spain's university staffing*, this vertical module will be unplugged from the core ontology and rendered autonomous so similar ones containing the reality of other countries can be implemented in similar fashion and complete the model.
+
+An example of a mapping inclusion between a Spanish position and a Portuguese is the following:
+
+```turtle
+asioModules:ES_UNIVERSITY_HR_ESPLEM
+      a       owl:NamedIndividual , asio:Role , skos:Concept ;
+      rdfs:label "Profesor emérito"@es ;
+      asio:country euCountry:ESP ;
+      asio:hasCode asioModules:ES_UNIVERSITY_HR_CODE_ESPLEM ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesList ;
+      skos:closeMatch asioModules:PT_UNIVERSITY_HR_PTPEM ;
+      skos:notation "ESPLEM" ;
+      skos:prefLabel "Profesor emérito"@es , "Profesor emérito"@gl , "Profesor eméritu"@ast , "Irakasle emeritua"@eu , "Professor emèrit"@ca .
+```
+
+where the SKOS property `skos:closeMatch` indicates the conceptual proximity of *professors emeriti* from Spain and Portugal. We did not dare to use `skos:exactMatch` without being HR experts.
+
+A similar mapping is provided as far as the code is concerned:
+
+```turtle
+asioModules:ES_UNIVERSITY_HR_CODE_ESPLEM
+      a       skos:Concept ;
+      rdfs:label "ESPLEM" ;
+      asio:codeOf asioModules:ES_UNIVERSITY_HR_ESPLEM ;
+      skos:closeMatch asioModules:PT_UNIVERSITY_HR_CODE_PTPEM ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
+      skos:prefLabel "ESPLEM" .
+```
+
+
+
+
+
+### 4.6. other vertical modules being currently implementedad
+
+At the moment of this writing, we are studying the inclusion of more vertical modules. One candidate for milestone 2 could be *Spanish administrative entities*.
+This would be implemented to encompass all the relevant entities belonging to Spain's *administración autonómica* related to the geopolitical subdivisions of the previous vertical module, to which they are going to be seamlessly linked.
+The implementation of this vertical module will be also carried out using SKOS-Core as it shows a clear hierarchical structure and it will include the first-level bodies of *administración autonómica* (*conserjerías*), as available at Spain's administration portal [[1]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/comunidadesAutonomas/comunidadesAutonomas.htm?idCCAA=14), and the second-level [[2]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/fichaUnidadOrganica.htm?idUnidOrganica=123276&origenUO=comunidadesAutonomas&volver=comunidadesAutonomas&idCCAA=14), mainly *direcciones generales* and *consorcios*.
+
+
 
 ## 5. References
 
