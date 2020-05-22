@@ -18,6 +18,8 @@
 
 
 
+# ÍNDICE
+
 [1. INTRODUCCIÓN](#introducción)
 
 [2. Importadores](#importadores)
@@ -132,7 +134,7 @@ Se pueden ver los detalles pulsando sobre estos datos, o sobre los resultados de
 
 A través de las consultas SparQL también se podrán obtener los datos que nos interesen.
 
-![arquitectura](./images/consulta-wikibase.JPG)
+![arquitectura](./images/consulta-wikibase.png)
 
 
 
