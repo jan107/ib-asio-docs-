@@ -7,7 +7,7 @@
 | Módulo         | Infraestructura Ontológica                                   |
 | Tipo           | Documento                                                    |
 | Objetivo       | Este documento recoge en inglés la especificación de las ontologías Hércules. |
-| Estado         | **80%** El estado del documento se ajusta al 80% comprometido para el hito 1 del proyecto. |
+| Estado         | **80%**. El estado del documento se ajusta al 80% comprometido para el hito 1 del proyecto. |
 | Próximos pasos | La ontología va a ir evolucionando aún a lo largo de lo que resta del proyecto con el objetivo de ajustarse al 20% restante y este documento será asimismo documentación de partida en esa evolución. |
 
 
@@ -26,7 +26,7 @@ This document reports the current status of the ASIO ontology files and more spe
 6. [asio-module-universities.ttl](../01-Red_de_Ontologías_Hércules/asio-module-universities.ttl)
 7. [asio-module-universityhr-es](../01-Red_de_Ontologías_Hércules/asio-module-universityhr-es.ttl)
 8. [asio-module-universityhr-pt](../01-Red_de_Ontologías_Hércules/asio-module-universityhr-pt.ttl)
-9. asio-module-universityhr-
+9. [asio-module-universityhr-uk](../01-Red_de_Ontologías_Hércules/asio-module-universityhr-uk.ttl)
 
 The first one is the ***core*** ontology and the second one corresponds to the class-by-class ***alignements*** towards both external vocabularies and also between individuals within the vertical modules.
 

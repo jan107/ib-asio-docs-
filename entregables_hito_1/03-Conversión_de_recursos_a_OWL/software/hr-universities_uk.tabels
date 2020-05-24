@@ -1,0 +1,85 @@
+PREFIX project: <http://weso.es/tablines/project/HRuniversitiesGB/>
+PREFIX my: <http://weso.es/tablines/project/HRuniversitiesGB/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX asioModules: <http://purl.org/asio/modules#> 
+PREFIX asio: <http://purl.org/asio/core#>
+PREFIX euCountry:<http://publications.europa.eu/resource/authority/country/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+
+
+FOR ?rowId IN rows FILTER get-row(?rowId)
+    MATCH [?ISOCode,?hrCode,?hrlabel,?enlabel,?altenlabel] IN horizontal 
+    
+  LET ?ISOResource = resource(?ISOCode,euCountry)
+  LET ?hrResource = resource(concat("GB_UNIVERSITY_HR_",replace(?hrCode,"-","_")),asioModules)
+  LET ?hrCodeResource = resource(concat("GB_UNIVERSITY_HR_CODE_",replace(?hrCode,"-","_")),asioModules)
+
+    LET ?LangLabel = setLangTag(?hrlabel, "en")
+    LET ?enLangLabel = setLangTag(?enlabel, "en")
+
+ { 
+    WHEN not matches(?altenlabel,"") DO
+      LET ?altenLangLabel = setLangTag(?altenlabel, "en")
+}
+
+
+
+CONSTRUCT {
+  
+  asioModules:GBUniversityHumanResourcesList a asioModules:UniversityHumanResources;
+                              rdfs:label "Human resources of the universities from the United Kingdom"@en ;
+                              skos:prefLabel "Human resources of the universities from the United Kingdom"@en ;
+                              rdfs:label "Recursos humanos de las universidades del Reino Unido"@es ;
+                              skos:prefLabel "Recursos humanos de las universidades del Reino Unido"@es ;
+                              rdfs:label "Recursos humans de les universitats del Regne Unit"@ca ;
+                              skos:prefLabel "Recursos humans de les universitats del Regne Unit"@ca ;
+                              rdfs:label "Recursos humanos das universidades do Reino Unido"@gl ;
+                              skos:prefLabel "Recursos humanos das universidades do Reino Unido"@gl ;
+                              rdfs:label "Recursos humanos de les universidaes del Reinu Xuníu"@ast ;
+                              skos:prefLabel "Recursos humanos de les universidaes del Reinu Xuníu"@ast ;
+                              rdfs:label "Resources humains des universités du Royaume Uni"@fr ;
+                              skos:prefLabel "Resources humains des universités du Royaume Uni"@fr ;
+                              rdfs:label "Recursos humanos das universidades do Reino Unido"@pt ;
+                              skos:prefLabel "Recursos humanos das universidades do Reino Unido"@pt .
+  
+  asioModules:GBUniversityHumanResourcesCodesList a asioModules:UniversityHumanResources;
+                                   rdfs:label "Codes for the human resources of the universities from the United Kingdom"@en ;
+                                   skos:prefLabel "Codes for the human resources of the universities from the United Kingdom"@en ;
+                                   rdfs:label "Códigos dos recursos humanos das universidades do Reino Unido"@pt ;
+                                   skos:prefLabel "Códigos dos recursos humanos das universidades do Reino Unido"@pt ;
+                                   rdfs:label "Códigos dos recursos humanos das universidades do Reino Unido"@gl ;
+                                   skos:prefLabel "Códigos dos recursos humanos das universidades do Reino Unido"@gl ;
+                                   rdfs:label "Códigos de los recursos humanos de las universidades del Reino Unido"@es ;
+                                   skos:prefLabel "Códigos de los recursos humanos de las universidades del Reino Unido"@es ;
+                                   rdfs:label "Códigos de los recursos humanos de les universidaes del Reinu Xuníu"@ast ;
+                                   skos:prefLabel "Códigos de los recursos humanos de les universidaes del Reinu Xuníu"@ast ;
+                                   rdfs:label "Codis dels recursos humans de les universitats del Regne Unit"@ca ;
+                                   skos:prefLabel "Codis dels recursos humans de les universitats del Regne Unit"@ca ;
+                                   rdfs:label "Codes des resources humains des universités du Royaume Uni"@fr ;
+                                   skos:prefLabel "Codes des resources humains des universités du Royaume Uni"@fr .
+}
+
+CONSTRUCT {
+  ?hrResource a skos:Concept , asio:Role , owl:NamedIndividual ;
+              rdfs:label ?LangLabel ; 
+              skos:prefLabel ?enLangLabel ;
+              asio:country ?ISOResource ;
+              skos:inScheme asioModules:GBUniversityHumanResourcesList;
+              asio:hasCode ?hrCodeResource ;
+              skos:notation ?hrCode .
+  
+  ?hrCodeResource a skos:Concept;
+                  rdfs:label ?hrCode ;
+                  skos:prefLabel ?hrCode ; 
+                  skos:inScheme asioModules:GBUniversityHumanResourcesCodesList;
+                  asio:codeOf ?hrResource .
+}
+
+CONSTRUCT{
+  ?hrResource skos:altLabel ?altenLangLabel .
+}

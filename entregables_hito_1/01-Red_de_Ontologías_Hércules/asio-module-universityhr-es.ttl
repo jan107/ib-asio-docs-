@@ -392,6 +392,7 @@ asioModules:ES_UNIVERSITY_HR_ESPLEM
       asio:country euCountry:ESP ;
       asio:hasCode asioModules:ES_UNIVERSITY_HR_CODE_ESPLEM ;
       skos:inScheme asioModules:ESUniversityHumanResourcesList ;
+      skos:closeMatch asioModules:GB_UNIVERSITY_HR_GBEPROF
       skos:notation "ESPLEM" ;
       skos:prefLabel "Profesor emérito"@es , "Profesor emérito"@gl , "Profesor eméritu"@ast , "Irakasle emeritua"@eu , "Professor emèrit"@ca .
 
