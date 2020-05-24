@@ -1,0 +1,147 @@
+PREFIX project: <http://weso.es/tablines/project/subjectAreas/>
+PREFIX my: <http://weso.es/tablines/project/subjectAreas/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX asioModules: <http://purl.org/asio/modules#> 
+PREFIX asio: <http://purl.org/asio/core#>
+PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
+PREFIX provo: <http://www.w3.org/ns/prov#>
+
+
+FOR ?rowId IN rows FILTER get-row(?rowId)
+    MATCH [?subject2ndCode,?subject3rdCode,?subjectArea,?anlabel,?astlabel,?calabel,?enlabel,?eslabel,?extlabel,?eulabel,?frlabel,?gllabel,?oclabel,?ptlabel] IN horizontal 
+    
+  LET ?subjectArea3rdResource = resource(concat("ES_SUBJECT_AREA_LEVEL_3_",replace(?subject3rdCode,"-","_")),asioModules)
+  LET ?subjectArea3rdCodeResource = resource(concat("ES_SUBJECT_AREA_LEVEL_3_CODE_",replace(?subject3rdCode,"-","_")),asioModules)
+
+  LET ?subjectArea2ndResource = resource(concat("ES_SUBJECT_AREA_LEVEL_2_",replace(?subject2ndCode,"-","_")),asioModules)
+
+    LET ?esLangLabel = setLangTag(?eslabel, "es")
+    LET ?astLangLabel = setLangTag(?astlabel, "ast")
+    LET ?caLangLabel = setLangTag(?calabel, "ca")
+    LET ?glLangLabel = setLangTag(?gllabel, "gl")
+    LET ?ptLangLabel = setLangTag(?ptlabel, "pt")
+    LET ?frLangLabel = setLangTag(?frlabel, "fr")
+    LET ?enLangLabel = setLangTag(?enlabel, "en")
+
+ { 
+    WHEN not matches(?anlabel,"") DO
+      LET ?anLangLabel = setLangTag(?anlabel, "an") 
+    ;
+    WHEN not matches(?eulabel,"") DO
+      LET ?euLangLabel = setLangTag(?eulabel, "eu") 
+    ;
+    WHEN not matches(?extlabel,"") DO
+      LET ?extLangLabel = setLangTag(?extlabel, "ext") 
+    ;
+    WHEN not matches(?oclabel,"") DO
+      LET ?ocLangLabel = setLangTag(?oclabel, "oc")  
+}
+
+CONSTRUCT {
+  
+  asioModules:ESSubjectAreas3rdList a asioModules:subjectAreas;
+                              rdfs:label "Third-level subject areas of Spain's State Research Agency (AEI)"@en ;
+                              skos:prefLabel "Third-level subject areas of Spain's State Research Agency (AEI)"@en ;
+                              rdfs:label "Áreas temáticas de tercer nivel de la Agencia Estatal de Investigación (AEI)"@es ;
+                              skos:prefLabel "Áreas temáticas de tercer nivel de la Agencia Estatal de Investigación (AEI)"@es ;
+                              rdfs:label "Dominis temàtics de tercer nivell de l'Agència Estatal de Recerca (AEI)"@ca ;
+                              skos:prefLabel "Dominis temàtics de tercer nivell de l'Agència Estatal de Recerca (AEI)"@ca ;
+                              rdfs:label "Áreas temáticas de terceiro nivel da Axencia Estatal de Investigación (AEI)"@gl ;
+                              skos:prefLabel "Áreas temáticas de terceiro nivel da Axencia Estatal de Investigación (AEI)"@gl ;
+                              rdfs:label "Árees temátiques de tercer nivel de l'Axencia Estatal de Investigación (AEI)"@ast ;
+                              skos:prefLabel "Árees temátiques de tercer nivel de l'Axencia Estatal de Investigación (AEI)"@ast ;
+                              rdfs:label "Áreas temáticas de tercer libel d'a AEI"@an ;
+                              skos:prefLabel "Áreas temáticas de tercer libel d'a AEI"@an ;
+                              rdfs:label "FIXME"@eu ;
+                              skos:prefLabel "FIXME"@eu ;
+                              rdfs:label "Áreas tematicas de tresen nivel de l'AEI"@oc ;
+                              skos:prefLabel "Áreas tematicas de tresen nivel de l'AEI"@oc ;
+                              rdfs:label "Domains thématiques de troisième niveau de l'Agence Espagnole pour la Recherche (AEI)"@fr ;
+                              skos:prefLabel "Domains thématiques de troisième niveau de l'Agence Espagnole pour la Recherche (AEI)"@fr ;
+                              rdfs:label "Áreas temáticas de terceiro nível"@pt ;
+                              skos:prefLabel "Áreas temáticas de terceiro nível"@pt ;
+                              rdfs:label "ˈaɾeas teˈmatikas ðe terˈθer niˈβel ðe la aˈxenθja estaˈtal ðe imbestiɣ̞aˈθjon"@es-ES-fonipa ;
+                              skos:prefLabel "ˈaɾeas teˈmatikas ðe terˈθer niˈβel ðe la aˈxenθja estaˈtal ðe imbestiɣ̞aˈθjon"@es-ES-fonipa ;
+                              ontolex:phoneticRep "ˈaɾeas teˈmatikas ðe terˈθer niˈβel ðe la aˈxenθja estaˈtal ðe imbestiɣ̞aˈθjon"@es-ES-fonipa ;
+                              rdfs:label "duˈminis təˈmatikz ðə tərˈse niˈβeʎ ðə ɫə ʒənˈsiə əstəˈtaɫ ðə rəˈsɛrkə"@ca-CA-fonipa ;
+                              skos:prefLabel "duˈminis təˈmatikz ðə tərˈse niˈβeʎ ðə ɫə ʒənˈsiə əstəˈtaɫ ðə rəˈsɛrkə"@ca-CA-fonipa ;
+                              ontolex:phoneticRep "duˈminis təˈmatikz ðə tərˈse niˈβeʎ ðə ɫə ʒənˈsiə əstəˈtaɫ ðə rəˈsɛrkə"@ca-CA-fonipa ;
+                              rdfs:label "θɜːd ˈlɛvl ˈsʌbʤɪkt ˈeərɪəz"@en-GB-fonipa ;
+                              skos:prefLabel "θɜːd ˈlɛvl ˈsʌbʤɪkt ˈeərɪəz"@en-GB-fonipa ;
+                              ontolex:phoneticRep "θɜːd ˈlɛvl ˈsʌbʤɪkt ˈeərɪəz"@en-GB-fonipa ;
+                              rdfs:label "θɜrd ˈlɛvəl ˈsʌbʤɪkt ˈɛriə"@en-US-fonipa ;
+                              skos:prefLabel "θɜrd ˈlɛvəl ˈsʌbʤɪkt ˈɛriəz"@en-US-fonipa ;
+                              ontolex:phoneticRep "θɜrd ˈlɛvəl ˈsʌbʤɪkt ˈɛriə"@en-US-fonipa .
+  
+  asioModules:ESSubjectCode3rdList a asioModules:subjectAreas;
+                                   rdfs:label "ˈkoðiγoz ðe las ˈaɾeas teˈmatikas ðe terˈθer niˈβel ðe la aˈxenθja estaˈtal ðe imbestiɣ̞aˈθjon"@es-ES-fonipa ;
+                                   skos:prefLabel "ˈkoðiγoz ðe las ˈaɾeas teˈmatikas ðe terˈθer niˈβel ðe la aˈxenθja estaˈtal ðe imbestiɣ̞aˈθjon"@es-ES-fonipa ;
+                                   ontolex:phoneticRep "ˈkoðiγoz ðe las ˈaɾeas teˈmatikas ðe terˈθer niˈβel ðe la aˈxenθja estaˈtal ðe imbestiɣ̞aˈθjon"@es-ES-fonipa ;
+                                   rdfs:label "duˈminis təˈmatikz ðə tərˈse niˈβeʎ ðə ɫə ʒənˈsiə əstəˈtaɫ ðə rəˈsɛrkə"@ca-CA-fonipa ;
+                                   skos:prefLabel "duˈminis təˈmatikz ðə tərˈse niˈβeʎ ðə ɫə ʒənˈsiə əstəˈtaɫ ðə rəˈsɛrkə"@ca-CA-fonipa ;
+                                   ontolex:phoneticRep "duˈminis təˈmatikz ðə tərˈse niˈβeʎ ðə ɫə ʒənˈsiə əstəˈtaɫ ðə rəˈsɛrkə"@ca-CA-fonipa ;
+                                   rdfs:label "ˈkəʊdz fɔː ðə θɜːd ˈlɛvl ˈsʌbʤɪkt ˈeərɪəz ɒv speɪnz steɪt rɪˈsɜːʧ ˈeɪʤənsi"@en-GB-fonipa ;
+                                   skos:prefLabel "ˈkəʊdz fɔː ðə θɜːd ˈlɛvl ˈsʌbʤɪkt ˈeərɪəz ɒv speɪnz steɪt rɪˈsɜːʧ ˈeɪʤənsi"@en-GB-fonipa ;
+                                   ontolex:phoneticRep "ˈkəʊdz fɔː ðə θɜːd ˈlɛvl ˈsʌbʤɪkt ˈeərɪəz ɒv speɪnz steɪt rɪˈsɜːʧ ˈeɪʤənsi"@en-GB-fonipa ;
+                                   rdfs:label "ˈkoʊdz fɔr ðə θɜrd ˈlɛvəl ˈsʌbʤɪkt ˈɛriəz ʌv speɪnz steɪt riˈsɜrʧ ˈeɪʤənsi"@en-US-fonipa ;
+                                   skos:prefLabel "ˈkoʊdz fɔr ðə θɜrd ˈlɛvəl ˈsʌbʤɪkt ˈɛriəz ʌv speɪnz steɪt riˈsɜrʧ ˈeɪʤənsi"@en-US-fonipa ;
+                                   ontolex:phoneticRep "ˈkoʊdz fɔr ðə θɜrd ˈlɛvəl ˈsʌbʤɪkt ˈɛriəz ʌv speɪnz steɪt riˈsɜrʧ ˈeɪʤənsi"@en-US-fonipa ;
+                                   rdfs:label "Codes for the third-level subject areas of Spain's State Research Agency (AEI)"@en ;
+                                   skos:prefLabel "Codes for the third-level subject areas of Spain's State Research Agency (AEI)"@en ;
+                                   rdfs:label "Códigos das áreas temáticas de terceiro nível da Agência Estadual de Pesquisa Espanhola (AEI)"@pt ;
+                                   skos:prefLabel "Códigos das áreas temáticas de terceiro nível da Agência Estadual de Pesquisa Espanhola (AEI)"@pt ;
+                                   rdfs:label "Códigos das áreas temáticas de terceiro nivel da Axencia Estatal de Investigación (AEI)"@gl ;
+                                   skos:prefLabel "Códigos das áreas temáticas de terceiro nivel da Axencia Estatal de Investigación (AEI)"@gl ;
+                                   rdfs:label "Códigos de las áreas temáticas de tercer nivel de la Agencia Estatal de Investigación (AEI)"@es ;
+                                   skos:prefLabel "Códigos de las áreas temáticas de tercer nivel de la Agencia Estatal de Investigación (AEI)"@es ;
+                                   rdfs:label "Códigos de les árees temátiques de tercer nivel"@ast ;
+                                   skos:prefLabel "Códigos de les árees temátiques de tercer nivel"@ast ;
+                                   rdfs:label "Codis dels dominis temàtics de tercer nivell de l'Agència Estatal de Recerca (AEI)"@ca ;
+                                   skos:prefLabel "Codis dels dominis temàtics de tercer nivell de l'Agència Estatal de Recerca (AEI)"@ca ;
+                                   rdfs:label "Codes des domains thématiques de troisième niveau de l'Agence Espagnole pour la Recherche (AEI)"@fr ;
+                                   skos:prefLabel "Codes des domains thématiques de troisième niveau de l'Agence Espagnole pour la Recherche (AEI)"@fr .
+}
+
+CONSTRUCT {
+  ?subjectArea3rdResource a skos:Concept;
+                  rdfs:label ?subjectArea ;
+                  skos:prefLabel ?subjectArea ; 
+                  skos:prefLabel ?esLangLabel ;
+                  skos:prefLabel ?astLangLabel ;
+                  skos:prefLabel ?caLangLabel ;
+                  skos:prefLabel ?glLangLabel ;
+                  skos:prefLabel ?enLangLabel ;
+                  skos:prefLabel ?ptLangLabel ;
+                  skos:prefLabel ?frLangLabel ;
+                  skos:inScheme asioModules:ESSubjectAreas3rdList;
+                  skos:broader ?subjectArea2ndResource ;
+                  asio:hasCode ?subjectArea3rdCodeResource ;
+                  skos:notation ?subject3rdCode .
+  
+  ?subjectArea3rdCodeResource a skos:Concept;
+                  rdfs:label ?subject3rdCode ;
+                  skos:prefLabel ?subject3rdCode ; 
+                  skos:inScheme asioModules:ESSubjectCode3rdList;
+                  asio:codeOf ?subjectArea3rdResource .
+}
+
+CONSTRUCT{
+  ?subjectArea3rdResource skos:prefLabel ?anLangLabel .
+}
+
+CONSTRUCT{
+  ?subjectArea3rdResource skos:prefLabel ?euLangLabel .
+}
+
+CONSTRUCT{
+  ?subjectArea3rdResource skos:prefLabel ?extLangLabel .
+}
+
+CONSTRUCT{
+  ?subjectArea3rdResource skos:prefLabel ?ocLangLabel .
+}

@@ -1,0 +1,168 @@
+PREFIX project: <http://asio.es/tablines/project/PTregions/>
+PREFIX my: <http://asio.es/tablines/project/PTregions/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX asioModules: <http://purl.org/asio/modules#> 
+PREFIX asio: <http://purl.org/asio/core#>
+PREFIX euCountry:<http://publications.europa.eu/resource/authority/country/>
+PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
+PREFIX provo: <http://www.w3.org/ns/prov#>
+
+
+FOR ?rowId IN rows FILTER get-row(?rowId)
+    MATCH [?regionCode,?HASCCode,?region,?ptaltlabel,?ISOCode,?nuts1,?nuts2,?note_en,?note_pt,?note_es,?note_mwl,?enlabel,?mwllabel,?mwlaltlabel,?eslabel,?FIPSCode,?INEptCode,?ipaptlabel] IN horizontal 
+    
+  LET ?regionResource = resource(concat("PT_DIVISION_LEVEL_1_",replace(?regionCode,"-","_")),asioModules)
+  LET ?regionCodeResource = resource(concat("PT_DIVISION_LEVEL_1_ISO_CODE_",replace(?regionCode,"-","_")),asioModules)
+  LET ?regionFIPSCodeResource = resource(concat("PT_DIVISION_LEVEL_1_FIPS_CODE_",replace(?FIPSCode,"-","_")),asioModules)
+  LET ?regionINEptCodeResource = resource(concat("PT_DIVISION_LEVEL_1_INEPT_CODE_",replace(?INEptCode,"-","_")),asioModules)
+  LET ?regionHASCCodeResource = resource(concat("PT_DIVISION_LEVEL_1_HASC_CODE_",replace(?HASCCode,"-","_")),asioModules)
+  LET ?ISOResource = resource(?ISOCode,euCountry)
+  /*name of the country in local languages*/
+  LET ?mwlCountryLabel = setLangTag("Pertual", "mwl")
+  LET ?extCountryLabel = setLangTag("Portugal", "ext")
+  LET ?arCountryLabel = setLangTag("البرتغال", "ar")
+
+  LET ?ptLabel = setLangTag(?region, "pt")
+  LET ?mwlLangLabel = setLangTag(?mwllabel, "mwl")
+  LET ?enLangLabel = setLangTag(?enlabel, "en")
+  LET ?esLangLabel = setLangTag(?eslabel, "es")
+  LET ?ipaptLangLabel = setLangTag(?ipaptlabel, "pt-PT-fonipa")
+  LET ?ptaltLangLabel = setLangTag(?ptaltlabel, "pt")
+  LET ?mwlaltLangLabel = setLangTag(?mwlaltlabel, "mwl")
+  LET ?note_enLang = setLangTag(?note_en, "en")
+  LET ?note_esLang = setLangTag(?note_es, "es")
+  LET ?note_ptLang = setLangTag(?note_pt, "pt")
+  LET ?note_mwlLang = setLangTag(?note_mwl, "mwl")
+  LET ?ISOPublisher = resource("STANDARDIZATION_ORGANIZATION_ISO",asioModules)
+  LET ?FIPSPublisher = resource("STANDARDIZATION_ORGANIZATION_FIPS",asioModules)
+  LET ?HASCPublisher = resource("STANDARDIZATION_ORGANIZATION_HASC",asioModules)
+  LET ?INEPTPublisher = resource("STANDARDIZATION_ORGANIZATION_INEPT",asioModules)
+    
+
+CONSTRUCT {
+  
+  asioModules:PTRegionList a asioModules:Country;
+                              rdfs:label "Districts and regions of Portugal" ;
+                              skos:prefLabel "Districts and regions of Portugal" ;
+                              rdfs:label "dəʃ ˈtrituʒ i ʀəˈʒjõj̃ʒ də puɾ tu ˈɣaɫ"@pt-PT-fonipa ;
+                              skos:prefLabel "dəʃ ˈtrituʒ i ʀəˈʒjõj̃ʒ də puɾ tu ˈɣaɫ"@pt-PT-fonipa ;
+                              ontolex:phoneticRep "dəʃ ˈtrituʒ i ʀəˈʒjõj̃ʒ də puɾ tu ˈɣaɫ"@pt-PT-fonipa ;
+                              rdfs:label "Districts and regions of Portugal"@en ;
+                              skos:prefLabel "Districts and regions of Portugal"@en ;
+                              rdfs:label "Distritos e regiões de Portugal"@pt ;
+                              skos:prefLabel "Distritos e regiões de Portugal"@pt ;
+                              rdfs:label "Distritos y regiones de Portugal"@es ;
+                              skos:prefLabel "Distritos y regiones de Portugal"@es ;
+                              rdfs:label "Çtritos e regiones outónomas de Pertual"@mwl ;
+                              skos:prefLabel "Çtritos e regiones outónomas de Pertual"@mwl .
+  
+  asioModules:PTRegionISOCodeList a asioModules:Country;
+                                   rdfs:label "ISO codes for the districts and regions of Portugal"@en ;
+                                   skos:prefLabel "ISO codes for the districts and regions of Portugal"@en ;
+                                   rdfs:label "Códigos ISO dos distritos e regiões portuguesas"@pt ;
+                                   skos:prefLabel "Códigos ISO dos distritos e regiões portuguesas"@pt ;
+                                   rdfs:label "Códigos ISO de los distritos y regiones portuguesas"@es ;
+                                   skos:prefLabel "Códigos ISO de los distritos y regiones portuguesas"@es ;
+                                   rdfs:label "Códigos ISO de ls çtritos e regiones pertuesas"@mwl ;
+                                   skos:prefLabel "Códigos ISO de ls çtritos e regiones pertuesas"@mwl ;
+                                   dct:publisher ?ISOPublisher .
+
+  asioModules:PTRegionFIPSCodeList a asioModules:Country;
+                                   rdfs:label "FIPS codes for the districts and regions of Portugal"@en ;
+                                   skos:prefLabel "FIPS codes for the districts and regions of Portugal"@en ;
+                                   rdfs:label "Códigos FIPS dos distritos e regiões portuguesas"@pt ;
+                                   skos:prefLabel "Códigos FIPS dos distritos e regiões portuguesas"@pt ;
+                                   rdfs:label "Códigos FIPS de los distritos y regiones portuguesas"@es ;
+                                   skos:prefLabel "Códigos FIPS de los distritos y regiones portuguesas"@es ;
+                                   rdfs:label "Códigos FIPS de ls çtritos e regiones pertuesas"@mwl ;
+                                   skos:prefLabel "Códigos FIPS de ls çtritos e regiones pertuesas"@mwl ;
+                                   rdfs:label "Codis FIPS dels districtes i regions portugueses"@ca ;
+                                   skos:prefLabel "Codis FIPS dels districtes i regions portugueses"@ca ;
+                                   dct:publisher ?FIPSPublisher .
+
+  asioModules:PTRegionHASCCodeList a asioModules:Country;
+                                   rdfs:label "Hierarchical administrative subdivision codes (HASC) for the districts and regions of Portugal"@en ;
+                                   skos:prefLabel "Hierarchical administrative subdivision codes (HASC) for the districts and regions of Portugal"@en ;
+                                   rdfs:label "Códigos HASC (Hierarchical administrative subdivision codes) dos distritos e regiões portuguesas"@pt ;
+                                   skos:prefLabel "Códigos HASC (Hierarchical administrative subdivision codes) dos distritos e regiões portuguesas"@pt ;
+                                   rdfs:label "Códigos HASC (Hierarchical administrative subdivision codes) de los distritos y regiones portuguesas"@es ;
+                                   skos:prefLabel "Códigos HASC (Hierarchical administrative subdivision codes) de los distritos y regiones portuguesas"@es ;
+                                   rdfs:label "Códigos HASC (Hierarchical administrative subdivision codes) de ls çtritos e regiones pertuesas"@mwl ;
+                                   skos:prefLabel "Códigos HASC (Hierarchical administrative subdivision codes) de ls çtritos e regiones pertuesas"@mwl ;
+                                   rdfs:label "Codis HASC (Hierarchical administrative subdivision codes) dels districtes i regions portugueses"@ca ;
+                                   skos:prefLabel "Codis HASC (Hierarchical administrative subdivision codes) dels districtes i regions portugueses"@ca ;
+                                   dct:publisher ?HASCPublisher .
+
+  asioModules:PTRegionINEptCodeList a asioModules:Country;
+                                   rdfs:label "INE (Instituto Nacional de Estatística de Portugal) codes for the districts and regions of Portugal"@en ;
+                                   skos:prefLabel "INE (Instituto Nacional de Estatística de Portugal) codes for the districts and regions of Portugal"@en ;
+                                   rdfs:label "Códigos INE (Instituto Nacional de Estatística de Portugal) dos distritos e regiões portuguesas"@pt ;
+                                   skos:prefLabel "Códigos INE (Instituto Nacional de Estatística de Portugal) dos distritos e regiões portuguesas"@pt ;
+                                   rdfs:label "Códigos INE (Instituto Nacional de Estatística de Portugal) de los distritos y regiones portuguesas"@es ;
+                                   skos:prefLabel "Códigos INE (Instituto Nacional de Estatística de Portugal) de los distritos y regiones portuguesas"@es ;
+                                   rdfs:label "Códigos INE (Instituto Nacional de Estatística de Portugal) de ls çtritos e regiones pertuesas"@mwl ;
+                                   skos:prefLabel "Códigos INE (Instituto Nacional de Estatística de Portugal) de ls çtritos e regiones pertuesas"@mwl ;
+                                   rdfs:label "Codis INE (Institut Nacional d'Estatística de Portugal) dels districtes i regions portugueses"@ca ;
+                                   skos:prefLabel "Códigos INE (Institut Nacional d'Estatística de Portugal) dels districtes i regions portugueses"@ca ;
+                                   dct:publisher ?INEPTPublisher .
+}
+
+CONSTRUCT {
+  ?regionResource a skos:Concept;
+                  rdfs:label ?region ;
+                  skos:prefLabel ?region ; 
+                  skos:prefLabel ?ptLabel ;
+                  skos:altLabel ?ptaltLangLabel ;
+                  skos:altLabel ?mwlaltLangLabel ;
+                  skos:prefLabel ?mwlLangLabel ;
+                  skos:prefLabel ?enLangLabel ;
+                  skos:prefLabel ?esLangLabel ;
+                  skos:prefLabel ?ipaptLangLabel ;
+                  ontolex:phoneticRep ?ipaptLangLabel ;
+                  skos:note ?note_enLang ;
+                  skos:note ?note_esLang ;
+                  skos:note ?note_ptLang ;
+                  skos:note ?note_mwlLang ;
+                  skos:inScheme asioModules:PTRegionList;
+                  asio:hasCode ?regionCodeResource ;
+                  asio:hasCode ?regionFIPSCodeResource ;
+                  asio:hasCode ?regionHASCCodeResource ;
+                  asio:hasCode ?regionINEptCodeResource ;
+                  skos:notation ?regionCode ;
+                  skos:broader ?ISOResource .
+  
+  ?ISOResource skos:narrower ?regionResource ;
+               skos:prefLabel ?mwlCountryLabel ;
+               skos:prefLabel ?arCountryLabel ;
+               skos:prefLabel ?extCountryLabel .
+  
+  ?regionCodeResource a skos:Concept;
+                  rdfs:label ?regionCode ;
+                  skos:prefLabel ?regionCode ; 
+                  skos:inScheme asioModules:PTRegionISOCodeList;
+                  asio:codeOf ?regionResource .
+
+  ?regionFIPSCodeResource a skos:Concept;
+                  rdfs:label ?FIPSCode ;
+                  skos:prefLabel ?FIPSCode ; 
+                  skos:inScheme asioModules:PTRegionFIPSCodeList;
+                  asio:codeOf ?regionResource .
+
+  ?regionINEptCodeResource a skos:Concept;
+                  rdfs:label ?INEptCode ;
+                  skos:prefLabel ?INEptCode ; 
+                  skos:inScheme asioModules:PTRegionINEptCodeList;
+                  asio:codeOf ?regionResource .
+
+  ?regionHASCCodeResource a skos:Concept;
+                  rdfs:label ?HASCCode ;
+                  skos:prefLabel ?HASCCode ; 
+                  skos:inScheme asioModules:PTRegionHASCCodeList;
+                  asio:codeOf ?regionResource .
+}

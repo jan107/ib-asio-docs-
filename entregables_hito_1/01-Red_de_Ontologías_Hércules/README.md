@@ -6,10 +6,10 @@ This document lists and briefly describes the ttl files corresponding to the Her
 
 - [asio-core.ttl](asio-core.ttl)
 - [asio-mappings.ttl](asio-mappings.ttl)
-- [asio-vertical-module-geopol.ttl](asio-vertical-module-geopol.ttl)
-- [asio-vertical-module-scientificdomains.ttl](asio-vertical-scientificdomains.ttl)
-- [asio-vertical-module-subjectareas.ttl](asio-vertical-subjectareas.ttl)
-- [asio-vertical-module-universities.ttl](asio-vertical-module-universities.ttl)
+- [asio-module-geopol.ttl](asio-module-geopol.ttl)
+- [asio-module-scientificdomains.ttl](asio-module-scientificdomains.ttl)
+- [asio-module-subjectareas.ttl](asio-module-subjectareas.ttl)
+- [asio-module-universities.ttl](asio-module-universities.ttl)
 
 The first one is the ***core*** ontology and the second one corresponds to the class-by-class ***alignements*** towards external vocabularies
 

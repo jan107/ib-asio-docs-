@@ -5,6 +5,18 @@
 
 ![](./images/logos_feder.png)
 
+| Entregable     | Análisis de método FAIR                                      |
+| -------------- | ------------------------------------------------------------ |
+| Fecha          | 25/05/2020                                                   |
+| Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
+| Módulo         | Infraestructura Ontológica                                   |
+| Tipo           | Documento                                                    |
+| Objetivo       | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis  lacinia volutpat. Nullam at posuere velit, vitae feugiat purus. Vivamus a eros molestie, hendrerit mauris sit amet, varius odio. Suspendisse  metus neque, ultricies et neque et, sollicitudin condimentum nibh.  Curabitur erat mauris, ultricies nec consectetur nec, feugiat nec nisi.  In tincidunt, enim ut rutrum pharetra, metus dui commodo ex, in  venenatis erat diam ut massa. |
+| Estado         | **XX%** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis  lacinia volutpat. Nullam at posuere velit, vitae feugiat purus. Vivamus a eros molestie, hendrerit mauris sit amet, varius odio. Suspendisse  metus neque, ultricies et neque et, sollicitudin condimentum nibh. |
+| Próximos pasos | Curabitur erat mauris, ultricies nec consectetur nec, feugiat nec nisi.  In tincidunt, enim ut rutrum pharetra, metus dui commodo ex, in  venenatis erat diam ut massa. Suspendisse tempus, sapien eu blandit  volutpat, massa mauris rutrum justo, scelerisque tincidunt nisi risus id dui. |
+
+
+
 # Análisis de métodos FAIR
 
 Los principios FAIR (Findable, Accesible, Interoperable, Reusable) surgieron como una iniciativa para **mejorar la interoperabilidad de los datos científicos publicados** [Wilkinson, 2016; Wilkinson, 2016b; Rodriguez Iglesias, 2016; Mons, 2017]. 

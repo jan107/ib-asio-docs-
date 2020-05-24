@@ -1,0 +1,127 @@
+PREFIX project: <http://weso.es/tablines/project/HRuniversitiesES/>
+PREFIX my: <http://weso.es/tablines/project/HRuniversitiesES/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX asioModules: <http://purl.org/asio/modules#> 
+PREFIX asio: <http://purl.org/asio/core#>
+PREFIX euCountry:<http://publications.europa.eu/resource/authority/country/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+
+
+FOR ?rowId IN rows FILTER get-row(?rowId)
+    MATCH [?ISOCode,?geodivision1,?hrCode,?hrlabel,?anlabel,?astlabel,?calabel,?enlabel,?eslabel,?extlabel,?eulabel,?frlabel,?gllabel,?oclabel,?ptlabel] IN horizontal 
+    
+  LET ?ISOResource = resource(?ISOCode,euCountry)
+  LET ?hrResource = resource(concat("ES_UNIVERSITY_HR_",replace(?hrCode,"-","_")),asioModules)
+  LET ?hrCodeResource = resource(concat("ES_UNIVERSITY_HR_CODE_",replace(?hrCode,"-","_")),asioModules)
+
+    LET ?LangLabel = setLangTag(?hrlabel, "es")
+    LET ?esLangLabel = setLangTag(?eslabel, "es")
+    LET ?astLangLabel = setLangTag(?astlabel, "ast")
+    LET ?caLangLabel = setLangTag(?calabel, "ca")
+    LET ?glLangLabel = setLangTag(?gllabel, "gl")
+
+ {  
+    WHEN not matches(?enlabel,"") DO
+      LET ?enLangLabel = setLangTag(?enlabel, "en") 
+    ;
+    WHEN not matches(?eulabel,"") DO
+      LET ?euLangLabel = setLangTag(?eulabel, "eu") 
+    ;
+    WHEN not matches(?oclabel,"") DO
+      LET ?ocLangLabel = setLangTag(?oclabel, "oc") 
+    ;
+    WHEN not matches(?frlabel,"") DO
+      LET ?frLangLabel = setLangTag(?frlabel, "fr") 
+    ;
+    WHEN not matches(?ptlabel,"") DO
+      LET ?ptLangLabel = setLangTag(?ptlabel, "pt")
+    ; 
+    WHEN not matches(?geodivision1, "") DO
+    LET ?geodivisionResource1 = resource(concat(substring(?geodivision1,0,2),"_DIVISION_LEVEL_1_",replace(?geodivision1,"-","_")),asioModules)
+}
+
+
+
+CONSTRUCT {
+  
+  asioModules:ESUniversityHumanResourcesList a asioModules:UniversityHumanResources;
+                              rdfs:label "Human resources of the universities from Spain"@en ;
+                              skos:prefLabel "Human resources of the universities from Spain"@en ;
+                              rdfs:label "Recursos humanos de las universidades de España"@es ;
+                              skos:prefLabel "Recursos humanos de las universidades de España"@es ;
+                              rdfs:label "Recursos humans de les universitats d'Espanya"@ca ;
+                              skos:prefLabel "Recursos humans de les universitats d'Espanya"@ca ;
+                              rdfs:label "Recursos humanos das universidades de España"@gl ;
+                              skos:prefLabel "Recursos humanos das universidades de España"@gl ;
+                              rdfs:label "Recursos humanos de les universidaes d'España"@ast ;
+                              skos:prefLabel "Recursos humanos de les universidaes d'España"@ast ;
+                              rdfs:label "Resources humains des universités d'Espagne"@fr ;
+                              skos:prefLabel "Resources humains des universités d'Espagne"@fr ;
+                              rdfs:label "Recursos humanos das universidades de Espanha"@pt ;
+                              skos:prefLabel "Recursos humanos das universidades de Espanha"@pt .
+  
+  asioModules:ESUniversityHumanResourcesCodesList a asioModules:UniversityHumanResources;
+                                   rdfs:label "Codes for the human resources of the universities from Spain"@en ;
+                                   skos:prefLabel "Codes for the human resources of the universities from Spain"@en ;
+                                   rdfs:label "Códigos dos recursos humanos das universidades de Espanha"@pt ;
+                                   skos:prefLabel "Códigos dos recursos humanos das universidades de Espanha"@pt ;
+                                   rdfs:label "Códigos dos recursos humanos das universidades de España"@gl ;
+                                   skos:prefLabel "Códigos dos recursos humanos das universidades de España"@gl ;
+                                   rdfs:label "Códigos de los recursos humanos de las universidades de España"@es ;
+                                   skos:prefLabel "Códigos de los recursos humanos de las universidades de España"@es ;
+                                   rdfs:label "Códigos de los recursos humanos de les universidaes d'España"@ast ;
+                                   skos:prefLabel "Códigos de los recursos humanos de les universidaes d'España"@ast ;
+                                   rdfs:label "Codis dels recursos humans de les universitats d'Espanya"@ca ;
+                                   skos:prefLabel "Codis dels recursos humans de les universitats d'Espanya"@ca ;
+                                   rdfs:label "Codes des resources humains des universités d'Espagne"@fr ;
+                                   skos:prefLabel "Codes des resources humains des universités d'Espagne"@fr .
+}
+
+CONSTRUCT {
+  ?hrResource a skos:Concept , asio:Role , owl:NamedIndividual ;
+              rdfs:label ?LangLabel ; 
+              skos:prefLabel ?esLangLabel ;
+              skos:prefLabel ?astLangLabel ;
+              skos:prefLabel ?caLangLabel ;
+              skos:prefLabel ?glLangLabel ;
+              asio:country ?ISOResource ;
+              skos:inScheme asioModules:ESUniversityHumanResourcesList;
+              asio:hasCode ?hrCodeResource ;
+              skos:notation ?hrCode .
+  
+  ?hrCodeResource a skos:Concept;
+                  rdfs:label ?hrCode ;
+                  skos:prefLabel ?hrCode ; 
+                  skos:inScheme asioModules:ESUniversityHumanResourcesCodesList;
+                  asio:codeOf ?hrResource .
+}
+
+
+CONSTRUCT{
+  ?hrResource skos:prefLabel ?enLangLabel .
+}
+
+CONSTRUCT{
+  ?hrResource skos:prefLabel ?euLangLabel .
+}
+
+CONSTRUCT{
+  ?hrResource skos:prefLabel ?ocLangLabel .
+}
+
+CONSTRUCT{
+  ?hrResource skos:prefLabel ?frLangLabel .
+}
+
+CONSTRUCT{
+  ?hrResource skos:prefLabel ?ptLangLabel .
+}
+
+CONSTRUCT {
+  ?hrResource asio:geoDivision ?geodivisionResource1 .
+}

@@ -4,28 +4,34 @@
 
 ## 0. About this document
 
-This document reports the current status of the ASIO ontology files and more specifically it describes *grosso modo* six of the files currently available in our repositories, namely:
+This document reports the current status of the ASIO ontology files and more specifically it describes *grosso modo* the nine files currently available in our repositories, namely:
 
-- [asio-core.ttl](asio-core.ttl)
-- [asio-mappings.ttl](asio-mappings.ttl)
-- [asio-vertical-module-geopol.ttl](asio-vertical-module-geopol.ttl)
-- [asio-vertical-module-scientificdomains.ttl](asio-vertical-scientificdomains.ttl)
-- [asio-vertical-module-subjectareas.ttl](asio-vertical-subjectareas.ttl)
-- [asio-vertical-module-universities.ttl](asio-vertical-module-universities.ttl)
+1. [asio-core.ttl](../01-Red_de_Ontologías_Hércules/asio-core.ttl)
+2. [asio-mappings.ttl](../01-Red_de_Ontologías_Hércules/asio-mappings.ttl)
+3. [asio-module-geopol.ttl](../01-Red_de_Ontologías_Hércules/asio-module-geopol.ttl)
+4. [asio-module-scientificdomains.ttl](../01-Red_de_Ontologías_Hércules/asio-module-scientificdomains.ttl)
+5. [asio-module-subjectareas.ttl](../01-Red_de_Ontologías_Hércules/asio-module-subjectareas.ttl)
+6. [asio-module-universities.ttl](../01-Red_de_Ontologías_Hércules/asio-module-universities.ttl)
+7. asio-module-universityhr-es
+8. asio-module-universityhr-pt
+9. asio-module-universityhr-vivo
 
-The first one is the ***core*** ontology and the second one corresponds to the class-by-class ***alignements*** towards external vocabularies
+The first one is the ***core*** ontology and the second one corresponds to the class-by-class ***alignements*** towards both external vocabularies and also between individuals within the vertical modules.
 
 In addition to these two files, a number of ***vertical modules*** have being released at the moment of this writing. The earliest release was the **geopolitical module** (the third file listed above) including so far the full list of world's countries, the geopolitical entities of Andorra, Spain and Portugal (France is the other country to be taken into account in this vertical module in the next update).
 
-Two other vertical modules, related within each other, are the **scientific domains** and the **subject areas**. Both are controlled vocabularies including scientific domains and fields and used in different requirements by the core ontology.
+Two other vertical modules, related within each other, are the **scientific domains** and the **subject areas**, 4th and 5th respectively. Both are controlled vocabularies including scientific domains and fields used in different requirements by the core ontology.
 
-Finally, the vertical module **universities** included the full list of universities from Spain with a limited sample of university subdivisions (centres, campus, faculties, etc.) corresponding to the Murcia, Oviedo, Santiago de Compostela and Basque country universities.
+The sixth vertical module, **universities**, includes the full list of universities from Spain as well as a limited sample of university subdivisions (centres, campus, faculties, etc.) corresponding to the Murcia, Oviedo, Santiago de Compostela and Basque country universities.
 
+Finally, the 7th, 8th and 9th files corresponds to **human resources** belonging to the university systems of Spain and Portugal and also to some Anglosaxon positions (USA, Canada and other countries of the so-called Commonwealth) included in the [VIVO ontology](https://github.com/vivo-project/VIVO).
+
+In addition to that, the last section of this document includes an annex with a number of competence questions which can be solved with the ontology. The answers to those questions includes direct links to discussion issues and SPARQL queries for each one of them.
 
 
 ## 1. Introduction
 
-The ASIO ontologies are standardised data schemas (or "vocabularies") designed to address the Research Management of the particular case of the University of Murcia but by applying an encompassing model capable of addressing too other universities both at the national level and at the international level.
+The ASIO ontologies are standardised data schemas (or "vocabularies") designed to address the Research Management of the [CRUE](http://www.crue.org/SitePages/Inicio.aspx)'s Spanish University System (Sistema Universitario Español) through the particular case  of the University of Murcia but always applying an encompassing model capable of addressing the rest of universities of the CRUE and even more belonging to the European level.
 
 In this brief section we are going to explain the large-scale organization of the ASIO ontology, which is split into a central and peripheral components, loosely inspiring ourselves in Fodor (1983). To do so we need to distinguish between two fundamentally different types of information processing (relying upon information architecture and datasets).
 
@@ -64,22 +70,33 @@ For instance, the participation in a project by a consortium of a company and a 
 
 ![1st-example](./images/project-participation.png)
 
-where the specific case of the Hércules project is illustrated and both participants, a company such as Izertis and a research group from the University of Oviedo, WESO are highlited.
+where the specific case of the Hércules project is illustrated and both participants, a company such as Izertis and a research group from the University of Oviedo, WESO, are highlited.
 
 As far as the different profiles and roles of a person are concerned, the next figure illustrates how a single person can play different roles:
 
 ![1st-example](./images/roles.png)
 
-where a teaching role and a researching one can co-exist for a given individual.
+Person Daniel can seamlessly have a twofold role: a teaching role and a researching one, which can co-exist for that given individual. Besides that, thanks to the class *asio:Profile*, not featured in the diagram, a given person can combine and/split her different profiles according to a given context (class *asio:Context*).
 
-A graphical example elaborating how the core ontology deals with a Patent shows the classes (Patent, Person, Organization), object and data properties involved in the modelling:
+Several other parts of the core ontology could be illustrated here by means of figures but, as we already include an extensive annex with competences questions answered through SPARQL queries, we are not going to be exhaustive here.
+
+As a final *graphical* example we are going to elaborate how the core ontology deals with a Patent shows the classes (Patent, Person, Organization), object and data properties involved in the modelling:
 
 
 
 ![1st-example](./images/patent.png)
 
 
-The part of the core ontology involving patents is a clear candidate to integrate an ad hoc horizontal module, given its autonomous nature.
+In this example, an instance of the class *asio:Patent*, the "SELF-GENERATING AUTOMATIC CODE GENERATOR", is linked to some people:
+
+* its inventor, Nelson H. Lin
+* its primary examiner, Jean-Pierre Peguy (a key person in any patent assessment)
+* Jean-Pierre Peguy's assistant, (another key person in any patent assessment)
+
+and also to a patent assignee, in this case the company Robocoder Corporation.
+On the other hand, any patent has always a patent number, a patent application number, a date, a nationality, etc.
+
+As we already aforementioned, we are currently studying the segmentation of the core ontology into horizontal modules and it is precisely the part involving patents a clear candidate to integrate an *ad hoc* horizontal module, given its autonomous nature. Other theme areas show as well some topic independence, and in future releases of the core, these areas will be *severed* and separate.
 
 
 
@@ -156,6 +173,8 @@ The same applies to relevant properties belonging to concurrent vocabularies, wh
 
 More details about these alignments, carried out following consolidated recommendations (Vandenbussche et al.: 2014), will be provided in more consolidated documentation to be generated soon, but right now it suffices to access the file using a source code editor and have a look at the large list of equivalences, chiefly focusing on concomitant vocabularies such as CERIF, VIVO or the SPAR family of ontologies but also going beyond these ones.
 
+In addition to these external mappings, the file also contains some *inner* ones. An example of this would be the human resources from some university national systems included in the corresponding vertical modules. The mappings are still state-of-the-art ones as studying and comparing the academic reality of new countries demands a thorough analysis that was not within the reach of this first milestone of the project. However, mappings between academic positions from Spain and Portugal are provided and also matching positions available in the VIVO ontology. As exact matches for these positions are difficult to provide, even among similar countries such as Spain and Portugal, most of the samples exploit the SKOS property `skos:closeMatch`.
+
 
 
 ## 4. Vertical modules
@@ -167,6 +186,7 @@ As far as the **vertical modules** are concerned another five final candidates a
 - scientific domains
 - subject areas
 - Spanish universities
+- human resources from some national university systems (Spain, Portugal and others)
 
 An extra vertical module, called *Spain's university staffing*, is currently located within the core ontology as instances of the class *asio:Role*, but it is currently being migrated as an independent vertical module, so other equivalent university staffing from other countries can be plugged in an easier way by replicating the provided framework and populating it with the reality of, for instance, Portugal's university staffing or France's.
 
@@ -235,13 +255,59 @@ It also includes a limited sample of subdivisions (schools, faculties, centres) 
 
 
 
-### 4.5. other vertical modules being currently implementedad
+### 4.5. human resources from national university systems
 
-At the moment of this writing, we are working on a couple of extra vertical modules: *Spanish administrative entities* and the transformation of the information about *Spain's university staffing*, which is right now included as instances of the core-class *asio:Role*.
-The first one is designed to encompass all the relevant entities belonging to Spain's *administración autonómica* related to the geopolitical subdivisions of the previous vertical module, to which they are going to be seamlessly linked.
-The implementation of this vertical module will be also carried out using SKOS-Core as it shows a clear hierarchical structure and it will include the first-level bodies of *administración autonómica* (*conserjerías*), as available at Spain's administration portal [[1]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/comunidadesAutonomas/comunidadesAutonomas.htm?idCCAA=14), and the second-level [[2]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/fichaUnidadOrganica.htm?idUnidOrganica=123276&origenUO=comunidadesAutonomas&volver=comunidadesAutonomas&idCCAA=14), mainly *direcciones generales* and *consorcios*.
+A very complex issue to address among national university systems is human resources, specially those belonging to academia. Spain, for instance, shows a wide variety of positions that can be even wider when considering also some peculiarities at regional level. There are very specific cases in Andalusia, Catalonia or the Basque country.
+
+
+
+from some national university systems (Spain, Portugal and others)
+
+
+
+and the transformation of the information about *Spain's university staffing*, which is right now included as instances of the core-class *asio:Role*.
 
 As far as the *Spain's university staffing*, this vertical module will be unplugged from the core ontology and rendered autonomous so similar ones containing the reality of other countries can be implemented in similar fashion and complete the model.
+
+An example of a mapping inclusion between a Spanish position and a Portuguese is the following:
+
+```turtle
+asioModules:ES_UNIVERSITY_HR_ESPLEM
+      a       owl:NamedIndividual , asio:Role , skos:Concept ;
+      rdfs:label "Profesor emérito"@es ;
+      asio:country euCountry:ESP ;
+      asio:hasCode asioModules:ES_UNIVERSITY_HR_CODE_ESPLEM ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesList ;
+      skos:closeMatch asioModules:PT_UNIVERSITY_HR_PTPEM ;
+      skos:notation "ESPLEM" ;
+      skos:prefLabel "Profesor emérito"@es , "Profesor emérito"@gl , "Profesor eméritu"@ast , "Irakasle emeritua"@eu , "Professor emèrit"@ca .
+```
+
+where the SKOS property `skos:closeMatch` indicates the conceptual proximity of *professors emeriti* from Spain and Portugal. We did not dare to use `skos:exactMatch` without being HR experts.
+
+A similar mapping is provided as far as the code is concerned:
+
+```turtle
+asioModules:ES_UNIVERSITY_HR_CODE_ESPLEM
+      a       skos:Concept ;
+      rdfs:label "ESPLEM" ;
+      asio:codeOf asioModules:ES_UNIVERSITY_HR_ESPLEM ;
+      skos:closeMatch asioModules:PT_UNIVERSITY_HR_CODE_PTPEM ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
+      skos:prefLabel "ESPLEM" .
+```
+
+
+
+
+
+### 4.6. other vertical modules being currently implementedad
+
+At the moment of this writing, we are studying the inclusion of more vertical modules. One candidate for milestone 2 could be *Spanish administrative entities*.
+This would be implemented to encompass all the relevant entities belonging to Spain's *administración autonómica* related to the geopolitical subdivisions of the previous vertical module, to which they are going to be seamlessly linked.
+The implementation of this vertical module will be also carried out using SKOS-Core as it shows a clear hierarchical structure and it will include the first-level bodies of *administración autonómica* (*conserjerías*), as available at Spain's administration portal [[1]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/comunidadesAutonomas/comunidadesAutonomas.htm?idCCAA=14), and the second-level [[2]](https://administracion.gob.es/pagFront/espanaAdmon/directorioOrganigramas/fichaUnidadOrganica.htm?idUnidOrganica=123276&origenUO=comunidadesAutonomas&volver=comunidadesAutonomas&idCCAA=14), mainly *direcciones generales* and *consorcios*.
+
+
 
 ## 5. References
 
