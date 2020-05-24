@@ -35,7 +35,7 @@ Motivados por cumplimiento del requisito de *"el sistema debe de soportar la con
 
 
 
-![doble_architecture](./images/double_architecture.png)
+![Arquitectura gestión de eventos](./images/event-management.png)
 
 
 
