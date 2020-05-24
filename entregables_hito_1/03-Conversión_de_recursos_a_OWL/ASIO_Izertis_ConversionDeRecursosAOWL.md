@@ -1,5 +1,19 @@
 ![](./images/logos_feder.png)
 
+
+
+| Entregable     | Conversión de recursos a OWL                                 |
+| -------------- | ------------------------------------------------------------ |
+| Fecha          | 25/05/2020                                                   |
+| Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
+| Módulo         | Infraestructura Ontológica                                   |
+| Tipo           | Documento                                                    |
+| Objetivo       | Este documento enumera las herramientas consideradas para la conversión de recursos a OWL y describe el candidato utilizado para este primer hito. |
+| Estado         | **100%** El estado del documento se ajusta al 100% comprometido para el hito 1 del proyecto, si bien la utilización de otras herramientas para el hito 2 puede ser contemplada en el futuro. |
+| Próximos pasos | En el caso de utilizar otras herramientas para estos mismos fines, se documentará debidamente. |
+
+
+
 # Herramientas de Conversión de Recursos a OWL/RDF
 
 ## Introducción
@@ -15,6 +29,8 @@ La primera de ellas, [ShExML](http://shexml.herminiogarcia.com/), explota Shape 
 Sin embargo, para esta fase inicial del proyecto se desestimó el uso de esta herramienta debido al formato de partida de muchos de los recursos propuestos por el cliente y la urgencia en su conversión.
 
 La segunda herramienta, [Tablines](https://bitbucket.org/alfonso_noriega/tablines/src/default/), fue originalmente desarrollada en la Fundación CTIC, en Asturias, con la participación de uno de los integrantes actuales del grupo WESO, y fue la que finalmente se utilizó, sobre todo por el conocimiento del lenguaje necesario para crear los programas de transformación de ese integrante.
+
+
 
 ## Ejemplo de Conversión
 Uno de los ejemplos más representativos de conversión de datos se utilizan en el módulo vertical de las áreas temáticas, que proceden de la Agencia Estatal de Investigación del Ministerio de Economía Industria y Competitividad. Este documento es un PDF, formato poco procesable, en el que se incluye rudimentariamente como anexo una tabla que se convirtió a datos tabulares desde el PDF y a continuación a RDF, bajo el formato SKOS-Core.

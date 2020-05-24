@@ -1,5 +1,17 @@
 ![](./images/logos_feder.png)
 
+| Entregable     | Especificación de las ontologías Hércules                    |
+| -------------- | ------------------------------------------------------------ |
+| Fecha          | 25/05/2020                                                   |
+| Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
+| Módulo         | Infraestructura Ontológica                                   |
+| Tipo           | Documento                                                    |
+| Objetivo       | Este documento recoge en inglés la especificación de las ontologías Hércules. |
+| Estado         | **80%** El estado del documento se ajusta al 80% comprometido para el hito 1 del proyecto. |
+| Próximos pasos | La ontología va a ir evolucionando aún a lo largo de lo que resta del proyecto con el objetivo de ajustarse al 20% restante y este documento será asimismo documentación de partida en esa evolución. |
+
+
+
 # Ontology specification
 
 ## 0. About this document
@@ -12,9 +24,9 @@ This document reports the current status of the ASIO ontology files and more spe
 4. [asio-module-scientificdomains.ttl](../01-Red_de_Ontologías_Hércules/asio-module-scientificdomains.ttl)
 5. [asio-module-subjectareas.ttl](../01-Red_de_Ontologías_Hércules/asio-module-subjectareas.ttl)
 6. [asio-module-universities.ttl](../01-Red_de_Ontologías_Hércules/asio-module-universities.ttl)
-7. asio-module-universityhr-es
-8. asio-module-universityhr-pt
-9. asio-module-universityhr-vivo
+7. [asio-module-universityhr-es](../01-Red_de_Ontologías_Hércules/asio-module-universityhr-es.ttl)
+8. [asio-module-universityhr-pt](../01-Red_de_Ontologías_Hércules/asio-module-universityhr-pt.ttl)
+9. asio-module-universityhr-
 
 The first one is the ***core*** ontology and the second one corresponds to the class-by-class ***alignements*** towards both external vocabularies and also between individuals within the vertical modules.
 
@@ -249,7 +261,7 @@ The same exploitation have been used to created the related vertical module Subj
 
 ### 4.4. Spanish universities
 
-Another vertical module includes the entire list of the universities of Spain which rich data retrieved from the [RUCT](https://www.educacion.gob.es/ruct/consultacentros.action?actual=centros) portal.
+Another vertical module includes the entire list of the universities of Spain, for which some rich data was retrieved from the [RUCT](https://www.educacion.gob.es/ruct/consultacentros.action?actual=centros) portal.
 Initially also modelled using SKOS, it included encompassing *metadata* about each institution, such as specific codes for each centre, multilingual labels when applicable and other information.
 It also includes a limited sample of subdivisions (schools, faculties, centres) from the universities of Murcia, Oviedo, Santiago de Compostela and the Basque Country, and it receives as well special care regarding multilingualism, official codes from the Ministry, etc.
 
@@ -259,15 +271,29 @@ It also includes a limited sample of subdivisions (schools, faculties, centres) 
 
 A very complex issue to address among national university systems is human resources, specially those belonging to academia. Spain, for instance, shows a wide variety of positions that can be even wider when considering also some peculiarities at regional level. There are very specific cases in Andalusia, Catalonia or the Basque country.
 
+Those Spanish regional peculiarities are specified in this vertical module by means of the property `asio:geodivision`, which maps the resource to our geopolitical vertical module. This way, when no specific geodivision of a country is attached to an academic position, its generaility at the national level is understood. However, when a position is specific to some Autonomous Community of Spain, property `asio:geodivision` specifies it.
 
+Let's have a look at an example: 
 
-from some national university systems (Spain, Portugal and others)
+```turtle
+asioModules:ES_UNIVERSITY_HR_ESLPC
+      a       owl:NamedIndividual , asio:Role , skos:Concept ;
+      rdfs:label "Profesor catedrático laboral"@es ;
+      asio:country euCountry:ESP ;
+      asio:geoDivision asioModules:ES_DIVISION_LEVEL_1_ES_CT ;
+      asio:hasCode asioModules:ES_UNIVERSITY_HR_CODE_ESLPC ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesList ;
+      skos:notation "ESLPC" ;
+      skos:prefLabel "Profesor catedrático laboral"@es , "Profesor catedrático laboral"@gl , "Profesor catedráticu llaboral"@ast , "Professor catedràtic laboral"@ca .
+```
 
+As we can see, the position "Professor catedràtic laboral" is specified for just Catalonia, as Carreras i Barnés (2012) told us and in the vertical module it comes pointed out through the code line `asio:geoDivision asioModules:ES_DIVISION_LEVEL_1_ES_CT ;`, linking directly to the Autonomous Community of Catalonia in our geopolitical vertical module.
 
+Similar examples, such as the Basque Ivef & Nautical professors are delimited in the same way.
 
-and the transformation of the information about *Spain's university staffing*, which is right now included as instances of the core-class *asio:Role*.
+On the other hand, an equivalent dataset is provided for the case of academic position in Portugal. Portugal has dramatically streamlined the variety of university positions in a very efficient way and no complex diversity as the Spanish one is found there.
 
-As far as the *Spain's university staffing*, this vertical module will be unplugged from the core ontology and rendered autonomous so similar ones containing the reality of other countries can be implemented in similar fashion and complete the model.
+Some rudimentary mappings are provided between academic positions belonging to different countries  to test the model and illustrate the procedure to do so. Obviously, establishing these mappings is not a trivial task, and experts in human resources familiar with the diverses university systems would be the best candidates for that. However, 
 
 An example of a mapping inclusion between a Spanish position and a Portuguese is the following:
 
@@ -297,7 +323,9 @@ asioModules:ES_UNIVERSITY_HR_CODE_ESPLEM
       skos:prefLabel "ESPLEM" .
 ```
 
+A final note must be added regarding these HRs vertical modules. The type of each of these positions is established as instances of the class `skos:Concept` but also as instances of the class `asio:Role`. This way
 
+and the transformation of the information about *Spain's university staffing*, which is right now included as instances of the core-class *asio:Role*.
 
 
 
@@ -311,6 +339,8 @@ The implementation of this vertical module will be also carried out using SKOS-C
 
 ## 5. References
 
+Carreras i Barnés, J. (2012). Avaluació de la qualitat docent i promoció del professorat. Legislació universitària espanyola: modificació de la Llei Orgànica d'Universitats. Professorat contractat permanent (2004-2008). *Temps d’Educació*, 42, p. 201-232. Universitat de Barcelona.
+
 Fodor, J. A. (1983). *The modularity of mind*. Bradford/MIT Press, Cambride, Mass. 
 
 Kumaravadivelu, B. (2008). *Cultural Globalization and Language Education*. Yale University Press.
@@ -320,6 +350,8 @@ Mihaly, Heder (2017). "From NASA to EU: the evolution of the TRL scale in Public
 Skutnabb-Kangas, T. (2000). *Linguistic Genocide in Education*. New Jersey: Lawrence Erlbaum Associates Inc.
 
 Vandenbussche, P.; Atemezing, G.; Poveda-Villalón, M.; Vatant, B. (2014). *Pierre-Yves V. et al. / LOV: a gateway to reusable semantic vocabularies on the Web*. (article, IOS Press, 2014), DOI: 8. 437-452. 10.3233/SW-160213, available at [Semantic Web Journal](http://www.semantic-web-journal.net/system/files/swj1127.pdf).
+
+
 
 
 
