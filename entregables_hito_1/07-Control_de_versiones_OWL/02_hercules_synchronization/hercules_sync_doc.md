@@ -9,6 +9,8 @@
 | Objetivo       | Este documento consiste en la especificación del sistema de sincronización automática de ontologías con un triplestore. |
 | Estado         | **100%** El sistema se encuentra ya en funcionamiento y deplegado. Actualmente se está trabajando en mejoras del módulo que se encuentran definidas y detalladas a lo largo del documento. Estas mejoras formarán parte del hito 2. |
 | Próximos pasos | Implementación de la sincronización desde el triplestore a los ficheros de la ontología. Solución a los problemas definidos en el capítulo de Riesgos y Deuda Técnica. |
+|Repositorio de Software Asociado|https://github.com/HerculesCRUE/ib-hercules-sync/  En concreto en la carpeta test/test-launcher se encuentra el código correspondiente a la integración continua. |
+
 
 # Hercules synchronization module architecture
 
