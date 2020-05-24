@@ -348,13 +348,18 @@ En principio, las etiquetas o identificadores de Wikibase soportan potencialment
 Wikibase no incluye por defecto todos los locales existentes para las lenguas y solamente los de las comunidades más activas se suelen encontrar [disponibles](https://www.wikidata.org/wiki/Help:Wikimedia_language_codes/lists/all). En caso de necesitar incluir nuevos *locales*, los usuarios deben crear un *issue* específico con el que solicitar su inclusión. El proceso de aceptación de *locales* nuevos se somete a la opinión de un comité que analiza si es idóneo para el entorno de Wikimedia.
 
 Algo parecido sucede con los sistemas de escritura, incluídos ejemplos más extremos como el del [IPA](https://www.ipachart.com/
-), que utilizamos en la ontología para testar límites y que no ha sido posible trasladar a Wikibase aún.
-
-Finalmente cabe decir que 
-
-Multilingüismo
+), que utilizamos en la ontología para testar límites y que no ha sido posible trasladar a Wikibase aún. Durante el desarrollo del segundo hito se investigarán e implementarán prácticas para incluir estos ejemplos extremos en el modelo.
 
 
+
+# Multilingüismo en la arquitectura semántica
+
+Este documento describe exclusivamente el modelo de multilingüismo en la fase ontológica (OWL) y fase WikiBase. El resultado son por tanto URIs completamente opacas siguiendo el modelo de WikiBase para ser manipuladas de manera interna y que serán la materia prima de la factoría de URIs descrita en los entregables 8 y 9:
+
+- 08-Esquema_de_URIs_Hércules
+- 09-Buenas_prácticas_para_URIs_Hércules
+
+En estos entregables se describe la *reposición* de ese multilingüismo desde una URIs opacas tipo WikiBase dentro de la factoría de URIs.
 
 Referencias Web
 ===========
