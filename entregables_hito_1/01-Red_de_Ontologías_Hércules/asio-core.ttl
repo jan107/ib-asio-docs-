@@ -501,6 +501,14 @@ asio:researchesIn rdf:type owl:ObjectProperty ;
                   rdfs:label "researches in"@en .
 
 
+###  http://purl.org/hercules/asio/core#reviews
+asio:reviews rdf:type owl:ObjectProperty ;
+             rdfs:domain foaf:Person ;
+             rdfs:range asio:Publication ;
+             rdfs:label "a proerty to link a person to a publication as a reviewer."@en ,
+                        "reviews"@en .
+
+
 ###  http://purl.org/hercules/asio/core#specializes
 asio:specializes rdf:type owl:ObjectProperty ;
                  rdfs:domain asio:Role ;
