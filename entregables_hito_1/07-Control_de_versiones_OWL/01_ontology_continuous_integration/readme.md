@@ -7,6 +7,7 @@
 | Módulo         | Infraestructura Ontológica                                   |
 | Tipo           | Método y Software |
 | Objetivo       | El objetivo de este documento es representar la estructura documental del sistema de integración continua que se ejecuta sobre la ontología cada vez que se produce un cambio. |
+|Repositorio de Software Asociado|https://github.com/HerculesCRUE/ib-hercules-ontology/  En concreto en la carpeta test/test-launcher se encuentra el código correspondiente a la integración continua. |
 
 # Hercules Ontology Continuous Integration Folder Description
 This folder includes the following documents, and we recomend the lecture in the next order:
