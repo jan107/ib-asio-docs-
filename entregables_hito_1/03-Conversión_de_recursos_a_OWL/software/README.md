@@ -7,8 +7,8 @@
 | Módulo         | Infraestructura Ontológica                                   |
 | Tipo           | Archivo README                                               |
 | Objetivo       | Pequeño documento de README explicando el contenido de la carpeta. |
-| Estado         | **No aplica**  (cerrado)                                     |
-| Próximos pasos | No aplica                                                    |
+| Estado         | **100%**. El número de módulos verticales presentados en este hito 1 ha sido satisfecho. |
+| Próximos pasos | Con el fin de desarrollar futuros módulos verticales a entregar en el hito 2 se analizará la idoneidad de las herramientas listadas en el entregable. |
 
 # README
 

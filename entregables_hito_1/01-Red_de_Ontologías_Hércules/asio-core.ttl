@@ -30,13 +30,13 @@
 
 <http://purl.org/hercules/asio/core#> rdf:type owl:Ontology ;
                                        owl:versionIRI <http://purl.org/hercules/asio/core/0.0.1> ;
+                                       owl:imports <https://w3id.org/ro/> ;
                                        dc:contributor "Alejandro González Hevia"^^xsd:string ,
                                                       "José Emilio Labra Gayo"^^xsd:string ;
                                        dc:creator "Emilio Rubiera Azcona"^^xsd:string ;
                                        dc:description "An ontology to address the Research Management of the CRUE's Spanish University System (Sistema Universitario Español) by applying an encompassing model not only capable of addressing the universities of the CRUE but also more belonging to the European Union."^^xsd:string ;
                                        dc:title "The ASIO ontology"^^xsd:string ;
                                        dct:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
-                                       owl:imports <https://w3id.org/ro/> ;
                                        owl:versionInfo "0.0.1"^^xsd:string .
 
 #################################################################
@@ -154,6 +154,14 @@ asio:capital rdf:type owl:ObjectProperty ;
              rdfs:range skos:Concept ;
              rdfs:comment "A property to indicate that a place is the official seat of government in a political entity."@en ;
              rdfs:label "capital"@en .
+
+
+###  http://purl.org/hercules/asio/core#cites
+asio:cites rdf:type owl:ObjectProperty ;
+           rdfs:domain asio:Publication ;
+           rdfs:range asio:Publication ;
+           rdfs:comment "a property to indicate that a document cites another one."@en ;
+           rdfs:label "cites"@en .
 
 
 ###  http://purl.org/hercules/asio/core#coadvisedBy
@@ -609,15 +617,24 @@ asio:isCompetitive rdf:type owl:DatatypeProperty ;
 ###  http://purl.org/hercules/asio/core#isbn10
 asio:isbn10 rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf asio:identifier ;
-            rdfs:comment "International Standard Book Number (ISBN) 13" ;
-            rdfs:label "isbn10" .
+            rdfs:domain asio:Book ;
+            rdfs:comment "International Standard Book Number (ISBN) 13"@en ;
+            rdfs:label "has ISBN10"@en .
 
 
 ###  http://purl.org/hercules/asio/core#isbn13
 asio:isbn13 rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf asio:identifier ;
-            rdfs:comment "International Standard Book Number (ISBN) 10" ;
-            rdfs:label "isbn13" .
+            rdfs:domain asio:Book ;
+            rdfs:comment "International Standard Book Number (ISBN) 10"@en ;
+            rdfs:label "has ISBN13"@en .
+
+
+###  http://purl.org/hercules/asio/core#issn
+asio:issn rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf asio:identifier ;
+          rdfs:comment "International Standard Serial Number"@en ;
+          rdfs:label "has ISSN"@en .
 
 
 ###  http://purl.org/hercules/asio/core#patentDate
@@ -696,6 +713,20 @@ asio:publicationDate rdf:type owl:DatatypeProperty ;
                      rdfs:label "publication date"@en .
 
 
+###  http://purl.org/hercules/asio/core#pubmedcentralid
+asio:pubmedcentralid rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf asio:identifier ;
+                     rdfs:comment "A PMCID is a unique PubMed Central reference number, which is assigned to each full-text record made available A PMCID is a unique PubMed Central reference number, which is assigned to each full-text record made available in PubMed Central. The PMCID is issued shortly after the PI or author approves the PubMed Central formatted web version of the submission."@en ;
+                     rdfs:label "has PubMed Central ID"@en .
+
+
+###  http://purl.org/hercules/asio/core#pubmedid
+asio:pubmedid rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf asio:identifier ;
+              rdfs:comment "The PubMed ID (PMID) identifies a citation record (rather than full-text) in the PubMed database. It is not evidence of compliance with the NIH Public Access Policy, because it does not identify a full-text submission of any kind."@en ;
+              rdfs:label "has PubMed ID"@en .
+
+
 ###  http://purl.org/hercules/asio/core#qualifieddate
 asio:qualifieddate rdf:type owl:DatatypeProperty ;
                    rdfs:domain asio:QualifiedValue ;
@@ -710,6 +741,13 @@ asio:qualifiedvaluation rdf:type owl:DatatypeProperty ;
                         rdfs:range xsd:string ;
                         rdfs:comment "A given value linked to a given date (point in time) within a qualified value."@en ;
                         rdfs:label "qualified valuation"@en .
+
+
+###  http://purl.org/hercules/asio/core#upc
+asio:upc rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf asio:identifier ;
+         rdfs:label "Universal Porduct Code"@en ,
+                    "has UPC"@en .
 
 
 #################################################################
@@ -1148,6 +1186,12 @@ asio:EuropeanProject rdf:type owl:Class ;
                                     "Projet européen"@fr ,
                                     "Projeto europeu"@pt ,
                                     "Proyecto europeo"@es .
+
+
+###  http://purl.org/hercules/asio/core#EventSeries
+asio:EventSeries rdf:type owl:Class ;
+                 rdfs:comment "A generic class which may include a conference series, a course section, a seminar series, or a workshop series. When possible, use one of these more specific classes."@en ;
+                 rdfs:label "Event series"@en .
 
 
 ###  http://purl.org/hercules/asio/core#Funding
