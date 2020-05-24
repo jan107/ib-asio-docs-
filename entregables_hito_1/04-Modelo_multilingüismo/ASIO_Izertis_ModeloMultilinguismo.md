@@ -1,5 +1,17 @@
 ![](./images/logos_feder.png)
 
+| Entregable     | Especificación de las ontologías Hércules                    |
+| -------------- | ------------------------------------------------------------ |
+| Fecha          | 25/05/2020                                                   |
+| Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
+| Módulo         | Infraestructura Ontológica                                   |
+| Tipo           | Documento                                                    |
+| Objetivo       | Este documento recoge el modelo de multilingüismo aplicado a la infraestructura ontológica en sus dos primeras fases, a saber la creación de la ontología en OWL por un lado y, por el otro, su adaptación a la infraestructura de WikiBase/WikiMedia. No recoge, por tanto, el tratamiento posterior del multilingüismo una vez las URIs son pasadas por el tamiz de la factoría de URIs, tratamiento que se describe en los documentos específicos que documentan ese proceso. |
+| Estado         | **100%** El estado del documento se ajusta al 100% comprometido para el hito 1 del proyecto. |
+| Próximos pasos | Como se apunta al final del documento, algunos casos extremos de sistemas de escritura que no se han podido resolver en este hito 1, se estudiarán a lo largo del hito 2 y serán debidamente documentados entonces. |
+
+
+
 # Multilingüismo (*multilocalismo* y *multiescriptalismo*) en las ontologías ASIO
 
 Introducción 
@@ -336,9 +348,18 @@ En principio, las etiquetas o identificadores de Wikibase soportan potencialment
 Wikibase no incluye por defecto todos los locales existentes para las lenguas y solamente los de las comunidades más activas se suelen encontrar [disponibles](https://www.wikidata.org/wiki/Help:Wikimedia_language_codes/lists/all). En caso de necesitar incluir nuevos *locales*, los usuarios deben crear un *issue* específico con el que solicitar su inclusión. El proceso de aceptación de *locales* nuevos se somete a la opinión de un comité que analiza si es idóneo para el entorno de Wikimedia.
 
 Algo parecido sucede con los sistemas de escritura, incluídos ejemplos más extremos como el del [IPA](https://www.ipachart.com/
-), que utilizamos en la ontología para testar límites y que no ha sido posible trasladar a Wikibase aún.
+), que utilizamos en la ontología para testar límites y que no ha sido posible trasladar a Wikibase aún. Durante el desarrollo del segundo hito se investigarán e implementarán prácticas para incluir estos ejemplos extremos en el modelo.
 
 
+
+# Multilingüismo en la arquitectura semántica
+
+Este documento describe exclusivamente el modelo de multilingüismo en la fase ontológica (OWL) y fase WikiBase. El resultado son por tanto URIs completamente opacas siguiendo el modelo de WikiBase para ser manipuladas de manera interna y que serán la materia prima de la factoría de URIs descrita en los entregables 8 y 9:
+
+- 08-Esquema_de_URIs_Hércules
+- 09-Buenas_prácticas_para_URIs_Hércules
+
+En estos entregables se describe la *reposición* de ese multilingüismo desde una URIs opacas tipo WikiBase dentro de la factoría de URIs.
 
 Referencias Web
 ===========
