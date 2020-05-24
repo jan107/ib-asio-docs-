@@ -342,7 +342,7 @@ Un webhook es una dirección web a la que GitHub mandará información cada vez 
 
 	 **Content type:** `aplication/json`
 
-	 **Secret:** `ZE24JoxmzfS8TnEnmX4lLG4vIfUbjJLF`
+	 **Secret:** `xxxxxxxx`
 
 	 **Which events would you like to trigger this webhook?:** `Just the push event`
 
