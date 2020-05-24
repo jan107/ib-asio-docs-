@@ -36,14 +36,14 @@ Two other vertical modules, related within each other, are the **scientific doma
 
 The sixth vertical module, **universities**, includes the full list of universities from Spain as well as a limited sample of university subdivisions (centres, campus, faculties, etc.) corresponding to the Murcia, Oviedo, Santiago de Compostela and Basque country universities.
 
-Finally, the 7th, 8th and 9th files corresponds to **human resources** belonging to the university systems of Spain and Portugal and also to some Anglosaxon positions (USA, Canada and other countries of the so-called Commonwealth) included in the [VIVO ontology](https://github.com/vivo-project/VIVO).
+Finally, the 7th, 8th and 9th files corresponds to **human resources** belonging to the university systems of Spain, Portugal and the United Kingdom.
 
 In addition to that, the last section of this document includes an annex with a number of competence questions which can be solved with the ontology. The answers to those questions includes direct links to discussion issues and SPARQL queries for each one of them.
 
 
 ## 1. Introduction
 
-The ASIO ontologies are standardised data schemas (or "vocabularies") designed to address the Research Management of the [CRUE](http://www.crue.org/SitePages/Inicio.aspx)'s Spanish University System (Sistema Universitario Español) through the particular case  of the University of Murcia but always applying an encompassing model capable of addressing the rest of universities of the CRUE and even more belonging to the European level.
+The ASIO ontologies are standardised data schemas (or "vocabularies") designed to address the Research Management of the [CRUE](http://www.crue.org/SitePages/Inicio.aspx)'s Spanish University System (Sistema Universitario Español) through the particular case of the University of Murcia but always applying an encompassing model capable of addressing the rest of universities of the CRUE and even more belonging to the European level.
 
 In this brief section we are going to explain the large-scale organization of the ASIO ontology, which is split into a central and peripheral components, loosely inspiring ourselves in Fodor (1983). To do so we need to distinguish between two fundamentally different types of information processing (relying upon information architecture and datasets).
 
@@ -289,9 +289,11 @@ asioModules:ES_UNIVERSITY_HR_ESLPC
 
 As we can see, the position "Professor catedràtic laboral" is specified for just Catalonia, as Carreras i Barnés (2012) told us and in the vertical module it comes pointed out through the code line `asio:geoDivision asioModules:ES_DIVISION_LEVEL_1_ES_CT ;`, linking directly to the Autonomous Community of Catalonia in our geopolitical vertical module.
 
-Similar examples, such as the Basque Ivef & Nautical professors are delimited in the same way.
+Similar examples, such as the Basque positions *Ivef* and *Nautical* *professors* are delimited in the same way.
 
-On the other hand, an equivalent dataset is provided for the case of academic position in Portugal. Portugal has dramatically streamlined the variety of university positions in a very efficient way, as its [Estatuto da carreira docente universitária](https://fne.pt/uploads/documentos/1433262954_9365_ECDU_versao_consolidada.pdf) explains and no complex diversity as the Spanish one is found there.
+On the other hand, equivalent datasets are provided for the case of academic positions in Portugal and the United Kingdom. Portugal has dramatically streamlined the variety of university positions in a very efficient way, as its [Estatuto da carreira docente universitária](https://fne.pt/uploads/documentos/1433262954_9365_ECDU_versao_consolidada.pdf) explains and no complex diversity as the Spanish one is found there.
+
+As far as the UK dataset is concerned, it is limited to the [generality of the universities](https://web.archive.org/web/20181010061700/http://www.impacte.eu/system/files/%5Bsite%3Acurrent-group%5D/uk.pdf) and does not include the Oxford positions, sometimes very specific.
 
 Some rudimentary mappings are provided between academic positions belonging to different countries  to test the model and illustrate the procedure to do so. Obviously, establishing these mappings is not a trivial task, and experts in human resources familiar with the diverses university systems would be the best candidates for that. However, 
 
@@ -324,6 +326,8 @@ asioModules:ES_UNIVERSITY_HR_CODE_ESPLEM
 ```
 
 A final note must be added regarding these HRs vertical modules. The type of each of these positions is established as instances of the class `skos:Concept` but also as instances of the class `asio:Role`. This way a conciliation between core instances and an independent, semi-autonomous ontological vertical module (which can be easily unplugged and recycled if necessary) is obtained.
+
+Finally, another kind of roles are also included as instances of `skos:Concept` and `asio:Role`, the so-called administrative ranks within a university. These are a short and limited list
 
 
 
