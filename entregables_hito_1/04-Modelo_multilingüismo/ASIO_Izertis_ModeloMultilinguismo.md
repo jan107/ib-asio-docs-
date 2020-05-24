@@ -1,5 +1,17 @@
 ![](./images/logos_feder.png)
 
+| Entregable     | Especificación de las ontologías Hércules                    |
+| -------------- | ------------------------------------------------------------ |
+| Fecha          | 25/05/2020                                                   |
+| Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
+| Módulo         | Infraestructura Ontológica                                   |
+| Tipo           | Documento                                                    |
+| Objetivo       | Este documento recoge el modelo de multilingüismo aplicado a la infraestructura ontológica en sus dos primeras fases, a saber la creación de la ontología en OWL por un lado y, por el otro, su adaptación a la infraestructura de WikiBase/WikiMedia. No recoge, por tanto, el tratamiento posterior del multilingüismo una vez las URIs son pasadas por el tamiz de la factoría de URIs, tratamiento que se describe en los documentos específicos que documentan ese proceso. |
+| Estado         | **100%** El estado del documento se ajusta al 100% comprometido para el hito 1 del proyecto. |
+| Próximos pasos | Como se apunta al final del documento, algunos casos extremos de sistemas de escritura que no se han podido resolver en este hito 1, se estudiarán a lo largo del hito 2 y serán debidamente documentados entonces. |
+
+
+
 # Multilingüismo (*multilocalismo* y *multiescriptalismo*) en las ontologías ASIO
 
 Introducción 
@@ -337,6 +349,10 @@ Wikibase no incluye por defecto todos los locales existentes para las lenguas y 
 
 Algo parecido sucede con los sistemas de escritura, incluídos ejemplos más extremos como el del [IPA](https://www.ipachart.com/
 ), que utilizamos en la ontología para testar límites y que no ha sido posible trasladar a Wikibase aún.
+
+Finalmente cabe decir que 
+
+Multilingüismo
 
 
 

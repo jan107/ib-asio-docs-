@@ -291,7 +291,7 @@ As we can see, the position "Professor catedràtic laboral" is specified for jus
 
 Similar examples, such as the Basque Ivef & Nautical professors are delimited in the same way.
 
-On the other hand, an equivalent dataset is provided for the case of academic position in Portugal. Portugal has dramatically streamlined the variety of university positions in a very efficient way and no complex diversity as the Spanish one is found there.
+On the other hand, an equivalent dataset is provided for the case of academic position in Portugal. Portugal has dramatically streamlined the variety of university positions in a very efficient way, as its [Estatuto da carreira docente universitária](https://fne.pt/uploads/documentos/1433262954_9365_ECDU_versao_consolidada.pdf) explains and no complex diversity as the Spanish one is found there.
 
 Some rudimentary mappings are provided between academic positions belonging to different countries  to test the model and illustrate the procedure to do so. Obviously, establishing these mappings is not a trivial task, and experts in human resources familiar with the diverses university systems would be the best candidates for that. However, 
 
@@ -323,9 +323,7 @@ asioModules:ES_UNIVERSITY_HR_CODE_ESPLEM
       skos:prefLabel "ESPLEM" .
 ```
 
-A final note must be added regarding these HRs vertical modules. The type of each of these positions is established as instances of the class `skos:Concept` but also as instances of the class `asio:Role`. This way
-
-and the transformation of the information about *Spain's university staffing*, which is right now included as instances of the core-class *asio:Role*.
+A final note must be added regarding these HRs vertical modules. The type of each of these positions is established as instances of the class `skos:Concept` but also as instances of the class `asio:Role`. This way a conciliation between core instances and an independent, semi-autonomous ontological vertical module (which can be easily unplugged and recycled if necessary) is obtained.
 
 
 
