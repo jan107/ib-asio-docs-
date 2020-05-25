@@ -46,7 +46,7 @@ Las buenas prácticas generales recogen factores globales que son de aplicación
    - No incluir elementos dinámicos, como por ejemplo token de sesión, información de estado o *query strings*.
    - Mantener un equilibrio en hacerlas legibles e incluir información descriptiva que probablemente cambie con el tiempo.
    - En caso de borrado, usar *410 Gone* en vez de *404 Not Found*.
-4. **Reusar URIs existentes: ** siempre que sea posible, es preferible reusar identificadores existentes, en lugar de generar nuevos, dado que, entre otros motivos, la trazabilidad y la persistencia pueden verse afectadas.
+4. **Reusar URIs existentes:** siempre que sea posible, es preferible reusar identificadores existentes, en lugar de generar nuevos, dado que, entre otros motivos, la trazabilidad y la persistencia pueden verse afectadas.
 5. **Normalización de componentes de la URI**: con el fin de garantizar coherencia en la implementación del esquema, se recomienda aplicar la siguiente normativa para todos los componentes de las URIs, excluyendo la referencia:
    - Han de ser únicos (al menos en su dominio)
    - Han de ser lo mas cortos posibles, conservando su semántica y haciendo que sean representativos e intuitivos 
@@ -65,7 +65,7 @@ Las buenas prácticas en representación de recursos definen las recomendaciones
 2. **Multilingüismo**: proporcionar mecanismos para definir que el mismo recurso tiene representaciones en varios idiomas y añadir metadatos para enlaces con otros idiomas: Enlazar documentos a otros el mismo documento en distintos idiomas, por ejemplo haciendo uso de la etiqueta *link:alternate* en HTML, o *foaf:page* y *rdfs:isDefinedBy* en RDF.
 3. **Evitar auto incrementos**: de forma que el identificador sea determinista e idempotente, es decir una misma entidad, deberá asociarse siempre con una misma referencia y URI.
 4. **Evitar números de versión:**  evitar el número de versión en los conceptos, por que este previsiblemente ira evolucionando, y por lo tanto afecta también al objetivo de persistencia.
-5.  **Evitar extensiones de archivo: **no mostrar la tecnología subyacente, en su lugar, para obtener una representación en un formato especifico del recurso, ha de usarse la negociación de contenidos, basada en las preferencias/capacidades del usuario.
+5. **Evitar extensiones de archivo:** no mostrar la tecnología subyacente, en su lugar, para obtener una representación en un formato especifico del recurso, ha de usarse la negociación de contenidos, basada en las preferencias/capacidades del usuario.
    - Establecer formato e idioma por defecto, para los clientes que no lo especifiquen.
    - Permitir la negociación de codificación de caracteres con *Accept-Charset*
    - Debe de proporcionarse mecanismos para proporcionar distintas representaciones del mismo recurso por negociación de contenidos, al menos mediante el uso de algoritmos aplicables al contenido de la cabecera *Accept*.
