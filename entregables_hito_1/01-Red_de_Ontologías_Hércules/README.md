@@ -5,7 +5,7 @@
 | Fecha                            | 25/05/2020                                                   |
 | Proyecto                         | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
 | Módulo                           | Infraestructura Ontológica                                   |
-| Tipo                             | Archivo README; la especificación de la ontología se encuentra en la carpeta "02-Especificación_Ontologías_Hércules". |
+| Tipo                             | Archivo README; la especificación de la ontología se encuentra en la carpeta  [02-Especificación_Ontologías_Hércules](../02-Especificación_Ontologías_Hércules/ASIO_Izertis_EspecificacionOntologiasHercules.md). |
 | Objetivo                         | Pequeño documento de README explicando el contenido de la carpeta. |
 | Estado                           | **80%**. Se contemplaba un desarrollo de las ontologías del 80% para el hito 1 de proyecto y se considera alcanzado. |
 | Próximos pasos                   | Para el hito 2 se contempla continuar el desarrollo del 20% restante de las ontologías por medio de mejoras. |
