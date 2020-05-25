@@ -30,7 +30,6 @@
 
 <http://purl.org/hercules/asio/core#> rdf:type owl:Ontology ;
                                        owl:versionIRI <http://purl.org/hercules/asio/core/0.0.1> ;
-                                       owl:imports <https://w3id.org/ro/> ;
                                        dc:contributor "Alejandro González Hevia"^^xsd:string ,
                                                       "José Emilio Labra Gayo"^^xsd:string ;
                                        dc:creator "Emilio Rubiera Azcona"^^xsd:string ;
@@ -755,8 +754,8 @@ asio:qualifiedvaluation rdf:type owl:DatatypeProperty ;
 asio:referencedLaw rdf:type owl:DatatypeProperty ;
                    rdfs:domain asio:Role ;
                    rdfs:range xsd:string ;
-                   rdfs:comment "A reference law that establishes a position."@en ,
-                                "reference law"@en .
+                   rdfs:comment "A reference law that establishes a position."@en ;
+                   rdfs:label "reference law"@en .
 
 
 ###  http://purl.org/hercules/asio/core#upc
