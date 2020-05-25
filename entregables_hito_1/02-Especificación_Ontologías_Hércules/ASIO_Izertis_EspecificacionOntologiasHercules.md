@@ -1,14 +1,15 @@
 ![](./images/logos_feder.png)
 
-| Entregable     | Especificación de las ontologías Hércules                    |
-| -------------- | ------------------------------------------------------------ |
-| Fecha          | 25/05/2020                                                   |
-| Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
-| Módulo         | Infraestructura Ontológica                                   |
-| Tipo           | Documento                                                    |
-| Objetivo       | Este documento recoge en inglés la especificación de las ontologías Hércules. |
-| Estado         | **80%**. El estado del documento se ajusta al 80% comprometido para el hito 1 del proyecto. |
-| Próximos pasos | La ontología va a ir evolucionando aún a lo largo de lo que resta del proyecto con el objetivo de ajustarse al 20% restante y este documento será asimismo documentación de partida en esa evolución. |
+| Entregable                       | Especificación de las ontologías Hércules                    |
+| -------------------------------- | ------------------------------------------------------------ |
+| Fecha                            | 25/05/2020                                                   |
+| Proyecto                         | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
+| Módulo                           | Infraestructura Ontológica                                   |
+| Tipo                             | Documento                                                    |
+| Objetivo                         | Este documento recoge en inglés la especificación de las ontologías Hércules. |
+| Estado                           | **80%**. El estado del documento se ajusta al 80% comprometido para el hito 1 del proyecto. |
+| Próximos pasos                   | La ontología va a ir evolucionando aún a lo largo de lo que resta del proyecto con el objetivo de ajustarse al 20% restante y este documento será asimismo documentación de partida en esa evolución. |
+| Repositorio de software asociado | The current working space for the ASIO ontologies can be accessed [here](https://github.com/HerculesCRUE/ib-hercules-ontology). |
 
 
 
@@ -325,7 +326,9 @@ asioModules:ES_UNIVERSITY_HR_CODE_ESPLEM
 
 A final note must be added regarding these HRs vertical modules. The type of each of these positions is established as instances of the class `skos:Concept` but also as instances of the class `asio:Role`. This way a conciliation between core instances and an independent, semi-autonomous ontological vertical module (which can be easily unplugged and recycled if necessary) is obtained.
 
-Finally, another kind of roles is also included as instances of `skos:Concept` and `asio:Role`, the so-called **administrative ranks** within a university. These are a short and limited list such as *chancellor*, *vice-chancellor*, *dean*, etc. for the UK or *rector*, *decano*, *director de departamento*, *secretario*, etc. for Spain. These individuals are creently included in the HR vertical module or moved in the future into another one more specific dealing with administrative ranks, bearing in mind that Roles, Profiles and Contexts are an area of the core ontology encompassing and well developed.
+Another kind of roles is also included as instances of `skos:Concept` and `asio:Role`, the so-called **administrative ranks** within a university. These are a short and limited list such as *chancellor*, *vice-chancellor*, *dean*, etc. for the UK or *rector*, *decano*, *director de departamento*, *secretario*, etc. for Spain. These individuals are creently included in the HR vertical module or moved in the future into another one more specific dealing with administrative ranks, bearing in mind that Roles, Profiles and Contexts are an area of the core ontology encompassing and well developed.
+
+Finally, it is worth mentioning that there is a property `asio:referenceLaw` specifically used to link a HR position with its corresponding law.
 
 
 
