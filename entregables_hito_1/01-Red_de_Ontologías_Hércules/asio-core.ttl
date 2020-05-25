@@ -751,6 +751,14 @@ asio:qualifiedvaluation rdf:type owl:DatatypeProperty ;
                         rdfs:label "qualified valuation"@en .
 
 
+###  http://purl.org/hercules/asio/core#referencedLaw
+asio:referencedLaw rdf:type owl:DatatypeProperty ;
+                   rdfs:domain asio:Role ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "A reference law that establishes a position."@en ,
+                                "reference law"@en .
+
+
 ###  http://purl.org/hercules/asio/core#upc
 asio:upc rdf:type owl:DatatypeProperty ;
          rdfs:subPropertyOf asio:identifier ;

@@ -40,6 +40,8 @@ Finally, the 7th, 8th and 9th files corresponds to **human resources** belonging
 
 In addition to that, the last section of this document includes an annex with a number of competence questions which can be solved with the ontology. The answers to those questions includes direct links to discussion issues and SPARQL queries for each one of them.
 
+The current working space for the ASIO ontologies can be accessed [here](https://github.com/HerculesCRUE/ib-hercules-ontology).
+
 
 ## 1. Introduction
 
