@@ -325,7 +325,7 @@ asioModules:ES_UNIVERSITY_HR_CODE_ESPLEM
 
 A final note must be added regarding these HRs vertical modules. The type of each of these positions is established as instances of the class `skos:Concept` but also as instances of the class `asio:Role`. This way a conciliation between core instances and an independent, semi-autonomous ontological vertical module (which can be easily unplugged and recycled if necessary) is obtained.
 
-Finally, another kind of roles is also included as instances of `skos:Concept` and `asio:Role`, the so-called **administrative ranks** within a university. These are a short and limited list such as *chancellor*, *vice-chancellor*, *dean*, etc. for the UK or *rector*, *decano*, *director de departamento*, *secretario*, etc. for Spain. These individuals are included in the HR vertical module or in another one more specific dealing with administrative ranks, bearing in mind that Roles, Profiles and Contexts are an area of the core ontology encompassing and well developed.
+Finally, another kind of roles is also included as instances of `skos:Concept` and `asio:Role`, the so-called **administrative ranks** within a university. These are a short and limited list such as *chancellor*, *vice-chancellor*, *dean*, etc. for the UK or *rector*, *decano*, *director de departamento*, *secretario*, etc. for Spain. These individuals are creently included in the HR vertical module or moved in the future into another one more specific dealing with administrative ranks, bearing in mind that Roles, Profiles and Contexts are an area of the core ontology encompassing and well developed.
 
 
 
