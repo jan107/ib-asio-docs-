@@ -1,14 +1,16 @@
 ![](./images/logos_feder.png)
 
-| Entregable     | Sistema de sincronización Hércules                           |
+| Entregable     | Control de Versiones sobre ontologías OWL - Sistema de sincronización                           |
 | -------------- | ------------------------------------------------------------ |
-| Fecha          | 22/05/2020                                                   |
+| Fecha          | 25/05/2020                                                   |
 | Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
 | Módulo         | Infraestructura Ontológica                                   |
-| Tipo           | Documento + Software                                         |
+| Tipo           | Método y Software                                        |
 | Objetivo       | Este documento consiste en la especificación del sistema de sincronización automática de ontologías con un triplestore. |
-| Estado         | **70%** El sistema se encuentra ya en funcionamiento y deplegado. Actualmente se está trabajando en mejoras del módulo que se encuentran definidas y detalladas a lo largo del documento. |
+| Estado         | **100%** El sistema se encuentra ya en funcionamiento y deplegado. Actualmente se está trabajando en mejoras del módulo que se encuentran definidas y detalladas a lo largo del documento. Estas mejoras formarán parte del hito 2. |
 | Próximos pasos | Implementación de la sincronización desde el triplestore a los ficheros de la ontología. Solución a los problemas definidos en el capítulo de Riesgos y Deuda Técnica. |
+|Repositorio de Software Asociado|https://github.com/HerculesCRUE/ib-hercules-sync/ |
+
 
 # Hercules synchronization module architecture
 
@@ -342,7 +344,7 @@ Un webhook es una dirección web a la que GitHub mandará información cada vez 
 
 	 **Content type:** `aplication/json`
 
-	 **Secret:** `ZE24JoxmzfS8TnEnmX4lLG4vIfUbjJLF`
+	 **Secret:** `xxxxxxxx`
 
 	 **Which events would you like to trigger this webhook?:** `Just the push event`
 

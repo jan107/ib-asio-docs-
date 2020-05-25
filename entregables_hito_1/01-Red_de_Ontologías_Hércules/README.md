@@ -7,8 +7,8 @@
 | Módulo         | Infraestructura Ontológica                                   |
 | Tipo           | Archivo README                                               |
 | Objetivo       | Pequeño documento de README explicando el contenido de la carpeta. |
-| Estado         | **No aplica**  (cerrado)                                     |
-| Próximos pasos | No aplica                                                    |
+| Estado         | **80%**. Se contemplaba un desarrollo de las ontologías del 80% para el hito 1 de proyecto y se considera alcanzado. |
+| Próximos pasos | Para el hito 2 se contempla continuar el desarrollo del 20% restante de las ontologías por medio de mejoras. |
 
 
 
