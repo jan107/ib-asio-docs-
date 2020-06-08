@@ -7,12 +7,9 @@
 | Módulo         | Infraestructura Ontológica                                   |
 | Tipo           | Software y resultados                                        |
 | Objetivo       | Evaluar el cumplimiento de las métricas FAIR definidas en el documento de [Análisis de métodos FAIR](https://github.com/HerculesCRUE/ib-asio-docs-/blob/master/entregables_hito_1/05-An%C3%A1lisis_de_m%C3%A9todos_FAIR/ASIO_Izertis_AnalisisDeMetodosFAIR.md) sobre el proyecto ASIO, tanto a nivel de ontología como de conjuntos de datos. A partir de dicha evaluación se generan gráficas de nivel de cumplimiento por áreas e indicadores individuales de forma automática para su posterior integración en páginas web y/o informes. |
-| Estado         | **100%** La evaluación de los indicadores se ha realizado completamente y el software permite generar las gráficas necesarias, incluyendo pruebas unitarias pertinentes. |
-| Próximos pasos | A la finalización del proyecto se volverán a evaluar las métricas sobre el despliegue final, con previsión de obtener un nivel máximo de cumplimiento en todos los indicadores. |
+| Estado         | **80%** La evaluación de los indicadores se ha realizado completamente y el software permite generar las gráficas necesarias, incluyendo pruebas unitarias pertinentes. |
+| Próximos pasos | A la finalización del proyecto se volverán a evaluar las métricas sobre el despliegue final, con previsión de obtener un nivel máximo de cumplimiento en todos los indicadores. Adicionalmente, queda abierta la posibilidad de desarrollar nuevos índices o KPIs mejorados, para la presentación de resultados por áreas y/o un índice global FAIR mediante ponderación de indicadores FAIR por prioridad. |
 | Documentación  | [Manual de usuario](manual_usuario.md)<br />[Manual de despliegue](manual_despliegue.md)<br />[Documentación técnica](manual_tecnico.md) |
-
-
-![](./images/logos_feder.png)
 
 # Métricas FAIR
 

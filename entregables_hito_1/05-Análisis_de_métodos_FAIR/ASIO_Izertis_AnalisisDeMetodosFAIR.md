@@ -1,21 +1,14 @@
-
-
-
-
-
 ![](./images/logos_feder.png)
 
-| Entregable     | Análisis de método FAIR                                      |
+| Entregable     | Análisis de Métodos FAIR                                     |
 | -------------- | ------------------------------------------------------------ |
 | Fecha          | 25/05/2020                                                   |
 | Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
 | Módulo         | Infraestructura Ontológica                                   |
 | Tipo           | Documento                                                    |
-| Objetivo       | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis  lacinia volutpat. Nullam at posuere velit, vitae feugiat purus. Vivamus a eros molestie, hendrerit mauris sit amet, varius odio. Suspendisse  metus neque, ultricies et neque et, sollicitudin condimentum nibh.  Curabitur erat mauris, ultricies nec consectetur nec, feugiat nec nisi.  In tincidunt, enim ut rutrum pharetra, metus dui commodo ex, in  venenatis erat diam ut massa. |
-| Estado         | **XX%** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis  lacinia volutpat. Nullam at posuere velit, vitae feugiat purus. Vivamus a eros molestie, hendrerit mauris sit amet, varius odio. Suspendisse  metus neque, ultricies et neque et, sollicitudin condimentum nibh. |
-| Próximos pasos | Curabitur erat mauris, ultricies nec consectetur nec, feugiat nec nisi.  In tincidunt, enim ut rutrum pharetra, metus dui commodo ex, in  venenatis erat diam ut massa. Suspendisse tempus, sapien eu blandit  volutpat, massa mauris rutrum justo, scelerisque tincidunt nisi risus id dui. |
-
-
+| Objetivo       | Este documento recoge el análisis de métodos FAIR disponibles y establece las métricas y la metodología propuesta para la evaluación de métricas FAIR del proyecto, descrita en el entregable de [Métricas FAIR](https://github.com/HerculesCRUE/ib-asio-docs-/tree/master/entregables_hito_1/06-M%C3%A9tricas_FAIR). |
+| Estado         | **100%** El análisis de métodos FAIR se considera completo.  |
+| Próximos pasos | Se podría estudiar KPIs alternativos para la presentación de resultados por áreas y/o un índice global FAIR mediante ponderación de indicadores FAIR por prioridad. |
 
 # Análisis de métodos FAIR
 

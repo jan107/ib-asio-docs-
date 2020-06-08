@@ -1,10 +1,8 @@
 ![](./images/logos_feder.png)
 
-# Documento de Análisis ASIO
 
 
-
-| Entregable     | Análisis de método FAIR                                      |
+| Entregable     |      Documento de Análisis ASIO                                 |
 | -------------- | ------------------------------------------------------------ |
 | Fecha          | 25/05/2020                                                   |
 | Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
@@ -15,6 +13,7 @@
 | Próximos pasos | Actualizar de forma acorde al avance del proyecto.           |
 
 
+# Documento de Análisis ASIO
 
 
 

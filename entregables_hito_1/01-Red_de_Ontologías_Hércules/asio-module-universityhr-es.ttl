@@ -18,12 +18,29 @@ asioModules:ES_UNIVERSITY_HR_CODE_ESFPCU
       skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
       skos:prefLabel "ESFPCU" .
 
+asioModules:ES_UNIVERSITY_HR_CODE_ESJEFDEP
+      a       skos:Concept ;
+      rdfs:label "ESJEFDEP" ;
+      asio:codeOf asioModules:ES_UNIVERSITY_HR_ESJEFDEP ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
+      skos:prefLabel "ESJEFDEP" .
+
 asioModules:ES_UNIVERSITY_HR_CODE_ESFIVEFNP
       a       skos:Concept ;
       rdfs:label "ESFIVEFNP" ;
       asio:codeOf asioModules:ES_UNIVERSITY_HR_ESFIVEFNP ;
       skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
       skos:prefLabel "ESFIVEFNP" .
+
+asioModules:ES_UNIVERSITY_HR_ESVIREC
+      a       owl:NamedIndividual , asio:Role , skos:Concept ;
+      rdfs:label "Vicerrector"@es ;
+      asio:country euCountry:ESP ;
+      asio:hasCode asioModules:ES_UNIVERSITY_HR_CODE_ESVIREC ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesList ;
+      skos:closeMatch asioModules:GB_UNIVERSITY_HR_GBCHAN ;
+      skos:notation "ESVIREC" ;
+      skos:prefLabel "Vicerector"@ca , "Errektoreordea"@eu , "Vicerrector"@es , "Vicerrector"@ast , "Vicerrector"@gl .
 
 asioModules:ES_UNIVERSITY_HR_CODE_ESFPCEU
       a       skos:Concept ;
@@ -80,6 +97,13 @@ asioModules:ES_UNIVERSITY_HR_CODE_ESLPL
       skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
       skos:prefLabel "ESLPL" .
 
+asioModules:ES_UNIVERSITY_HR_CODE_ESVIREC
+      a       skos:Concept ;
+      rdfs:label "ESVIREC" ;
+      asio:codeOf asioModules:ES_UNIVERSITY_HR_ESVIREC ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
+      skos:prefLabel "ESVIREC" .
+
 asioModules:ES_UNIVERSITY_HR_CODE_ESLPCD
       a       skos:Concept ;
       rdfs:label "ESLPCD" ;
@@ -93,6 +117,13 @@ asioModules:ES_UNIVERSITY_HR_CODE_ESLI
       asio:codeOf asioModules:ES_UNIVERSITY_HR_ESLI ;
       skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
       skos:prefLabel "ESLI" .
+
+asioModules:ES_UNIVERSITY_HR_CODE_ESVIDEC
+      a       skos:Concept ;
+      rdfs:label "ESVIDEC" ;
+      asio:codeOf asioModules:ES_UNIVERSITY_HR_ESVIDEC ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
+      skos:prefLabel "ESVIDEC" .
 
 asioModules:ES_UNIVERSITY_HR_CODE_ESLPAS
       a       skos:Concept ;
@@ -108,7 +139,6 @@ asioModules:ES_UNIVERSITY_HR_ESFPTU
       asio:hasCode asioModules:ES_UNIVERSITY_HR_CODE_ESFPTU ;
       skos:inScheme asioModules:ESUniversityHumanResourcesList ;
       skos:notation "ESFPTU" ;
-      skos:closeMatch asioModules:PT_UNIVERSITY_HR_PTPC ;
       skos:prefLabel "Professor titular de universidade"@pt , "Professor titular d'universitat"@ca , "Irakasle titularra"@eu , "Profesor titular de universidade"@gl , "Profesor titular d'universidá"@ast , "Professeur titulaire d'université"@fr , "Profesor titular de universidad"@es .
 
 asioModules:ES_UNIVERSITY_HR_CODE_ESLPI
@@ -135,6 +165,16 @@ asioModules:ES_UNIVERSITY_HR_ESLPC
       skos:notation "ESLPC" ;
       skos:prefLabel "Profesor catedrático laboral"@es , "Profesor catedrático laboral"@gl , "Profesor catedráticu llaboral"@ast , "Professor catedràtic laboral"@ca .
 
+asioModules:ES_UNIVERSITY_HR_ESRECT
+      a       owl:NamedIndividual , asio:Role , skos:Concept ;
+      rdfs:label "Rector"@es ;
+      asio:country euCountry:ESP ;
+      asio:hasCode asioModules:ES_UNIVERSITY_HR_CODE_ESRECT ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesList ;
+      skos:closeMatch asioModules:GB_UNIVERSITY_CODE_GBCHAN ;
+      skos:notation "ESRECT" ;
+      skos:prefLabel "Errektorea"@eu , "Rector"@es , "Rector"@ast , "Rector"@ca , "Rector"@gl .
+
 asioModules:ES_UNIVERSITY_HR_ESFIVEFNP
       a       owl:NamedIndividual , asio:Role , skos:Concept ;
       rdfs:label "Profesor Ivef no permanente"@es ;
@@ -149,7 +189,6 @@ asioModules:ES_UNIVERSITY_HR_CODE_ESPLEM
       a       skos:Concept ;
       rdfs:label "ESPLEM" ;
       asio:codeOf asioModules:ES_UNIVERSITY_HR_ESPLEM ;
-      skos:closeMatch asioModules:PT_UNIVERSITY_HR_PTPEM ;
       skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
       skos:prefLabel "ESPLEM" .
 
@@ -168,6 +207,13 @@ asioModules:ES_UNIVERSITY_HR_CODE_ESLPAG
       asio:codeOf asioModules:ES_UNIVERSITY_HR_ESLPAG ;
       skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
       skos:prefLabel "ESLPAG" .
+
+asioModules:ES_UNIVERSITY_HR_CODE_ESSECGE
+      a       skos:Concept ;
+      rdfs:label "ESSECGE" ;
+      asio:codeOf asioModules:ES_UNIVERSITY_HR_ESSECGE ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
+      skos:prefLabel "ESSECGE" .
 
 asioModules:ES_UNIVERSITY_HR_CODE_ESLPCNP
       a       skos:Concept ;
@@ -207,6 +253,15 @@ asioModules:ES_UNIVERSITY_HR_CODE_ESPLV
       asio:codeOf asioModules:ES_UNIVERSITY_HR_ESPLV ;
       skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
       skos:prefLabel "ESPLV" .
+
+asioModules:ES_UNIVERSITY_HR_ESSECGE
+      a       owl:NamedIndividual , asio:Role , skos:Concept ;
+      rdfs:label "Secretario general"@es ;
+      asio:country euCountry:ESP ;
+      asio:hasCode asioModules:ES_UNIVERSITY_HR_CODE_ESSECGE ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesList ;
+      skos:notation "ESSECGE" ;
+      skos:prefLabel "Secretario xeral"@gl , "Secretariu xeneral"@ast , "Secretari general"@ca , "Secretario general"@es , "Idazkari Nagusia"@eu .
 
 asioModules:ES_UNIVERSITY_HR_CODE_ESPASL
       a       skos:Concept ;
@@ -270,6 +325,16 @@ asioModules:ES_UNIVERSITY_HR_CODE_ESFPTU
       skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
       skos:prefLabel "ESFPTU" .
 
+asioModules:ES_UNIVERSITY_HR_ESJEFDEP
+      a       owl:NamedIndividual , asio:Role , skos:Concept ;
+      rdfs:label "Director de departamento"@es ;
+      asio:country euCountry:ESP ;
+      asio:hasCode asioModules:ES_UNIVERSITY_HR_CODE_ESJEFDEP ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesList ;
+      skos:closeMatch asioModules:GB_UNIVERSITY_GBHEADDEP ;
+      skos:notation "ESJEFDEP" ;
+      skos:prefLabel "Director de departament"@ca , "Saileko Zuzendaria"@eu , "Director de departamento"@es , "Director de departamento"@gl , "Director de departamentu"@ast .
+
 asioModules:ES_UNIVERSITY_HR_ESLPCP
       a       owl:NamedIndividual , asio:Role , skos:Concept ;
       rdfs:label "Profesor colaborador permanente"@es ;
@@ -304,6 +369,22 @@ asioModules:ES_UNIVERSITY_HR_ESFPTN
       skos:inScheme asioModules:ESUniversityHumanResourcesList ;
       skos:notation "ESFPTN" ;
       skos:prefLabel "Professor titular d'escola de nàutica"@ca , "Profesor titular de escola de náutica"@gl , "Profesor oficial d'escuela de náutica"@ast , "Profesor titular de escuela de náutica"@es , "Nautika Eskola Ofizialeko Irakasle numerarioa"@eu .
+
+asioModules:ES_UNIVERSITY_HR_CODE_ESRECT
+      a       skos:Concept ;
+      rdfs:label "ESRECT" ;
+      asio:codeOf asioModules:ES_UNIVERSITY_HR_ESRECT ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
+      skos:prefLabel "ESRECT" .
+
+asioModules:ES_UNIVERSITY_HR_ESVIDEC
+      a       owl:NamedIndividual , asio:Role , skos:Concept ;
+      rdfs:label "Vicedecano"@es ;
+      asio:country euCountry:ESP ;
+      asio:hasCode asioModules:ES_UNIVERSITY_HR_CODE_ESVIDEC ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesList ;
+      skos:notation "ESVIDEC" ;
+      skos:prefLabel "Vicedecano"@es , "Vicedecano"@gl , "Dekanordea"@eu , "Vicedegà"@ca , "Vicedecanu"@ast .
 
 asioModules:ES_UNIVERSITY_HR_CODE_ESPASF
       a       skos:Concept ;
@@ -371,6 +452,13 @@ asioModules:ES_UNIVERSITY_HR_CODE_ESLPCP
       skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
       skos:prefLabel "ESLPCP" .
 
+asioModules:ES_UNIVERSITY_HR_CODE_ESDECA
+      a       skos:Concept ;
+      rdfs:label "ESDECA" ;
+      asio:codeOf asioModules:ES_UNIVERSITY_HR_ESDECA ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesCodesList ;
+      skos:prefLabel "ESDECA" .
+
 asioModules:ESUniversityHumanResourcesCodesList
       a       asioModules:UniversityHumanResources ;
       rdfs:label "Códigos de los recursos humanos de les universidaes d'España"@ast , "Códigos de los recursos humanos de las universidades de España"@es , "Códigos dos recursos humanos das universidades de España"@gl , "Códigos dos recursos humanos das universidades de Espanha"@pt , "Codes for the human resources of the universities from Spain"@en , "Codes des resources humains des universités d'Espagne"@fr , "Codis dels recursos humans de les universitats d'Espanya"@ca ;
@@ -392,9 +480,19 @@ asioModules:ES_UNIVERSITY_HR_ESPLEM
       asio:country euCountry:ESP ;
       asio:hasCode asioModules:ES_UNIVERSITY_HR_CODE_ESPLEM ;
       skos:inScheme asioModules:ESUniversityHumanResourcesList ;
-      skos:closeMatch asioModules:GB_UNIVERSITY_HR_GBEPROF
+      skos:closeMatch asioModules:PT_UNIVERSITY_HR_PTPEM ;
       skos:notation "ESPLEM" ;
       skos:prefLabel "Profesor emérito"@es , "Profesor emérito"@gl , "Profesor eméritu"@ast , "Irakasle emeritua"@eu , "Professor emèrit"@ca .
+
+asioModules:ES_UNIVERSITY_HR_ESDECA
+      a       owl:NamedIndividual , asio:Role , skos:Concept ;
+      rdfs:label "Decano"@es ;
+      asio:country euCountry:ESP ;
+      asio:hasCode asioModules:ES_UNIVERSITY_HR_CODE_ESDECA ;
+      skos:inScheme asioModules:ESUniversityHumanResourcesList ;
+      skos:closeMatch: asioModules:GB_UNIVERSITY_HR_GBDEAN ;
+      skos:notation "ESDECA" ;
+      skos:prefLabel "Decano"@es , "Decano"@gl , "Decanu"@ast , "Degà"@ca , "Dekanoa"@eu .
 
 asioModules:ES_UNIVERSITY_HR_ESLPAS
       a       owl:NamedIndividual , asio:Role , skos:Concept ;
@@ -402,7 +500,6 @@ asioModules:ES_UNIVERSITY_HR_ESLPAS
       asio:country euCountry:ESP ;
       asio:hasCode asioModules:ES_UNIVERSITY_HR_CODE_ESLPAS ;
       skos:inScheme asioModules:ESUniversityHumanResourcesList ;
-      skos:closeMatch asioModules:PT_UNIVERSITY_HR_PTPAS ;
       skos:notation "ESLPAS" ;
       skos:prefLabel "Profesor asociáu"@ast , "Professor associat"@ca , "Irakasle elkartua"@eu , "Profesor asociado"@gl , "Profesor asociado"@es .
 

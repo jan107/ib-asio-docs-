@@ -12,7 +12,7 @@
 | Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
 | Módulo         | Manual de usuario                                            |
 | Tipo           | Documento                                                    |
-| Objetivo       | Documento de comunicación técnica que busca brindar asistencia a los sujetos que usan un sistema. |
+| Objetivo       | Documento con un manual de usuario que busca brindar asistencia a los sujetos que usan el sistema. |
 | Estado         | 100% para el hito 1                                          |
 | Próximos pasos | Ampliar de forma acorde al avance del proyecto.              |
 

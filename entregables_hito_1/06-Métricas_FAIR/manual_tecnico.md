@@ -12,7 +12,22 @@
 El presente documento describe en detalle el proceso de desarrollo del software para la generación de resultados gráficos del análisis de métricas FAIR.
 ## Entorno de desarrollo
 Ver [manual de despliegue](manual_despliegue.md).
+## Librerías empleadas
+
+Para el desarrollo de este módulo software se han empleado 3 librerías Python, en concreto:
+
+```
+numpy==1.18.4
+plotly==4.7.1
+pandas==1.0.3
+```
+
+El software toma datos de un documento CSV que contiene los resultados de la evaluación de los indicadores FAIR para generar una gráfica de barras de niveles FAIR por área, así como gráficas radar de progreso por cada indicador, agrupadas por áreas (ver [Manual de usuario](manual_usuario.md))
+
+Numpy y Pandas se emplean para el tratamiento de los datos y el cálculo de índices o KPIS. Plotly a su vez se emplea para generar resultados gráficos y sus correspondientes ficheros HTML que pueden ser integrados fácilmente como gráficas interactivas en cualquier aplicación o página Web.
+
 ## Pruebas unitarias
+
 Para generar los resultados de la evaluación de pruebas unitarias del software de métricas FAIR es necesario ejecutar el siguiente comando:
 
 ```
