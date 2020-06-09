@@ -14,7 +14,7 @@ En esencia Jena almacena la información y ofrece interfaces para realizar cualq
 - **ARQ Engine**: Motor que da soporte al lenguaje de queries que soporta SPARQL.
 - **TDB Engine**: Motor de almacenamiento de datos (triple store) de alto rendimiento. Despliegue en un único nodo. El triple store puede ser consultado desde línea de comandos o el API de Jena.
 - **Apache Jena Fuseki**: Es un servidor de datos RDFL, que soporta queries SPARQL para obtención de datos y Update. Se integra con TDB para proporcionar una capa robusta de persistencia con soporte a transacciones. 
-- **Motor de inferencias**: Proporciona motor de inferencias propio y tiene soporte con **[Pellet reasoner](https://en.wikipedia.org/wiki/Web_Ontology_Language)**
+- **Motor de inferencias**: Proporciona motor de inferencias propio y tiene soporte con **[Pellet reasoner](https://en.wikipedia.orghttps://en.wikipedia.org/wiki/Web_Ontology_Language)**
 - **API OWL**
 
 
@@ -78,7 +78,7 @@ Como se puede ver en la imagen la arquitectura tiende a ser monolítica, y al no
 
 **Seguridad**
 
-Virtuoso proporciona la [implementación] de una matriz de seguridad para grafos, que se describe en el siguiente [enlace](http://vos.openlinksw.com/owiki/wiki/VOS/VirtRDFGraphsSecurity) de forma similar a como se establecen permisos por tabla en SQL.
+Virtuoso proporciona la [implementación] de una matriz de seguridad para grafos, que se describe en el siguiente [enlace](http://vos.openlinksw.com/owikihttps://en.wikipedia.org/wiki/VOS/VirtRDFGraphsSecurity) de forma similar a como se establecen permisos por tabla en SQL.
 
 
 **Ventajas aplicables proyecto ASIO**
@@ -132,178 +132,178 @@ En definitiva, por flexibilidad y facilidad de integración con otros sistemas, 
 </th></tr></thead><tbody>
 <tr>
 <td>3store</td>
-<td><a href="/wiki/C_(programming_language)" title="C (programming language)">C</a></td>
+<td><a href="https://en.wikipedia.org/wiki/C_(programming_language)" title="C (programming language)">C</a></td>
 <td>3.0.17<sup id="cite_ref-3" class="reference"><a href="#cite_note-3">[3]</a></sup></td>
 <td>2006-07-17</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/GNU_General_Public_License" title="GNU General Public License">GNU GPL</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/GNU_General_Public_License" title="GNU General Public License">GNU GPL</a>
 </td></tr>
 <tr>
 <td>Akutan</td>
 <td>Go</td>
 <td style="background: #ececec; color: #2C2C2C; font-size: smaller; vertical-align: middle; text-align: center;" class="unknown table-unknown">?</td>
 <td style="background: #ececec; color: #2C2C2C; font-size: smaller; vertical-align: middle; text-align: center;" class="unknown table-unknown">?</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
 </td></tr>
 <tr>
-<td><a href="/wiki/AllegroGraph" title="AllegroGraph">AllegroGraph</a></td>
-<td><a href="/wiki/Common_Lisp" title="Common Lisp">Common Lisp</a></td>
+<td><a href="https://en.wikipedia.org/wiki/AllegroGraph" title="AllegroGraph">AllegroGraph</a></td>
+<td><a href="https://en.wikipedia.org/wiki/Common_Lisp" title="Common Lisp">Common Lisp</a></td>
 <td>6.6.0<sup id="cite_ref-4" class="reference"><a href="#cite_note-4">[4]</a></sup></td>
 <td>2019-08-12</td>
-<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
+<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="https://en.wikipedia.org/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
 </td></tr>
 <tr>
 <td>AnzoGraph</td>
-<td><a href="/wiki/C_(programming_language)" title="C (programming language)">C</a>/<a href="/wiki/C%2B%2B" title="C++">C++</a></td>
+<td><a href="https://en.wikipedia.org/wiki/C_(programming_language)" title="C (programming language)">C</a>/<a href="https://en.wikipedia.org/wiki/C%2B%2B" title="C++">C++</a></td>
 <td>4.1.0</td>
 <td>2019-01-30</td>
-<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
+<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="https://en.wikipedia.org/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
 </td></tr>
 <tr>
-<td><a href="/wiki/Apache_Jena" title="Apache Jena">Apache Jena</a></td>
+<td><a href="https://en.wikipedia.org/wiki/Apache_Jena" title="Apache Jena">Apache Jena</a></td>
 <td>Java</td>
 <td>3.12.0<sup id="cite_ref-5" class="reference"><a href="#cite_note-5">[5]</a></sup></td>
 <td>2019-05-27</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
 </td></tr>
 <tr>
 <td>Apache Rya</td>
 <td>Java</td>
 <td>4.0.0<sup id="cite_ref-6" class="reference"><a href="#cite_note-6">[6]</a></sup></td>
 <td>2019-07-27</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
 </td></tr>
 <tr>
 <td>ARC2</td>
-<td><a href="/wiki/PHP" title="PHP">PHP</a></td>
+<td><a href="https://en.wikipedia.org/wiki/PHP" title="PHP">PHP</a></td>
 <td>2.4.0<sup id="cite_ref-7" class="reference"><a href="#cite_note-7">[7]</a></sup></td>
 <td>2019-01-25</td>
 <td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free">W3C Software License or GPL
 </td></tr>
 <tr>
 <td>Attean</td>
-<td><a href="/wiki/Perl" title="Perl">Perl</a></td>
+<td><a href="https://en.wikipedia.org/wiki/Perl" title="Perl">Perl</a></td>
 <td>0.025<sup id="cite_ref-8" class="reference"><a href="#cite_note-8">[8]</a></sup></td>
 <td>2019-10-25</td>
 <td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free">Artistic or GPL-1+
 </td></tr>
 <tr>
-<td><a href="/wiki/Blazegraph" title="Blazegraph">Blazegraph</a></td>
+<td><a href="https://en.wikipedia.org/wiki/Blazegraph" title="Blazegraph">Blazegraph</a></td>
 <td>Java</td>
 <td>2.1.5<sup id="cite_ref-9" class="reference"><a href="#cite_note-9">[9]</a></sup></td>
 <td>2019-03-19</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/GNU_General_Public_License" title="GNU General Public License">GNU GPL</a> (v.2)
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/GNU_General_Public_License" title="GNU General Public License">GNU GPL</a> (v.2)
 </td></tr>
 <tr>
 <td>BrightstarDB</td>
 <td>C#</td>
 <td>1.14.0-alpha03<sup id="cite_ref-10" class="reference"><a href="#cite_note-10">[10]</a></sup></td>
 <td>2019-08-18</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/MIT_License" title="MIT License">MIT</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/MIT_License" title="MIT License">MIT</a>
 </td></tr>
 <tr>
 <td>Cayley</td>
 <td>Go</td>
 <td>0.7.5<sup id="cite_ref-11" class="reference"><a href="#cite_note-11">[11]</a></sup></td>
 <td>2018-11-26</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
 </td></tr>
 <tr>
 <td>CM-Well</td>
 <td>Scala</td>
 <td>1.5.168<sup id="cite_ref-12" class="reference"><a href="#cite_note-12">[12]</a></sup></td>
 <td>2019-06-03</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
 </td></tr>
 <tr>
 <td>ClioPatria</td>
 <td>SWI-Prolog, C</td>
 <td>3.1.1<sup id="cite_ref-13" class="reference"><a href="#cite_note-13">[13]</a></sup></td>
 <td>2017-09-06</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/GNU_General_Public_License" title="GNU General Public License">GNU GPL</a> (v.2)
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/GNU_General_Public_License" title="GNU General Public License">GNU GPL</a> (v.2)
 </td></tr>
 <tr>
-<td><a href="/wiki/Datomic" title="Datomic">Datomic</a></td>
-<td><a href="/wiki/Clojure" title="Clojure">Clojure</a></td>
+<td><a href="https://en.wikipedia.org/wiki/Datomic" title="Datomic">Datomic</a></td>
+<td><a href="https://en.wikipedia.org/wiki/Clojure" title="Clojure">Clojure</a></td>
 <td>535-8812<sup id="cite_ref-14" class="reference"><a href="#cite_note-14">[14]</a></sup></td>
 <td>2019-10-01</td>
-<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
+<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="https://en.wikipedia.org/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
 </td></tr>
 <tr>
 <td>Dydra</td>
 <td>Common Lisp, C++</td>
 <td style="background: #ececec; color: #2C2C2C; font-size: smaller; vertical-align: middle; text-align: center;" class="unknown table-unknown">?</td>
 <td style="background: #ececec; color: #2C2C2C; font-size: smaller; vertical-align: middle; text-align: center;" class="unknown table-unknown">?</td>
-<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
+<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="https://en.wikipedia.org/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
 </td></tr>
 <tr>
 <td>Enterlab SimpleGraph</td>
 <td>Java</td>
 <td style="background: #ececec; color: #2C2C2C; font-size: smaller; vertical-align: middle; text-align: center;" class="unknown table-unknown">?</td>
 <td style="background: #ececec; color: #2C2C2C; font-size: smaller; vertical-align: middle; text-align: center;" class="unknown table-unknown">?</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/Eclipse_Public_License" title="Eclipse Public License">EPL</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/Eclipse_Public_License" title="Eclipse Public License">EPL</a>
 </td></tr>
 <tr>
 <td>gStore</td>
 <td>C++</td>
 <td>0.7.2<sup id="cite_ref-15" class="reference"><a href="#cite_note-15">[15]</a></sup></td>
 <td>2018-11-04</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/BSD_licenses" title="BSD licenses">BSD</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/BSD_licenses" title="BSD licenses">BSD</a>
 </td></tr>
 <tr>
-<td>GraphDB by <a href="/wiki/Ontotext" title="Ontotext">Ontotext</a></td>
+<td>GraphDB by <a href="https://en.wikipedia.org/wiki/Ontotext" title="Ontotext">Ontotext</a></td>
 <td>Java</td>
 <td>8.11<sup id="cite_ref-16" class="reference"><a href="#cite_note-16">[16]</a></sup></td>
 <td>2019-08-09</td>
-<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
+<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="https://en.wikipedia.org/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
 </td></tr>
 <tr>
 <td>Halyard</td>
 <td>Java</td>
 <td>3.0<sup id="cite_ref-17" class="reference"><a href="#cite_note-17">[17]</a></sup></td>
 <td>2019-06-02</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
 </td></tr>
 <tr>
-<td><a href="/wiki/IBM_DB2" class="mw-redirect" title="IBM DB2">IBM DB2</a></td>
-<td>Java, <a href="/wiki/SQL" title="SQL">SQL</a></td>
+<td><a href="https://en.wikipedia.org/wiki/IBM_DB2" class="mw-redirect" title="IBM DB2">IBM DB2</a></td>
+<td>Java, <a href="https://en.wikipedia.org/wiki/SQL" title="SQL">SQL</a></td>
 <td>11.5<sup id="cite_ref-18" class="reference"><a href="#cite_note-18">[18]</a></sup></td>
 <td style="background: #ececec; color: #2C2C2C; font-size: smaller; vertical-align: middle; text-align: center;" class="unknown table-unknown">?</td>
 <td>
 </td></tr>
 <tr>
-<td>KiWi (<a href="/wiki/Apache_Marmotta" title="Apache Marmotta">Apache Marmotta</a>)</td>
+<td>KiWi (<a href="https://en.wikipedia.org/wiki/Apache_Marmotta" title="Apache Marmotta">Apache Marmotta</a>)</td>
 <td>Java</td>
 <td>3.4.0<sup id="cite_ref-19" class="reference"><a href="#cite_note-19">[19]</a></sup></td>
 <td>2018-06-12</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
 </td></tr>
 <tr>
-<td><a href="/wiki/MarkLogic" title="MarkLogic">MarkLogic</a></td>
+<td><a href="https://en.wikipedia.org/wiki/MarkLogic" title="MarkLogic">MarkLogic</a></td>
 <td>C++</td>
 <td>10.0-1<sup id="cite_ref-20" class="reference"><a href="#cite_note-20">[20]</a></sup></td>
 <td>2019-05</td>
-<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
+<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="https://en.wikipedia.org/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
 </td></tr>
 <tr>
-<td><a href="/wiki/Mulgara_(software)" title="Mulgara (software)">Mulgara</a></td>
+<td><a href="https://en.wikipedia.org/wiki/Mulgara_(software)" title="Mulgara (software)">Mulgara</a></td>
 <td>Java</td>
 <td>2.1.13<sup id="cite_ref-21" class="reference"><a href="#cite_note-21">[21]</a></sup></td>
 <td>2012-01-10</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/Open_Software_License" title="Open Software License">OSL</a>, moving to <a href="/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/Open_Software_License" title="Open Software License">OSL</a>, moving to <a href="https://en.wikipedia.org/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
 </td></tr>
 <tr>
-<td><a href="/wiki/Amazon_Neptune" title="Amazon Neptune">Amazon Neptune</a></td>
+<td><a href="https://en.wikipedia.org/wiki/Amazon_Neptune" title="Amazon Neptune">Amazon Neptune</a></td>
 <td style="background: #ececec; color: #2C2C2C; font-size: smaller; vertical-align: middle; text-align: center;" class="unknown table-unknown">?</td>
 <td style="background: #ececec; color: #2C2C2C; font-size: smaller; vertical-align: middle; text-align: center;" class="unknown table-unknown">?</td>
 <td style="background: #ececec; color: #2C2C2C; font-size: smaller; vertical-align: middle; text-align: center;" class="unknown table-unknown">?</td>
-<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
+<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="https://en.wikipedia.org/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
 </td></tr>
 <tr>
-<td><a href="/wiki/NitrosBase" title="NitrosBase">NitrosBase</a></td>
+<td><a href="https://en.wikipedia.org/wiki/NitrosBase" title="NitrosBase">NitrosBase</a></td>
 <td>C++</td>
 <td style="background: #ececec; color: #2C2C2C; font-size: smaller; vertical-align: middle; text-align: center;" class="unknown table-unknown">?</td>
 <td style="background: #ececec; color: #2C2C2C; font-size: smaller; vertical-align: middle; text-align: center;" class="unknown table-unknown">?</td>
-<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
+<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="https://en.wikipedia.org/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
 </td></tr>
 <tr>
 <td>OntoQuad RDF Server</td>
@@ -317,18 +317,18 @@ En definitiva, por flexibilidad y facilidad de integración con otros sistemas, 
 <td>Java</td>
 <td>3.2.0<sup id="cite_ref-22" class="reference"><a href="#cite_note-22">[22]</a></sup></td>
 <td>2010-03-11</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/Eclipse_Public_License" title="Eclipse Public License">EPL</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/Eclipse_Public_License" title="Eclipse Public License">EPL</a>
 </td></tr>
 <tr>
-<td><a href="/wiki/Virtuoso_Universal_Server" title="Virtuoso Universal Server">OpenLink Virtuoso</a></td>
+<td><a href="https://en.wikipedia.org/wiki/Virtuoso_Universal_Server" title="Virtuoso Universal Server">OpenLink Virtuoso</a></td>
 <td>C</td>
 <td>8.3 (Commercial)&nbsp;; 7.2.5.1 (Open Source)</td>
 <td>2018-10-22&nbsp;;  2018-08-15</td>
 <td>GPL v2 <i><b>or</b></i> Commercial
 </td></tr>
 <tr>
-<td><a href="/wiki/Oracle_Database" title="Oracle Database">Oracle</a></td>
-<td>Java, <a href="/wiki/PL/SQL" title="PL/SQL">PL/SQL</a>, <a href="/wiki/SQL" title="SQL">SQL</a></td>
+<td><a href="https://en.wikipedia.org/wiki/Oracle_Database" title="Oracle Database">Oracle</a></td>
+<td>Java, <a href="https://en.wikipedia.org/wiki/PL/SQL" title="PL/SQL">PL/SQL</a>, <a href="https://en.wikipedia.org/wiki/SQL" title="SQL">SQL</a></td>
 <td>18c</td>
 <td>2018-02-05</td>
 <td>
@@ -338,14 +338,14 @@ En definitiva, por flexibilidad y facilidad de integración con otros sistemas, 
 <td>Java, C++</td>
 <td>2.7.13<sup id="cite_ref-23" class="reference"><a href="#cite_note-23">[23]</a></sup></td>
 <td>2019-05-07</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/BSD_licenses" title="BSD licenses">BSD license</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/BSD_licenses" title="BSD licenses">BSD license</a>
 </td></tr>
 <tr>
 <td>Pointrel System</td>
-<td>Java, <a href="/wiki/Python_(programming_language)" title="Python (programming language)">Python</a></td>
+<td>Java, <a href="https://en.wikipedia.org/wiki/Python_(programming_language)" title="Python (programming language)">Python</a></td>
 <td>20090201<sup id="cite_ref-24" class="reference"><a href="#cite_note-24">[24]</a></sup></td>
 <td>2013-02-21</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/GNU_Lesser_General_Public_License" title="GNU Lesser General Public License">GNU LGPL</a><sup id="cite_ref-25" class="reference"><a href="#cite_note-25">[25]</a></sup>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License" title="GNU Lesser General Public License">GNU LGPL</a><sup id="cite_ref-25" class="reference"><a href="#cite_note-25">[25]</a></sup>
 </td></tr>
 <tr>
 <td>Profium Sense</td>
@@ -363,14 +363,14 @@ En definitiva, por flexibilidad y facilidad de integración con otros sistemas, 
 </td></tr>
 <tr>
 <td>RDF::Core</td>
-<td><a href="/wiki/Perl" title="Perl">Perl</a></td>
+<td><a href="https://en.wikipedia.org/wiki/Perl" title="Perl">Perl</a></td>
 <td>0.5.1<sup id="cite_ref-27" class="reference"><a href="#cite_note-27">[27]</a></sup></td>
 <td>2007-02-19</td>
 <td>
 </td></tr>
 <tr>
 <td>RDF::Trine</td>
-<td><a href="/wiki/Perl" title="Perl">Perl</a></td>
+<td><a href="https://en.wikipedia.org/wiki/Perl" title="Perl">Perl</a></td>
 <td>1.019<sup id="cite_ref-28" class="reference"><a href="#cite_note-28">[28]</a></sup></td>
 <td>2018-01-05</td>
 <td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free">Artistic or GPL-1+
@@ -383,11 +383,11 @@ En definitiva, por flexibilidad y facilidad de integración con otros sistemas, 
 <td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free">CC-BY-NC-SA 3.0
 </td></tr>
 <tr>
-<td><a href="/wiki/RDF4J" title="RDF4J">Eclipse RDF4J</a></td>
+<td><a href="https://en.wikipedia.org/wiki/RDF4J" title="RDF4J">Eclipse RDF4J</a></td>
 <td>Java</td>
 <td>3.0.3<sup id="cite_ref-30" class="reference"><a href="#cite_note-30">[30]</a></sup></td>
 <td>2019-11-30</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/BSD_licenses" title="BSD licenses">Eclipse Distribution License (EDL)</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/BSD_licenses" title="BSD licenses">Eclipse Distribution License (EDL)</a>
 </td></tr>
 <tr>
 <td>RDFBroker</td>
@@ -397,21 +397,21 @@ En definitiva, por flexibilidad y facilidad de integración con otros sistemas, 
 <td>
 </td></tr>
 <tr>
-<td><a href="/wiki/RDFLib" title="RDFLib">RDFLib</a></td>
+<td><a href="https://en.wikipedia.org/wiki/RDFLib" title="RDFLib">RDFLib</a></td>
 <td>Python</td>
 <td>4.2.2<sup id="cite_ref-32" class="reference"><a href="#cite_note-32">[32]</a></sup></td>
 <td>2017-01-29</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/BSD_Licenses" class="mw-redirect" title="BSD Licenses">BSD</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/BSD_Licenses" class="mw-redirect" title="BSD Licenses">BSD</a>
 </td></tr>
 <tr>
 <td>RDFox</td>
 <td>C++</td>
 <td>2.1.1</td>
 <td>2019-11-15</td>
-<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
+<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="https://en.wikipedia.org/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
 </td></tr>
 <tr>
-<td><a href="/wiki/Redland_RDF_Application_Framework" title="Redland RDF Application Framework">Redland</a></td>
+<td><a href="https://en.wikipedia.org/wiki/Redland_RDF_Application_Framework" title="Redland RDF Application Framework">Redland</a></td>
 <td>C</td>
 <td>1.0.17<sup id="cite_ref-33" class="reference"><a href="#cite_note-33">[33]</a></sup></td>
 <td>2014-05-10</td>
@@ -422,11 +422,11 @@ En definitiva, por flexibilidad y facilidad de integración con otros sistemas, 
 <td>C</td>
 <td>0.5.4<sup id="cite_ref-35" class="reference"><a href="#cite_note-35">[35]</a></sup></td>
 <td>2011-10-27</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/GNU_General_Public_License" title="GNU General Public License">GNU GPL</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/GNU_General_Public_License" title="GNU General Public License">GNU GPL</a>
 </td></tr>
 <tr>
 <td>Semantics Platform</td>
-<td><a href="/wiki/C_Sharp_(programming_language)" title="C Sharp (programming language)">C#</a></td>
+<td><a href="https://en.wikipedia.org/wiki/C_Sharp_(programming_language)" title="C Sharp (programming language)">C#</a></td>
 <td>2.0<sup id="cite_ref-36" class="reference"><a href="#cite_note-36">[36]</a></sup></td>
 <td>2010-06-17</td>
 <td>
@@ -443,32 +443,32 @@ En definitiva, por flexibilidad y facilidad de integración con otros sistemas, 
 <td>Java</td>
 <td>0.0.9<sup id="cite_ref-38" class="reference"><a href="#cite_note-38">[38]</a></sup></td>
 <td>2018-01-14</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
 </td></tr>
 <tr>
-<td><a href="/wiki/Smart-M3" title="Smart-M3">Smart-M3</a></td>
+<td><a href="https://en.wikipedia.org/wiki/Smart-M3" title="Smart-M3">Smart-M3</a></td>
 <td>Python, Java, C, C#</td>
 <td>0.5.0<sup id="cite_ref-39" class="reference"><a href="#cite_note-39">[39]</a></sup></td>
 <td>2017-01-01</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/BSD_licenses" title="BSD licenses">BSD</a> <sup id="cite_ref-40" class="reference"><a href="#cite_note-40">[40]</a></sup>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/BSD_licenses" title="BSD licenses">BSD</a> <sup id="cite_ref-40" class="reference"><a href="#cite_note-40">[40]</a></sup>
 </td></tr>
 <tr>
-<td><a href="/wiki/Soprano_(software)" class="mw-redirect" title="Soprano (software)">Soprano</a></td>
+<td><a href="https://en.wikipedia.org/wiki/Soprano_(software)" class="mw-redirect" title="Soprano (software)">Soprano</a></td>
 <td>C++</td>
 <td>2.8.0</td>
 <td>2012-06-27</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/GNU_Lesser_General_Public_License" title="GNU Lesser General Public License">GNU LGPL</a> <sup id="cite_ref-41" class="reference"><a href="#cite_note-41">[41]</a></sup>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License" title="GNU Lesser General Public License">GNU LGPL</a> <sup id="cite_ref-41" class="reference"><a href="#cite_note-41">[41]</a></sup>
 </td></tr>
 <tr>
 <td>Stardog</td>
 <td>Java</td>
 <td>7.0.0<sup id="cite_ref-42" class="reference"><a href="#cite_note-42">[42]</a></sup></td>
 <td>2019-08-07</td>
-<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
+<td style="background: #ddf; vertical-align: middle; text-align: center;" class="table-proprietary"><a href="https://en.wikipedia.org/wiki/Proprietary_software" title="Proprietary software">Proprietary</a>
 </td></tr>
 <tr>
 <td>StrixDB</td>
-<td>C++, <a href="/wiki/Lua_(programming_language)" title="Lua (programming language)">Lua</a></td>
+<td>C++, <a href="https://en.wikipedia.org/wiki/Lua_(programming_language)" title="Lua (programming language)">Lua</a></td>
 <td>94_3<sup id="cite_ref-43" class="reference"><a href="#cite_note-43">[43]</a></sup></td>
 <td>2013-04-11</td>
 <td>
@@ -478,7 +478,7 @@ En definitiva, por flexibilidad y facilidad de integración con otros sistemas, 
 <td>C++</td>
 <td>0.1.0<sup id="cite_ref-44" class="reference"><a href="#cite_note-44">[44]</a></sup></td>
 <td>2017-10-27</td>
-<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
+<td style="background: #9FF; color: black; vertical-align: middle; text-align: center;" class="free table-free"><a href="https://en.wikipedia.org/wiki/Apache_2_License" class="mw-redirect" title="Apache 2 License">Apache 2</a>
 </td></tr></tbody><tfoot></tfoot></table>
 
 
