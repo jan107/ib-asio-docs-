@@ -13,6 +13,12 @@ Revisión de la plantilla: 7.0 ES (basada en asciidoc), Enero 2017
 arquitectura arc 42, <http://www.arc42.de>. Creada por Dr. Peter
 Hruschka y Dr. Gernot Starke.
 
+**TOC**
+
+{:toc}
+
+----
+
 # Introducción y Metas
 
 El presente documento parte de la arquitectura descrita en los documentos Estudio de viabilidad y especialmente el anexo anex3_AnyDisBackendSGI.docx.
