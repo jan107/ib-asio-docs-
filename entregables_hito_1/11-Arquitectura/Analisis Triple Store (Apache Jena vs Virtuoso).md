@@ -78,7 +78,7 @@ Como se puede ver en la imagen la arquitectura tiende a ser monolítica, y al no
 
 **Seguridad**
 
-Virtuoso proporciona la [implementación] de una matriz de seguridad para grafos, que se describe en el siguiente [enlace](http://vos.openlinksw.com/owikihttps://en.wikipedia.org/wiki/VOS/VirtRDFGraphsSecurity) de forma similar a como se establecen permisos por tabla en SQL.
+Virtuoso proporciona la [implementación] de una matriz de seguridad para grafos, que se describe en el siguiente [enlace](http://vos.openlinksw.com/owiki/wiki/VOS/VirtRDFGraphsSecurity) de forma similar a como se establecen permisos por tabla en SQL.
 
 
 **Ventajas aplicables proyecto ASIO**
