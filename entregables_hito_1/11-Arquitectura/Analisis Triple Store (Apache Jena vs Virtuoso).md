@@ -14,7 +14,7 @@ En esencia Jena almacena la información y ofrece interfaces para realizar cualq
 - **ARQ Engine**: Motor que da soporte al lenguaje de queries que soporta SPARQL.
 - **TDB Engine**: Motor de almacenamiento de datos (triple store) de alto rendimiento. Despliegue en un único nodo. El triple store puede ser consultado desde línea de comandos o el API de Jena.
 - **Apache Jena Fuseki**: Es un servidor de datos RDFL, que soporta queries SPARQL para obtención de datos y Update. Se integra con TDB para proporcionar una capa robusta de persistencia con soporte a transacciones. 
-- **Motor de inferencias**: Proporciona motor de inferencias propio y tiene soporte con **[Pellet reasoner](https://en.wikipedia.orghttps://en.wikipedia.org/wiki/Web_Ontology_Language)**
+- **Motor de inferencias**: Proporciona motor de inferencias propio y tiene soporte con **[Pellet reasoner](https://en.wikipedia.org/wiki/Web_Ontology_Language)**
 - **API OWL**
 
 
