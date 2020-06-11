@@ -389,8 +389,8 @@ Mediante la utilización del API de SAIL, es posible conectarse a los stores med
 
 Más información:
 
-* https://rdf4j.org/documentation/sail/
-* https://rdf4j.org/documentation/rest-api/
+* https://rdf4j.org/documentation/reference/sail/
+* https://rdf4j.org/documentation/reference/rest-api/
 * https://rdf4j.org/documentation/programming/repository/
 * http://graphdb.ontotext.com/documentation/free/architecture-components.html#architecture-components-rdf4j
 
