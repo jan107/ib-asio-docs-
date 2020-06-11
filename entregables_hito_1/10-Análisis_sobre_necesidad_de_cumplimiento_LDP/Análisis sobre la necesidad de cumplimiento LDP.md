@@ -23,9 +23,10 @@ Para ello, este documento se basara en los principios y conclusiones expuestas e
 
 ## Drivers de decisión
 
-- Encaje en la arquitectura global
-- Cumplimiento de requisitos expresados en el pliego
+- Encaje en la arquitectura global.
+- Cumplimiento de requisitos expresados en el pliego.
 - Proporcionar patrones de uso y comportamiento a los clientes que puedan consumir el API.
+- Amplia adopción por parte de la comunidad.
 
 ## Que es la LDP
 
@@ -98,14 +99,14 @@ Por otra parte el cliente que use el servidor LDP, no requerirá de un conocimie
 
 ### Basadas en los requisitos del proyecto
 
-Tal como se enuncia en las sección [Requisitos afectados por la decisión presentes en el del pliego](# Requisitos afectados por la decisión presentes en el del pliego), todas las requisitos enumerados en dicha sección, son implementados, o se favorece su cumplimiento (mirar documento [Requisitos funcionales para API REST LDP en proyecto ASIO de la UM](https://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/blob/master/arquitectura_semantica/analisis_funcional/Requisitos LDP Server/Requisitos funcionales para API REST LDP en proyecto ASIO de la UM.md)), mediante el cumplimiento del estándar LPD, por lo que este análisis , también desde ese punto de vista, se recomienda sus uso.
+Tal como se enuncia en las sección [Requisitos afectados por la decisión presentes en el del pliego](# Requisitos afectados por la decisión presentes en el del pliego), todas las requisitos enumerados en dicha sección, son implementados, o se favorece su cumplimiento (mirar documento [Requisitos funcionales para API REST LDP en proyecto ASIO de la UM](https://github.com/HerculesCRUE/ib-asio-docs-/blob/master/entregables_hito_1/12-Análisis/Requisitos LDP Server/Requisitos funcionales para API REST LDP en proyecto ASIO de la UM.md)), mediante el cumplimiento del estándar LPD, por lo que este análisis , también desde ese punto de vista, se recomienda sus uso.
 
 ### Basadas en la dificultad de implementación
 
-Dado que hay multitud de [implementaciones de servidores LDP](https://www.w3.org/wiki/LDP_Implementations) (recomendados por la propia W3C) disponibles, esto no debería de ser un impedimento para su cumplimento
+Dado que hay multitud de [implementaciones de servidores LDP](https://www.w3.org/wiki/LDP_Implementations) , e incluso la W3C dispone de documentación pública de el [nivel conformidad](https://dvcs.w3.org/hg/ldpwg/raw-file/default/tests/reports/ldp.html) con la LDP de algunas de estas implementaciones,  disponibles, esto no debería de ser un impedimento para su cumplimento
 
 1. Activas
-   - [TrellisLDP Server](https://www.w3.org/wiki/LDP_Implementations#TrellisLDP_.28Server.29)
+   - [Trellis LDP Server](https://www.w3.org/wiki/LDP_Implementations#TrellisLDP_.28Server.29)
    - [LDP.js (Server)](https://www.w3.org/wiki/LDP_Implementations#LDP.js_.28Server.29)
    - [LDP4j (Client and Server)]([LDP4j (Client and Server)](https://www.w3.org/wiki/LDP_Implementations#LDP4j_.28Client_and_Server.29))
    - [Apache Marmotta (Client and Server)](https://www.w3.org/wiki/LDP_Implementations#Apache_Marmotta_.28Client_and_Server.29)
@@ -130,7 +131,15 @@ Dado que hay multitud de [implementaciones de servidores LDP](https://www.w3.org
    - [ldpy (Client)](https://www.w3.org/wiki/LDP_Implementations#ldpy_.28Client.29)
    - [node_ldp (Server)](https://www.w3.org/wiki/LDP_Implementations#node_ldp_.28Server.29)
 
+### Basadas en la adopción como estándar de facto al servir recursos semánticos
+
+El conjunto de reglamentación proporcionada por la LDP, proporciona un marco de trabajo lo suficientemente detallado para que  su cumplimiento permita que el patrón de uso que se deriva del mismo para un servidor que lo implemente, sea predecible y sencillo de aplicar para un hipotético cliente que consuma dichos recursos. Por otro lado, al definirse como una extensión del protocolo HTTP, al que complementa para dar cabida la reglamentación necesaria para mejorar la interacción con recursos semánticos, y estando ambos definidos formalmente por la W3C, pensamos que esto convierte a la LDP, en un estándar de facto para la comunidad. Por otro lado, pensamos que es un protocolo lo suficientemente abierto (su reglamentación casi exclusivamente es aplica a recursos semánticos), permite una sencilla integración con otros protocolos, minimizando las colisiones en sus normativas.
+
+Por otro lado creemos que cantidad de implementaciones de servidores que implementan en algún grado los estándares propuestos por la LDP (mirar [punto anterior](#Basadas en la dificultad de implementación)), demuestran dichos estándares se han convertido en un estándar de facto para recursos Linked Data. 
+
 ### Posibles no cumplimientos del  la LDP en proyecto ASIO
+
+#### Relativos a conflictos con otros protocolos
 
 Existen otros protocolos que pueden resultar interesantes para el proyecto ASIO, como es el caso de el estándar Memento descrito en el documento [Memento Guía y Normativa](https://github.com/HerculesCRUE/ib-asio-docs-/blob/master/entregables_hito_1/10-An%C3%A1lisis_sobre_necesidad_de_cumplimiento_LDP/Requisitos%20LDP%20Server/Memento%20Gu%C3%ADa%20y%20Normativa.md). Dicho protocolo establece los requerimientos para implementar un servidor que permita acceder a un mismo recurso en distintos estados del tiempo, con lo que realizar una consulta en un determinado espacio temporal, seria posible.
 
@@ -150,7 +159,35 @@ El protocolo Memento, entra en conflicto, con 2 requerimientos de tipo **SHOULD*
 
 ya que en este caso, sobre un mismo recurso (en distintos dimensiones temporales) y una misma URL, podrán existir mas de un recurso, y por lo tanto, debe de permitirse infligir la norma  [(5.2.4.2 LDP)](https://www.w3.org/TR/ldp/#ldpc-container): No se deben reusar URIs, y la norma [(4.2.4.5 LDP)](https://www.w3.org/TR/ldp/#ldpr-resource): Fallos por restricciones en propiedades, relativa a la cabecera If-Match.
 
-En conclusión, deben de cumplirse todas las normativas, salvo aquellas que su incumplimiento puedan resultar de interés, por incompatibilidad con cualquier otro protocolo que deseemos aplicar, en este caso Memento.
+#### Relativos a los recursos
+
+Por otro lado, tal como se detalla  en la sección [Recursos](https://www.w3.org/TR/ldp/#ldpr-resource), la LDP prevé soporte para recursos semánticos (LDP-RS) y no semánticos (LDP-NR) como por ejemplo imágenes, binarios, HTML.
+
+Prevemos un soporte completo para recursos LDP-RS, tal como exige la LDP, pero en el caso de los recursos LDP-NR, dado que la LDP no exige que estos deban de ser servidos por la implementación del servidor LDP, valoramos la posibilidad de que estos puedan ser servidos por otras plataformas, que para este tipo de contenidos, podrían ser mas eficientes.
+
+#### Relativos a contenedores
+
+Creemos que del esquema de URIs propuesto en el documento de [Esquema de URIs Hércules](https://github.com/HerculesCRUE/ib-asio-docs-/blob/master/entregables_hito_1/08-Esquema_de_URIs_Hércules/ASIO_Izertis_ArquitecturaDeURIs.md), puede inferirse una jerarquía de contenedores, que encajan de forma bastante precisa con los contenedores previstos por la LDP. 
+
+Organizar adecuadamente la información dentro de contenedores, que además según lo previsto por la LDP, pueden estar anidados (un contenedor puede contener a otro contenedor),  hará un que proceso de recuperar la información, sea una tarea mucho optima, precisa y predecible por parte de un hipotético cliente. Por ejemplo, si suponemos que el componente **concepto** descrito en el esquema de URIs, puede representar una clase (por ejemplo la clase investigador), la acción de un cliente, para obtener todos los investigadores (instancias), se limitaría ha realizar una operación GET sobre el propio contenedor.
+
+En cuanto a la jerarquía entre los conceptos (por ej. un investigador puede pertenecer a un grupo), se recomienda no modelarla en forma de contenedores, ya que por un lado esa jerarquía podría variar con el tiempo y además podría no ser única (es decir una clase podría tener mas de una clase padre) y por otro lado, implicaría un conocimiento exhaustivo de las dependencias de una clase con otra, lo que aumentaría, enormemente la complejidad. Por ese motivo, se recomienda que todos los conceptos, independientemente de su jerarquía entre ellos,  se modelen como contendores independientes, en el mismo nivel jerárquico.
+
+En cuanto a los tipos de contenedores, la LDP, prevé contenedores Básicos (que contiene un simple link a sus recursos contenidos), contenedores Directos (que añade el concepto de pertenencia) o contenedores Indirectos (similares a los directos, pero que permiten que sus URIs estén basadas en el contenido de los documentos que contiene).
+
+Por el momento para el caso de los conceptos, se usara el tipo de contenedor Básico, ya que los contenedores Directos o indirectos, están más orientados a establecer jerarquía entre contenedores, y esta por los motivos que se enumeraron anteriormente no se aplicaran para conceptos.
+
+Otros componentes de descritos en el esquema de URIs, como el tipo, podría modelarse como contenedores directos, ya que dicha jerarquía,  tal como establece el esquema de URIs, es bastante mas estática. 
+
+#### Relativos a operaciones
+
+La LDP regula las operaciones de implementación obligatoria (operaciones de lectura GET,POST, PUT) y da recomendaciones sobre el resto (operaciones de escritura POST, PUT, DELETE y PATCH).
+
+El servidor LDP implementado, implementara sin restricciones todas las operaciones de lectura descritas, pero en cuanto a las operaciones relativas a escritura, en ocasiones estas acciones pueden tener implicaciones en otros recursos relacionados, por lo que solo se permitirá su ejecución en operaciones internas de la plataforma ASIO (procesador de eventos), que deberá de soportar las implicaciones de dichos cambios (borrados o modificaciones recursivas).
+
+#### Conclusión
+
+En conclusión, deben de cumplirse todas las normativas, salvo aquellas que su incumplimiento puedan resultar de interés, por incompatibilidad con cualquier otro protocolo que deseemos aplicar, en este caso Memento o alguna otra restricción que la operativa de el proyecto pueda imponer, como por ejemplo las restricciones relativas a las operaciones permitidas.
 
 ### Conclusión final
 
