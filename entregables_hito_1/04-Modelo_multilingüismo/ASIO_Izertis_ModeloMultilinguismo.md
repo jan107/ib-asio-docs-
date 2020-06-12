@@ -1,21 +1,18 @@
 ![](./images/logos_feder.png)
 
-| Entregable     | Especificación de las ontologías Hércules                    |
+| Entregable     | Modelo Multilingüismo                    |
 | -------------- | ------------------------------------------------------------ |
 | Fecha          | 25/05/2020                                                   |
 | Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
 | Módulo         | Infraestructura Ontológica                                   |
 | Tipo           | Documento                                                    |
-| Objetivo       | Este documento recoge el modelo de multilingüismo aplicado a la infraestructura ontológica en sus dos primeras fases, a saber la creación de la ontología en OWL por un lado y, por el otro, su adaptación a la infraestructura de WikiBase/WikiMedia. No recoge, por tanto, el tratamiento posterior del multilingüismo una vez las URIs son pasadas por el tamiz de la factoría de URIs, tratamiento que se describe en los documentos específicos que documentan ese proceso. |
+| Objetivo       | Este documento recoge el modelo de multilingüismo aplicado a la infraestructura ontológica en sus dos primeras fases, a saber la creación de la ontología en OWL por un lado y, por el otro, su adaptación a la infraestructura de WikiBase/WikiMedia. No recoge, por tanto, el tratamiento posterior del multilingüismo una vez las URIs son pasadas por el tamiz de la [Factoría de URIs](https://github.com/HerculesCRUE/ib-uris-generator), tratamiento que se describe en el documento de [Buenas prácticas para URIs Hércules](https://github.com/HerculesCRUE/ib-asio-docs-/blob/master/entregables_hito_1/09-Buenas_pr%C3%A1cticas_para_URIs_H%C3%A9rcules/ASIO_Izertis_BuenasPracticasParaURIsHercules.md) y el [Esquema de URIs Hércules](https://raw.githubusercontent.com/HerculesCRUE/ib-asio-docs-/master/entregables_hito_1/08-Esquema_de_URIs_H%C3%A9rcules/ASIO_Izertis_ArquitecturaDeURIs.md). |
 | Estado         | **100%** El estado del documento se ajusta al 100% comprometido para el hito 1 del proyecto. |
 | Próximos pasos | Como se apunta al final del documento, algunos casos extremos de sistemas de escritura que no se han podido resolver en este hito 1, se estudiarán a lo largo del hito 2 y serán debidamente documentados entonces. |
 
 
 
-# Multilingüismo (*multilocalismo* y *multiescriptalismo*) en las ontologías ASIO
-
-Introducción 
-============
+# Modelo Multilingüismo 
 
 Este informe documenta los casos de uso y contextos que se utilizarán en el proyecto Hércules para poner a prueba modelos multilingües (y de multiescriptalismo).
 La primera parte del informe se centra en el tratamiento dado a los recursos respecto a esos 3 aspectos en el ámbito estrictamente de la Web semántica con ejemplos relevantes del caso de estudio del proyecto.
@@ -27,7 +24,7 @@ La apuesta principal que se hace con el modelo de multilingüismo es [SKOS-Core]
 No obstante, si en futuros avances de la ontología detectásemos otras necesidades, no se descarta explotar las posibilidades formales de otros vocabularios.
 
 
-# Reglas del modelo de multilingüismo
+# Reglas del modelo de multilingüismo (*multilocalismo* y *multiescriptalismo*) en las ontologías ASIO
 
 Todas las ontologías que se desarrollen estarán planteadas bajo un modelo de multilingüismo. Algunas de las reglas de este modelo se aplican a los siguientes aspectos:
 
@@ -43,7 +40,9 @@ que analizaremos con algo más de detalle en las subsecciones siguientes.
 URIs
 ----
 
-Preferencia por la utilización de URIs opacas[^1], especialmente para identificadores. Las URIs opacas permiten separar el identificador de la representación en lenguaje natural del recurso. Esta separación se
+**El conjunto de [Buenas prácticas para URIs Hércules](https://github.com/HerculesCRUE/ib-asio-docs-/blob/master/entregables_hito_1/09-Buenas_pr%C3%A1cticas_para_URIs_H%C3%A9rcules/ASIO_Izertis_BuenasPracticasParaURIsHercules.md) tiene aplicación únicamente las URIs externas, para las cuales se define el [Esquema de URIs Hércules](https://raw.githubusercontent.com/HerculesCRUE/ib-asio-docs-/master/entregables_hito_1/08-Esquema_de_URIs_H%C3%A9rcules/ASIO_Izertis_ArquitecturaDeURIs.md)**. En concreto no tienen aplicación en la definición de URIs privadas de este documento, basadas en el modelo de Wikibase, dado que son URIs internas.
+
+Para dichas URIs privadas se establece preferencia por la utilización de URIs opacas[^1], especialmente para identificadores. Las URIs opacas permiten separar el identificador de la representación en lenguaje natural del recurso. Esta separación se
 considera una mejor práctica en entornos multilingües dado que las representaciones textuales deberían obtenerse a partir de las etiquetas multilingües (`rdfs:label`) en lugar del identificador del recurso.
 
 Un ejemplo concreto de URI opaca es el uso de códigos ISO para crear recursos que tienen que ver con países, lenguas o incluso áreas científicas.
@@ -342,7 +341,7 @@ Estos módulos verticales suponen el patio de recreo ideal, así como el caldo d
 
 
 
-## entidades geopolíticas
+## Entidades geopolíticas
 
 El otro módulo vertical ya avanzado en diseño aunque aún no totalmente implementado es el correspondiente al modelo geopolítico.
 
@@ -352,7 +351,7 @@ También se eligió SKOS para la modelización de este módulo dado el modelo je
 
 
 
-## áreas científicas y áreas temáticas
+## Áreas científicas y áreas temáticas
 
 La [Agencia Estatal de Investigación](http://www.ciencia.gob.es/portal/site/MICINN/menuitem.8d78849a34f1cd28d0c9d910026041a0/?vgnextoid=664cfb7e04195510VgnVCM1000001d04140aRCRD), dependiente del [Ministerio de Ciencia, Innovación y Universidades](http://www.mineco.gob.es/), es autora de un documento que establece una lista jerárquica de [**áreas científicas**](http://www.ciencia.gob.es/stfls/MICINN/Ayudas/PE_2013_2016/PE_Promocion_e_Incorporacion_Talento_y_su_Empleabilidad/FICHEROS/SE_Incorporacion/Ayudas_contratos_RYC_2016/Clasificacion_areas_cientificas_2016_AEI.pdf) de referencia en proyectos de investigación y que nos fue propuesto como referencia en el documento de preguntas de competencia suministrado por la Universidad de Murcia.
 

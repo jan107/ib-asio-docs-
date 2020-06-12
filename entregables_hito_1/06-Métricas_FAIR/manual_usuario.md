@@ -35,5 +35,3 @@ Para generar los resultados gráficos de la evaluación de métricas FAIR es nec
 ```bash
 python fairviz.py ./data/FAIR_evaluation.csv
 ```
-
-***TODO: incluir capturas del fichero de entrada, la ejecución y los resultados obtenidos.***

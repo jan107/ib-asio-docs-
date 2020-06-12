@@ -350,7 +350,7 @@ El endpoint SPARQL será el encargado de ofrecer a los usuarios de la plataforma
 
 ### Arquitectura hito 1
 
-En el Anexo [Arquitectura hito 1](./anexo-ASIO_Izertis_Arquitectura_hito1.md) se muestra la adaptación de esta arquitectura de cara al hito 1.
+En el Anexo [Arquitectura hito 1](./anexos/anexo-ASIO_Izertis_Arquitectura_hito1.md) se muestra la adaptación de esta arquitectura de cara al hito 1.
 
 ## Arquitectura aplicación de gestión
 
