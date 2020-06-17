@@ -91,7 +91,7 @@ En primer lugar, se mostrará el proceso general con el flujo de operaciones que
 En el siguiente diagrama de alto nivel se muestra el flujo de operaciones realizadas a lo largo del ciclo de vida de la evolución de la ontología:
 ![](./resources/BPMN_evolucion_onto.png)
 
-Como podemos ver, este proceso comienza con la modificación de los ficheros de la ontología por parte de un ingeniero de ontologías. Una vez que se realizan los cambios, comienza el proceso de integración continua donde se validan estos cambios (para más información, se puede consultar la [documentación correspondiente](./01_ontology_continuous_integration/readme.md) del sistema de valudación). Este es un proceso importante en el que nos aseguramos de la consistencia de la ontología tras realizar las modificaciones. En caso de que la integración continua pase correctamente, los administradores del repositorio tendrán la última palabra para poder permitir o denegar el pusheo de los cambios propuestos al propio repositorio, todo esto a través del sistema de pull requests de GitHub.
+Como podemos ver, este proceso comienza con la modificación de los ficheros de la ontología por parte de un ingeniero de ontologías. Una vez que se realizan los cambios, comienza el proceso de integración continua donde se validan estos cambios (para más información, se puede consultar la [documentación correspondiente](./01_ontology_continuous_integration/readme.md) del sistema de validación). Este es un proceso importante en el que nos aseguramos de la consistencia de la ontología tras realizar las modificaciones. En caso de que la integración continua pase correctamente, los administradores del repositorio tendrán la última palabra para poder permitir o denegar el pusheo de los cambios propuestos al propio repositorio, todo esto a través del sistema de pull requests de GitHub.
 
 El subproceso descrito previamente se podrá repetir n veces más. Cuando los administradores lo consideren conveniente, podrán proponer una nueva release del sistema con los cambios previamente introducidos. Esta propuesta tendrá un componente humano de aprobación, que añadirá una capa más de protección ante cambios no deseados. En caso de que la propuesta se apruebe, se procederá a la creación de la nueva release.
 
@@ -168,7 +168,7 @@ Los siguientes atributos de calidad son tenidos en cuenta:
 ### Decisión
 Basándonos en el contexto y los atributos de calidad descritos anteriormente, junto con la información disponible sobre la infraestructura ontológica y la arquitectura semántica, hemos optado por el uso del patrón event sourcing para solucionar la problemática de la propagación de cambios de la ontología a las instancias que dependen de ésta.
 
-Con el uso de este patrón, la solución es lo suficientemente flexible como para soportar componentes adicionales que no han sido pensados para la funcionalidad actual. Los eventos procesados por la infraestructura ontológica que contienen las modificaciones se enviarán a un bus de eventos, y luego podrán ser consumido por otras aplicaciones y microservicios futuros con diversas funcionalidades.
+Con el uso de este patrón, la solución es lo suficientemente flexible como para soportar componentes adicionales que no han sido pensados para la funcionalidad actual. Los eventos procesados por la infraestructura ontológica que contienen las modificaciones se enviarán a un bus de eventos, y luego podrán ser consumidos por otras aplicaciones y microservicios futuros con diversas funcionalidades.
 
 La naturaleza del patrón event sourcing permite además la reversibilidad de los cambios realizados en todo momento. Al tener un log de los eventos producidos, tendremos control total sobre que eventos son necesarios revertir por un motivo u otro. Esto añadirá una capa más de protección en el sistema de evolución de la ontología ante cambios no esperados.
 
@@ -182,7 +182,7 @@ Aunque también nos proporcionará las siguientes ventajas:
 * Dado que el sistema de gestión arquitectura semántica ya se encuentra basado en eventos, la integración de esta funcionalidad será más simple y requerirá de menos modificaciones.
 * El histórico de como una instancia llega a su estado actual permanece en los eventos almacenados. Con esto se mejora considerablemente tanto la consistencia como la trazabilidad de las instancias.
 * Se añade la posibilidad de analizar el log de eventos e inferir nueva información del sistema, incluso aspectos que no se habían pensado cuando los eventos fueron diseñados. Esto permite por ejemplo que se puedan añadir nuevas vistas en el sistema sin aumentar la complejidad de éste.
-* Los sistemas basados en eventos son más fáciles de probar y de debuguear. Los eventos pueden ser simulados para llevar a cabo eventos. Además, el log de eventos contiene información útil para debuguear. Si se detecta un problema, se puede "relanzar" el log de eventos en un entorno controlado para entender como una instancia llegó a un estado no deseado.
+* Los sistemas basados en eventos son más fáciles de probar y de debuguear. Los eventos pueden ser simulados para llevar a cabo pruebas. Además, el log de eventos contiene información útil para debuguear. Si se detecta un problema, se puede "relanzar" el log de eventos en un entorno controlado para entender como una instancia llegó a un estado no deseado.
 
 
 ## Referencias
