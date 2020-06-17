@@ -7,8 +7,7 @@
 | Módulo         | Infraestructura Ontológica                                   |
 | Tipo           | Método y Software |
 | Objetivo       | El objetivo de este documento es la especificación de las decisiones tomadas para intentar solucionar los problemas que emergen cuando se intenta mantener un control de versiones efectivo durante el desarrollo de ontologías. |
-| Estado         | **100%** Se han analizado y aplicado ya varias soluciones para los problemas que emergen al mantener un control de versiones sobre ontologías OWL. Se han definido 5 niveles de soluciones, de los cuales 3 se encuentran ya en funcionamiento, mientras que los últimos 2 se encuentran en fase de implementación. También se ha definido un sistema de integración continua en el que se validan automáticamente los cambios producidos en la ontología a partir de una serie de Shape Expressions. Este sistema se encuentra implementado y en funcionamiento; los siguientes esfuerzos consistirán en la definición de shapes adicionales a las ya existentes. Por último se ha implementado un sistema de sincronización de cambios de la ontología con un triplestore. Este sistema se encuentra en una fase de mejoras. Todos los objetivos del Hito 1 se encuentran cumplidos, y se espera una evolución para el Hito 2 con las mejoras descritas previamente. |
-| Próximos pasos | Los siguientes pasos son el estudio e implementación de los niveles 4 y 5 definidos en este documento. Tras esto, se actualizará el documento con las decisiones tomadas y resultados obtenidos. |
+| Estado         | **100%** Se han analizado y aplicado ya varias soluciones para los problemas que emergen al mantener un control de versiones sobre ontologías OWL. Se han definido 5 niveles de soluciones, de los cuales 3 se encuentran ya en funcionamiento, y cubren la funcionalidad propuesta para este entregable. También se ha definido tanto un sistema de integración continua en el que se validan automáticamente los cambios producidos en la ontología a partir de una serie de Shape Expressions, como un sistema de sincronización de cambios de la ontología con un triplestore. Ambos sistemas se encuentran implementados y en funcionamiento. Por último, se detallan las medidas a llevar a cabo para controlar la propagación de cambios de una ontología a otros artefactos dependientes y, en especial, a la arquitectura semántica. |
 | Documentación adicional | [Manual de usuario integración continua](01_ontology_continuous_integration/user_manual.md)<br />[Especificación del sistema de integración continua](01_ontology_continuous_integration/system_specification.md)<br />[Documentación del sistema de sincronización (incluye manuales y especificación del sistema)](02_hercules_synchronization/hercules_sync_doc.md) |
 
 # Control de versiones sobre ontologías OWL.
@@ -78,7 +77,7 @@ El Ontology Engineering Group de la UPM ha realizado también otro estudio [[3]]
 
 En [[4]](#4), se propone un nuevo proceso de control de la evolución de ontología basado en patrones. Se proponen 4 fases para detectar los patrones de cambios y añadirlos a un catálogo. Sin embargo, no se tratan las fases de propagación de estos cambios a artefactos dependientes. Sobre este análisis se apoya el control de evolución de ontologías basado en usuarios [[5]](#5), en el que se proponen 6 fases generales que cubren todo el proceso desde la captura de nuevos cambios hasta su propagación y validación. Estas fases se van repitiendo indefinidamente a lo largo del ciclo de vida de la ontología, y las acciones de las que se componen son reversibles.
 
-Otro tema presente y de bastante importancia es realizar una distinción adecuada entre la evolución y el versionado de una ontología. La distinción tradicional en bases de datos entre versionado y evolución no es aplicable a las ontologías.  Para una ontología no podemos distinguir entre la evolución, que permite el acceso a todos los datos a través del esquema más reciente, y el versionado, que permite el acceso a los datos a través de diferentes versiones de un esquema.
+Otro tema presente y de bastante importancia es realizar una distinción adecuada entre la evolución y el versionado de una ontología. La distinción tradicional en bases de datos entre versionado y evolución no es aplicable a las ontologías.  En el caso de una ontología no siempre podemos distinguir entre la evolución, que permite el acceso a todos los datos a través del esquema más reciente, y el versionado, que permite el acceso a **todos** los datos a través de diferentes versiones de un esquema.
 
 Múltiples versiones de la misma ontología están fijadas a existir y deben ser soportadas. Al no saber con certeza cómo una ontología es reutilizada, no siempre se puede “forzar” a que otras ontologías y aplicaciones cambien a una nueva versión. Idealmente, no solo se deberían mantener las distintas versiones de una ontología, sino también información sobre las diferencias entre cada versión y su compatibilidad. De esta manera algunas aplicaciones pueden seguir utilizando versiones antiguas e ir actualizándose a su propio ritmo (o no actualizarse directamente).
 
@@ -89,7 +88,7 @@ A continuación, se procederá a proponer el esquema llevado a cabo para la prop
 En primer lugar, se mostrará el proceso general con el flujo de operaciones que se llevan a cabo cuando se produce un cambio en la ontología. A continuación, se hará una enumeración de los tipos de operaciones de modificación de la ontología planteados, y los posibles efectos que éstos tendrían en las instancias que dependen de ésta. Por último, se propondrán los puntos de comunicación entre la Infraestructura Ontológica y la Arquitectura Semántica para poder llevar a cabo estos cambios.
 
 ### Proceso general
-En el siguiente diagrama de alto nivel se muestra el flujo de operaciones realizada a lo largo del ciclo de vida de la evolución de la ontología:
+En el siguiente diagrama de alto nivel se muestra el flujo de operaciones realizadas a lo largo del ciclo de vida de la evolución de la ontología:
 ![](./resources/BPMN_evolucion_onto.png)
 
 Como podemos ver, este proceso comienza con la modificación de los ficheros de la ontología por parte de un ingeniero de ontologías. Una vez que se realizan los cambios, comienza el proceso de integración continua donde se validan estos cambios (para más información, se puede consultar la [documentación correspondiente](./01_ontology_continuous_integration/readme.md)). Este es un proceso importante en el que nos aseguramos de la consistencia de la ontología tras realizar las modificaciones. En caso de que la integración continua pase correctamente, los administradores del repositorio tendrán la última palabra para poder permitir o denegar el pusheo de los cambios propuestos al propio repositorio, todo esto a través del sistema de pull requests de GitHub.
@@ -136,13 +135,13 @@ El sistema de gestión de la arquitectura semántica será el punto clave que pa
 A continuación se muestra una imagen del módulo de gestión de eventos, con los servicios mencionados previamente resaltados:
 ![](./resources/event-management.png)
 
-La comunicación entre la infraestructura ontológica y la arquitectura semántica se llevara a cabo siguiendo el patrón arquitectónico basado en eventos. Este patrón se basa en el modelado de cambios de estado como una secuencia inmutable o log de eventos. Estos eventos serán posteriormente consumidos por otras aplicaciones para realizar las acciones correspondientes.
+La comunicación entre la infraestructura ontológica y la arquitectura semántica se llevará a cabo siguiendo el patrón arquitectónico event sourcing. Este patrón se basa en el modelado de cambios de estado como una secuencia inmutable o log de eventos. Estos eventos serán posteriormente consumidos por otras aplicaciones para realizar las acciones correspondientes.
 
 La información sobre cada una de las operaciones mencionadas en la sección anterior se representaría como un evento que se insertaría en la cola de eventos del sistema. Desde esta cola los eventos se irían consumiendo para asegurar la consistencia de los datos tras las modificaciones producidas en la ontología.
 
-Dado que el sistema de gestión de la arquitectura semántica ya sigue el patrón event sourcing, la adaptación del sistema para procesar eventos sobre cambios en la ontología no implicaría realizar cambios adicionales a la arquitectura.
+Dado que el sistema de gestión de la arquitectura semántica ya sigue un patrón basado en eventos, la adaptación del sistema para procesar eventos sobre cambios en la ontología no implicaría realizar cambios mayores a la arquitectura.
 
-Para más información a nivel de arquitectura sobre la solución planteada se puede consultar el Anexo A de este documento, que sigue el formato ARD (Architecture Decision Record) para profundizar en las decisiones tomadas.
+Para más información a nivel de arquitectura sobre la solución planteada se puede consultar el Anexo A de este documento, que sigue el formato ARD (Architecture Decision Record) para justificar las decisiones tomadas.
 
 ## Anexo A: Propagación de cambios
 En este anexo se ha documentado información sobre la propagación de cambios a artefactos dependientes, desde el punto de vista de la arquitectura, siguiendo el formato "Architecture Decision Record" (ADR) propuesto para la documentación de decisiones arquitectónicas. Se ha seguido la plantilla proporcionada por Michael Nygard, que es accesible a través de [este enlace](https://github.com/joelparkerhenderson/architecture_decision_record/blob/master/adr_template_by_michael_nygard.md).
@@ -169,15 +168,21 @@ Los siguientes atributos de calidad son tenidos en cuenta:
 ### Decisión
 Basándonos en el contexto y los atributos de calidad descritos anteriormente, junto con la información disponible sobre la infraestructura ontológica y la arquitectura semántica, hemos optado por el uso del patrón event sourcing para solucionar la problemática de la propagación de cambios de la ontología a las instancias que dependen de ésta.
 
+Con el uso de este patrón, la solución es lo suficientemente flexible como para soportar componentes adicionales que no han sido pensados para la funcionalidad actual. Los eventos procesados por la infraestructura ontológica que contienen las modificaciones se enviarán a un bus de eventos, y luego podrán ser consumido por otras aplicaciones y microservicios futuros con diversas funcionalidades.
+
+La naturaleza del patrón event sourcing permite además la reversibilidad de los cambios realizados en todo momento. Al tener un log de los eventos producidos, tendremos control total sobre que eventos son necesarios revertir por un motivo u otro. Esto añadirá una capa más de protección en el sistema de evolución de la ontología ante cambios no esperados.
+
+Por último, el hecho de que la arquitectura semántica siga un patrón basado en eventos también ha influido para favorecer esta solución frente a otras alternativas.
+
 ### Consecuencias
-El uso del patrón basado en eventos nos proporcionará las siguientes ventajas:
+El uso del patrón basado en eventos tendría las siguientes desventajas:
+* Normalmente los sistemas basados en eventos sufren al manejar instancias con vidas muy complejas. Siendo más específicos, aquellas instancias que tengan cambios frecuentes en el estado pueden causar problemas debido a la cantidad de eventos que se pueden producir. Sin embargo, debido al proceso definido para la evolución de la ontología (y a la propia dinámica de evolución de éstas) no se esperan llegar a tener este tipo de problemas, ya que serían necesarias cientos o miles de releases diarias para poder notar algún tipo de cuello de botella en el rendimiento de esta solución si la comparamos con otras.
+
+Aunque también nos proporcionará las siguientes ventajas:
 * Dado que el sistema de gestión arquitectura semántica ya se encuentra basado en eventos, la integración de esta funcionalidad será más simple y requerirá de menos modificaciones.
 * El histórico de como una instancia llega a su estado actual permanece en los eventos almacenados. Con esto se mejora considerablemente tanto la consistencia como la trazabilidad de las instancias.
 * Se añade la posibilidad de analizar el log de eventos e inferir nueva información del sistema, incluso aspectos que no se habían pensado cuando los eventos fueron diseñados. Esto permite por ejemplo que se puedan añadir nuevas vistas en el sistema sin aumentar la complejidad de éste.
-* Los sistemas basados en eventos son más fáciles de probar y de debuguear. Los eventos pueden ser simulados para llevar a cabo eventos. Además, el log de eventos contiene información útil para debuguear. Si se detecta un problema, se puede "relanzar" el log de eventos en un entorno controlado para entender como una instancia llegó a un mal estado.
-
-Aunque también tendría las siguientes desventajas:
-* Normalmente los sistemas basados en eventos sufren al manejar instancias con vidas muy complejas. Siendo más específicos, aquellas instancias que tengan cambios frecuentes en el estado pueden causar problemas debido a la cantidad de eventos que se pueden producir. Sin embargo, debido al proceso definido para la evolución de la ontología (y a la propia dinámica de evolución de estas) no se esperan llegar a tener este tipo de problemas, ya que serían necesarias cientos o miles de releases diarias para poder notar algún tipo de problemas de escalado de esta solución si la comparamos con otras.
+* Los sistemas basados en eventos son más fáciles de probar y de debuguear. Los eventos pueden ser simulados para llevar a cabo eventos. Además, el log de eventos contiene información útil para debuguear. Si se detecta un problema, se puede "relanzar" el log de eventos en un entorno controlado para entender como una instancia llegó a un estado no deseado.
 
 
 ## Referencias
