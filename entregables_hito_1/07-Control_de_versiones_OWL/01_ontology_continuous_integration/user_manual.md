@@ -7,8 +7,7 @@
 | Módulo         | Infraestructura Ontológica                                   |
 | Tipo           | Manual de usuario de la integración continua |
 | Objetivo       | El objetivo de este documento es el manual de usuario del sistema de integración continua que se ejecuta sobre la ontología cada vez que se produce un cambio. |
-| Estado         | **100%** Se han analizado y aplicado ya varias soluciones para los problemas que emergen al mantener un control de versiones sobre ontologías OWL. Se han definido 5 niveles de soluciones, de los cuales 3 se encuentran ya en funcionamiento, mientras que los últimos 2 se encuentran en fase de implementación. También se ha definido un sistema de integración continua en el que se validan automáticamente los cambios producidos en la ontología a partir de una serie de Shape Expressions. Este sistema se encuentra implementado y en funcionamiento; los siguientes esfuerzos consistirán en la definición de shapes adicionales a las ya existentes. Por último se ha implementado un sistema de sincronización de cambios de la ontología con un triplestore. Este sistema se encuentra en una fase de mejoras. |
-| Próximos pasos | Los siguientes pasos son el estudio e implementación de los niveles 4 o 5 definidos en este documento. Tras esto, se actualizará el documento con las decisiones tomadas y resultado obtenidos. |
+| Estado         | **100%** Definición de un sistema de integración continua en el que se validan automáticamente los cambios producidos en la ontología a partir de una serie de Shape Expressions.|
 |Repositorio de Software Asociado|https://github.com/HerculesCRUE/ib-hercules-ontology/  En concreto en la carpeta test/test-launcher se encuentra el código correspondiente a la integración continua. |
 
 # Hercules continuous integration user manual
