@@ -158,6 +158,7 @@ Es necesario, por lo tanto, proponer una solución para la propagación de cambi
 En el marco de nuestro proyecto, nos centraremos en la propagación de cambios desde el sistema de la Infraestructura Ontológica hasta la Arquitectura Semántica donde se encuentran las instancias que dependen de la ontología.
 
 Los siguientes atributos de calidad son tenidos en cuenta:
+
 | Atributo | Descripción |
 | -------- | ----------- |
 | Consistencia | La solución deberá proveer mecanismos para asegurar la consistencia de las instancias tras una modificación de la ontología. |
