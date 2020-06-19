@@ -2,13 +2,12 @@
 
 | Entregable     | Control de versiones sobre ontologías OWL                    |
 | -------------- | ------------------------------------------------------------ |
-| Fecha          | 22/05/2020                                                   |
+| Fecha          | 17/06/2020                                                   |
 | Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
 | Módulo         | Infraestructura Ontológica                                   |
 | Tipo           | Especificación técnica de la integración continua |
 | Objetivo       | El objetivo de este documento es la especificación técnica del sistema de integración continua que se ejecuta sobre la ontología cada vez que se produce un cambio. |
-| Estado         | **100%** Se han analizado y aplicado ya varias soluciones para los problemas que emergen al mantener un control de versiones sobre ontologías OWL. Se han definido 5 niveles de soluciones, de los cuales 3 se encuentran ya en funcionamiento, mientras que los últimos 2 se encuentran en fase de implementación. También se ha definido un sistema de integración continua en el que se validan automáticamente los cambios producidos en la ontología a partir de una serie de Shape Expressions. Este sistema se encuentra implementado y en funcionamiento; los siguientes esfuerzos consistirán en la definición de shapes adicionales a las ya existentes. Por último se ha implementado un sistema de sincronización de cambios de la ontología con un triplestore. Este sistema se encuentra en una fase de mejoras. |
-| Próximos pasos | Los siguientes pasos son el estudio e implementación de los niveles 4 o 5 definidos en este documento. Tras esto, se actualizará el documento con las decisiones tomadas y resultado obtenidos. |
+| Estado         | **100%** Se han analizado y aplicado ya varias soluciones para los problemas que emergen al mantener un control de versiones sobre ontologías OWL. Se han definido 5 niveles de soluciones, de los cuales 3 se encuentran ya en funcionamiento, y cubren la funcionalidad propuesta para este entregable. También se han definido tanto un sistema de integración continua en el que se validan automáticamente los cambios producidos en la ontología a partir de una serie de Shape Expressions, como un sistema de sincronización de cambios de la ontología con un triplestore. Ambos sistemas se encuentran implementados y en funcionamiento. Por último, se detallan las medidas a llevar a cabo para controlar la propagación de cambios de una ontología a otros artefactos dependientes y, en especial, a la arquitectura semántica. |
 |Repositorio de Software Asociado|https://github.com/HerculesCRUE/ib-hercules-ontology/  En concreto en la carpeta test/test-launcher se encuentra el código correspondiente a la integración continua. |
 
 # Hercules continuous integration module architecture
