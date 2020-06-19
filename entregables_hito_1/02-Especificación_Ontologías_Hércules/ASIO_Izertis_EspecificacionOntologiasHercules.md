@@ -8,7 +8,7 @@
 | Tipo                             | Entregable complementario a la documentación de la ontología, que se encuentra en la carpeta  [02-Especificación_Ontologías_Hércules](../02-Especificación_Ontologías_Hércules/ASIO_Izertis_EspecificacionOntologiasHercules.md). |
 | Objetivo                         | Documento donde se explica la aproximación para especificar, personalizando, las partes de la red de ontologías Hércules según los intereses del *stakeholder* en cuestión. |
 | Estado                           | **80%**. Se contemplaba un desarrollo de las ontologías del 80% para el hito 1 de proyecto y se considera alcanzado. |
-| Próximos pasos                   | Para el hito 2 se contempla continuar el desarrollo del 20% restante de las ontologías por medio del añadido de más módulos verticales que contemplen otras realidades más allá de las preguntas de competencia proporcionadas para el hito 1. |
+| Próximos pasos                   | Para el hito 2 se contempla continuar el desarrollo del 20% restante de las ontologías por medio del añadido de más módulos verticales que contemplen otras realidades más allá de las preguntas de competencia proporcionadas para el hito 1 y de acuerdo a los datasets proporcionados por la Universidad de Murcia y otros casos que se juzguen idóneos (Universidad de Oviedo u otras). |
 | Repositorio de software asociado | El espacio de trabajo de las ontologías Hércules es accesible [aquí](https://github.com/HerculesCRUE/ib-hercules-ontology). |
 
 
@@ -33,7 +33,7 @@ De esta manera, el core ontológico permanece lo más intacto y seguro posible y
 
 Con un modelo estructurado como el que proporciona SKOS, las inclusiones de nuevos conceptos pueden llevarse a cabo de una manera más segura y controlada, tocando exclusivamente los módulos verticales.
 
-Además, el uso de SKOS podría traer aparejado un editor que facilitaría la tarea a la hora de añadir conceptos o relaciones (mapeos) entre conceptos. El W3C recopila diferentes herramientas de este tipo [aquí](https://www.w3.org/2004/02/skos/wiki/Tools), pero otros editores como [SKOSIĆ](https://bitbucket.org/fundacionctic/skosic/src/default/) también están disponibles.
+Además, el uso de SKOS podría traer aparejado un editor que facilitaría la tarea a la hora de añadir conceptos o relaciones (mapeos) entre conceptos. El W3C recopila diferentes herramientas de este tipo [aquí](https://www.w3.org/2004/02/skos/wiki/Tools), pero otros editores como [Skosmos](http://skosmos.org/) o [SKOSIĆ](https://bitbucket.org/fundacionctic/skosic/src/default/), ambos de código abierto, también están disponibles y se podrían proponer como solución para la edición de los módulos verticales.
 
 ## 3. un ejemplo de especificación: recursos humanos universitarios
 
@@ -106,6 +106,8 @@ Estos individuos se incluyen actualmente en los módulos de RRHH pero no se desc
 Finalmente, cabe mencionar también que la propiedad `asio:referenceLaw` se utiliza específicamente para enlazar una figura de RRHH con su correspondiente legislación.
 
 ## 4. conclusiones
+
+El documento presenta la solución propuesta de especificación de la ontología por medio de los módulos verticales como detentores de la realidad de los *stakeholders* y proporciona ejemplos de cómo llevar a cabo esa especificación por medio de ejemplos reales ya incluídos en el modelo ontológico.
 
 
 
