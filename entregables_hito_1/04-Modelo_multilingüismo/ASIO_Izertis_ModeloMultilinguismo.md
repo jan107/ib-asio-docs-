@@ -19,6 +19,10 @@ La primera parte del informe se centra en el tratamiento dado a los recursos res
 
 La segunda parte o final describe las dificultades que nos estamos encontrando ahora mismo para trastaladar esas reglas de modelo al universo de Wikibase.
 
+La apuesta principal que se hace con el modelo de multilingüismo es [SKOS-Core](https://www.w3.org/TR/swbp-skos-core-spec/) como base, sin excluir completamente propiedades del modelo [Lemon](https://lemon-model.net/), que utilizamos en algún ejemplo ilustrado a lo largo del documento (sección **Multiescriptalismo**). No se ha contemplado en principio el uso de [SKOS-XL](https://www.w3.org/TR/skos-reference/skos-xl.html), cuya distinción entre etiquetas literales y de recurso no nos parece de demasiada aplicabilidad en nuestro modelo.
+
+No obstante, si en futuros avances de la ontología detectásemos otras necesidades, no se descarta explotar las posibilidades formales de otros vocabularios.
+
 
 # Reglas del modelo de multilingüismo (*multilocalismo* y *multiescriptalismo*) en las ontologías ASIO
 
@@ -104,9 +108,13 @@ garantizando también esa opacidad y asepsia de las URIs para luego recibir de m
 Etiquetas léxicas
 -----------------
 
-Si en un principio se pensó utilizar únicamente etiquetas `rdfs:label` para todas las URIs (según el patrón label everything[^2]) y con un valor literal en al menos 2 idiomas: español e inglés (de acuerdo al patrón multilingual labels[^3]) y recurrir a la propiedad de SKOS `skos:altLabel` para identificar alias o nombres alternativos, el uso parcial del modelo 
+Si en un principio se pensó utilizar únicamente etiquetas `rdfs:label` para todas las URIs (según el patrón label everything[^2]) y con un valor literal en al menos 2 idiomas: español e inglés (de acuerdo al patrón multilingual labels[^3]) y recurrir a la propiedad de SKOS `skos:altLabel` para identificar alias o nombres alternativos.
 
 Sin embargo, las etiquetas léxicas de rdfs (como `rdfs:label`) podrían no ser suficientes en todos los casos hacer una duplicación por medio de las etiquetas léxicas de SKOS (como `skos:prefLabel`) podría resultar útil, sobre todo por ponerla en relación con posibles etiquetas alternativas, explicitadas por medio de `skos:altLabel`  o, incluso, `skos:hiddenLabel` y así mantener una relación léxica de sinonimia más lógica y *modelada*.
+
+Como decíamos en la introducción, en algún caso se utilizan propiedades del modelo de [Lemon](https://lemon-model.net/),   especialmente en algún ejemplo de multiescriptalismo. Asimismo, aunque no se ha contemplado en principio el uso de [SKOS-XL](https://www.w3.org/TR/skos-reference/skos-xl.html), cuya distinción entre etiquetas de *literalidad* y de *recursividad* resulta interesante y podría ser añadida a nuestro modelo en algún caso.
+
+
 
 
 
@@ -147,6 +155,33 @@ global, que es uno de los leitmoif de la Web Semántica.
 
 En una infraestructura ontológica como ASIO, preparada para el multilingüismo, este aspecto no debería ser desdeñado, por lo que se intentará poner un especial énfasis desde el principio en facilitar la
 inclusión de todas las variedades de sistemas de escritura utilizados en lenguas naturales y artificiales que sean relevantes.
+
+Cabe destacar que para algún caso extremo de multiescriptalismo, sí se recurre al modelo [Lemon](https://lemon-model.net/). Éste es el caso de las trancripciones fonéticas en el [IPA](https://www.ipachart.com/
+) (alfabeto fonético internacional). Veamos algunos ejemplos complejos en los que se combinan un sistema de escritura exótico como el del IPA con lengua y con *locale*:
+
+
+
+```turtle
+asioModules:ESscientificDomains3rdList
+      a       asioModules:scientificDomains ;
+      rdfs:label "Dominis científics de tercer nivell"@ca , "Third-level scientific domains"@en , "θɜrd ˈlɛvəl ˌsaɪənˈtɪfɪk doʊˈmeɪnz"@en-US-fonipa , "Áreas científicas de terceiro nível"@pt , "Árees científiques de terceru nivel"@ast , "Áreas scientificas de tresen nivel"@oc , "duˈminis siənˈtifikz ðə tərˈse niˈβeʎ"@ca-CA-fonipa , "Hirugarren mailako arlo zientifikoak"@eu , "Áreas científicas de terceiro nivel"@gl , "Áreas scientificas de tercer nivel"@an , "Áreas científicas de tercer nivel"@es , "ˈaɾeas θjen̪ˈtifikas ðe terˈθer niˈβ̞el"@es-ES-fonipa , "θɜːd ˈlɛvl ˌsaɪənˈtɪfɪk dəʊˈmeɪnz"@en-GB-fonipa , "Domains scientifiques de troisième niveau"@fr ;
+      skos:prefLabel "Dominis científics de tercer nivell"@ca , "Third-level scientific domains"@en , "θɜrd ˈlɛvəl ˌsaɪənˈtɪfɪk doʊˈmeɪnz"@en-US-fonipa , "Áreas científicas de terceiro nível"@pt , "Árees científiques de terceru nivel"@ast , "Áreas scientificas de tresen nivel"@oc , "duˈminis siənˈtifikz ðə tərˈse niˈβeʎ"@ca-CA-fonipa , "Áreas científicas de terceiro nivel"@gl , "Hirugarren mailako arlo zientifikoak"@eu , "Áreas scientificas de tercer nivel"@an , "Áreas científicas de tercer nivel"@es , "ˈaɾeas θjen̪ˈtifikas ðe terˈθer niˈβ̞el"@es-ES-fonipa , "θɜːd ˈlɛvl ˌsaɪənˈtɪfɪk dəʊˈmeɪnz"@en-GB-fonipa , "Domains scientifiques de troisième niveau"@fr ;
+      ontolex:phoneticRep "θɜrd ˈlɛvəl ˌsaɪənˈtɪfɪk doʊˈmeɪnz"@en-US-fonipa , "ˈaɾeas θjen̪ˈtifikas ðe terˈθer niˈβ̞el"@es-ES-fonipa , "θɜːd ˈlɛvl ˌsaɪənˈtɪfɪk dəʊˈmeɪnz"@en-GB-fonipa , "duˈminis siənˈtifikz ðə tərˈse niˈβeʎ"@ca-CA-fonipa .
+
+```
+
+Como vemos en algunos casos que aislaremos a continuación, sin renunciar a las propiedades de SKOS ni de RDFS, duplicamos esas etiquetas de acuerdo a la propiedad del modelo Lemon:
+
+```turtle
+asioModules:ESscientificDomains3rdList
+      a       asioModules:scientificDomains ;
+rdfs:label "θɜrd ˈlɛvəl ˌsaɪənˈtɪfɪk doʊˈmeɪnz"@en-US-fonipa
+skos:prefLabel "θɜrd ˈlɛvəl ˌsaɪənˈtɪfɪk doʊˈmeɪnz"@en-US-fonipa
+ontolex:phoneticRep "θɜrd ˈlɛvəl ˌsaɪənˈtɪfɪk doʊˈmeɪnz"@en-US-fonipa
+
+```
+
+Donde vemos la etiqueta "Áreas científicas de tercer nivel", propuestas por el ministerio, traducidas al inglés (idioma) norteamericano (*locale*) y transcritas según el alfabeto IPA (sistema de escritura).
 
 
 
