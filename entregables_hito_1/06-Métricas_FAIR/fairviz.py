@@ -143,9 +143,12 @@ def is_valid(file):
             return False
     return True
 
-
-if __name__ == "__main__":
-    file = sys.argv[1]
+def main():
+    sa = sys.argv
+    if 'main.py' in sys.argv[0]:
+        file = './data/FAIR_evaluation_out.csv'
+    else:
+        file = sys.argv[1:]
     if is_valid(file):
         df = pd.read_csv(file)
         facets = df['FACET'].unique()
@@ -158,5 +161,5 @@ if __name__ == "__main__":
         offline.plot(fig_fair_levels, filename='./plots/levels_plot.html')
         offline.plot(fig_maturity_level, filename='./plots/table_maturity.html')
         offline.plot(fig_radar, filename='./plots/radar_plot.html', image='jpeg', image_filename='abc')
-    else:
-        print("El fichero de entrada no es un fichero vÃ¡lido")
+if __name__ == "__main__":
+    main()
