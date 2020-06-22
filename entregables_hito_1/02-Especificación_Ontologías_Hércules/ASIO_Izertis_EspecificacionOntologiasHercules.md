@@ -35,6 +35,8 @@ Con un modelo estructurado como el que proporciona SKOS, las inclusiones de nuev
 
 Además, el uso de SKOS podría traer aparejado un editor que facilitaría la tarea a la hora de añadir conceptos o relaciones (mapeos) entre conceptos. El W3C recopila diferentes herramientas de este tipo [aquí](https://www.w3.org/2004/02/skos/wiki/Tools), pero otros editores como [Skosmos](http://skosmos.org/) o [SKOSIĆ](https://bitbucket.org/fundacionctic/skosic/src/default/), ambos de código abierto, también están disponibles y se podrían proponer como solución para la edición de los módulos verticales.
 
+Finalmente, cabe decir que en el diseño de esta modularización se tuvo en cuenta el patrón de diseño [Using SKOS Concept](http://ontologydesignpatterns.org/wiki/Community:Using_SKOS_Concept).
+
 ## 3. un ejemplo de especificación: recursos humanos universitarios
 
 En el módulo vertical de *recursos humanos universitarios* se proporcionaban ya algunos ejemplos de especificación de figuras profesorales provenientes de diversas realidades nacionales y regionales. Recuperémoslas de nuevo aquí con fines ilustrativos.
