@@ -1,4 +1,4 @@
-![](./images/logos_feder.png)
+
 
 | Entregable     | Métricas FAIR                                                |
 | -------------- | ------------------------------------------------------------ |
@@ -39,7 +39,7 @@ En los siguientes apartados se detalla la evaluación de cada uno de los indicad
 
 A continuación se describen los criterios de evaluación y resultados de los 7 indicadores FINDABLE, todos ellos de prioridad *essential*. 
 
-Todos los criterios se cumplen, por lo que la evaluación de este área sería de nivel 5
+Casi todos los criterios se cumplen, por lo que la evaluación de este área sería de nivel 5 en momento en que el criterio RDA-F2-01M quede totalmente implementado.
 
 #### RDA-F1-01M - Metadata is identified by a persistent identifier
 
@@ -115,7 +115,7 @@ Los datos y metadatos están publicados mediante un grafo linked data 5 estrella
 
 A continuación se describen los criterios de evaluación y resultados de los 12 indicadores ACCESIBLE, de los cuales son 8 *essential*, 3 *important* y 1 *useful*. 
 
-Se cumplen todos menos 1 indicador de tipo *important*, por lo que la evaluación de este área sería de nivel 3, la cual aumentaría a nivel 5 a la finalización del hito 2, tras resolver dicho indicador.
+Se cumplen todos los indicadores, por lo que el nivel de este área es 5.
 
 #### RDA-A1-01M - Metadata contains information to enable the user to get access to the data
 
@@ -241,7 +241,7 @@ La combinación de Trellis y Memento permite llevar un registro histórico de mo
 
 A continuación se describen los criterios de evaluación y resultados de los 12 indicadores INTEROPERABLE, de los cuales son 7 *important*, 5 *useful* y ninguno *essential*.
 
-Se cumplen todos menos 1 indicador de tipo *important* y 3 *useful*, por lo que la evaluación de este área sería de nivel 3, la cual aumentaría a nivel 5 a la finalización del hito 2, tras resolver dichos indicadores.
+Se cumplen todos menos 1 indicador de tipo *important* y 4 *useful*, por lo que la evaluación de este área sería de nivel 3, la cual aumentaría a nivel 5 a la finalización del hito 2, tras resolver dichos indicadores.
 
 #### RDA-I1-01M - Metadata uses knowledge representation expressed in standardised format
 
@@ -367,7 +367,7 @@ Se referencian datos externos, como por ejemplo el uso de DOIs para enlazar docu
 
 A continuación se describen los criterios de evaluación y resultados de los 10 indicadores REUSABLE, de los cuales son 5 *essential*, 4 *important y 1 useful*.
 
-Se cumplen todos menos 1 indicador de tipo *essential*, por lo que la evaluación de este área sería de nivel 0, la cual aumentaría a nivel 5 a la finalización del hito 2, tras resolver dicho indicador.
+Se cumplen todos los indicadores, por lo que la evaluación de este área sería de nivel 5.
 
 #### RDA-R1-01M - Plurality of accurate and relevant attributes are provided to allow reuse
 
