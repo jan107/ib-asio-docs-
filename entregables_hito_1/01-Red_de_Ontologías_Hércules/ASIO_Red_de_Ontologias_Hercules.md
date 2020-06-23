@@ -324,7 +324,7 @@ asioModules:ES_UNIVERSITY_HR_CODE_ESPLEM
       skos:prefLabel "ESPLEM" .
 ```
 
-A final note must be added regarding these HRs vertical modules. The type of each of these positions is established as instances of the class `skos:Concept` but also as instances of the class `asio:Role`. This way a conciliation between core instances and an independent, semi-autonomous ontological vertical module (which can be easily unplugged and recycled if necessary) is obtained.
+A final note must be added regarding these HRs vertical modules. The type of each of these positions is established as instances of the class `skos:Concept` but also as instances of the class `asio:Role`. This way a conciliation between core instances and an independent, semi-autonomous ontological vertical module (which can be easily unplugged and recycled if necessary) is obtained. Although not used, we took into account the ontology design pattern [AcademicRoles](http://ontologydesignpatterns.org/wiki/Community:AcademicRoles).
 
 Another kind of roles is also included as instances of `skos:Concept` and `asio:Role`, the so-called **administrative ranks** within a university. These are a short and limited list such as *chancellor*, *vice-chancellor*, *dean*, etc. for the UK or *rector*, *decano*, *director de departamento*, *secretario*, etc. for Spain. These individuals are currently included in the HR vertical module or moved in the future into another one more specific dealing with administrative ranks, bearing in mind that Roles, Profiles and Contexts are an area of the core ontology encompassing and well developed.
 
@@ -347,6 +347,8 @@ The ontological model proposed here leaves all the customizable parts of the ont
 Modifying and maintaining an ontology is not something simple or trivial, the consequences of a modification can dramatically affect the whole model ruining it. That is why in this proposal those ad-hoc modifications are limited to these vertical modules, so the core ontology remains always intact or at the mercy of just ontology engineers.
 
 With a structured model such as the one provided by SKOS, the inclusions of new concepts can be carried out in a more safe way and using a SKOS editor can be easily made by stakeholders.
+
+Finally, it is worth mentioning that a design pattern taken into account in this modularisation was [Using SKOS Concept](http://ontologydesignpatterns.org/wiki/Community:Using_SKOS_Concept).
 
 
 

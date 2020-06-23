@@ -5,7 +5,7 @@
 | Fecha                            | 25/05/2020                                                   |
 | Proyecto                         | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
 | Módulo                           | Infraestructura Ontológica                                   |
-| Tipo                             | Entregable complementario a la documentación de la ontología, que se encuentra en la carpeta  [02-Especificación_Ontologías_Hércules](../02-Especificación_Ontologías_Hércules/ASIO_Izertis_EspecificacionOntologiasHercules.md). |
+| Tipo                             | Entregable complementario a la documentación de la ontología, que se encuentra en la carpeta [Red de ontologías Hércules](../01-Red_de_Ontologías_Hércules). |
 | Objetivo                         | Documento donde se explica la aproximación para especificar, personalizando, las partes de la red de ontologías Hércules según los intereses del *stakeholder* en cuestión. |
 | Estado                           | **80%**. Se contemplaba un desarrollo de las ontologías del 80% para el hito 1 de proyecto y se considera alcanzado. |
 | Próximos pasos                   | Para el hito 2 se contempla continuar el desarrollo del 20% restante de las ontologías por medio del añadido de más módulos verticales que contemplen otras realidades más allá de las preguntas de competencia proporcionadas para el hito 1 y de acuerdo a los datasets proporcionados por la Universidad de Murcia y otros casos que se juzguen idóneos (Universidad de Oviedo u otras). |
@@ -34,6 +34,8 @@ De esta manera, el core ontológico permanece lo más intacto y seguro posible y
 Con un modelo estructurado como el que proporciona SKOS, las inclusiones de nuevos conceptos pueden llevarse a cabo de una manera más segura y controlada, tocando exclusivamente los módulos verticales.
 
 Además, el uso de SKOS podría traer aparejado un editor que facilitaría la tarea a la hora de añadir conceptos o relaciones (mapeos) entre conceptos. El W3C recopila diferentes herramientas de este tipo [aquí](https://www.w3.org/2004/02/skos/wiki/Tools), pero otros editores como [Skosmos](http://skosmos.org/) o [SKOSIĆ](https://bitbucket.org/fundacionctic/skosic/src/default/), ambos de código abierto, también están disponibles y se podrían proponer como solución para la edición de los módulos verticales.
+
+Finalmente, cabe decir que en el diseño de esta modularización se tuvo en cuenta el patrón de diseño [Using SKOS Concept](http://ontologydesignpatterns.org/wiki/Community:Using_SKOS_Concept).
 
 ## 3. un ejemplo de especificación: recursos humanos universitarios
 
@@ -108,6 +110,11 @@ Finalmente, cabe mencionar también que la propiedad `asio:referenceLaw` se util
 ## 4. conclusiones
 
 El documento presenta la solución propuesta de especificación de la ontología por medio de los módulos verticales como detentores de la realidad de los *stakeholders* y proporciona ejemplos de cómo llevar a cabo esa especificación por medio de ejemplos reales ya incluídos en el modelo ontológico.
+
+Las correspondencias entre entidades para facilitar la especificación de las posibles ontologías de stakeholders que cuentan con sus propias ontologías se facilita por medio de los siguientes procedimientos:
+
+- A nivel del core ontológico se proponen e ilustran algunos ejemplos de mapeos entre entidades por medio de la propiedad `owl:equivalentClasse`.
+- Con el uso de SKOS en los módulos verticales y sus propiedades `skos:exactMatch`, `skos:closeMatch`, etc. se habilita la posibilidad de mapear las realidades de los diferentes stakeholders.
 
 
 
