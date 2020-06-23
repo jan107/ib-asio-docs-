@@ -1,8 +1,8 @@
-![](./images/logos_feder.png)
+
 
 | Entregable     | Métricas FAIR                                                |
 | -------------- | ------------------------------------------------------------ |
-| Fecha          | 25/05/2020                                                   |
+| Fecha          | 19/06/2020                                                   |
 | Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
 | Módulo         | Infraestructura Ontológica                                   |
 | Tipo           | Software y resultados                                        |
@@ -28,6 +28,12 @@ De forma general, la conclusión de la evaluación FAIR es bastante positiva, da
 Sólo en algunos casos, dado que el proyecto aún se encuenta en un estado parcial, algunos indicadores no se cumplen por falta de referencias explicitas a recursos externos, pero que se espera queden cubiertos sin gran complejidad para el hito 2.
 
 En los siguientes apartados se detalla la evaluación de cada uno de los indicadores.
+
+### Control de versiones
+
+**Versión de la evaluación**: 1.0
+
+**Sello de tiempo:** 19/06/2020 12:43:23.000
 
 ### FINDABLE
 
@@ -81,9 +87,9 @@ Todos los datos y metadatos están identificados mediante URIs PURL ([http://pur
 
 **Prioridad RDA**: Essential
 
-**Evaluación**: 4 – fully implemented
+**Evaluación**: 3 – in implementation phase
 
-Se proveen metadatos tanto a nivel de ontología como de los datos importados (OWL/SKOS, Wikibase, Trellis y Memento).
+Se proveen metadatos tanto a nivel de ontología como de los datos importados (OWL/SKOS, Wikibase, Trellis y Memento), si bien es necesario mejorar aspectos menores que mejoren la capacidad de descubrimiento.
 
 #### RDA-F3-01M - Metadata includes the identifier for the data
 
@@ -117,9 +123,9 @@ Se cumplen todos menos 1 indicador de tipo *important*, por lo que la evaluació
 
 **Prioridad RDA**: Important
 
-**Evaluación**: 2 – under consideration or in planning phase
+**Evaluación**: 4 – fully implemented
 
-Actualmente no se describe a nivel de metadatos el mecanismo de autenticación y autorización para poder tener acceso a los datos, si bien está previsto incluirlo a corto plazo.
+Se describe a nivel de metadatos el mecanismo de autenticación y autorización para poder tener acceso a los datos.
 
 #### RDA-A1-02M - Metadata can be accessed manually (i.e. with human intervention)
 
@@ -313,7 +319,7 @@ La ontología referencia otras ontologías, como por ejemplo [PROV-O](https://ww
 
 **Prioridad RDA**: Useful
 
-**Evaluación**: 4 – fully implemented
+**Evaluación**: 3 – in implementation phase
 
 Se referencian datos externos, como por ejemplo el uso de DOIs para enlazar documentos y artículos de investigación.
 
@@ -369,11 +375,11 @@ Se cumplen todos menos 1 indicador de tipo *essential*, por lo que la evaluació
 
 **Prioridad RDA**: Essential
 
-**Evaluación**: 2 – under consideration or in planning phase
+**Evaluación**: 4 – fully implemented
 
 *The  indicator concerns the quantity but also the quality of metadata provided in  order to enhance data reusability. This indicator can be evaluated with the  help of standards registries such as the RDA-endorsed [FAIR Sharing](https://fairsharing.org/standards/?q=/format&selected_facets=type_exact:reporting%20guideline).*
 
-Se prevé cumplir este indicador mediante el mapeo de las áreas científicas y temáticas de la UNESCO que tiene publicadas la Universidad de Murcia (hito 2).
+Se prevé ampliar este indicador mediante el mapeo de las áreas científicas y temáticas de la UNESCO que tiene publicadas la Universidad de Murcia.
 
 #### RDA-R1.1-01M - Metadata includes information about the licence under which the data can be reused
 
