@@ -22,13 +22,21 @@ Este documento enumera las herramientas consideradas y utilizadas para la conver
 Con el fin de convertir a formatos semánticos recursos interesantes de ser incluídos en la ontología, sobre todo vocabularios cuyas fuentes venían en formatos desestructurados, se llevó a cabo una búsqueda de herramientas que facilitaran la labor.
 
 ## Herramientas Consideradas
-El equipo de desarrollo ya conocía dos herramientas candidatas, desarrolladas con la participación de  miembros del grupo de investigación WESO.
+El equipo de desarrollo ya conocía algunas herramientas candidatas, desarrolladas con la participación de  miembros del grupo de investigación WESO.
 
 La primera de ellas, [ShExML](http://shexml.herminiogarcia.com/), explota Shape Expressions Mapping Language, un lenguaje heterogéneo para el mapeo de datos basado en Shape Expressions (ShEx), cuyo objetivo es permitir a usuarios mapear y conglomerar fuentes de datos heterogéneas en un medio de representación unificado en RDF.
 
 Sin embargo, para esta fase inicial del proyecto se desestimó el uso de esta herramienta debido al formato de partida de muchos de los recursos propuestos por el cliente y la urgencia en su conversión.
 
+Otra posibilidad que se valoró fue [Open Refine](https://openrefine.org/) con la que también se contaba con alguna familiaridad.
+
 La segunda herramienta, [Tablines](https://bitbucket.org/alfonso_noriega/tablines/src/default/), fue originalmente desarrollada en la Fundación CTIC, en Asturias, con la participación de uno de los integrantes actuales del grupo WESO, y fue la que finalmente se utilizó, sobre todo por el conocimiento del lenguaje necesario para crear los programas de transformación de ese integrante.
+
+Sin embargo, esta decisión de utilizar Tablines se limita únicamente al primer hito del proyecto debido a la contingencia de los compromisos intermedios de evaluación.
+
+Para la continuación del proyecto la apuesta sigue siendo ShExML una herramienta propia del equipo.
+
+
 
 
 
@@ -99,3 +107,7 @@ FOR ?rowId IN rows
 El resultado final es el módulo vertical subject areas, que se utiliza para asignar a una propuesta de proyecto el área de investigación exigida por el ministerio.
 
 Cabe decir que procesos equivalentes se llevaron a cabo para el diseño e implementación de los módulos verticales geopolítico, dominios científicos, universidades y subdivisiones de universidades, tal como explicamos más detalladamente en el documento de la especificación de la ontología.
+
+## Carga de datos
+
+La carga de estos datos se realiza por medio de los módulos verticales de la ontología, sea creando un nuevo módulo (con sus correspondientes mapeos si aplicaren) sea creando un módulo complementario a los ya existentes con una nueva realidad nacional. En los entregables de la documentación de la ontología,  (dentro en la carpeta [Red de ontologías Hércules](../01-Red_de_Ontologías_Hércules)) y en el entregable de especificación de ontologías (dentro de la carpeta [Especificación de las ontologías Hércules](../02-Especificación_Ontologías_Hércules)), se describen en inglés y en español respectivamente, tanto la fuente de los datos, la generación de los recursos en OWL y la inserción en el modelo ontológico.
