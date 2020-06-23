@@ -111,6 +111,11 @@ Finalmente, cabe mencionar también que la propiedad `asio:referenceLaw` se util
 
 El documento presenta la solución propuesta de especificación de la ontología por medio de los módulos verticales como detentores de la realidad de los *stakeholders* y proporciona ejemplos de cómo llevar a cabo esa especificación por medio de ejemplos reales ya incluídos en el modelo ontológico.
 
+Las correspondencias entre entidades para facilitar la especificación de las posibles ontologías de stakeholders que cuentan con sus propias ontologías se facilita por medio de los siguientes procedimientos:
+
+- A nivel del core ontológico se proponen e ilustran algunos ejemplos de mapeos entre entidades por medio de la propiedad `owl:equivalentClasse`.
+- Con el uso de SKOS en los módulos verticales y sus propiedades `skos:exactMatch`, `skos:closeMatch`, etc. se habilita la posibilidad de mapear las realidades de los diferentes stakeholders.
+
 
 
 ## 5. referencias
