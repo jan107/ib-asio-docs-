@@ -92,6 +92,8 @@
 | ------ | ------------------------------------------------------------ | --------- |
 | RF4.1  | La aplicación tendrá una parte pública, los usuarios públicos y todos los usuarios registrados podrán ver estos contenidos públicos. |           |
 | RF4.2  | La aplicación dispondrá de una pantalla de consultas SPARQL que será visible de forma pública y permitirá escribir en texto libre. |           |
+|        | La pantalla de consultas SPARQL dispondrá de un formulario web de gran usabilidad. |           |
+|        | La pantalla de consultas SPARQL estará basada en la interfaz implementada por Wikidata. |           |
 |        | La pantalla de consultas SPARQL mostrará un espacio para realizar las consultas, que será un editor SPARQL, el resultado de las mismas y un botón para mostrar y poder seleccionar las consultas predefinidas. |           |
 |        | El editor SPARQL                                             |           |
 | RF4.3  | En la pantalla de consultas SPARQL se propondrán unas consultas predefinidas en función del rol de los usuarios. |           |
