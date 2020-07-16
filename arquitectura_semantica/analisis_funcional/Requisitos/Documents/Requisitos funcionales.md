@@ -95,7 +95,7 @@
 |        | La pantalla de consultas SPARQL dispondrá de un formulario web de gran usabilidad. |           |
 |        | La pantalla de consultas SPARQL estará basada en la interfaz implementada por Wikidata. |           |
 |        | La pantalla de consultas SPARQL mostrará un espacio para realizar las consultas, que será un editor SPARQL, el resultado de las mismas y un botón para mostrar y poder seleccionar las consultas predefinidas. |           |
-|        | El editor SPARQL                                             |           |
+|        | El editor SPARQL consistirá en un formulario Web de gran usabilidad. |           |
 | RF4.3  | En la pantalla de consultas SPARQL se propondrán unas consultas predefinidas en función del rol de los usuarios. |           |
 |        |                                                              |           |
 | RF4.4  | Las consultas predefinidas para los usuarios de ministerios se podrán añadir/borrar mediante una pantalla y un usuario con un rol predeterminado. |           |
