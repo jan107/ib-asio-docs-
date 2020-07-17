@@ -99,7 +99,7 @@
 | RF4.3  | En la pantalla de consultas SPARQL se propondrán unas consultas predefinidas en función del rol de los usuarios. |           |
 |        |                                                              |           |
 | RF4.4  | Las consultas predefinidas para los usuarios de ministerios se podrán añadir/borrar mediante una pantalla y un usuario con un rol predeterminado. |           |
-| RF4.5  | Se facilitará la edición de las consultas predefinidas en la pantalla de consulta SPARQL |           |
+| RF4.5  | Se facilitará la edición de las consultas predefinidas en la pantalla de consulta SPARQL mediante el coloreado de variables y funciones conocidas y sugerencias. |           |
 |        | Al seleccionar una consulta predefinida SPARQL, esta se mostrará en el editor SPARQL y podrá ser editada. |           |
 | RF4.6  | Se harán sugerencias en la pantalla de consulta SPARQL como pueden ser autocomplete de variables, de entidades almacenadas, de prefijos y vocabularios. |           |
 |        | El editor SPARQL mostrará el texto coloreado según su significado en lenguaje SPARQL para ayudar al usuario a realizar la consulta. |           |
