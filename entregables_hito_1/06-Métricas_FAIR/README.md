@@ -43,7 +43,7 @@ Para cada indicador descrito en los siguientes apartados se especifica los sigui
 
 ​	0 – No automatizable
 
-​	1 – En proceso de implementación
+​	1 – En proceso de automatización
 
 ​	2 – Automatizada
 
@@ -357,7 +357,7 @@ Los datos y metadatos están expresado mediante tecnología linked data (OWL, SK
 
 Los datos y metadatos están expresado mediante tecnología linked data (OWL, SKOS, DC, RDF, etc).
 
-**Automatización**: 1 – En proceso de implementación
+**Automatización**: 1 – En proceso de automatización
 
 Seria posible automatizarlo en un futuro cuando las ontologias esten completas, y exista unión entre la infraestructura ontologia y la arqutectura semantica.
 
@@ -371,7 +371,7 @@ Seria posible automatizarlo en un futuro cuando las ontologias esten completas, 
 
 Los datos y metadatos están expresado mediante tecnología linked data (OWL, SKOS, DC, RDF, etc).
 
-**Automatización**: 1 – En proceso de implementación
+**Automatización**: 1 – En proceso de automatización
 
 Seria posible automatizarlo en un futuro cuando las ontologias esten completas, y exista unión entre la infraestructura ontologia y la arqutectura semantica.
 
@@ -409,7 +409,7 @@ Se referencian datos externos, como por ejemplo el uso de DOIs para enlazar docu
 
 *This indicator is about the way metadata is connected to other data, for example linking to previous or related research data that provides additional context to the data. Please note that this is not about the link from the metadata to the data it describes; that link is considered in principle F3 and in indicator RDA-F3-01M.*
 
-**Automatización**: 1 – En proceso de implementación
+**Automatización**: 1 – En proceso de automatización
 
 De cara a la automatización requiere la integración de infraestructura ontologica y arquitectura semántica.
 
@@ -423,7 +423,7 @@ De cara a la automatización requiere la integración de infraestructura ontolog
 
 *This  indicator is about the way data is connected to other data. The references  need to be qualified which means that the relationship role of the related  resource is specified, for example that a particular link is a specification  of a unit of measurement, or the identification of the sensor with which the  measurement was done.*
 
-**Automatización**: 1 – En proceso de implementación
+**Automatización**: 1 – En proceso de automatización
 
 De cara a la automatización requiere la integración de infraestructura ontologica y arquitectura semántica.
 
@@ -437,7 +437,7 @@ De cara a la automatización requiere la integración de infraestructura ontolog
 
 *This  indicator is about the way metadata is connected to other metadata, for  example to descriptions of related resources that provide additional context  to the data. The references need to be qualified which means that the  relationship of the related resource is specified, for example person Y is  the author of dataset X.*
 
-**Automatización**: 1 – En proceso de implementación
+**Automatización**: 1 – En proceso de automatización
 
 De cara a la automatización requiere la integración de infraestructura ontologica y arquitectura semántica.
 
@@ -451,7 +451,7 @@ De cara a la automatización requiere la integración de infraestructura ontolog
 
 *This  indicator is about the way metadata is connected to other data. The  references need to be qualified which means that the relationship role of the  related resource is specified, for example dataset X is derived from dataset  Y.*
 
-**Automatización**: 1 – En proceso de implementación
+**Automatización**: 1 – En proceso de automatización
 
 De cara a la automatización requiere la integración de infraestructura ontologica y arquitectura semántica.
 
@@ -485,7 +485,7 @@ Se prevé ampliar este indicador mediante el mapeo de las áreas científicas y 
 
 Uso de licencia [Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/).
 
-**Automatización**: 1 – En proceso de implementación
+**Automatización**: 1 – En proceso de automatización
 
 Es necesario previamente definir tipo de licencia de las ontologías y añadir los metadatos adecuados para publicar la información de dicha licencia
 
@@ -499,7 +499,7 @@ Es necesario previamente definir tipo de licencia de las ontologías y añadir l
 
 Uso de licencia [Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/).
 
-**Automatización**: 1 – En proceso de implementación
+**Automatización**: 1 – En proceso de automatización
 
 Es necesario previamente definir tipo de licencia de las ontologías y añadir los metadatos adecuados para publicar la información de dicha licencia
 
@@ -513,7 +513,7 @@ Es necesario previamente definir tipo de licencia de las ontologías y añadir l
 
 Uso de licencia [Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/).
 
-**Automatización**: 1 – En proceso de implementación
+**Automatización**: 1 – En proceso de automatización
 
 Es necesario previamente definir tipo de licencia de las ontologías y añadir los metadatos adecuados para publicar la información de dicha licencia
 
