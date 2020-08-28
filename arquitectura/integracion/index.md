@@ -24,13 +24,15 @@ dibujo de todo el proceso
 
 ### Modificaciones en la infraestructura ontológica
 
-#### Implicaciones
-
 Cualquier modificación en la ontología implica modificaciones en las shape expressions, que son las que se encargan de validar la semántica de la ontología.
 
 #### Procesos automáticos
 
-Generación de clases POJO a partir de shape expressions con la herramienta [ShEx Lite](#ShEx Lite)
+La generación de clases POJO a partir de shape expressions con la herramienta [ShEx Lite](#ShEx) se realizará de forma automática cada vez que la rama [master](https://github.com/HerculesCRUE/ib-hercules-ontology/tree/master/scripts) donde se hubican las Shape Expressions detecta que ha habido cambios.
+
+El resultado de esta iteración es la regeneración de **todo el modelo de dominio**, posterior empaquetado y subida al repositorio [MVN Central](https://mvnrepository.com/repos/central).
+
+> El motivo por el que es necesario la regeneración de todo el modelo de dominio es debido a que la herramiento ShEx Lite no es consciente de que ha cambiado y que no en la antología.
 
 #### Procesos manuales
 
@@ -45,4 +47,4 @@ Generación de clases POJO a partir de shape expressions con la herramienta [ShE
 
 ## ShEx
 
-[ShEx Lite](https://www.weso.es/shex-lite/)
+[ShEx Lite](https://www.weso.es/shex-lite/) es un subconjunto de una especificación de Shape Expressions que ofrece un API para generar las clases de dominio a partir de unos datos de entrada, y el resultado se enviará a donde indique el parámetro de salida.
