@@ -26,7 +26,15 @@ dibujo de todo el proceso
 
 Cualquier modificación en la ontología implica modificaciones en las shape expressions, que son las que se encargan de validar la semántica de la ontología.
 
+#### Procesos manuales
+
+Estas modificaciones dan como resultado un listado de cambios a aplicar en las Shape Expressions.
+
 #### Procesos automáticos
+
+La construcción y el despligue de la ontología están controlados a traves de workflows de integración continua de gitHub. Son las que se encargan de mantener actualizada la ontología en Wikibase.
+
+[PONER FOTO AQUI]
 
 La generación de clases POJO a partir de shape expressions con la herramienta [ShEx Lite](#ShEx) se realizará de forma automática cada vez que la rama [master](https://github.com/HerculesCRUE/ib-hercules-ontology/tree/master/scripts) donde se hubican las Shape Expressions detecta que ha habido cambios.
 
@@ -34,7 +42,7 @@ El resultado de esta iteración es la regeneración de **todo el modelo de domin
 
 > El motivo por el que es necesario la regeneración de todo el modelo de dominio es debido a que la herramiento ShEx Lite no es consciente de que ha cambiado y que no en la antología.
 
-#### Procesos manuales
+Repetición de los pasos empaquetado y subida del artefacto [Despliegue inicial (primera instalación)](Despliegue)
 
 ### Modificaciones en la infraestructura semántica
 
@@ -47,4 +55,4 @@ El resultado de esta iteración es la regeneración de **todo el modelo de domin
 
 ## ShEx
 
-[ShEx Lite](https://www.weso.es/shex-lite/) es un subconjunto de una especificación de Shape Expressions que ofrece un API para generar las clases de dominio a partir de unos datos de entrada, y el resultado se enviará a donde indique el parámetro de salida.
+[ShEx Lite](https://www.weso.es/shex-lite/) es un subconjunto de una especificación de Shape Expressions que ofrece un API para generar las clases de dominio a partir de unos datos de entrada, y el resultado se enviará a donde indique el parámetro de salida de este método.
