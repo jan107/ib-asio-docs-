@@ -28,7 +28,17 @@ Cualquier modificación en la ontología implica modificaciones en las shape exp
 
 #### Procesos manuales
 
-Estas modificaciones dan como resultado un listado de cambios a aplicar en las Shape Expressions.
+Estas modificaciones dan como resultado un listado de cambios a aplicar en las Shape Expressions. Por ejemplo:
+
+| Operación                               | Efecto en las instancias                                                                     |
+| --------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Creación de nueva clase C               | No habría ningún tipo de problema para las instancias existentes.                            |
+| Borrado de clase C                      | Las instancias de clase C quedarían en un estado inconsistente.                              |
+| Crear una propiedad p                   | No habría ningún tipo de problema para las instancias existentes.                            |
+| Eliminar la propiedad p                 | Los valores de la propiedad p para todas las instancias que la utilicen se perderían.        |
+| Eliminar una propiedad p de una clase C |  Los valores de la propiedad p para las instancias que pertenecen a la clase C se perderían. |
+
+Ver [aquí](https://github.com/HerculesCRUE/ib-asio-docs-/blob/master/entregables_hito_1/07-Control_de_versiones_OWL/ASIO_Izertis_ControlDeVersionesOWL.md) una descripción completa de todas las operaciones.
 
 #### Procesos automáticos
 
