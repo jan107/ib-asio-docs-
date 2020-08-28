@@ -28,17 +28,24 @@ Cualquier modificación en la ontología implica modificaciones en las shape exp
 
 #### Procesos manuales
 
-Estas modificaciones dan como resultado un listado de cambios a aplicar en las Shape Expressions. Por ejemplo:
+Estas modificaciones dan como resultado un listado de cambios a aplicar en las Shape Expressions.
 
-| Operación                               | Efecto en las instancias                                                                     |
-| --------------------------------------- | -------------------------------------------------------------------------------------------- |
-| Creación de nueva clase C               | No habría ningún tipo de problema para las instancias existentes.                            |
-| Borrado de clase C                      | Las instancias de clase C quedarían en un estado inconsistente.                              |
-| Crear una propiedad p                   | No habría ningún tipo de problema para las instancias existentes.                            |
-| Eliminar la propiedad p                 | Los valores de la propiedad p para todas las instancias que la utilicen se perderían.        |
-| Eliminar una propiedad p de una clase C |  Los valores de la propiedad p para las instancias que pertenecen a la clase C se perderían. |
-
-Ver [aquí](https://github.com/HerculesCRUE/ib-asio-docs-/blob/master/entregables_hito_1/07-Control_de_versiones_OWL/ASIO_Izertis_ControlDeVersionesOWL.md) una descripción completa de todas las operaciones.
+| Modificación                                                                               | Protocolo a aplicar                      |
+| ------------------------------------------------------------------------------------------ | ---------------------------------------- |
+| Creación de nueva clase C                                                                  | Modificar directamente shape expression  |
+| Borrado de clase C                                                                         | Modificar directamente shape expression  |
+| Crear una propiedad p                                                                      | Modificar directamente shape expression  |
+| Eliminar la propiedad p                                                                    | Modificar directamente shape expression  |
+| Eliminar una propiedad p de una clase C                                                    |  Modificar directamente shape expression |
+| Añadir una relación de subclase-superclase entre la subclase SubC y la superclase SuperC   | Modificar directamente shape expression  |
+| Eliminar una relación de subclase-superclase entre la subclase SubC y la superclase SuperC | Modificar directamente shape expression  |
+| Declarar clases C1 y C2 como disjoint                                                      | Modificar directamente shape expression  |
+| Definir una propiedad p como transitiva o simétrica                                        | Modificar directamente shape expression  |
+| Mover una propiedad p de una subclase a una superclase                                     | Modificar directamente shape expression  |
+| Mover una propiedad p de una superclase a una subclase                                     | Modificar directamente shape expression  |
+| Reducir las restricciones de una propiedad p                                               | Modificar directamente shape expression  |
+| Añadir restricciones a una propiedad p                                                     | Modificar directamente shape expression  |
+| Modificar la descripción de una clase (label, comment, alias)                              | Modificar directamente shape expression  |
 
 #### Procesos automáticos
 
