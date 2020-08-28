@@ -14,9 +14,10 @@ Se precisa que la integración entre ambas infraestructuras requieran del menor 
 
 dibujo de todo el proceso
 
-- Generación de clases POJO a partir de shape expressions con la herramienta [ShEx Lite](https://www.weso.es/shex-lite/)
+- Generación de clases POJO a partir de shape expressions con la herramienta [ShEx Lite](#ShEx)
 
-- Empaquetado de las clases java en un artefacto .jar con su correspondiente versionado.
+- Empaquetado de las clases java en un artefacto **dataset-domain-model-X.X.X.jar** donde X.X.X es su correspondiente versionado.
+
 - Subida del artefacto al repositorio [MVN Central](https://mvnrepository.com/repos/central) para su posterior consumo por parte de la arquitectura semántica.
 
 ## Cambios en la red de ontología (sucesivas iteraciones)
@@ -29,7 +30,7 @@ Cualquier modificación en la ontología implica modificaciones en las shape exp
 
 #### Procesos automáticos
 
-Generación de clases POJO a partir de shape expressions con la herramienta [ShEx Lite](https://www.weso.es/shex-lite/)
+Generación de clases POJO a partir de shape expressions con la herramienta [ShEx Lite](#ShEx Lite)
 
 #### Procesos manuales
 
@@ -41,3 +42,7 @@ Generación de clases POJO a partir de shape expressions con la herramienta [ShE
 
 - Cuando se aplican las modificaciones en la red de ontologías
 - Modificaciones en la ETL
+
+## ShEx
+
+[ShEx Lite](https://www.weso.es/shex-lite/)
