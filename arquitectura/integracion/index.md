@@ -57,7 +57,7 @@ La generación de clases POJO a partir de shape expressions con la herramienta [
 
 El resultado de esta iteración es la regeneración de **todo el modelo de dominio**, posterior empaquetado y subida al repositorio [MVN Central](https://mvnrepository.com/repos/central).
 
-> El motivo por el que es necesario la regeneración de todo el modelo de dominio es debido a que la herramiento ShEx Lite no es consciente de que ha cambiado y que no en la antología.
+> El motivo por el que es necesario la regeneración de todo el modelo de dominio es debido a que la herramienta ShEx Lite no es consciente de que ha cambiado y que no en la ontología.
 
 Repetición de los pasos empaquetado y subida del artefacto [Despliegue inicial (primera instalación)](Despliegue)
 
