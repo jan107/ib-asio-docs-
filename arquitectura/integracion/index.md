@@ -63,35 +63,6 @@ El resultado de esta iteración es la regeneración de **todo el modelo de domin
 
 > El motivo por el que es necesario la regeneración de todo el modelo de dominio es debido a que la herramienta ShEx Lite no es consciente de que ha cambiado y que no en la ontología.
 
-### Comunicación entre la infraestructura ontológica e infraestructura semántica
-
-Para que la infraestructura semántica sea consciente de que han habiado cambios en la red de ontologías, la infraestructura ontológica ofrece un nuevo módulo API **exchange** ofrece los métodos:
-
-| Request type | EndPoint                                     | Description                                                                                                 |
-| ------------ | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| GET          | `/versions`                                  | Access one or more resources and return the result as JSON.                                                 |
-| GET          | `/ontology/{currentVersion}/{targetVersion}` | Return `201 Created` if the resource is successfully created and return the newly created resource as JSON. |
-
-The following table shows the possible return codes for API requests.
-
-| Return values            | Description                                                                                                                                                   |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `200 OK`                 | The `GET`, `PUT` or `DELETE` request was successful, the resource(s) itself is returned as JSON.                                                              |
-| `204 No Content`         | The server has successfully fulfilled the request and that there is no additional content to send in the response payload body.                               |
-| `201 Created`            | The `POST` request was successful and the resource is returned as JSON.                                                                                       |
-| `304 Not Modified`       | Indicates that the resource has not been modified since the last request.                                                                                     |
-| `400 Bad Request`        | A required attribute of the API request is missing, e.g., the title of an issue is not given.                                                                 |
-| `401 Unauthorized`       | The user is not authenticated, a valid [user token](#authentication) is necessary.                                                                            |
-| `403 Forbidden`          | The request is not allowed, e.g., the user is not allowed to delete a project.                                                                                |
-| `404 Not Found`          | A resource could not be accessed, e.g., an ID for a resource could not be found.                                                                              |
-| `405 Method Not Allowed` | The request is not supported.                                                                                                                                 |
-| `409 Conflict`           | A conflicting resource already exists, e.g., creating a project with a name that already exists.                                                              |
-| `412`                    | Indicates the request was denied. May happen if the `If-Unmodified-Since` header is provided when trying to delete a resource, which was modified in between. |
-| `422 Unprocessable`      | The entity could not be processed.                                                                                                                            |
-| `500 Server Error`       | While handling the request something went wrong server-side.                                                                                                  |
-
-Repetición de los pasos empaquetado y subida del artefacto [Despliegue inicial (primera instalación)](Despliegue) //FIXME remove this paragraph
-
 ### Modificaciones en la infraestructura semántica
 
 #### Procesos manuales
@@ -101,7 +72,23 @@ Repetición de los pasos empaquetado y subida del artefacto [Despliegue inicial 
 
 #### Procesos automáticos
 
-### Api de comunicación entre infraestructura ontológica y infraestructura semántica
+## Comunicación entre la infraestructura ontológica e infraestructura semántica
+
+Para que la infraestructura semántica sea consciente de que han habiado cambios en la red de ontologías, la infraestructura ontológica ofrece un nuevo módulo API **exchange** ofrece los métodos:
+
+| Operación | EndPoint                                     | Descripción                                                                  |
+| --------- | -------------------------------------------- | ---------------------------------------------------------------------------- |
+| GET       | `/versions`                                  | Devuelve un listado de todas las versiones de ontologías existentes.         |
+| GET       | `/ontology/{currentVersion}/{targetVersion}` | Devuelve el fichero DELTA generado entre `currentVersion` y `targetVersion`. |
+
+La siguiente tabla muestra ejemplos de posibles respuestas a las peticiones anteriormente descritas.
+
+| Operación | EndPoint                                   | Descripción                                   |
+| --------- | ------------------------------------------ | --------------------------------------------- |
+| `GET`     | /versions                                  | { 1.0.0, 1.0.1, 1.0.2, 1.0.3}                 |
+| `GET`     | /ontology/{currentVersion}/{targetVersion} | {targetClass: Activity, operation: add field} |
+
+## Ficheros delta
 
 ## ShEx
 
