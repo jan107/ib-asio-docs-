@@ -10,7 +10,7 @@ Se precisa que la integración entre ambas infraestructuras requieran del menor 
 
 > Es necesario informar que aunque se busque la máxima automatización posible, habrá puntos en los que esta no se podrá llevar acabo como por ejemplo el proceso de creación/actualización de ontologías y la adaptación de estos cambios al proceso de ETL.
 
-## Despliegue inicial (primera instalación)
+## Despliegue inicial ontología (primera instalación)
 
 dibujo de todo el proceso
 
@@ -19,6 +19,10 @@ dibujo de todo el proceso
 - Empaquetado de las clases java en un artefacto **dataset-domain-model-X.X.X.jar** donde X.X.X es su correspondiente versionado.
 
 - Subida del artefacto al repositorio [MVN Central](https://mvnrepository.com/repos/central) para su posterior consumo por parte de la arquitectura semántica.
+
+## Despligue inicial arquitectura semántica
+
+Bastaría con tener desplegados los módulos xxxxx
 
 ## Cambios en la red de ontología (sucesivas iteraciones)
 
@@ -59,7 +63,7 @@ El resultado de esta iteración es la regeneración de **todo el modelo de domin
 
 > El motivo por el que es necesario la regeneración de todo el modelo de dominio es debido a que la herramienta ShEx Lite no es consciente de que ha cambiado y que no en la ontología.
 
-Repetición de los pasos empaquetado y subida del artefacto [Despliegue inicial (primera instalación)](Despliegue)
+Repetición de los pasos empaquetado y subida del artefacto [Despliegue inicial (primera instalación)](Despliegue) //FIXME remove this paragraph
 
 ### Modificaciones en la infraestructura semántica
 
