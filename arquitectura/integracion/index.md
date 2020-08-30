@@ -8,7 +8,7 @@ El objetivo de este documento es explicar el diseño arquitectónico entre la in
 
 Se precisa que la integración entre ambas infraestructuras requieran del menor esfuerzo manual posible, automatizando la mayoría de los escenarios que surgen de los cambios en las ontologías.
 
-> Es necesario informar que aunque se busque la máxima automatización posible, habrá puntos en los que esta no se podrá llevar acabo como por ejemplo el proceso de creación de ontologías y la adaptación de estos cambios al proceso de ETL.
+> Es necesario informar que aunque se busque la máxima automatización posible, habrá puntos en los que esta no se podrá llevar acabo como por ejemplo el proceso de creación/actualización de ontologías y la adaptación de estos cambios al proceso de ETL.
 
 ## Despliegue inicial (primera instalación)
 
