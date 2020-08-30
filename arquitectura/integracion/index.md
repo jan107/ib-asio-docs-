@@ -74,12 +74,12 @@ El resultado de esta iteración es la regeneración de **todo el modelo de domin
 
 ## Comunicación entre la infraestructura ontológica e infraestructura semántica
 
-Para que la infraestructura semántica sea consciente de que han habiado cambios en la red de ontologías, la infraestructura ontológica ofrece un nuevo módulo API **exchange** ofrece los métodos:
+Para que la infraestructura semántica sea consciente de que han habiado cambios en la red de ontologías, la infraestructura ontológica ofrece un nuevo módulo API **exchange** con los métodos:
 
-| Operación | EndPoint                                     | Descripción                                                                  |
-| --------- | -------------------------------------------- | ---------------------------------------------------------------------------- |
-| GET       | `/versions`                                  | Devuelve un listado de todas las versiones de ontologías existentes.         |
-| GET       | `/ontology/{currentVersion}/{targetVersion}` | Devuelve el fichero DELTA generado entre `currentVersion` y `targetVersion`. |
+| Operación | EndPoint                                       | Descripción                                                                                     |
+| --------- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| GET       | /versions                                      | Devuelve un listado de todas las versiones de ontologías existentes.                            |
+| GET       | /ontology/`{currentVersion}`/`{targetVersion}` | Devuelve el fichero [DELTA](#Ficheros DELTA) generado entre `currentVersion` y `targetVersion`. |
 
 La siguiente tabla muestra ejemplos de posibles respuestas a las peticiones anteriormente descritas.
 
@@ -88,7 +88,7 @@ La siguiente tabla muestra ejemplos de posibles respuestas a las peticiones ante
 | `GET`     | /versions                                  | { 1.0.0, 1.0.1, 1.0.2, 1.0.3}                 |
 | `GET`     | /ontology/{currentVersion}/{targetVersion} | {targetClass: Activity, operation: add field} |
 
-## Ficheros delta
+## Ficheros DELTA
 
 ## ShEx
 
