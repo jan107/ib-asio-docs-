@@ -79,14 +79,14 @@ Para que la infraestructura semántica sea consciente de que han habiado cambios
 | Operación | EndPoint                                       | Descripción                                                                                     |
 | --------- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | GET       | /versions                                      | Devuelve un listado de todas las versiones de ontologías existentes.                            |
-| GET       | /ontology/`{currentVersion}`/`{targetVersion}` | Devuelve el fichero [DELTA](#Ficheros DELTA) generado entre `currentVersion` y `targetVersion`. |
+| GET       | /ontology/{_currentVersion_}/{_targetVersion_} | Devuelve el fichero [DELTA](#Ficheros DELTA) generado entre `currentVersion` y `targetVersion`. |
 
 La siguiente tabla muestra ejemplos de posibles respuestas a las peticiones anteriormente descritas.
 
-| Operación | EndPoint                                   | Descripción                                   |
-| --------- | ------------------------------------------ | --------------------------------------------- |
-| `GET`     | /versions                                  | { 1.0.0, 1.0.1, 1.0.2, 1.0.3}                 |
-| `GET`     | /ontology/{currentVersion}/{targetVersion} | {targetClass: Activity, operation: add field} |
+| Operación | EndPoint                                           | Descripción                                          |
+| --------- | -------------------------------------------------- | ---------------------------------------------------- |
+| `GET`     | /versions                                          | `json { 1.0.0, 1.0.1, 1.0.2, 1.0.3}`                 |
+| `GET`     | /ontology/{**currentVersion**}/{**targetVersion**} | `json {targetClass: Activity, operation: add field}` |
 
 ## Ficheros DELTA
 
