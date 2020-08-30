@@ -74,12 +74,12 @@ El resultado de esta iteración es la regeneración de **todo el modelo de domin
 
 ## Comunicación entre la infraestructura ontológica e infraestructura semántica
 
-Para que la infraestructura semántica sea consciente de que han habiado cambios en la red de ontologías, la infraestructura ontológica ofrece un nuevo módulo API **exchange** con los métodos:
+Para que la infraestructura semántica sea consciente de que han habiado cambios en la red de ontologías, la infraestructura ontológica ofrece un nuevo módulo API Controller **exchange** con los siguientes métodos:
 
 | Operación | EndPoint                                           | Descripción                                                                                     |
 | --------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| GET       | /versions                                          | Devuelve un listado de todas las versiones de ontologías existentes.                            |
-| GET       | /ontology/{**currentVersion**}/{**targetVersion**} | Devuelve el fichero [DELTA](#Ficheros DELTA) generado entre `currentVersion` y `targetVersion`. |
+| `GET`     | /versions                                          | Devuelve un listado de todas las versiones de ontologías existentes.                            |
+| `GET`     | /ontology/{**currentVersion**}/{**targetVersion**} | Devuelve el fichero [DELTA](#Ficheros DELTA) generado entre `currentVersion` y `targetVersion`. |
 
 La siguiente tabla muestra ejemplos de posibles respuestas a las peticiones anteriormente descritas.
 
@@ -88,7 +88,11 @@ La siguiente tabla muestra ejemplos de posibles respuestas a las peticiones ante
 | `GET`     | /versions                                          | { version: 1.0.0, version: 1.0.1, version: 1.0.2, version: 1.0.3} |
 | `GET`     | /ontology/{**currentVersion**}/{**targetVersion**} | { targetClass: Activity, operation: add field }                   |
 
+Este módulo será un servicio REST auténticado accesible desde **triple-store-delta** hubicado en la arquitectura semántica.
+
 ## Ficheros DELTA
+
+Los ficheros delta son objetos JSON cuya información contiene las modificaciones a realizar en la ETL tras cambios en la ontología. Estos ficheros son interpretables por el nuevo módulo **triple-store-delta** de tal forma que es capaz de modificar el contenido de los datos actuales (Trellis, Wikibase) de forma automática para adaptarlos a la nueva semántica de la ontología.
 
 ## ShEx
 
