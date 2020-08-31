@@ -83,9 +83,7 @@ La siguiente tabla muestra ejemplos de posibles respuestas a las peticiones ante
 
 Este módulo será un servicio REST auténticado accesible desde **triple-store-delta** hubicado en la arquitectura semántica.
 
-<p align="center">
-  <img src="resources/comunication_IO_vs_AE.png">
-</p>
+![](./resources/comunication_IO_vs_AE.png)
 
 ## DELTA
 
@@ -105,6 +103,8 @@ Tras modificaciones en la red de ontologías, como ya se ha mencionado anteriorm
 #### Secuencia de cambios a aplicar y entorno.
 
 Para llevar a cabo los cambios procedentes de la red de ontologías, es necesario realizar los siguientes pasos en el orden indicado:
+
+![](./resources/secuence.png)
 
 1. Modificación en la ETL según las especificaciones del fichero DELTA
 
