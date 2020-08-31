@@ -92,7 +92,7 @@ Tras modificaciones en la red de ontologías, como ya se ha mencionado anteriorm
 - cambios en la ETL
 - adaptación de los datos existentes en el triple-store (Trellis, Wikibase)
 
-#### Secuencia de cambios a aplicar
+#### Secuencia de cambios a aplicar y entorno.
 
 Para llevar a cabo los cambios procedentes de la red de ontologías, es necesario realizar los siguientes pasos en el orden indicado:
 
@@ -112,6 +112,8 @@ Para llevar a cabo los cambios procedentes de la red de ontologías, es necesari
 
 6. Arranque del servidor, con los microservicios apuntando a la nueva versión del **dataset-domain-model-X.X.X.jar**
 
+Los pasos anteriormente descritos se ejecutarán en un entorno no productivo y posteriormente se promocionarán al entorno final de producción.
+
 #### Procesos manuales
 
 - Cuando se aplican las modificaciones en la red de ontologías
@@ -124,6 +126,10 @@ La adaptación de los datos del triple store (Trellis, Wikibase) se hará de for
 Para poder implementar esta funcionalidad es necesario crear un nuevo componente **triple-store-delta** el cual contendrá un algoritmo capaz de interpretar las instrucciones procedentes de los ficheros DELTA para modificar los datos del triple-store adaptándolos a los nuevos cambios en las ontologías.
 
 Este nuevo módulo surge como substitución de la idea original **scripts ad-hoc** para la adaptación de los datos del triple-store. De esta forma, se consigue una automatización del proceso de transformación de datos procedentes del triple-store con la correspondiente reducción de errores en la ejecución manual de scripts.
+
+## Cambios colaterales en otros módulos.
+
+Es necesario modificar tambien los importadores. FIXME extend it.
 
 ## ShEx
 
