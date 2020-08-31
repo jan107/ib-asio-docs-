@@ -24,7 +24,7 @@ dibujo de todo el proceso
 
 ## Despligue inicial arquitectura semántica
 
-No requiere de acciones adicionales a las ya descritas en el documento [despliegue_inicial](https://github.com/HerculesCRUE/ib-asio-docs-/tree/master/arquitectura_semantica/despliegues/entorno_desarrollo).
+No requiere de acciones adicionales a las ya descritas en el documento [despliegue_inicial](https://github.com/HerculesCRUE/ib-asio-docs-/blob/master/arquitectura/arquitectura_semantica/despliegues/entorno_desarrollo/despliege_inicial.md).
 
 ## Cambios en la red de ontología (sucesivas iteraciones)
 
