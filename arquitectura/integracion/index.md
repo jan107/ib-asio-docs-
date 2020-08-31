@@ -98,7 +98,7 @@ Para llevar a cabo los cambios procedentes de la red de ontologías, es necesari
 
 1. Modificación en la ETL según las especificaciones del fichero DELTA
 
-   > `(estas modificaciones no se despliegan hasta no completar los pasos 2 y 3)`.
+   > Estas modificaciones no se despliegan hasta no completar los pasos 2 y 3.
 
 2. Parada del servidor donde se escuentran alojados los microservicios de la arquitectura semántica.
 
