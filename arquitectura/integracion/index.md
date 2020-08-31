@@ -104,6 +104,8 @@ Para llevar a cabo los cambios procedentes de la red de ontologías, es necesari
 
 3. Invocación del proceso para la realización de backups.
 
+   > Desde que se para el servidor hasta que se inicia el proceso de backup debe pasar un tiempo lo suficientemente largo como para que se vacien las colas kafka con los datos de entranda para el módulo **management-system** encargado de la generación de ficheros RDF.
+
 4. Invocación desde linea de comandos del modulo **triple-store-delta** con el fichero DELTA como parámetro de entrada, para adaptar los datos del triple-store.
 
 5. Despliegue de la ETL
