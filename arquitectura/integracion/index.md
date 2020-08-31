@@ -28,7 +28,7 @@ No requiere de acciones adicionales a las ya descritas en el documento [desplieg
 
 ### Modificaciones en la infraestructura ontológica
 
-Cualquier modificación en la ontología implica modificaciones en las shape expressions, que son las que se encargan de validar la semántica de la ontología.
+Cualquier modificación en la ontología implica modificaciones en las shape expressions, que son las que se encargan de validar la semántica de la ontología. Estos cambios tambien provocan modificaciones a realizar en la arquitectura semántica (ETL y adaptación de los datos existentes en Trellis y Wikibase)
 
 #### Procesos manuales
 
@@ -63,23 +63,14 @@ El resultado de esta iteración es la regeneración de **todo el modelo de domin
 
 > El motivo por el que es necesario la regeneración de todo el modelo de dominio es debido a que la herramienta ShEx Lite no es consciente de que ha cambiado y que no en la ontología.
 
-### Modificaciones en la infraestructura semántica
-
-#### Procesos manuales
-
-- Cuando se aplican las modificaciones en la red de ontologías
-- Modificaciones en la ETL a partir de la generación de los ficheros DELTA
-
-#### Procesos automáticos
-
 ## Comunicación entre la infraestructura ontológica e infraestructura semántica
 
 Para que la infraestructura semántica sea consciente de que han habido cambios en la red de ontologías, la infraestructura ontológica ofrece un nuevo módulo API **exchange** con los siguientes métodos:
 
-| Operación | EndPoint                                           | Descripción                                                                                     |
-| --------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `GET`     | /versions                                          | Devuelve un listado de todas las versiones de ontologías existentes.                            |
-| `GET`     | /ontology/{**currentVersion**}/{**targetVersion**} | Devuelve el fichero [DELTA](#Ficheros DELTA) generado entre `currentVersion` y `targetVersion`. |
+| Operación | EndPoint                                           | Descripción                                                                            |
+| --------- | -------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `GET`     | /versions                                          | Devuelve un listado de todas las versiones de ontologías existentes.                   |
+| `GET`     | /ontology/{**currentVersion**}/{**targetVersion**} | Devuelve el fichero [DELTA](#DELTA) generado entre `currentVersion` y `targetVersion`. |
 
 La siguiente tabla muestra ejemplos de posibles respuestas a las peticiones anteriormente descritas.
 
@@ -90,9 +81,23 @@ La siguiente tabla muestra ejemplos de posibles respuestas a las peticiones ante
 
 Este módulo será un servicio REST auténticado accesible desde **triple-store-delta** hubicado en la arquitectura semántica.
 
-## Ficheros DELTA
+## DELTA
 
-Los ficheros delta son objetos JSON cuya información contiene las modificaciones a realizar en la ETL tras cambios en la ontología. Estos ficheros son interpretables por el nuevo módulo **triple-store-delta** de tal forma que es capaz de modificar el contenido de los datos actuales en Trellis y Wikibase de forma automática para adaptarlos a la nueva semántica de la ontología.
+Los ficheros delta son objetos JSON cuya información contiene las modificaciones a realizar en la ETL tras cambios en la ontología. Estos ficheros son interpretables por el nuevo módulo de la arquitectura semántica **triple-store-delta** de tal forma que es capaz de modificar el contenido de los datos actuales en Trellis y Wikibase de forma automática para adaptarlos a la nueva semántica de la ontología.
+
+### Modificaciones en la infraestructura semántica
+
+Tras modificaciones en la red de ontologías, como ya se ha mencionado anteriormente es necesario realizar las siguientes acciones:
+
+- cambios en la ETL
+- adaptación de los datos existentes en el triple-store (Trellis, Wikibase)
+
+#### Procesos manuales
+
+- Cuando se aplican las modificaciones en la red de ontologías
+- Modificaciones en la ETL a partir de la generación de los ficheros [DELTA](#DELTA)
+
+#### Procesos automáticos
 
 ## ShEx
 
