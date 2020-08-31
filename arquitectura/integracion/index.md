@@ -85,12 +85,16 @@ Este módulo será un servicio REST auténticado accesible desde **triple-store-
 
 Los ficheros delta son objetos JSON cuya información contiene las modificaciones a realizar en la ETL tras cambios en la ontología. Estos ficheros son interpretables por el nuevo módulo de la arquitectura semántica **triple-store-delta** de tal forma que es capaz de modificar el contenido de los datos actuales en Trellis y Wikibase de forma automática para adaptarlos a la nueva semántica de la ontología.
 
+### Formato e instrucciones DELTA
+
+**TODO**
+
 ### Modificaciones en la infraestructura semántica
 
 Tras modificaciones en la red de ontologías, como ya se ha mencionado anteriormente es necesario realizar las siguientes acciones:
 
-- cambios en la ETL
-- adaptación de los datos existentes en el triple-store (Trellis, Wikibase)
+- Cambios en la ETL
+- Adaptación de los datos existentes en el triple-store (Trellis, Wikibase)
 
 #### Secuencia de cambios a aplicar y entorno.
 
@@ -104,7 +108,7 @@ Para llevar a cabo los cambios procedentes de la red de ontologías, es necesari
 
 3. Invocación del proceso para la realización de backups.
 
-   > Desde que se para el servidor hasta que se inicia el proceso de backup debe pasar un tiempo lo suficientemente largo como para que se vacien las colas kafka con los datos de entranda para el módulo **management-system** encargado de la generación de ficheros RDF.
+   > Desde que se para el servidor hasta que se inicia el proceso de backup debe pasar un tiempo lo suficientemente largo como para que se vacíen las colas kafka con los datos de entrada para el módulo **management-system** encargado de la generación de ficheros RDF.
 
 4. Invocación desde linea de comandos del modulo **triple-store-delta** con el fichero DELTA como parámetro de entrada, para adaptar los datos del triple-store.
 
@@ -116,20 +120,16 @@ Los pasos anteriormente descritos se ejecutarán en un entorno no productivo y p
 
 #### Procesos manuales
 
-- Cuando se aplican las modificaciones en la red de ontologías
-- Modificaciones en la ETL a partir de la generación de los ficheros [DELTA](#DELTA)
+- Determinación del momento en que se deben aplicar las modificaciones que surgen de cambios en la red de ontologías.
+- Modificaciones en la ETL a partir de la generación de los ficheros [DELTA](#DELTA).
 
 #### Procesos automáticos
 
-La adaptación de los datos del triple store (Trellis, Wikibase) se hará de forma automática a partir de los ficheros [DELTA](#DELTA) procedentes de la arquitectura ontológica.
+La adaptación de los datos del triple store (Trellis, Wikibase) se harán de forma automática a partir de los ficheros [DELTA](#DELTA) procedentes de la arquitectura ontológica.
 
-Para poder implementar esta funcionalidad es necesario crear un nuevo componente **triple-store-delta** el cual contendrá un algoritmo capaz de interpretar las instrucciones procedentes de los ficheros DELTA para modificar los datos del triple-store adaptándolos a los nuevos cambios en las ontologías.
+Para poder implementar esta funcionalidad es necesario crear un nuevo componente **triple-store-delta** el cual contendrá un algoritmo capaz de interpretar las instrucciones procedentes de los ficheros DELTA para modificar los datos del **triple-store** adaptándolos a los nuevos cambios en las ontologías.
 
-Este nuevo módulo surge como substitución de la idea original **scripts ad-hoc** para la adaptación de los datos del triple-store. De esta forma, se consigue una automatización del proceso de transformación de datos procedentes del triple-store con la correspondiente reducción de errores en la ejecución manual de scripts.
-
-## Cambios colaterales en otros módulos.
-
-Es necesario modificar tambien los importadores. FIXME extend it.
+Este nuevo módulo surge como substitución de la idea original **scripts ad-hoc** para la adaptación de los datos del triple-store. De esta forma, se consigue una automatización del proceso de transformación de datos procedentes del **triple-store** con la correspondiente reducción de errores en la ejecución manual de scripts.
 
 ## ShEx
 
