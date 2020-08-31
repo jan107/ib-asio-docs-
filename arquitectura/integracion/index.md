@@ -96,17 +96,19 @@ Tras modificaciones en la red de ontologías, como ya se ha mencionado anteriorm
 
 Para llevar a cabo los cambios procedentes de la red de ontologías, es necesario realizar los siguientes pasos en el orden indicado:
 
-1-. Modificación en la ETL según las especificaciones del fichero DELTA `(estas modificaciones no se despliegan hasta no completar los pasos 2 y 3)`.
+1. Modificación en la ETL según las especificaciones del fichero DELTA
 
-2-. Parada del servidor donde se escuentran alojados los microservicios de la arquitectura semántica.
+   > `(estas modificaciones no se despliegan hasta no completar los pasos 2 y 3)`.
 
-3.- Invocación del proceso para la realización de backups.
+2. Parada del servidor donde se escuentran alojados los microservicios de la arquitectura semántica.
 
-4-. Invocación desde linea de comandos del modulo **triple-store-delta** con el fichero DELTA como parámetro de entrada, para adaptar los datos del triple-store.
+3. Invocación del proceso para la realización de backups.
 
-5.- Despliegue de la ETL
+4. Invocación desde linea de comandos del modulo **triple-store-delta** con el fichero DELTA como parámetro de entrada, para adaptar los datos del triple-store.
 
-6.- Arranque del servidor, con los microservicios apuntando a la nueva versión del **dataset-domain-model-X.X.X.jar**
+5. Despliegue de la ETL
+
+6. Arranque del servidor, con los microservicios apuntando a la nueva versión del **dataset-domain-model-X.X.X.jar**
 
 #### Procesos manuales
 
