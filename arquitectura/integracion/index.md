@@ -32,7 +32,7 @@ Cualquier modificación en la ontología implica modificaciones en las shape exp
 
 #### Procesos manuales
 
-Estas modificaciones dan como resultado un listado de cambios a aplicar en las Shape Expressions.
+Estas modificaciones en la ontología dan como resultado un listado de cambios a aplicar en las Shape Expressions.
 
 | Modificación                                                                               | Protocolo a aplicar                      |
 | ------------------------------------------------------------------------------------------ | ---------------------------------------- |
@@ -98,6 +98,8 @@ Tras modificaciones en la red de ontologías, como ya se ha mencionado anteriorm
 - Modificaciones en la ETL a partir de la generación de los ficheros [DELTA](#DELTA)
 
 #### Procesos automáticos
+
+La adaptación de los datos del triple store (Trellis, Wikibase) se hará de forma automática a partir de los ficheros [DELTA](#DELTA) procedentes de la arquitectura ontológica. Para poder implementar esta funcionalidad
 
 ## ShEx
 
