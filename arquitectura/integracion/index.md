@@ -69,10 +69,10 @@ El resultado de esta iteración es la regeneración de **todo el modelo de domin
 
 Para que la infraestructura semántica sea consciente de que han habido cambios en la red de ontologías, la infraestructura ontológica ofrece un nuevo módulo API **exchange** con los siguientes métodos:
 
-| Operación | EndPoint                                           | Descripción                                                                            |
-| --------- | -------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `GET`     | /versions                                          | Devuelve un listado de todas las versiones de ontologías existentes.                   |
-| `GET`     | /ontology/{**currentVersion**}/{**targetVersion**} | Devuelve el fichero [DELTA](#DELTA) generado entre `currentVersion` y `targetVersion`. |
+| Operación | EndPoint                                           | Descripción                                                                                           |
+| --------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `GET`     | /versions                                          | Devuelve un listado de todas las versiones de ontologías existentes ordernadas por fecha descendente. |
+| `GET`     | /ontology/{**currentVersion**}/{**targetVersion**} | Devuelve el fichero [DELTA](#DELTA) generado entre `currentVersion` y `targetVersion`.                |
 
 La siguiente tabla muestra ejemplos de posibles respuestas a las peticiones anteriormente descritas.
 
@@ -82,6 +82,8 @@ La siguiente tabla muestra ejemplos de posibles respuestas a las peticiones ante
 | `GET`     | /ontology/{**currentVersion**}/{**targetVersion**} | { targetClass: Activity, operation: add field } |
 
 Este módulo será un servicio REST auténticado accesible desde **triple-store-delta** hubicado en la arquitectura semántica.
+
+![](resources/comunication_IO_vs_AE.png)
 
 ## DELTA
 
