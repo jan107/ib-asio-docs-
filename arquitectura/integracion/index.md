@@ -1,3 +1,5 @@
+![](./resources/logos_feder.png)
+
 # Integración entre la arquitectura ontológica y la arquitectura semántica
 
 ## Introducción
@@ -55,7 +57,7 @@ Estas modificaciones en la ontología dan como resultado un listado de cambios a
 
 La construcción y el despligue de la ontología están controlados a traves de [workflows de integración continua](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow) de GitHub. Son las que se encargan de mantener actualizada la ontología en Wikibase.
 
-[PONER FOTO AQUI]
+![](resources/workflow.png)
 
 La generación de clases POJO a partir de shape expressions con la herramienta [ShEx Lite](#ShEx) se realizará de forma automática cada vez que la rama [master](https://github.com/HerculesCRUE/ib-hercules-ontology/tree/master/scripts) donde se hubican las Shape Expressions detecta que ha habido cambios.
 
