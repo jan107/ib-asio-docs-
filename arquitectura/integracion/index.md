@@ -92,6 +92,22 @@ Tras modificaciones en la red de ontologías, como ya se ha mencionado anteriorm
 - cambios en la ETL
 - adaptación de los datos existentes en el triple-store (Trellis, Wikibase)
 
+#### Secuencia de cambios a aplicar
+
+Para llevar a cabo los cambios procedentes de la red de ontologías, es necesario realizar los siguientes pasos en el orden indicado:
+
+1-. Modificación en la ETL según las especificaciones del fichero DELTA `(estas modificaciones no se despliegan hasta no completar los pasos 2 y 3)`.
+
+2-. Parada del servidor donde se escuentran alojados los microservicios de la arquitectura semántica.
+
+3.- Invocación del proceso para la realización de backups.
+
+4-. Invocación desde linea de comandos del modulo **triple-store-delta** con el fichero DELTA como parámetro de entrada, para adaptar los datos del triple-store.
+
+5.- Despliegue de la ETL
+
+6.- Arranque del servidor, con los microservicios apuntando a la nueva versión del **dataset-domain-model-X.X.X.jar**
+
 #### Procesos manuales
 
 - Cuando se aplican las modificaciones en la red de ontologías
@@ -99,7 +115,11 @@ Tras modificaciones en la red de ontologías, como ya se ha mencionado anteriorm
 
 #### Procesos automáticos
 
-La adaptación de los datos del triple store (Trellis, Wikibase) se hará de forma automática a partir de los ficheros [DELTA](#DELTA) procedentes de la arquitectura ontológica. Para poder implementar esta funcionalidad
+La adaptación de los datos del triple store (Trellis, Wikibase) se hará de forma automática a partir de los ficheros [DELTA](#DELTA) procedentes de la arquitectura ontológica.
+
+Para poder implementar esta funcionalidad es necesario crear un nuevo componente **triple-store-delta** el cual contendrá un algoritmo capaz de interpretar las instrucciones procedentes de los ficheros DELTA para modificar los datos del triple-store adaptándolos a los nuevos cambios en las ontologías.
+
+Este nuevo módulo surge como substitución de la idea original **scripts ad-hoc** para la adaptación de los datos del triple-store. De esta forma, se consigue una automatización del proceso de transformación de datos procedentes del triple-store con la correspondiente reducción de errores en la ejecución manual de scripts.
 
 ## ShEx
 
