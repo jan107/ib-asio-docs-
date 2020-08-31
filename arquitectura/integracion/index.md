@@ -83,7 +83,9 @@ La siguiente tabla muestra ejemplos de posibles respuestas a las peticiones ante
 
 Este módulo será un servicio REST auténticado accesible desde **triple-store-delta** hubicado en la arquitectura semántica.
 
-![](resources/comunication_IO_vs_AE.png)
+<p align="center">
+  <img src="resources/comunication_IO_vs_AE.png">
+</p>
 
 ## DELTA
 
