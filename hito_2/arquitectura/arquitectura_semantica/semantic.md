@@ -6,7 +6,7 @@ Descripción del contenido de la arquitectura semántica
 
 | Carpeta                                                                                                                                          | Contenido                                                              |
 | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
-| [análisis funcional](https://github.com/HerculesCRUE/ib-asio-docs-/-/tree/develop/hito_2/arquitectura/arquitectura_semantica/analisis_funcional) | Contiene la información referente al análisis funcional                |
+| [análisis funcional](https://github.com/HerculesCRUE/ib-asio-docs-/tree/master/hito_2/arquitectura/arquitectura_semantica/analisis_funcional) | Contiene la información referente al análisis funcional                |
 | [arquitectura uris](https://github.com/HerculesCRUE/ib-asio-docs-/-/tree/develop/hito_2/arquitectura/arquitectura_semantica/arquitectura_uris)   | Contiene la información relativa al esquema de uris y buenas prácticas |
 | [benchmark](https://github.com/HerculesCRUE/ib-asio-docs-/-/tree/develop/hito_2/arquitectura/arquitectura_semantica/benchmark)                   | Banco de pruebas sobre los triple-store                                |
 | [despliegues](https://github.com/HerculesCRUE/ib-asio-docs-/-/tree/develop/hito_2/arquitectura/arquitectura_semantica/despliegues)               | Información referentes a los despliegues                               |
